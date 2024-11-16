@@ -4,8 +4,6 @@ module.exports = {
   collectCoverage: true,
   collectCoverageFrom: [
     'src/**/*.ts(x)?',
-    '!src/app/**',
-    '!src/lib/registry.tsx',
     '!src/types/**',
     '!src/styles/**',
     '!src/**/stories.tsx'
@@ -16,6 +14,7 @@ module.exports = {
     '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }]
   },
   moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/src/$1',
     '^styled-components':
       'styled-components/dist/styled-components.browser.cjs.js'
   }
