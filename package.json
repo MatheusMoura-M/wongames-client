@@ -16,12 +16,12 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "boilerplate-apps-router": "file:",
     "next": "14.2.16",
     "next-pwa": "^5.6.0",
     "react": "^18",
     "react-dom": "^18",
-    "styled-components": "^6.1.13"
+    "styled-components": "^6.1.13",
+    "styled-media-query": "^2.1.2"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",
@@ -42,8 +42,10 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/styled-components": "^5.1.34",
     "babel-loader": "^9.2.1",
     "babel-plugin-styled-components": "^2.1.4",
+    "boilerplate-apps-router": "file:",
     "eslint": "^8",
     "eslint-config-next": "14.2.16",
     "eslint-config-prettier": "^9.1.0",
