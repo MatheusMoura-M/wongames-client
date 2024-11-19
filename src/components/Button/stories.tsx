@@ -1,0 +1,17 @@
+import { StoryObj, Meta } from '@storybook/react'
+import Button from '.'
+
+export default {
+  title: 'Button',
+  component: Button,
+  argTypes: {
+    children: {
+      type: 'string'
+    }
+  }
+} as Meta
+
+export const Default: StoryObj = {}
+Default.args = {
+  children: 'Buy now'
+}
