@@ -10,6 +10,7 @@ const wrapperModifiers = {
   lineBottom: (theme: DefaultTheme) => css`
     position: relative;
     margin-bottom: ${theme.spacings.medium};
+
     &::after {
       position: absolute;
       left: 0;
@@ -21,13 +22,17 @@ const wrapperModifiers = {
   `
 }
 
-export const Wrapper = styled.h2<HeadingProps>`
+export const Wrapper = styled.h2.withConfig({
+  shouldForwardProp: (prop) => !['lineLeft', 'lineBottom'].includes(prop)
+})<HeadingProps>`
   ${({ theme, color, lineLeft, lineBottom }) => css`
     color: ${theme.colors[color!]};
     font-size: ${theme.font.sizes.xlarge};
+
     ${media.greaterThan('medium')`
       font-size: ${theme.font.sizes.xxlarge};
     `}
+
     ${lineLeft && wrapperModifiers.lineLeft(theme)}
     ${lineBottom && wrapperModifiers.lineBottom(theme)}
   `}
