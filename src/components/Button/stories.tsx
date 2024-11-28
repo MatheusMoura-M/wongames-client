@@ -28,7 +28,7 @@ withIcon.args = {
 }
 
 export const asLink: StoryObj = {}
-withIcon.args = {
+asLink.args = {
   size: 'large',
   children: 'Buy now',
   as: 'a',
