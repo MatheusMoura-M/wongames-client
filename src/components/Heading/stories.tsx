@@ -11,9 +11,9 @@ export default {
   }
 } as Meta
 
-export const Default: StoryObj<HeadingProps> = {}
-
-Default.args = {
-  children: 'Most Populars',
-  color: 'black'
+export const Default: StoryObj<HeadingProps> = {
+  args: {
+    children: 'Most Populars',
+    color: 'black'
+  }
 }

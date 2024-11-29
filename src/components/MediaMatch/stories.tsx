@@ -10,10 +10,10 @@ export const Desktop: StoryObj = {
 }
 
 export const Mobile: StoryObj = {
-  render: () => <MediaMatch lessThan="medium">Only on Mobile</MediaMatch>
-}
-Mobile.parameters = {
-  viewport: {
-    defaultViewport: 'mobile1'
+  render: () => <MediaMatch lessThan="medium">Only on Mobile</MediaMatch>,
+  parameters: {
+    viewport: {
+      defaultViewport: 'mobile1'
+    }
   }
 }

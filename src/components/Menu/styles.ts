@@ -1,3 +1,4 @@
+import { cover } from 'polished'
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 
@@ -93,11 +94,15 @@ export const MenuFull = styled.nav.withConfig({
     flex-direction: column;
     justify-content: space-between;
     background: ${theme.colors.white};
-    position: absolute;
+
+    /* position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
-    right: 0;
+    right: 0; */
+    /* SUBSTITUI OS ITENS ACIMA */
+    ${cover()}
+
     height: 100vh;
     overflow: hidden;
     transition: opacity 0.3s ease-in-out;

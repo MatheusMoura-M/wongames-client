@@ -3,13 +3,13 @@ import Menu, { MenuProps } from '.'
 
 export default {
   title: 'Menu',
-  component: Menu
+  component: Menu,
+  parameters: {
+    layout: 'fullscreen',
+    backgrounds: {
+      default: 'dark'
+    }
+  }
 } as Meta
 
 export const Default: StoryObj<MenuProps> = {}
-Default.parameters = {
-  layout: 'fullscreen',
-  backgrounds: {
-    default: 'dark'
-  }
-}
