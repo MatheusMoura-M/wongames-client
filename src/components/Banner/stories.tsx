@@ -8,6 +8,11 @@ export default {
       <Banner {...args} />
     </div>
   ),
+  argTypes: {
+    ribbon: {
+      type: 'string'
+    }
+  },
   parameters: {
     layout: 'fullscreen'
   }
@@ -20,5 +25,18 @@ export const Default: StoryObj<BannerProps> = {
     subtitle: '<p>Play the new <strong>CrashLands</strong> season',
     buttonLabel: 'Buy now',
     buttonLink: '/games/defy-death'
+  }
+}
+
+export const WithRibbon: StoryObj<BannerProps> = {
+  render: (args) => (
+    <div style={{ maxWidth: '104rem', margin: '0 auto' }}>
+      <Banner {...args} />
+    </div>
+  ),
+  args: {
+    ribbon: '20% OFF',
+    ribbonSize: 'normal',
+    ribbonColor: 'primary'
   }
 }

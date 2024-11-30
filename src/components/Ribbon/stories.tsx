@@ -19,7 +19,9 @@ export default {
 
 export const Default: StoryObj<RibbonProps> = {
   args: {
-    children: 'Best Seller'
+    children: 'Best Seller',
+    color: 'secondary',
+    size: 'normal'
   },
   argTypes: {
     children: {
