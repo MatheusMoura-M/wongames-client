@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 
-export const Wrapper = styled.section.withConfig({
-  shouldForwardProp: (prop) => !['currentSlide', 'slideCount'].includes(prop)
-})`
+export const Wrapper = styled.section`
   .slick-slider {
     position: relative;
 
