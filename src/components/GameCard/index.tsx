@@ -29,9 +29,11 @@ const GameCard = ({
         <S.Title>{title}</S.Title>
         <S.Developer>{developer}</S.Developer>
       </S.Info>
+
       <S.FavButton role="button">
         <FavoriteBorder aria-label="Add to Wishlist" />
       </S.FavButton>
+
       <S.BuyBox>
         {!!promotionalPrice && <S.Price isPromotional>{price}</S.Price>}
         <S.Price>{promotionalPrice || price}</S.Price>
