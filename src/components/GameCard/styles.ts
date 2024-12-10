@@ -115,7 +115,9 @@ const priceModifiers = {
   `
 }
 
-export const Price = styled.div<PriceProps>`
+export const Price = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== 'isPromotional'
+})<PriceProps>`
   ${({ theme, isPromotional }) => css`
     display: inline-flex;
     font-weight: ${theme.font.bold};
