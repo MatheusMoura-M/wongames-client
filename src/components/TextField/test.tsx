@@ -2,6 +2,7 @@ import { screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { renderWithTheme } from '@/utils/tests/helpers'
 import TextField from '.'
+import { Email } from '@styled-icons/material-outlined'
 
 describe('<TextField />', () => {
   it('Renders with Label', () => {
@@ -17,6 +18,11 @@ describe('<TextField />', () => {
   it('Renders with placeholder', () => {
     renderWithTheme(<TextField placeholder="hey you" />)
     expect(screen.getByPlaceholderText('hey you')).toBeInTheDocument()
+  })
+
+  it('Renders with Icon', () => {
+    renderWithTheme(<TextField icon={<Email data-testid="icon" />} />)
+    expect(screen.getByTestId('icon')).toBeInTheDocument()
   })
 
   it('Changes its value when typing', async () => {
