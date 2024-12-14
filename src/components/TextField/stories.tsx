@@ -26,3 +26,14 @@ export const Default: StoryObj<TextFieldProps> = {
     </div>
   )
 }
+
+export const withError: StoryObj<TextFieldProps> = {
+  render: (args) => (
+    <div style={{ maxWidth: 300, padding: 15 }}>
+      <TextField {...args} />
+    </div>
+  ),
+  args: {
+    error: 'Ops...something is wrong'
+  }
+}
