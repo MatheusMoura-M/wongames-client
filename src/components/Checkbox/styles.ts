@@ -50,7 +50,9 @@ export const Input = styled.input`
   `}
 `
 
-export const Label = styled.label<Pick<CheckboxProps, 'labelColor'>>`
+export const Label = styled.label.withConfig({
+  shouldForwardProp: (prop) => prop !== 'labelColor'
+})<Pick<CheckboxProps, 'labelColor'>>`
   ${({ theme, labelColor }) => css`
     cursor: pointer;
     padding-left: ${theme.spacings.xxsmall};
