@@ -1,4 +1,4 @@
-const theme = {
+export default {
   grid: {
     container: '130rem',
     gutter: '3.2rem'
@@ -53,5 +53,3 @@ const theme = {
     fast: '0.1s ease-in-out'
   }
 } as const
-
-export default theme
