@@ -59,6 +59,9 @@ const GlobalStyles = createGlobalStyle<GlobalStylePropsWithTheme>`
         background-color: ${theme.colors.mainBg};
       `}
     }
+    button {
+      font-family: ${theme.font.family};
+    }
   `}
 `
 
