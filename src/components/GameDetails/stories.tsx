@@ -15,7 +15,7 @@ export default {
 export const Default: StoryObj = {
   render: () => (
     <div style={{ maxWidth: '130rem', margin: '0 auto' }}>
-      <GameDetails />
+      <GameDetails platforms={['windows', 'linux', 'mac']} />
     </div>
   )
 }
