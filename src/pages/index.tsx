@@ -12,21 +12,17 @@ export default function Index(props: HomeTemplateProps) {
 // getServerSideProps => gerar via ssr a cada request
 // getInitialProps => gerar via ssr a cada request
 export function getServerSideProps() {
-  // faz lógica
-  // pode ser buscar dados numa API
-  // fazer calculo|leitura de context
-  // retorno dos dados
   return {
     props: {
       banners: bannersMock,
       newGames: gamesMock,
       mostPopularHighlight: highlightMock,
       mostPopularGames: gamesMock,
-      upcommingGames: gamesMock,
-      upcommingHighligth: highlightMock,
-      upcommingMoreGames: gamesMock,
+      upcomingGames: gamesMock,
+      upcomingHighlight: highlightMock,
+      upcomingMoreGames: gamesMock,
       freeGames: gamesMock,
-      freeHighligth: highlightMock
+      freeHighlight: highlightMock
     }
   }
 }
