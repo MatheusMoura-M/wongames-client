@@ -8,6 +8,7 @@ export const Wrapper = styled.menu`
     align-items: center;
     padding: ${theme.spacings.small} 0;
     position: relative;
+    z-index: ${theme.layers.menu};
   `}
 `
 
@@ -51,7 +52,8 @@ export const MenuNav = styled.div`
 
 export const MenuLink = styled.a`
   ${({ theme }) => css`
-    position: relative;
+    position: re
+    z-index: ${theme.layers.menu};
     color: ${theme.colors.white};
     font-size: ${theme.font.sizes.medium};
     margin: 0.3rem ${theme.spacings.small} 0;
