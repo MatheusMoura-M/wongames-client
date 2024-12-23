@@ -36,7 +36,9 @@ const Menu = ({ username }: MenuProps) => {
             <S.MenuLink>Home</S.MenuLink>
           </Link>
 
-          <S.MenuLink href="#">Explore</S.MenuLink>
+          <Link href="#" passHref>
+            <S.MenuLink>Explore</S.MenuLink>
+          </Link>
         </S.MenuNav>
       </MediaMatch>
 
@@ -65,12 +67,19 @@ const Menu = ({ username }: MenuProps) => {
             <S.MenuLink>Home</S.MenuLink>
           </Link>
 
-          <S.MenuLink href="#">Explore</S.MenuLink>
+          <Link href="#" passHref>
+            <S.MenuLink>Explore</S.MenuLink>
+          </Link>
 
           {!!username && (
             <>
-              <S.MenuLink href="#">My account</S.MenuLink>
-              <S.MenuLink href="#">Wishlist</S.MenuLink>
+              <Link href="#" passHref>
+                <S.MenuLink>My account</S.MenuLink>
+              </Link>
+
+              <Link href="#" passHref>
+                <S.MenuLink>Wishlist</S.MenuLink>
+              </Link>
             </>
           )}
         </S.MenuNav>

@@ -15,6 +15,7 @@ function App({ Component, pageProps }: AppProps) {
         <link rel="manifest" href="/manifest.json" />
         <meta name="description" content="The best Game Stores in the world!" />
       </Head>
+
       <GlobalStyles />
       <Component {...pageProps} />
     </ThemeProvider>

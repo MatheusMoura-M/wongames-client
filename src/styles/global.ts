@@ -1,11 +1,11 @@
 'use client'
 
-import { createGlobalStyle, css, DefaultTheme } from 'styled-components'
+import { createGlobalStyle, css } from 'styled-components'
 
 type GlobalStylesProps = {
   removeBg?: boolean
 }
-type GlobalStylePropsWithTheme = GlobalStylesProps & DefaultTheme
+export type GlobalStylePropsWithTheme = GlobalStylesProps
 
 const GlobalStyles = createGlobalStyle<GlobalStylePropsWithTheme>`
   @font-face {

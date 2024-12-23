@@ -50,15 +50,17 @@ export const MenuNav = styled.div`
   `}
 `
 
-export const MenuLink = styled.a`
+export const MenuLink = styled.button`
   ${({ theme }) => css`
-    position: re
+    position: relative;
     z-index: ${theme.layers.menu};
     color: ${theme.colors.white};
     font-size: ${theme.font.sizes.medium};
     margin: 0.3rem ${theme.spacings.small} 0;
     text-decoration: none;
     text-align: center;
+    border: none;
+    background: transparent;
 
     &:hover {
       &::after {
