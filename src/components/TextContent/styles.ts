@@ -7,11 +7,11 @@ export const Wrapper = styled.div`
   ${({ theme }) => css`
     color: ${theme.colors.white};
 
-    @media (min-width: 768px) {
+    ${media.greaterThan('medium')`
       background: ${theme.colors.white};
       padding: ${theme.spacings.medium};
       color: ${theme.colors.black};
-    }
+    `}
 
     h1,
     h2,

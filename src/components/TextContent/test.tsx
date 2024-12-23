@@ -28,7 +28,7 @@ describe('<TextContent />', () => {
   })
 
   it('should render the title and content', () => {
-    const { debug } = renderWithTheme(<TextContent {...props} />)
+    renderWithTheme(<TextContent {...props} />)
 
     const wrapper = screen.getByRole('heading', {
       name: /description/i
@@ -38,9 +38,8 @@ describe('<TextContent />', () => {
       color: '#FAFAFA'
     })
 
-    debug()
     expect(wrapper).toHaveStyleRule('color', '#030517', {
-      media: '(min-width: 768px)'
+      media: '(min-width:  768px)'
     })
   })
 })
