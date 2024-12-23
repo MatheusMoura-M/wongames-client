@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
+
 export const Wrapper = styled.div`
   ${({ theme }) => css`
     .slick-prev,
@@ -31,8 +32,33 @@ export const Wrapper = styled.div`
     .slick-list {
       margin: 0 -${theme.spacings.xsmall};
     }
+
     ${media.lessThan('huge')`
       overflow-x: hidden;
     `}
+  `}
+`
+
+type ModalProps = {
+  isOpen: boolean
+}
+
+const modalModifiers = {
+  open: () => css`
+    opacity: 1;
+  `,
+
+  close: () => css`
+    opacity: 0;
+    pointer-events: none;
+  `
+}
+
+export const Modal = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== 'isOpen'
+})<ModalProps>`
+  ${({ isOpen }) => css`
+    ${isOpen && modalModifiers.open()}
+    ${!isOpen && modalModifiers.close()}
   `}
 `
