@@ -27,6 +27,7 @@ const wrapperModifiers = {
   withIcon: (theme: DefaultTheme) => css`
     svg {
       width: 1.5rem;
+
       & + span {
         margin-left: ${theme.spacings.xxsmall};
       }
@@ -53,6 +54,7 @@ export const Wrapper = styled.button.withConfig({
     background: linear-gradient(180deg, #ff5f5f 0%, #f062c0 50%);
     color: ${theme.colors.white};
     font-family: ${theme.font.family};
+    cursor: pointer;
     border: 0;
     border-radius: ${theme.border.radius};
     padding: ${theme.spacings.xxsmall};
