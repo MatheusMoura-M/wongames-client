@@ -1,6 +1,5 @@
-
 import { Meta, StoryObj } from '@storybook/react'
-import ProfileMenu from '.'
+import ProfileMenu, { ProfileMenuProps } from '.'
 
 export default {
   title: 'ProfileMenu',
@@ -12,4 +11,6 @@ export default {
   }
 } as Meta
 
-export const Default: StoryObj = {}
+export const Default: StoryObj<ProfileMenuProps> = {
+  render: (args) => <ProfileMenu {...args} />
+}

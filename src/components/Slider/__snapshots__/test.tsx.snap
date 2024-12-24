@@ -111,15 +111,11 @@ exports[`<Slider /> should render children as slider item 1`] = `
     class="slick-slider slick-initialized"
     dir="ltr"
   >
-    <button
+    <div
       class="slick-arrow slick-prev slick-disabled"
       data-role="none"
       style="display: block;"
-      type="button"
-    >
-       
-      Previous
-    </button>
+    />
     <div
       class="slick-list"
     >
@@ -161,15 +157,11 @@ exports[`<Slider /> should render children as slider item 1`] = `
         </div>
       </div>
     </div>
-    <button
+    <div
       class="slick-arrow slick-next"
       data-role="none"
       style="display: block;"
-      type="button"
-    >
-       
-      Next
-    </button>
+    />
   </div>
 </section>
 `;

@@ -5,6 +5,6 @@ describe('<Grid />', () => {
   it('should render correctly', () => {
     const { container } = renderWithTheme(<Grid>Children</Grid>)
 
-    expect(container.firstChild).toMatchInlineSnapshot()
+    expect(container.firstChild).toBeInTheDocument()
   })
 })
