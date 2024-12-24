@@ -6,7 +6,6 @@ import Showcase from '@/components/Showcase'
 import Base from '@/templates/Base'
 import { Grid } from '../Grid'
 
-import * as S from './styles'
 import { Divider } from '@/components/Divider'
 import Empty from '@/components/Empty'
 
