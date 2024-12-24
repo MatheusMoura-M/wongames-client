@@ -21,7 +21,7 @@ const GameItem = ({ img, title, price, downloadLink, paymentInfo }: GameItemProp
   <S.Wrapper>
     <S.GameContent>
       <S.ImageBox>
-        <Image src={img} alt={title} fill />
+        <Image src={img} alt={title} fill sizes="100%" priority/>
       </S.ImageBox>
 
       <S.Content>
