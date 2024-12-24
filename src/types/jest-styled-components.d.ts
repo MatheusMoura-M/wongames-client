@@ -13,12 +13,15 @@ declare global {
       $$typeof: Symbol
       sample?: string | RegExp | object | Array<any> | Function
     }
+
     type Value = string | number | RegExp | AsymmetricMatcher | undefined
+
     interface Options {
       media?: string
       modifier?: string | ReturnType<typeof css>
       supports?: string
     }
+
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<R, T> {
       toHaveStyleRule(property: string, value?: Value, options?: Options): R

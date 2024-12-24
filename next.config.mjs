@@ -1,5 +1,14 @@
 /** @type {import("next").NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "items.gog.com"
+      }
+    ]
+  }
+}
 
 import withPWA from 'next-pwa'
 
