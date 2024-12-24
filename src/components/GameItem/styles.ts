@@ -18,6 +18,7 @@ export const GameContent = styled.div`
 
 export const ImageBox = styled.div`
   ${({ theme }) => css`
+    position: relative;
     flex-shrink: 0;
     margin-right: 1.2rem;
     width: 9.6rem;
@@ -66,5 +67,12 @@ export const Price = styled.div`
     border-radius: ${theme.border.radius};
     font-size: ${theme.font.sizes.small};
     font-weight: ${theme.font.bold};
+  `}
+`
+
+export const DownloadLink = styled.a`
+  ${({ theme }) => css`
+    color: ${theme.colors.primary};
+    margin-left: ${theme.spacings.xxsmall};
   `}
 `
