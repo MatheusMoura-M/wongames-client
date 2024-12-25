@@ -1,15 +1,15 @@
+import { ChildrenProps } from '@/utils/tests/helpers'
 import * as S from './styles'
 
 export type LineColors = 'primary' | 'secondary'
 
 export type HeadingProps = {
-  children: React.ReactNode
   color?: 'white' | 'black'
   lineLeft?: boolean
   lineBottom?: boolean
   lineColor?: LineColors
   size?: 'small' | 'medium' | 'huge'
-}
+} & ChildrenProps
 
 const Heading = ({
   children,

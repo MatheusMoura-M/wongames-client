@@ -1,6 +1,6 @@
 import 'match-media-mock'
 import { screen } from '@testing-library/react'
-import { renderWithTheme } from '@/utils/tests/helpers'
+import { ChildrenProps, renderWithTheme } from '@/utils/tests/helpers'
 import gamesMock from '@/components/GameCardSlider/mock'
 import highlightMock from '@/components/Highlight/mock'
 import itemsMock from '@/components/CartList/mock'
@@ -18,7 +18,7 @@ const props = {
 
 jest.mock('@/templates/Base', () => ({
   __esModule: true,
-  default: function Mock({ children }: { children: React.ReactNode }) {
+  default: function Mock({ children }: ChildrenProps) {
     return <div data-testid="Mock Base">{children}</div>
   }
 }))

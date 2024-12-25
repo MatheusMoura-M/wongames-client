@@ -1,8 +1,8 @@
-import { render } from '@testing-library/react'
+import { renderWithTheme } from '@/utils/tests/helpers'
 import Profile from '.'
 
 describe('<Profile />', () => {
   it('should render the heading', () => {
-    render(<Profile>Opa</Profile>)
+    renderWithTheme(<Profile>Opa</Profile>)
   })
 })

@@ -2,14 +2,11 @@ import { Container } from '@/components/Container'
 import Heading from '@/components/Heading'
 import ProfileMenu from '@/components/ProfileMenu'
 import Base from '@/templates/Base'
+import { ChildrenProps } from '@/utils/tests/helpers'
 
 import * as S from './styles'
 
-export type ProfileTemplateProps = {
-  children: React.ReactNode
-}
-
-const Profile = ({ children }: ProfileTemplateProps) => (
+const Profile = ({ children }: ChildrenProps) => (
   <Base>
     <Container>
       <Heading lineLeft lineColor="secondary">
