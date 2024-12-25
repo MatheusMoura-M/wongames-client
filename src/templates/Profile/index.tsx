@@ -9,6 +9,7 @@ import * as S from './styles'
 
 const Profile = ({ children }: ChildrenProps) => {
   const { asPath } = useRouter()
+
   return (
     <Base>
       <Container>
