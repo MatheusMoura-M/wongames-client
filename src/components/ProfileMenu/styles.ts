@@ -15,6 +15,10 @@ export const Nav = styled.nav`
       flex-direction: column;
       border: 0;
 
+      > a {
+        flex: none
+      }
+
       a:not(:last-child) {
         border-bottom: 0.1rem solid ${theme.colors.lightGray};
       }
