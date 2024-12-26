@@ -9,6 +9,8 @@ import Base from '../Base'
 import * as S from './styles'
 
 export type HomeTemplateProps = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: any
   banners: BannerProps[]
   newGames: GameCardProps[]
   mostPopularHighlight: HighlightProps
