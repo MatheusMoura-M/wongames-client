@@ -12,7 +12,8 @@ export const Wrapper = styled.article`
 `
 
 export const ImageBox = styled.div`
-  height: 14rem;
+  position: relative;
+  min-height: 14rem;
   width: 100%;
   background: #f6f7f8;
   background-image: linear-gradient(
@@ -27,7 +28,7 @@ export const ImageBox = styled.div`
 
   img {
     width: 100%;
-    height: 100%;
+    height: inherit;
     object-fit: cover;
   }
 

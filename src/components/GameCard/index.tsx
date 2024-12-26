@@ -6,6 +6,7 @@ import {
 import Button from '../Button'
 import Ribbon, { RibbonColors, RibbonSizes } from '../Ribbon'
 import * as S from './styles'
+import Image from 'next/image'
 
 export type GameCardProps = {
   title: string
@@ -39,7 +40,7 @@ const GameCard = ({
       </Ribbon>
     )}
     <S.ImageBox>
-      <img src={img} alt={title} />
+      <Image src={img} alt={title} fill sizes="100%" priority />
     </S.ImageBox>
     <S.Content>
       <S.Info>
