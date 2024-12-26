@@ -65,7 +65,7 @@ const Menu = ({ username }: MenuProps) => {
         <MediaMatch greaterThan="medium">
           {!username ? (
             <Link href="/sign-in" passHref>
-              <Button as="a">Sign in</Button>
+              <Button>Sign in</Button>
             </Link>
           ) : (
             <UserDropdown username={username} />
