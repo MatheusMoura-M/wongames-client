@@ -4,7 +4,7 @@ import Heading from '@/components/Heading'
 import { HighlightProps } from '@/components/Highlight'
 import Showcase from '@/components/Showcase'
 import Base from '@/templates/Base'
-import { Grid } from '../Grid'
+import { Grid } from '../../components/Grid'
 
 import { Divider } from '@/components/Divider'
 import Empty from '@/components/Empty'
