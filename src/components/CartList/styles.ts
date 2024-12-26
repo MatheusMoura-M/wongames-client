@@ -8,7 +8,9 @@ type WrapperProps = {
   isEmpty: boolean
 }
 
-export const Wrapper = styled.div<WrapperProps>`
+export const Wrapper = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== 'isEmpty'
+})<WrapperProps>`
   ${({ theme, isEmpty }) => css`
     background: ${theme.colors.white};
     display: flex;
