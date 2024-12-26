@@ -1,32 +1,12 @@
+import { ApolloProvider } from '@apollo/client'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import {
-  ApolloClient,
-  ApolloProvider,
-  InMemoryCache,
-  gql
-} from '@apollo/client'
 import { ThemeProvider } from 'styled-components'
 
 import GlobalStyles from '@/styles/global'
 import theme from '@/styles/theme'
 
 function App({ Component, pageProps }: AppProps) {
-  const client = new ApolloClient({
-    uri: 'http://localhost:1337/graphql',
-    cache: new InMemoryCache()
-  })
-
-  client.query({
-    query: gql`
-      query getGames {
-        games {
-          name
-        }
-      }
-    `
-  })
-
   return (
     <ApolloProvider client={client}>
       <ThemeProvider theme={theme}>
