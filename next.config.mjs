@@ -9,6 +9,10 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "s2-g1.glbimg.com"
+      },
+      {
+        protocol: "http",
+        hostname: "localhost"
       }
     ]
   }
