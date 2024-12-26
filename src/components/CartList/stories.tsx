@@ -1,4 +1,3 @@
-
 import { Meta, StoryObj } from '@storybook/react'
 import CartList, { CartListProps } from '.'
 
@@ -27,6 +26,14 @@ export const Default: StoryObj<CartListProps> = {
   render: (args) => (
     <div style={{ maxWidth: 800 }}>
       <CartList {...args} />
+    </div>
+  )
+}
+
+export const WithButton: StoryObj<CartListProps> = {
+  render: (args) => (
+    <div style={{ maxWidth: 800 }}>
+      <CartList {...args} hasButton />
     </div>
   )
 }

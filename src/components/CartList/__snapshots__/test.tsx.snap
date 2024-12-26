@@ -61,6 +61,7 @@ exports[`<CartList /> should render the cart list 1`] = `
   font-size: 1.4rem;
   padding: 2rem;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -174,7 +175,9 @@ exports[`<CartList /> should render the cart list 1`] = `
   <div
     class="c7"
   >
-    Total 
+    <span>
+      Total:
+    </span>
     <span
       class="c8"
     >
