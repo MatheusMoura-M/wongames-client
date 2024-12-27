@@ -51,6 +51,10 @@ export const Content = styled.div`
     height: 100%;
     margin: ${theme.spacings.xsmall};
   `}
+
+  > a {
+    text-decoration: none;
+  }
 `
 
 export const Info = styled.div`
