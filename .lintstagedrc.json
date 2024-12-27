@@ -2,6 +2,6 @@
   "*.ts?(x)": [
     "eslint --fix",
     "prettier --write",
-    "yarn test -- --findRelatedTests"
+    "npm run test -- --findRelatedTests"
   ]
 }

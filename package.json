@@ -8,6 +8,10 @@
     "typecheck": "tsc --project tsconfig.json --noEmit",
     "test": "jest --passWithNoTests --maxWorkers=50%",
     "test:watch": "jest --watch --maxWorkers=25%",
+    "codegen": "apollo codegen:generate --target typescript --excludes=node_modules/ --includes=src/graphql/**/*.ts --localSchemaFile schema.gql --tagName=gql --outputFlat src/graphql/generated",
+    "schema:download": "apollo client:download-schema --endpoint=http://localhost:1337/graphql schema-temp.gql",
+    "schema:convert": "node convertToNonNull.js",
+    "types:generate": "npm run schema:download && npm run schema:convert && npm run codegen",
     "test:ci": "jest --runInBand",
     "generate": "npx plop --plopfile generators/plopfile.js",
     "start": "next start",
@@ -23,7 +27,7 @@
     "@styled-icons/fa-brands": "^10.47.0",
     "@styled-icons/material-outlined": "^10.47.0",
     "@styled-icons/remix-fill": "^10.46.0",
-    "graphql": "^16.10.0",
+    "graphql": "^15.4.0",
     "next": "14.2.16",
     "next-pwa": "^5.6.0",
     "polished": "^4.3.1",
@@ -35,6 +39,12 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",
+    "@graphql-codegen/cli": "^5.0.3",
+    "@graphql-codegen/client-preset": "^4.5.1",
+    "@graphql-codegen/typescript": "^4.1.2",
+    "@graphql-codegen/typescript-operations": "^4.4.0",
+    "@graphql-codegen/typescript-react-apollo": "^4.3.2",
+    "@graphql-codegen/typescript-resolvers": "^4.4.1",
     "@storybook/addon-essentials": "^8.3.6",
     "@storybook/addon-interactions": "^8.3.6",
     "@storybook/addon-links": "^8.3.6",
@@ -54,6 +64,7 @@
     "@types/react-dom": "^18",
     "@types/react-slick": "^0.23.13",
     "@types/styled-components": "^5.1.34",
+    "apollo": "^2.32.1",
     "babel-loader": "^9.2.1",
     "babel-plugin-styled-components": "^2.1.4",
     "boilerplate-apps-router": "file:",
@@ -70,5 +81,8 @@
     "prettier": "3.3.3",
     "storybook": "^8.4.3",
     "typescript": "^5"
+  },
+  "overrides": {
+    "graphql": "^15.4.0"
   }
 }
