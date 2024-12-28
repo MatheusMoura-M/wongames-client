@@ -58,7 +58,7 @@
     "@types/react-dom": "^18",
     "@types/react-slick": "^0.23.13",
     "@types/styled-components": "^5.1.34",
-    "apollo": "^2.33.4",
+    "apollo": "^2.11.1",
     "babel-loader": "^9.2.1",
     "babel-plugin-styled-components": "^2.1.4",
     "boilerplate-apps-router": "file:",
