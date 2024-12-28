@@ -7,11 +7,229 @@
 // START Enums and Input Objects
 //==============================================================
 
+export enum ENUM_GAME_RATING {
+  BR0 = 'BR0',
+  BR10 = 'BR10',
+  BR12 = 'BR12',
+  BR14 = 'BR14',
+  BR16 = 'BR16',
+  BR18 = 'BR18'
+}
+
+export interface CategoryFiltersInput {
+  documentId?: IDFilterInput | null
+  name?: StringFilterInput | null
+  slug?: StringFilterInput | null
+  games?: GameFiltersInput | null
+  createdAt?: DateTimeFilterInput | null
+  updatedAt?: DateTimeFilterInput | null
+  publishedAt?: DateTimeFilterInput | null
+  locale?: StringFilterInput | null
+  localizations?: CategoryFiltersInput | null
+  and?: (CategoryFiltersInput | null)[] | null
+  or?: (CategoryFiltersInput | null)[] | null
+  not?: CategoryFiltersInput | null
+}
+
+export interface DateFilterInput {
+  and?: (any | null)[] | null
+  or?: (any | null)[] | null
+  not?: DateFilterInput | null
+  eq?: any | null
+  eqi?: any | null
+  ne?: any | null
+  nei?: any | null
+  startsWith?: any | null
+  endsWith?: any | null
+  contains?: any | null
+  notContains?: any | null
+  containsi?: any | null
+  notContainsi?: any | null
+  gt?: any | null
+  gte?: any | null
+  lt?: any | null
+  lte?: any | null
+  null?: boolean | null
+  notNull?: boolean | null
+  in?: (any | null)[] | null
+  notIn?: (any | null)[] | null
+  between?: (any | null)[] | null
+}
+
+export interface DateTimeFilterInput {
+  and?: (any | null)[] | null
+  or?: (any | null)[] | null
+  not?: DateTimeFilterInput | null
+  eq?: any | null
+  eqi?: any | null
+  ne?: any | null
+  nei?: any | null
+  startsWith?: any | null
+  endsWith?: any | null
+  contains?: any | null
+  notContains?: any | null
+  containsi?: any | null
+  notContainsi?: any | null
+  gt?: any | null
+  gte?: any | null
+  lt?: any | null
+  lte?: any | null
+  null?: boolean | null
+  notNull?: boolean | null
+  in?: (any | null)[] | null
+  notIn?: (any | null)[] | null
+  between?: (any | null)[] | null
+}
+
+export interface DeveloperFiltersInput {
+  documentId?: IDFilterInput | null
+  name?: StringFilterInput | null
+  slug?: StringFilterInput | null
+  games?: GameFiltersInput | null
+  createdAt?: DateTimeFilterInput | null
+  updatedAt?: DateTimeFilterInput | null
+  publishedAt?: DateTimeFilterInput | null
+  locale?: StringFilterInput | null
+  localizations?: DeveloperFiltersInput | null
+  and?: (DeveloperFiltersInput | null)[] | null
+  or?: (DeveloperFiltersInput | null)[] | null
+  not?: DeveloperFiltersInput | null
+}
+
+export interface FloatFilterInput {
+  and?: (number | null)[] | null
+  or?: (number | null)[] | null
+  not?: FloatFilterInput | null
+  eq?: number | null
+  eqi?: number | null
+  ne?: number | null
+  nei?: number | null
+  startsWith?: number | null
+  endsWith?: number | null
+  contains?: number | null
+  notContains?: number | null
+  containsi?: number | null
+  notContainsi?: number | null
+  gt?: number | null
+  gte?: number | null
+  lt?: number | null
+  lte?: number | null
+  null?: boolean | null
+  notNull?: boolean | null
+  in?: (number | null)[] | null
+  notIn?: (number | null)[] | null
+  between?: (number | null)[] | null
+}
+
+export interface GameFiltersInput {
+  documentId?: IDFilterInput | null
+  name?: StringFilterInput | null
+  slug?: StringFilterInput | null
+  short_description?: StringFilterInput | null
+  description?: StringFilterInput | null
+  description_two?: StringFilterInput | null
+  price?: FloatFilterInput | null
+  release_date?: DateFilterInput | null
+  rating?: StringFilterInput | null
+  categories?: CategoryFiltersInput | null
+  platforms?: PlatformFiltersInput | null
+  developers?: DeveloperFiltersInput | null
+  publisher?: PublisherFiltersInput | null
+  createdAt?: DateTimeFilterInput | null
+  updatedAt?: DateTimeFilterInput | null
+  publishedAt?: DateTimeFilterInput | null
+  locale?: StringFilterInput | null
+  localizations?: GameFiltersInput | null
+  and?: (GameFiltersInput | null)[] | null
+  or?: (GameFiltersInput | null)[] | null
+  not?: GameFiltersInput | null
+}
+
+export interface IDFilterInput {
+  and?: (string | null)[] | null
+  or?: (string | null)[] | null
+  not?: IDFilterInput | null
+  eq?: string | null
+  eqi?: string | null
+  ne?: string | null
+  nei?: string | null
+  startsWith?: string | null
+  endsWith?: string | null
+  contains?: string | null
+  notContains?: string | null
+  containsi?: string | null
+  notContainsi?: string | null
+  gt?: string | null
+  gte?: string | null
+  lt?: string | null
+  lte?: string | null
+  null?: boolean | null
+  notNull?: boolean | null
+  in?: (string | null)[] | null
+  notIn?: (string | null)[] | null
+  between?: (string | null)[] | null
+}
+
 export interface PaginationArg {
   page?: number | null
   pageSize?: number | null
   start?: number | null
   limit?: number | null
+}
+
+export interface PlatformFiltersInput {
+  documentId?: IDFilterInput | null
+  name?: StringFilterInput | null
+  slug?: StringFilterInput | null
+  games?: GameFiltersInput | null
+  createdAt?: DateTimeFilterInput | null
+  updatedAt?: DateTimeFilterInput | null
+  publishedAt?: DateTimeFilterInput | null
+  locale?: StringFilterInput | null
+  localizations?: PlatformFiltersInput | null
+  and?: (PlatformFiltersInput | null)[] | null
+  or?: (PlatformFiltersInput | null)[] | null
+  not?: PlatformFiltersInput | null
+}
+
+export interface PublisherFiltersInput {
+  documentId?: IDFilterInput | null
+  name?: StringFilterInput | null
+  slug?: StringFilterInput | null
+  games?: GameFiltersInput | null
+  createdAt?: DateTimeFilterInput | null
+  updatedAt?: DateTimeFilterInput | null
+  publishedAt?: DateTimeFilterInput | null
+  locale?: StringFilterInput | null
+  localizations?: PublisherFiltersInput | null
+  and?: (PublisherFiltersInput | null)[] | null
+  or?: (PublisherFiltersInput | null)[] | null
+  not?: PublisherFiltersInput | null
+}
+
+export interface StringFilterInput {
+  and?: (string | null)[] | null
+  or?: (string | null)[] | null
+  not?: StringFilterInput | null
+  eq?: string | null
+  eqi?: string | null
+  ne?: string | null
+  nei?: string | null
+  startsWith?: string | null
+  endsWith?: string | null
+  contains?: string | null
+  notContains?: string | null
+  containsi?: string | null
+  notContainsi?: string | null
+  gt?: string | null
+  gte?: string | null
+  lt?: string | null
+  lte?: string | null
+  null?: boolean | null
+  notNull?: boolean | null
+  in?: (string | null)[] | null
+  notIn?: (string | null)[] | null
+  between?: (string | null)[] | null
 }
 
 //==============================================================

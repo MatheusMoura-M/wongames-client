@@ -6,32 +6,32 @@
 import { PaginationArg } from './globalTypes'
 
 // ====================================================
-// GraphQL query operation: queryGames
+// GraphQL query operation: QueryGames
 // ====================================================
 
-export interface queryGames_games_cover {
+export interface QueryGames_games_cover {
   __typename: 'UploadFile'
   url: string
 }
 
-export interface queryGames_games_developers {
+export interface QueryGames_games_developers {
   __typename: 'Developer'
   name: string
 }
 
-export interface queryGames_games {
+export interface QueryGames_games {
   __typename: 'Game'
   name: string
   slug: string | null
-  cover: queryGames_games_cover | null
-  developers: (queryGames_games_developers | null)[]
+  cover: QueryGames_games_cover | null
+  developers: (QueryGames_games_developers | null)[]
   price: number
 }
 
-export interface queryGames {
-  games: (queryGames_games | null)[]
+export interface QueryGames {
+  games: (QueryGames_games | null)[]
 }
 
-export interface queryGamesVariables {
+export interface QueryGamesVariables {
   pagination?: PaginationArg | null
 }
