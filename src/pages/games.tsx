@@ -24,14 +24,11 @@ export async function getStaticProps() {
     revalidate: 60,
     props: {
       games: data.games.map((game) => ({
-        title: game!.name,
-        slug: game!.slug,
-        developer: game!.developers[0]!.name,
-        img: `http://localhost:1337${game?.cover!.url}`,
-        price: new Intl.NumberFormat('en', {
-          style: 'currency',
-          currency: 'USD'
-        }).format(game!.price)
+        title: game?.name,
+        slug: game?.slug,
+        developer: game?.developers[0]?.name,
+        img: `http://localhost:1337${game?.cover?.url}`,
+        price: game?.price
       })),
       filterItems: filterItemsMock
     }

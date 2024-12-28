@@ -255,6 +255,76 @@ input JSONFilterInput {
   between: [JSON]
 }
 
+enum ENUM_COMPONENTPAGERIBON_COLOR {
+  primary
+  secondary
+}
+
+enum ENUM_COMPONENTPAGERIBON_SIZE {
+  small
+  normal
+}
+
+type ComponentPageRibon {
+  id: ID!
+  text: String
+  color: ENUM_COMPONENTPAGERIBON_COLOR
+  size: ENUM_COMPONENTPAGERIBON_SIZE
+}
+
+enum ENUM_COMPONENTPAGERIBBON_COLOR {
+  primary
+  secondary
+}
+
+enum ENUM_COMPONENTPAGERIBBON_SIZE {
+  small
+  normal
+}
+
+input ComponentPageRibbonFiltersInput {
+  text: StringFilterInput
+  color: StringFilterInput
+  size: StringFilterInput
+  and: [ComponentPageRibbonFiltersInput]
+  or: [ComponentPageRibbonFiltersInput]
+  not: ComponentPageRibbonFiltersInput
+}
+
+input ComponentPageRibbonInput {
+  id: ID
+  text: String
+  color: ENUM_COMPONENTPAGERIBBON_COLOR
+  size: ENUM_COMPONENTPAGERIBBON_SIZE
+}
+
+type ComponentPageRibbon {
+  id: ID!
+  text: String
+  color: ENUM_COMPONENTPAGERIBBON_COLOR
+  size: ENUM_COMPONENTPAGERIBBON_SIZE
+}
+
+input ComponentPageButtonFiltersInput {
+  label: StringFilterInput
+  link: StringFilterInput
+  and: [ComponentPageButtonFiltersInput]
+  or: [ComponentPageButtonFiltersInput]
+  not: ComponentPageButtonFiltersInput
+}
+
+input ComponentPageButtonInput {
+  id: ID
+  label: String
+  link: String
+}
+
+type ComponentPageButton {
+  id: ID!
+  label: String!
+  link: String!
+}
+
 type ComponentSharedSlider {
   id: ID!
   files_connection(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
@@ -592,6 +662,49 @@ type UsersPermissionsUserRelationResponseCollection {
   nodes: [UsersPermissionsUser!]!
 }
 
+input BannerFiltersInput {
+  documentId: IDFilterInput
+  title: StringFilterInput
+  subtitle: StringFilterInput
+  button: ComponentPageButtonFiltersInput
+  ribbon: ComponentPageRibbonFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  locale: StringFilterInput
+  localizations: BannerFiltersInput
+  and: [BannerFiltersInput]
+  or: [BannerFiltersInput]
+  not: BannerFiltersInput
+}
+
+input BannerInput {
+  image: ID
+  title: String
+  subtitle: String
+  button: ComponentPageButtonInput
+  ribbon: ComponentPageRibbonInput
+  publishedAt: DateTime
+  locale: String
+}
+
+type Banner {
+  documentId: ID!
+  image: UploadFile!
+  title: String!
+  subtitle: String!
+  button: ComponentPageButton
+  ribbon: ComponentPageRibbon
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type BannerEntityResponseCollection {
+  nodes: [Banner!]!
+  pageInfo: Pagination!
+}
+
 input CategoryFiltersInput {
   documentId: IDFilterInput
   name: StringFilterInput
@@ -866,7 +979,7 @@ type PublisherEntityResponseCollection {
   pageInfo: Pagination!
 }
 
-union GenericMorph = ComponentSharedSlider | ComponentSharedSeo | ComponentSharedRichText | ComponentSharedQuote | ComponentSharedMedia | UploadFile | I18NLocale | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Category | Developer | Game | Global | Platform | Publisher
+union GenericMorph = ComponentPageRibon | ComponentPageRibbon | ComponentPageButton | ComponentSharedSlider | ComponentSharedSeo | ComponentSharedRichText | ComponentSharedQuote | ComponentSharedMedia | UploadFile | I18NLocale | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Banner | Category | Developer | Game | Global | Platform | Publisher
 
 input FileInfoInput {
   name: String
@@ -949,6 +1062,9 @@ type Query {
   usersPermissionsUser(documentId: ID!, status: PublicationStatus = PUBLISHED): UsersPermissionsUser
   usersPermissionsUsers_connection(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): UsersPermissionsUserEntityResponseCollection
   usersPermissionsUsers(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [UsersPermissionsUser]!
+  banner(documentId: ID!, status: PublicationStatus = PUBLISHED): Banner
+  banners_connection(filters: BannerFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): BannerEntityResponseCollection
+  banners(filters: BannerFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [Banner]!
   category(documentId: ID!, status: PublicationStatus = PUBLISHED): Category
   categories_connection(filters: CategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): CategoryEntityResponseCollection
   categories(filters: CategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [Category]!
@@ -975,6 +1091,9 @@ type Mutation {
   createReviewWorkflowsWorkflowStage(status: PublicationStatus = PUBLISHED, data: ReviewWorkflowsWorkflowStageInput!): ReviewWorkflowsWorkflowStage
   updateReviewWorkflowsWorkflowStage(documentId: ID!, status: PublicationStatus = PUBLISHED, data: ReviewWorkflowsWorkflowStageInput!): ReviewWorkflowsWorkflowStage
   deleteReviewWorkflowsWorkflowStage(documentId: ID!): DeleteMutationResponse
+  createBanner(status: PublicationStatus = PUBLISHED, data: BannerInput!): Banner
+  updateBanner(documentId: ID!, status: PublicationStatus = PUBLISHED, data: BannerInput!): Banner
+  deleteBanner(documentId: ID!): DeleteMutationResponse
   createCategory(status: PublicationStatus = PUBLISHED, data: CategoryInput!): Category
   updateCategory(documentId: ID!, status: PublicationStatus = PUBLISHED, data: CategoryInput!): Category
   deleteCategory(documentId: ID!): DeleteMutationResponse

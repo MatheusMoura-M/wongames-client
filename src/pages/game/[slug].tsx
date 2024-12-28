@@ -69,21 +69,24 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     revalidate: 60,
     props: {
-      cover: `http://localhost:1337${game!.cover?.src}`,
+      cover: `http://localhost:1337${game?.cover?.src}`,
       gameInfo: {
-        title: game!.name,
-        price: game!.price,
-        description: game!.short_description
+        title: game?.name,
+        price: game?.price,
+        description: game?.short_description
       },
-      gallery: game!.gallery,
-      description: game!.description,
+      gallery: game?.gallery.map((image) => ({
+        src: `http://localhost:1337${image!.src}`,
+        label: image?.label
+      })),
+      description: game?.description,
       details: {
-        developer: game!.developers[0]!.name,
-        releaseDate: game!.release_date,
-        platforms: game!.platforms.map((platform) => platform!.name),
-        publisher: game!.publisher?.name,
-        rating: game!.rating,
-        genres: game!.categories.map((category) => category!.name)
+        developer: game?.developers[0]?.name,
+        releaseDate: game?.release_date,
+        platforms: game?.platforms.map((platform) => platform?.name),
+        publisher: game?.publisher?.name,
+        rating: game?.rating,
+        genres: game?.categories.map((category) => category!.name)
       },
       upcomingGames: gamesMock,
       upcomingHighlight: highlightMock,
