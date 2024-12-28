@@ -12,4 +12,13 @@ export default {
   }
 } as Meta
 
-export const Default: StoryObj<MenuProps> = {}
+export const Default: StoryObj<MenuProps> = {
+  render: (args) => <Menu {...args} />
+}
+
+export const Logged: StoryObj<MenuProps> = {
+  render: (args) => <Menu {...args} />,
+  args: {
+    username: 'John Doe'
+  }
+}

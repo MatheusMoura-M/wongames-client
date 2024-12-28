@@ -4,11 +4,17 @@ import GameCard from '.'
 import theme from '@/styles/theme'
 
 const props = {
+  slug: 'population-zero',
   title: 'Population Zero',
   developer: 'Rockstar Games',
   img: '/img/red-dead-img.jpg',
   price: 'R$ 235,00'
 }
+
+jest.mock('next/image', () => ({
+  __esModule: true,
+  default: () => <img src={props.img} alt={props.title} />
+}))
 
 describe('<GameCard />', () => {
   it('should render correctly', () => {
@@ -23,6 +29,10 @@ describe('<GameCard />', () => {
     expect(screen.getByRole('img', { name: props.title })).toHaveAttribute(
       'src',
       props.img
+    )
+    expect(screen.getByRole('link', { name: props.title })).toHaveAttribute(
+      'href',
+      `game/${props.slug}`
     )
     expect(screen.getByLabelText(/add to wishlist/i)).toBeInTheDocument()
   })

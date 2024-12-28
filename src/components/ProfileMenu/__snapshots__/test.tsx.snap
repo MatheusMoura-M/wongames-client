@@ -41,6 +41,10 @@ exports[`<ProfileMenu /> should render the menu 1`] = `
     border: 0;
   }
 
+  .c0 >a {
+    flex: none;
+  }
+
   .c0 a:not(:last-child) {
     border-bottom: 0.1rem solid #EAEAEA;
   }

@@ -2,11 +2,11 @@ import Heading from '@/components/Heading'
 import Logo from '@/components/Logo'
 import Link from 'next/link'
 import * as S from './styles'
+import { ChildrenProps } from '@/utils/tests/helpers'
 
 type AuthProps = {
   title: string
-  children: React.ReactNode
-}
+} & ChildrenProps
 
 const Auth = ({ title, children }: AuthProps) => (
   <S.Wrapper>

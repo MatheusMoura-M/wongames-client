@@ -5,6 +5,14 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "items.gog.com"
+      },
+      {
+        protocol: "https",
+        hostname: "s2-g1.glbimg.com"
+      },
+      {
+        protocol: "http",
+        hostname: "localhost"
       }
     ]
   }
