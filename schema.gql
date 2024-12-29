@@ -255,6 +255,42 @@ input JSONFilterInput {
   between: [JSON]
 }
 
+type ComponentSharedSlider {
+  id: ID!
+  files_connection(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
+  files(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UploadFile]!
+}
+
+input ComponentSharedSeoInput {
+  id: ID
+  metaTitle: String
+  metaDescription: String
+  shareImage: ID
+}
+
+type ComponentSharedSeo {
+  id: ID!
+  metaTitle: String!
+  metaDescription: String!
+  shareImage: UploadFile
+}
+
+type ComponentSharedRichText {
+  id: ID!
+  body: String
+}
+
+type ComponentSharedQuote {
+  id: ID!
+  title: String
+  body: String
+}
+
+type ComponentSharedMedia {
+  id: ID!
+  file: UploadFile
+}
+
 enum ENUM_COMPONENTPAGERIBON_COLOR {
   primary
   secondary
@@ -323,42 +359,6 @@ type ComponentPageButton {
   id: ID!
   label: String!
   link: String!
-}
-
-type ComponentSharedSlider {
-  id: ID!
-  files_connection(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
-  files(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UploadFile]!
-}
-
-input ComponentSharedSeoInput {
-  id: ID
-  metaTitle: String
-  metaDescription: String
-  shareImage: ID
-}
-
-type ComponentSharedSeo {
-  id: ID!
-  metaTitle: String!
-  metaDescription: String!
-  shareImage: UploadFile
-}
-
-type ComponentSharedRichText {
-  id: ID!
-  body: String
-}
-
-type ComponentSharedQuote {
-  id: ID!
-  title: String
-  body: String
-}
-
-type ComponentSharedMedia {
-  id: ID!
-  file: UploadFile
 }
 
 input UploadFileFiltersInput {
@@ -979,7 +979,7 @@ type PublisherEntityResponseCollection {
   pageInfo: Pagination!
 }
 
-union GenericMorph = ComponentPageRibon | ComponentPageRibbon | ComponentPageButton | ComponentSharedSlider | ComponentSharedSeo | ComponentSharedRichText | ComponentSharedQuote | ComponentSharedMedia | UploadFile | I18NLocale | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Banner | Category | Developer | Game | Global | Platform | Publisher
+union GenericMorph = ComponentSharedSlider | ComponentSharedSeo | ComponentSharedRichText | ComponentSharedQuote | ComponentSharedMedia | ComponentPageRibon | ComponentPageRibbon | ComponentPageButton | UploadFile | I18NLocale | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Banner | Category | Developer | Game | Global | Platform | Publisher
 
 input FileInfoInput {
   name: String
