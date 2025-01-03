@@ -8,8 +8,8 @@ import {
   QueryGameBySlug,
   QueryGameBySlugVariables
 } from '@/graphql/generated/QueryGameBySlug'
-import { QueryGames, QueryGamesVariables } from '@/graphql/generated/QueryGames'
 import { QUERY_GAME_BY_SLUG, QUERY_GAMES } from '@/graphql/queries/games'
+import { QueryGames, QueryGamesVariables } from '@/graphql/generated/queryGames'
 
 import Game, { GameTemplateProps } from '@/templates/Game'
 import { initializeApollo } from '@/utils/apollo'
@@ -69,14 +69,18 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     revalidate: 60,
     props: {
-      cover: `http://localhost:1337${game?.cover?.src}`,
+      cover: game?.cover
+        ? `http://localhost:1337${game.cover.src}`
+        : `/img/image_empty.png`,
       gameInfo: {
         title: game?.name,
         price: game?.price,
         description: game?.short_description
       },
       gallery: game?.gallery.map((image) => ({
-        src: `http://localhost:1337${image!.src}`,
+        src: image
+          ? `http://localhost:1337${image.src}`
+          : `/img/image_empty.png`,
         label: image?.label
       })),
       description: game?.description,

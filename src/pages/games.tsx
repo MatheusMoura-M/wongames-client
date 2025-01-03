@@ -1,5 +1,5 @@
 import filterItemsMock from '@/components/ExploreSidebar/mock'
-import { QueryGames, QueryGamesVariables } from '@/graphql/generated/QueryGames'
+import { QueryGames, QueryGamesVariables } from '@/graphql/generated/queryGames'
 import { QUERY_GAMES } from '@/graphql/queries/games'
 import GamesTemplate, { GamesTemplateProps } from '@/templates/Games'
 import { initializeApollo } from '@/utils/apollo'
@@ -27,7 +27,9 @@ export async function getStaticProps() {
         title: game?.name,
         slug: game?.slug,
         developer: game?.developers[0]?.name,
-        img: `http://localhost:1337${game?.cover?.url}`,
+        img: game?.cover
+          ? `http://localhost:1337${game.cover.url}`
+          : `/img/image_empty.png`,
         price: game?.price
       })),
       filterItems: filterItemsMock

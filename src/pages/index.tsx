@@ -25,7 +25,9 @@ export async function getStaticProps() {
     revalidate: 10,
     props: {
       banners: banners.map((banner) => ({
-        img: `http://localhost:1337${banner?.image?.url}`,
+        img: banner?.image
+          ? `http://localhost:1337${banner.image.url}`
+          : `/img/image_empty.png`,
         title: banner?.title,
         subtitle: banner?.subtitle,
         buttonLabel: banner?.button?.label,
@@ -40,7 +42,9 @@ export async function getStaticProps() {
         title: game?.name,
         slug: game?.slug,
         developer: game?.developers[0]?.name,
-        img: `http://localhost:1337${game?.cover?.url}`,
+        img: game?.cover
+          ? `http://localhost:1337${game.cover.url}`
+          : `/img/image_empty.png`,
         price: game?.price
       })),
       mostPopularHighlight: highlightMock,
@@ -49,7 +53,9 @@ export async function getStaticProps() {
         title: game?.name,
         slug: game?.slug,
         developer: game?.developers[0]?.name,
-        img: `http://localhost:1337${game?.cover?.url}`,
+        img: game?.cover
+          ? `http://localhost:1337${game.cover.url}`
+          : `/img/image_empty.png`,
         price: game?.price
       })),
       upcomingHighlight: highlightMock,
@@ -57,7 +63,9 @@ export async function getStaticProps() {
         title: game?.name,
         slug: game?.slug,
         developer: game?.developers[0]?.name,
-        img: `http://localhost:1337${game?.cover?.url}`,
+        img: game?.cover
+          ? `http://localhost:1337${game.cover.url}`
+          : `/img/image_empty.png`,
         price: game?.price
       })),
       freeHighlight: highlightMock

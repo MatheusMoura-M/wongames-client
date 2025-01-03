@@ -18,7 +18,7 @@ export const QUERY_HOME = gql`
     }
 
     upcomingGames: games(
-      filters: { release_date: { gt: "2021-01-27" } }
+      filters: { release_date: { gt: "2025-01-01" } }
       sort: "release_date:asc"
       pagination: { limit: 8 }
     ) {
