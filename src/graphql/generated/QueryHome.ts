@@ -5,7 +5,8 @@
 
 import {
   ENUM_COMPONENTPAGERIBBON_COLOR,
-  ENUM_COMPONENTPAGERIBBON_SIZE
+  ENUM_COMPONENTPAGERIBBON_SIZE,
+  ENUM_COMPONENTPAGEHIGHLIGHT_ALIGNMENT
 } from './globalTypes'
 
 // ====================================================
@@ -96,9 +97,146 @@ export interface QueryHome_freeGames {
   price: number
 }
 
+export interface QueryHome_sections_newGames_highlight_background {
+  __typename: 'UploadFile'
+  url: string
+}
+
+export interface QueryHome_sections_newGames_highlight_floatImage {
+  __typename: 'UploadFile'
+  url: string
+}
+
+export interface QueryHome_sections_newGames_highlight {
+  __typename: 'ComponentPageHighlight'
+  title: string
+  subtitle: string
+  background: QueryHome_sections_newGames_highlight_background
+  floatImage: QueryHome_sections_newGames_highlight_floatImage | null
+  buttonLabel: string
+  buttonLink: string
+  alignment: ENUM_COMPONENTPAGEHIGHLIGHT_ALIGNMENT | null
+}
+
+export interface QueryHome_sections_newGames {
+  __typename: 'ComponentPageSection'
+  title: string | null
+  highlight: QueryHome_sections_newGames_highlight | null
+}
+
+export interface QueryHome_sections_popularGames_highlight_background {
+  __typename: 'UploadFile'
+  url: string
+}
+
+export interface QueryHome_sections_popularGames_highlight_floatImage {
+  __typename: 'UploadFile'
+  url: string
+}
+
+export interface QueryHome_sections_popularGames_highlight {
+  __typename: 'ComponentPageHighlight'
+  title: string
+  subtitle: string
+  background: QueryHome_sections_popularGames_highlight_background
+  floatImage: QueryHome_sections_popularGames_highlight_floatImage | null
+  buttonLabel: string
+  buttonLink: string
+  alignment: ENUM_COMPONENTPAGEHIGHLIGHT_ALIGNMENT | null
+}
+
+export interface QueryHome_sections_popularGames_games_cover {
+  __typename: 'UploadFile'
+  url: string
+}
+
+export interface QueryHome_sections_popularGames_games_developers {
+  __typename: 'Developer'
+  name: string
+}
+
+export interface QueryHome_sections_popularGames_games {
+  __typename: 'Game'
+  name: string
+  slug: string | null
+  cover: QueryHome_sections_popularGames_games_cover | null
+  developers: (QueryHome_sections_popularGames_games_developers | null)[]
+  price: number
+}
+
+export interface QueryHome_sections_popularGames {
+  __typename: 'ComponentPagePopularGames'
+  title: string
+  highlight: QueryHome_sections_popularGames_highlight | null
+  games: (QueryHome_sections_popularGames_games | null)[]
+}
+
+export interface QueryHome_sections_upcomingGames_highlight_background {
+  __typename: 'UploadFile'
+  url: string
+}
+
+export interface QueryHome_sections_upcomingGames_highlight_floatImage {
+  __typename: 'UploadFile'
+  url: string
+}
+
+export interface QueryHome_sections_upcomingGames_highlight {
+  __typename: 'ComponentPageHighlight'
+  title: string
+  subtitle: string
+  background: QueryHome_sections_upcomingGames_highlight_background
+  floatImage: QueryHome_sections_upcomingGames_highlight_floatImage | null
+  buttonLabel: string
+  buttonLink: string
+  alignment: ENUM_COMPONENTPAGEHIGHLIGHT_ALIGNMENT | null
+}
+
+export interface QueryHome_sections_upcomingGames {
+  __typename: 'ComponentPageSection'
+  title: string | null
+  highlight: QueryHome_sections_upcomingGames_highlight | null
+}
+
+export interface QueryHome_sections_freeGames_highlight_background {
+  __typename: 'UploadFile'
+  url: string
+}
+
+export interface QueryHome_sections_freeGames_highlight_floatImage {
+  __typename: 'UploadFile'
+  url: string
+}
+
+export interface QueryHome_sections_freeGames_highlight {
+  __typename: 'ComponentPageHighlight'
+  title: string
+  subtitle: string
+  background: QueryHome_sections_freeGames_highlight_background
+  floatImage: QueryHome_sections_freeGames_highlight_floatImage | null
+  buttonLabel: string
+  buttonLink: string
+  alignment: ENUM_COMPONENTPAGEHIGHLIGHT_ALIGNMENT | null
+}
+
+export interface QueryHome_sections_freeGames {
+  __typename: 'ComponentPageSection'
+  title: string | null
+  highlight: QueryHome_sections_freeGames_highlight | null
+}
+
+export interface QueryHome_sections {
+  __typename: 'Home'
+  newGames: QueryHome_sections_newGames | null
+  popularGames: QueryHome_sections_popularGames | null
+  upcomingGames: QueryHome_sections_upcomingGames | null
+  freeGames: QueryHome_sections_freeGames | null
+}
+
 export interface QueryHome {
   banners: (QueryHome_banners | null)[]
   newGames: (QueryHome_newGames | null)[]
   upcomingGames: (QueryHome_upcomingGames | null)[]
   freeGames: (QueryHome_freeGames | null)[]
+  sections: QueryHome_sections | null
 }
