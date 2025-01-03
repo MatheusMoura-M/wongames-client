@@ -255,40 +255,16 @@ input JSONFilterInput {
   between: [JSON]
 }
 
-type ComponentSharedSlider {
-  id: ID!
-  files_connection(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
-  files(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UploadFile]!
-}
-
-input ComponentSharedSeoInput {
+input ComponentPageSectionInput {
   id: ID
-  metaTitle: String
-  metaDescription: String
-  shareImage: ID
+  title: String
+  highlight: ComponentPageHighlightInput
 }
 
-type ComponentSharedSeo {
-  id: ID!
-  metaTitle: String!
-  metaDescription: String!
-  shareImage: UploadFile
-}
-
-type ComponentSharedRichText {
-  id: ID!
-  body: String
-}
-
-type ComponentSharedQuote {
+type ComponentPageSection {
   id: ID!
   title: String
-  body: String
-}
-
-type ComponentSharedMedia {
-  id: ID!
-  file: UploadFile
+  highlight: ComponentPageHighlight
 }
 
 enum ENUM_COMPONENTPAGERIBON_COLOR {
@@ -341,6 +317,48 @@ type ComponentPageRibbon {
   size: ENUM_COMPONENTPAGERIBBON_SIZE
 }
 
+input ComponentPagePopularGamesInput {
+  id: ID
+  title: String
+  highlight: ComponentPageHighlightInput
+  games: [ID]
+}
+
+type ComponentPagePopularGames {
+  id: ID!
+  title: String!
+  highlight: ComponentPageHighlight
+  games_connection(filters: GameFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): GameRelationResponseCollection
+  games(filters: GameFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Game]!
+}
+
+enum ENUM_COMPONENTPAGEHIGHLIGHT_ALIGNMENT {
+  right
+  left
+}
+
+input ComponentPageHighlightInput {
+  id: ID
+  title: String
+  subtitle: String
+  background: ID
+  floatImage: ID
+  buttonLabel: String
+  buttonLink: String
+  alignment: ENUM_COMPONENTPAGEHIGHLIGHT_ALIGNMENT
+}
+
+type ComponentPageHighlight {
+  id: ID!
+  title: String!
+  subtitle: String!
+  background: UploadFile!
+  floatImage: UploadFile
+  buttonLabel: String!
+  buttonLink: String!
+  alignment: ENUM_COMPONENTPAGEHIGHLIGHT_ALIGNMENT
+}
+
 input ComponentPageButtonFiltersInput {
   label: StringFilterInput
   link: StringFilterInput
@@ -359,6 +377,35 @@ type ComponentPageButton {
   id: ID!
   label: String!
   link: String!
+}
+
+type ComponentSharedSlider {
+  id: ID!
+  files_connection(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
+  files(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UploadFile]!
+}
+
+type ComponentSharedSeo {
+  id: ID!
+  metaTitle: String!
+  metaDescription: String!
+  shareImage: UploadFile
+}
+
+type ComponentSharedRichText {
+  id: ID!
+  body: String
+}
+
+type ComponentSharedQuote {
+  id: ID!
+  title: String
+  body: String
+}
+
+type ComponentSharedMedia {
+  id: ID!
+  file: UploadFile
 }
 
 input UploadFileFiltersInput {
@@ -877,21 +924,21 @@ type GameRelationResponseCollection {
   nodes: [Game!]!
 }
 
-input GlobalInput {
-  siteName: String
-  favicon: ID
-  siteDescription: String
-  defaultSeo: ComponentSharedSeoInput
+input HomeInput {
+  newGames: ComponentPageSectionInput
+  upcomingGames: ComponentPageSectionInput
+  freeGames: ComponentPageSectionInput
+  popularGames: ComponentPagePopularGamesInput
   publishedAt: DateTime
   locale: String
 }
 
-type Global {
+type Home {
   documentId: ID!
-  siteName: String!
-  favicon: UploadFile
-  siteDescription: String!
-  defaultSeo: ComponentSharedSeo
+  newGames: ComponentPageSection
+  upcomingGames: ComponentPageSection
+  freeGames: ComponentPageSection
+  popularGames: ComponentPagePopularGames
   createdAt: DateTime
   updatedAt: DateTime
   publishedAt: DateTime
@@ -979,7 +1026,7 @@ type PublisherEntityResponseCollection {
   pageInfo: Pagination!
 }
 
-union GenericMorph = ComponentSharedSlider | ComponentSharedSeo | ComponentSharedRichText | ComponentSharedQuote | ComponentSharedMedia | ComponentPageRibon | ComponentPageRibbon | ComponentPageButton | UploadFile | I18NLocale | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Banner | Category | Developer | Game | Global | Platform | Publisher
+union GenericMorph = ComponentPageSection | ComponentPageRibon | ComponentPageRibbon | ComponentPagePopularGames | ComponentPageHighlight | ComponentPageButton | ComponentSharedSlider | ComponentSharedSeo | ComponentSharedRichText | ComponentSharedQuote | ComponentSharedMedia | UploadFile | I18NLocale | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Banner | Category | Developer | Game | Home | Platform | Publisher
 
 input FileInfoInput {
   name: String
@@ -1074,7 +1121,7 @@ type Query {
   game(documentId: ID!, status: PublicationStatus = PUBLISHED): Game
   games_connection(filters: GameFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): GameEntityResponseCollection
   games(filters: GameFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [Game]!
-  global(status: PublicationStatus = PUBLISHED): Global
+  home(status: PublicationStatus = PUBLISHED): Home
   platform(documentId: ID!, status: PublicationStatus = PUBLISHED): Platform
   platforms_connection(filters: PlatformFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): PlatformEntityResponseCollection
   platforms(filters: PlatformFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [Platform]!
@@ -1103,8 +1150,8 @@ type Mutation {
   createGame(status: PublicationStatus = PUBLISHED, data: GameInput!): Game
   updateGame(documentId: ID!, status: PublicationStatus = PUBLISHED, data: GameInput!): Game
   deleteGame(documentId: ID!): DeleteMutationResponse
-  updateGlobal(status: PublicationStatus = PUBLISHED, data: GlobalInput!): Global
-  deleteGlobal: DeleteMutationResponse
+  updateHome(status: PublicationStatus = PUBLISHED, data: HomeInput!): Home
+  deleteHome: DeleteMutationResponse
   createPlatform(status: PublicationStatus = PUBLISHED, data: PlatformInput!): Platform
   updatePlatform(documentId: ID!, status: PublicationStatus = PUBLISHED, data: PlatformInput!): Platform
   deletePlatform(documentId: ID!): DeleteMutationResponse
