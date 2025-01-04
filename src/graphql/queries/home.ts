@@ -5,13 +5,13 @@ import { HighlightFragment } from '../fragments/highlight'
 
 // GET_HOME | QUERY_HOME
 export const QUERY_HOME = gql`
-  query QueryHome {
+  query QueryHome($date: Date!) {
     banners {
       ...BannerFragment
     }
 
     newGames: games(
-      filters: { release_date: { lte: "2024-12-29" } }
+      filters: { release_date: { lte: $date } }
       sort: "release_date:desc"
       pagination: { limit: 8 }
     ) {
@@ -19,7 +19,7 @@ export const QUERY_HOME = gql`
     }
 
     upcomingGames: games(
-      filters: { release_date: { gt: "2025-01-01" } }
+      filters: { release_date: { gt: $date } }
       sort: "release_date:asc"
       pagination: { limit: 8 }
     ) {

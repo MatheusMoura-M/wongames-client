@@ -240,3 +240,7 @@ export interface QueryHome {
   freeGames: (QueryHome_freeGames | null)[]
   sections: QueryHome_sections | null
 }
+
+export interface QueryHomeVariables {
+  date: any
+}
