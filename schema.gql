@@ -1026,7 +1026,21 @@ type PublisherEntityResponseCollection {
   pageInfo: Pagination!
 }
 
-union GenericMorph = ComponentSharedSlider | ComponentSharedSeo | ComponentSharedRichText | ComponentSharedQuote | ComponentSharedMedia | ComponentPageSection | ComponentPageRibon | ComponentPageRibbon | ComponentPagePopularGames | ComponentPageHighlight | ComponentPageButton | UploadFile | I18NLocale | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Banner | Category | Developer | Game | Home | Platform | Publisher
+input RecommendedInput {
+  section: ComponentPagePopularGamesInput
+  publishedAt: DateTime
+  locale: String
+}
+
+type Recommended {
+  documentId: ID!
+  section: ComponentPagePopularGames!
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+union GenericMorph = ComponentSharedSlider | ComponentSharedSeo | ComponentSharedRichText | ComponentSharedQuote | ComponentSharedMedia | ComponentPageSection | ComponentPageRibon | ComponentPageRibbon | ComponentPagePopularGames | ComponentPageHighlight | ComponentPageButton | UploadFile | I18NLocale | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Banner | Category | Developer | Game | Home | Platform | Publisher | Recommended
 
 input FileInfoInput {
   name: String
@@ -1128,6 +1142,7 @@ type Query {
   publisher(documentId: ID!, status: PublicationStatus = PUBLISHED): Publisher
   publishers_connection(filters: PublisherFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): PublisherEntityResponseCollection
   publishers(filters: PublisherFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [Publisher]!
+  recommended(status: PublicationStatus = PUBLISHED): Recommended
   me: UsersPermissionsMe
 }
 
@@ -1158,6 +1173,8 @@ type Mutation {
   createPublisher(status: PublicationStatus = PUBLISHED, data: PublisherInput!): Publisher
   updatePublisher(documentId: ID!, status: PublicationStatus = PUBLISHED, data: PublisherInput!): Publisher
   deletePublisher(documentId: ID!): DeleteMutationResponse
+  updateRecommended(status: PublicationStatus = PUBLISHED, data: RecommendedInput!): Recommended
+  deleteRecommended: DeleteMutationResponse
   updateUploadFile(id: ID!, info: FileInfoInput): UploadFile!
   deleteUploadFile(id: ID!): UploadFile
   """Create a new role"""
