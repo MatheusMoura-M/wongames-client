@@ -15,7 +15,7 @@ export async function getStaticProps() {
     query: QUERY_GAMES,
     variables: {
       pagination: {
-        limit: 9
+        limit: 15
       }
     }
   })
