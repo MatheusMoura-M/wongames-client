@@ -4,9 +4,7 @@ import { Grid } from '@/components/Grid'
 import Base from '@/templates/Base'
 import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined/KeyboardArrowDown'
 
-import { QueryGames, QueryGamesVariables } from '@/graphql/generated/queryGames'
-import { QUERY_GAMES } from '@/graphql/queries/games'
-import { useQuery } from '@apollo/client'
+import { useQueryGames } from '@/graphql/queries/games'
 import * as S from './styles'
 
 export type GamesTemplateProps = {
@@ -15,10 +13,7 @@ export type GamesTemplateProps = {
 }
 
 const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
-  const { data, loading, fetchMore } = useQuery<
-    QueryGames,
-    QueryGamesVariables
-  >(QUERY_GAMES, {
+  const { data, loading, fetchMore } = useQueryGames({
     variables: {
       pagination: { limit: 15 }
     }
