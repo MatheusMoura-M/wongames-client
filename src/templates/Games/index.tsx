@@ -47,11 +47,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
                     key={game!.slug}
                     title={game!.name}
                     slug={game!.slug!}
-                    developer={
-                      game?.developers && game.developers.length > 0
-                        ? game.developers[0]!.name
-                        : ''
-                    }
+                    developer={game!.developers[0]!.name}
                     img={
                       game!.cover
                         ? `http://localhost:1337${game!.cover.url}`
