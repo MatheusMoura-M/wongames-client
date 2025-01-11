@@ -15,23 +15,25 @@ export type GamesTemplateProps = {
 }
 
 const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
-  const { data, loading } = useQuery<QueryGames, QueryGamesVariables>(
-    QUERY_GAMES,
-    {
-      variables: {
-        pagination: {
-          limit: 15
-        }
-      }
+  const { data, loading, fetchMore } = useQuery<
+    QueryGames,
+    QueryGamesVariables
+  >(QUERY_GAMES, {
+    variables: {
+      pagination: { limit: 15 }
     }
-  )
+  })
 
   const handleFilter = () => {
     return
   }
 
   const handleShowMore = () => {
-    return
+    fetchMore({
+      variables: {
+        pagination: { limit: 15, start: data?.games.length }
+      }
+    })
   }
 
   return (
