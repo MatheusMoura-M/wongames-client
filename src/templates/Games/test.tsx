@@ -17,12 +17,6 @@ jest.mock('@/components/ExploreSidebar', () => ({
     return <div data-testid="Mock ExploreSidebar">{children}</div>
   }
 }))
-jest.mock('@/components/GameCard', () => ({
-  __esModule: true,
-  default: function Mock() {
-    return <div data-testid="Mock GameCard" />
-  }
-}))
 
 const mocks = [
   {
@@ -34,17 +28,14 @@ const mocks = [
       data: {
         games: [
           {
-            name: 'StarcomNexus',
-            slug: 'starcomnexus',
+            name: 'Just Cause 2 - Complete Edition',
+            slug: 'just_cause_2_complete_edition',
             cover: {
-              url: '/uploads/starcomnexus_a23d4514e0.jpg'
+              url: '/uploads/just_cause_2_complete_edition_07fd978023.jpg'
             },
-            developers: [
-              {
-                name: 'Wx3 Labs'
-              }
-            ],
-            price: 4.99
+            developers: [{ name: 'Avalanche Studios' }],
+            price: 1.99,
+            __typename: 'Game'
           }
         ]
       }
@@ -53,6 +44,18 @@ const mocks = [
 ]
 
 describe('<Games />', () => {
+  it('should render loading when starting the template', () => {
+    renderWithTheme(
+      <MockedProvider mocks={[]} addTypename={false}>
+        <Games filterItems={filterItemsMock} />
+      </MockedProvider>
+    )
+
+    expect(
+      screen.getByRole('img', { name: /Loading more games.../i })
+    ).toBeInTheDocument()
+  })
+
   it('should render sections', async () => {
     renderWithTheme(
       <MockedProvider mocks={mocks} addTypename={false}>
@@ -60,9 +63,20 @@ describe('<Games />', () => {
       </MockedProvider>
     )
 
-    expect(await screen.findByTestId('Mock GameCard')).toBeInTheDocument()
+    // it starts without data
+    // shows loading
+    expect(
+      screen.getByRole('img', { name: /Loading more games.../i })
+    ).toBeInTheDocument()
 
+    // we wait until we have data to get the elements
+    // get => tem certeza do elemento
+    // query => Não tem o elemento
+    // find => processos assincronos
     expect(await screen.findByTestId('Mock ExploreSidebar')).toBeInTheDocument()
+    expect(
+      await screen.findByText(/Just Cause 2 - Complete Edition/i)
+    ).toBeInTheDocument()
 
     expect(
       screen.getByRole('button', { name: /show more/i })
