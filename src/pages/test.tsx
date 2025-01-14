@@ -1,12 +1,12 @@
 import { QueryGames, QueryGamesVariables } from '@/graphql/generated/queryGames'
 import { QUERY_GAMES } from '@/graphql/queries/games'
-import GamesTemplate, { GamesTemplateProps } from '@/templates/Games'
+import GamesTemplateTest, { GamesTemplateProps } from '@/templates/GamesTest'
 import { initializeApollo } from '@/utils/apollo'
-import { parseQueryStringToWhere } from '@/utils/filter'
+import { parseQueryStringToWhere, parseQueryStringToWhereSecond } from '@/utils/filter'
 import { GetServerSidePropsContext } from 'next'
 
 export default function GamesPage(props: GamesTemplateProps) {
-  return <GamesTemplate {...props} />
+  return <GamesTemplateTest {...props} />
 }
 
 export async function getServerSideProps({ query }: GetServerSidePropsContext) {
@@ -18,7 +18,7 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
     type: 'radio',
     fields: [
       { label: 'Free', name: 0 },
-      { label: 'Under $50', name: 50 },
+      { label: 'Under $50', name: 20 },
       { label: 'Under $100', name: 100 },
       { label: 'Under $150', name: 150 },
       { label: 'Under $250', name: 250 },
@@ -74,10 +74,10 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
     query: QUERY_GAMES,
     variables: {
       pagination: {
-        limit: 15
+        limit: 5
       },
-      // filters: parseQueryStringToWhere({ queryString: query, filterItems }),
-      // sort: query.sort as (string | null)[] | null
+      filters: parseQueryStringToWhereSecond({ queryString: query, filterItems }),
+      sort: query.sort as (string | null)[] | null
     }
   })
 

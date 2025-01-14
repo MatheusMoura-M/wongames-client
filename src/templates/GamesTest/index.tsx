@@ -20,23 +20,28 @@ export type GamesTemplateProps = {
   filterItems: ItemProps[]
 }
 
-const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
+const GamesTemplateTest = ({ filterItems }: GamesTemplateProps) => {
   const { push, query } = useRouter()
 
   console.log('QUERY', query)
 
   const { data, loading, fetchMore } = useQueryGames({
     variables: {
-      pagination: { limit: 15 },
-      filters: parseQueryStringToWhere({ queryString: query, filterItems })
-      // sort: query.sort as (string | null)[] | null
+      pagination: { limit: 5 },
+      filters: parseQueryStringToWhereSecond({ queryString: query, filterItems }),
+      sort: query.sort as (string | null)[] | null
     }
   })
 
   const handleFilter = (items: ParsedUrlQueryInput) => {
+    const test = parseQueryStringToFilterSecond({
+      queryString: items,
+      filterItems
+    })
+
     push({
-      pathname: '/games',
-      query: items
+      pathname: '/test',
+      query: test
     })
     return
   }
@@ -53,7 +58,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
     <Base>
       <S.Main>
         <ExploreSidebar
-          initialValues={parseQueryStringToFilter({
+          initialValues={parseQueryStringToFilterSecond({
             queryString: query,
             filterItems
           })}
@@ -97,4 +102,4 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
   )
 }
 
-export default GamesTemplate
+export default GamesTemplateTest
