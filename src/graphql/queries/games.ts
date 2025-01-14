@@ -3,8 +3,12 @@ import { GameFragment } from '../fragments/game'
 import { QueryGames, QueryGamesVariables } from '../generated/queryGames'
 
 export const QUERY_GAMES = gql`
-  query QueryGames($pagination: PaginationArg) {
-    games(pagination: $pagination) {
+  query QueryGames(
+    $pagination: PaginationArg
+    $filters: GameFiltersInput
+    $sort: [String]
+  ) {
+    games(pagination: $pagination, filters: $filters, sort: $sort) {
       ...GameFragment
     }
   }
