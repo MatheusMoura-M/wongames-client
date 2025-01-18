@@ -14,7 +14,7 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
 
   const filterPrice = {
     title: 'Price',
-    name: 'price_lte',
+    name: 'filters[price][$lte]',
     type: 'radio',
     fields: [
       { label: 'Free', name: 0 },

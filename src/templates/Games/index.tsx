@@ -5,13 +5,10 @@ import { useQueryGames } from '@/graphql/queries/games'
 import Base from '@/templates/Base'
 import {
   parseQueryStringToFilter,
-  parseQueryStringToFilterSecond,
-  parseQueryStringToWhere,
-  parseQueryStringToWhereSecond
+  parseQueryStringToWhere
 } from '@/utils/filter'
 import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined/KeyboardArrowDown'
 import { useRouter } from 'next/router'
-import qs from 'qs'
 import { ParsedUrlQueryInput } from 'querystring'
 import * as S from './styles'
 
@@ -23,13 +20,11 @@ export type GamesTemplateProps = {
 const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
   const { push, query } = useRouter()
 
-  console.log('QUERY', query)
-
   const { data, loading, fetchMore } = useQueryGames({
     variables: {
-      pagination: { limit: 15 },
-      filters: parseQueryStringToWhere({ queryString: query, filterItems })
-      // sort: query.sort as (string | null)[] | null
+      pagination: { limit: 5 },
+      filters: parseQueryStringToWhere({ queryString: query, filterItems }),
+      sort: query.sort as (string | null)[] | null
     }
   })
 

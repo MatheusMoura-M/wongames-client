@@ -18,7 +18,7 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
     type: 'radio',
     fields: [
       { label: 'Free', name: 0 },
-      { label: 'Under $50', name: 50 },
+      { label: 'Under $50', name: 14 },
       { label: 'Under $100', name: 100 },
       { label: 'Under $150', name: 150 },
       { label: 'Under $250', name: 250 },
@@ -49,18 +49,18 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
     name: 'categories',
     type: 'checkbox',
     fields: [
-      { label: 'Action', name: 'action' },
-      { label: 'Adventure', name: 'adventure' },
-      { label: 'Sports', name: 'sports' },
-      { label: 'Puzzle', name: 'puzzle' },
-      { label: 'Horror', name: 'horror' },
-      { label: 'Platform', name: 'platform' },
-      { label: 'Fantasy', name: 'fantasy' },
-      { label: 'RPG', name: 'role-playing' },
-      { label: 'JRPG', name: 'jrpg' },
-      { label: 'Simulation', name: 'simulation' },
-      { label: 'Strategy', name: 'strategy' },
-      { label: 'Shooter', name: 'shooter' }
+      { label: 'Action', name: 'Action' },
+      { label: 'Adventure', name: 'Adventure' },
+      { label: 'Sports', name: 'Sports' },
+      { label: 'Puzzle', name: 'Puzzle' },
+      { label: 'Horror', name: 'Horror' },
+      { label: 'Platformer', name: 'Platformer' },
+      { label: 'Fantasy', name: 'Fantasy' },
+      { label: 'RPG', name: 'Role-playing' },
+      { label: 'JRPG', name: 'JRPG' },
+      { label: 'Simulation', name: 'Simulation' },
+      { label: 'Strategy', name: 'Strategy' },
+      { label: 'Shooter', name: 'Shooter' }
     ]
   }
   const filterItems = [

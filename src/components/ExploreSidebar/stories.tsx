@@ -33,7 +33,8 @@ export const WithInitialValues: StoryObj<ExploreSidebarProps> = {
         {...args}
         initialValues={{
           platforms: ['windows', 'linux'],
-          sort_by: 'low-to-high'
+          sort_by: 'low-to-high',
+          price: "under-50"
         }}
       />
     </div>

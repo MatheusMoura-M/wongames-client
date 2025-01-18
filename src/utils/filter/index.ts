@@ -20,9 +20,38 @@ export const parseQueryStringToWhere = ({
       const item = filterItems?.find((item) => item.name === key)
       const isCheckbox = item?.type === 'checkbox'
 
-      obj[key] = !isCheckbox
-        ? queryString[key]
-        : { name_contains: queryString[key] }
+      // Verifica se a chave tem um underscore
+      const [fieldName, operator] = key.split('_')
+
+      console.log('FIELD', fieldName)
+      console.log('OPERATOR', operator)
+      console.log('ISCHECKBOX', isCheckbox)
+
+      if (operator) {
+        // Se houver um operador (como lte, gte), transforma o valor em número
+        const value = isNaN(Number(queryString[key]))
+          ? queryString[key]
+          : Number(queryString[key])
+
+        obj[fieldName] = {
+          ...(obj[fieldName] || {}),
+          [operator]: value
+        }
+      } else if (isCheckbox) {
+        // Nova lógica para múltiplos valores (checkbox, como platforms)
+        const value = Array.isArray(queryString[key])
+          ? queryString[key]
+          : [queryString[key]]
+
+        obj[fieldName] = {
+          name: {
+            in: value
+          }
+        }
+      } else {
+        // Caso contrário, mantém a lógica existente
+        obj[key] = queryString[key]
+      }
     })
 
   console.log('WHERE_ONE', obj)
@@ -96,47 +125,96 @@ export const parseQueryStringToFilterSecond = ({
 }: ParseArgs) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const filters: Record<string, any> = {}
-  let sort: string | string[] | undefined;
+  let sort: string | string[] | undefined
 
-  Object.keys(queryString)
-    // .filter((item) => item !== 'sort')
-    .forEach((key) => {
-      if (key === 'sort') {
-        const value = queryString[key];
-        if (typeof value === 'string' || Array.isArray(value)) {
-          sort = value; // Garante que o valor seja do tipo string | string[]
-        }
-      } else {
-        const item = filterItems?.find((filterItem) => filterItem.name === key)
-        const isCheckbox = item?.type === 'checkbox'
-        const isArray = Array.isArray(queryString[key])
+  // console.log('QUERYAFTER', queryString)
 
-        filters[key] =
-          !isArray && isCheckbox ? [queryString[key]] : queryString[key]
+  Object.keys(queryString).forEach((key) => {
+    const value = queryString[key]
+    if (key === 'sort') {
+      if (typeof value === 'string' || Array.isArray(value)) {
+        sort = value // Garante que o valor seja do tipo string | string[]
       }
-    })
+    } else {
+      const item = filterItems?.find((filterItem) => filterItem.name === key)
+
+      const isCheckbox = item?.type === 'checkbox'
+      const isArray = Array.isArray(queryString[key])
+
+      filters[key] =
+        !isArray && isCheckbox ? [queryString[key]] : queryString[key]
+    }
+  })
+
+  console.log('**********************')
 
   const queryStringified = qs.stringify(
     {
       filters: Object.entries(filters).reduce(
         (acc, [key, value]) => {
-          const match = key.match(/_(\w+)$/) // Captura o sufixo (como 'lte' ou 'gte')
-          const fieldName = match ? key.replace(/_\w+$/, '') : key // Remove o sufixo do nome do campo
+          const match = key.match(/\[\$(\w+)\]$/) // Captura o sufixo (como 'lte' ou 'gte')
           const operator = match ? `$${match[1]}` : '$in'
 
-          // console.log('ACC', acc)
-          // console.log('KEY', key)
-          // console.log('VALUE', value)
-          // console.log('FIELDNAME', fieldName)
-          // console.log('OPERATOR', operator)
+          if (key.startsWith('filters[')) {
+            console.log('1111111111')
+            // console.log('KEY', key)
+            // console.log('VALUE', value)
 
-          acc[fieldName] =
-            key === 'platforms'
-              ? { ...acc[fieldName], name: { [operator]: value } }
-              : { ...acc[fieldName], [operator]: value }
+            const cleanKey = key.replace(/^filters\[(.+)\]$/, '$1') // Remove 'filters[' e ']'
+            const keys = cleanKey.split('][') // Divida por '][' para tratar partes separadas
+
+            const mainKey = keys[0] // O primeiro valor antes dos colchetes
+
+            if (!acc[mainKey]) {
+              acc[mainKey] = {} // Cria o objeto para o campo principal (ex: 'platforms')
+            }
+
+            // Quando o campo for 'platforms', queremos agrupar 'name' com os valores dentro do operador
+            if (mainKey === 'platforms') {
+              const nameKey = keys[1] // 'name', que está dentro de 'platforms'
+
+              if (!acc[mainKey][nameKey]) {
+                acc[mainKey][nameKey] = {} // Cria o objeto para 'name'
+              }
+
+              // Se o operador for $in, cria o array com os valores
+              if (operator === '$in') {
+                if (!acc[mainKey][nameKey][operator]) {
+                  acc[mainKey][nameKey][operator] = []
+                }
+                acc[mainKey][nameKey][operator].push(value)
+              }
+            } else {
+              // Para outros campos como 'price', 'rating', etc.
+              acc[mainKey] = acc[mainKey] || {}
+
+              // Se houver operador, cria a estrutura com o operador
+              if (operator) {
+                acc[mainKey][operator] = value
+              } else {
+                // Se não houver operador, apenas atribui o valor direto
+                acc[mainKey] = value
+              }
+            }
+          } else if (key.startsWith('filters')) {
+            console.log('222222222222222')
+
+            Object.assign(acc, value)
+          } else {
+            console.log('333333333333333')
+            acc[key] = acc[key] || {}
+
+            if (key === 'platforms') {
+              acc[key].name = {
+                ...acc[key].name,
+                [operator]: value
+              }
+            } else {
+              acc[key][operator] = value
+            }
+          }
 
           console.log('ACC_AFTER', acc)
-
           return acc
         },
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -147,7 +225,7 @@ export const parseQueryStringToFilterSecond = ({
     { encodeValuesOnly: true } // Configuração para evitar codificação excessiva
   )
   console.log('FILTER_SECOND', queryStringified)
-  // console.log("FILTER_PARSED", qs.parse(queryStringified))
 
   return queryStringified
+  // return 'filters[price][$lte]=0&filters[platforms][name][$in][0]=windows&filters[platforms][name][$in][1]=linux'
 }

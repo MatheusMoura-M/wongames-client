@@ -34,8 +34,9 @@ const GamesTemplateTest = ({ filterItems }: GamesTemplateProps) => {
   })
 
   const handleFilter = (items: ParsedUrlQueryInput) => {
+    // console.log("ITEMSS", items)
     const test = parseQueryStringToFilterSecond({
-      queryString: items,
+      queryString: typeof items === "string" ? qs.parse(items) : items,
       filterItems
     })
 
@@ -58,10 +59,11 @@ const GamesTemplateTest = ({ filterItems }: GamesTemplateProps) => {
     <Base>
       <S.Main>
         <ExploreSidebar
-          initialValues={parseQueryStringToFilterSecond({
-            queryString: query,
-            filterItems
-          })}
+          initialValues={query}
+          // initialValues={parseQueryStringToFilterSecond({
+          //   queryString: query,
+          //   filterItems
+          // })}
           items={filterItems}
           onFilter={handleFilter}
         />
