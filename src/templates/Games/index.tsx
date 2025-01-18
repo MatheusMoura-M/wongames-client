@@ -22,7 +22,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
 
   const { data, loading, fetchMore } = useQueryGames({
     variables: {
-      pagination: { limit: 5 },
+      pagination: { limit: 15 },
       filters: parseQueryStringToWhere({ queryString: query, filterItems }),
       sort: query.sort as (string | null)[] | null
     }

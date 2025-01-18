@@ -3,7 +3,11 @@ import { QUERY_GAMES } from '@/graphql/queries/games'
 export const gamesMock = {
   request: {
     query: QUERY_GAMES,
-    variables: { pagination: { limit: 15 } }
+    variables: {
+      pagination: { limit: 15 },
+      filters: { price: { lte: 100 } },
+      sort: 'price:asc'
+    }
   },
   result: {
     data: {
@@ -11,7 +15,7 @@ export const gamesMock = {
         {
           name: 'Sample Game',
           slug: 'sample-game',
-          price: 518.39,
+          price: 18.39,
           developers: [{ name: 'sample developer' }],
           cover: {
             url: '/sample-game.jpg'

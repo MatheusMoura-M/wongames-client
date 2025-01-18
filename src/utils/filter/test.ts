@@ -19,9 +19,9 @@ describe('parseQueryStringToWhere()', () => {
     const parsedQuery = parseQueryStringToWhere({ queryString, filterItems })
 
     expect(parsedQuery).toStrictEqual({
-      price_lte: 100,
-      platforms: { name_contains: ['windows', 'linux'] },
-      developers: { name_contains: 'Rockstar Games' }
+      price: { lte: 100 },
+      platforms: { name: { in: ['windows', 'linux'] } },
+      developers: { name: { in: ['Rockstar Games'] } }
     })
   })
 })

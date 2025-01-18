@@ -18,7 +18,7 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
     type: 'radio',
     fields: [
       { label: 'Free', name: 0 },
-      { label: 'Under $50', name: 14 },
+      { label: 'Under $50', name: 50 },
       { label: 'Under $100', name: 100 },
       { label: 'Under $150', name: 150 },
       { label: 'Under $250', name: 250 },
@@ -76,8 +76,8 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
       pagination: {
         limit: 15
       },
-      // filters: parseQueryStringToWhere({ queryString: query, filterItems }),
-      // sort: query.sort as (string | null)[] | null
+      filters: parseQueryStringToWhere({ queryString: query, filterItems }),
+      sort: query.sort as (string | null)[] | null
     }
   })
 

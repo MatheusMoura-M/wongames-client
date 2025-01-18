@@ -20,6 +20,13 @@ jest.mock('@/components/ExploreSidebar', () => ({
   }
 }))
 
+// jest.mock('next/router', () => ({
+//   useRouter: jest.fn(() => ({
+//     push: jest.fn(),
+//     query: {}
+//   }))
+// }))
+
 describe('<Games />', () => {
   it('should render loading when starting the template', () => {
     renderWithTheme(

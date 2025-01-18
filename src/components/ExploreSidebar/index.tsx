@@ -35,36 +35,10 @@ const ExploreSidebar = ({
   onFilter,
   initialValues = {}
 }: ExploreSidebarProps) => {
-  // console.log("initialValues", initialValues);
-
-  // const transformedValues: Record<string, any> = {};
-
-  // Object.keys(initialValues).forEach((key) => {
-  //   // console.log("KEY", key);
-
-  //   // Se a chave começa com 'filters[', remove o 'filters[' e ']'
-  //   if (key.startsWith('filters[platforms][name][$in][0]')) {
-  //     const cleanKey = key.replace(/^filters\[(.+)\]$/, '$1'); // Remove 'filters[' e ']'
-  //     const keys = cleanKey.split(']['); // Divida por '][' para tratar partes separadas
-
-  //     // Agora, queremos pegar apenas o primeiro valor dentro dos colchetes
-  //     const mainKey = keys[0]; // O primeiro valor antes dos colchetes
-
-  //     // Agora vamos ajustar o objeto final para a estrutura desejada
-  //     transformedValues[mainKey] = initialValues[key];
-  //   } else {
-  //     // Para outras chaves que não são parte do 'filters', podemos simplesmente atribuir ao objeto final
-  //     transformedValues[key] = initialValues[key];
-  //   }
-  // });
-
-  // console.log("Transformed Values:", transformedValues);
-
   const [values, setValues] = useState(initialValues)
   const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
-    console.log("VALUES", values)
     onFilter(values)
     // this method comes from another template
     // that we don't have access
@@ -77,8 +51,6 @@ const ExploreSidebar = ({
 
   const handleCheckbox = (name: string, value: string) => {
     const currentList = (values[name] as []) || []
-    // console.log("VALUES", value)
-    // console.log('currentList', currentList)
     setValues((s) => ({ ...s, [name]: xor(currentList, [value]) }))
   }
 
