@@ -11,6 +11,7 @@ import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined/
 import { useRouter } from 'next/router'
 import { ParsedUrlQueryInput } from 'querystring'
 import * as S from './styles'
+import Empty from '@/components/Empty'
 
 export type GamesTemplateProps = {
   games?: GameCardProps[]
@@ -62,29 +63,37 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
           <S.ShowMoreLoading src="/img/dots.svg" alt="Loading more games..." />
         ) : (
           <section>
-            <Grid>
-              {data?.games.map((game) => {
-                return (
-                  <GameCard
-                    key={game!.slug}
-                    title={game!.name}
-                    slug={game!.slug!}
-                    developer={game!.developers[0]!.name}
-                    img={
-                      game!.cover
-                        ? `http://localhost:1337${game!.cover.url}`
-                        : `/img/image_empty.png`
-                    }
-                    price={game!.price}
-                  />
-                )
-              })}
-            </Grid>
+            {data?.games && data.games.length > 0 ? (
+              <>
+                <Grid>
+                  {data?.games.map((game) => (
+                    <GameCard
+                      key={game!.slug}
+                      title={game!.name}
+                      slug={game!.slug!}
+                      developer={game!.developers[0]!.name}
+                      img={
+                        game!.cover
+                          ? `http://localhost:1337${game!.cover.url}`
+                          : `/img/image_empty.png`
+                      }
+                      price={game!.price}
+                    />
+                  ))}
+                </Grid>
 
-            <S.ShowMore role="button" onClick={handleShowMore}>
-              <p>Show More</p>
-              <ArrowDown size={35} />
-            </S.ShowMore>
+                <S.ShowMore role="button" onClick={handleShowMore}>
+                  <p>Show More</p>
+                  <ArrowDown size={35} />
+                </S.ShowMore>
+              </>
+            ) : (
+              <Empty
+                title=":("
+                description="We didn't find any games with this filter"
+                hasLink
+              />
+            )}
           </section>
         )}
       </S.Main>
