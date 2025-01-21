@@ -3,7 +3,7 @@ import { QUERY_GAMES } from '@/graphql/queries/games'
 export const gamesMock = {
   request: {
     query: QUERY_GAMES,
-    variables: { pagination: { limit: 15 }, filters: {} }
+    variables: { pagination: { limit: 15 }, filters: {}, sort: undefined }
   },
   result: {
     data: {
@@ -26,7 +26,11 @@ export const gamesMock = {
 export const fetchMoreMock = {
   request: {
     query: QUERY_GAMES,
-    variables: { pagination: { limit: 15, start: 1 }, filters: {} }
+    variables: {
+      pagination: { limit: 15, start: 1 },
+      filters: {},
+      sort: undefined
+    }
   },
   result: {
     data: {
@@ -49,7 +53,7 @@ export const fetchMoreMock = {
 export const emptyGamesMock = {
   request: {
     query: QUERY_GAMES,
-    variables: { pagination: { limit: 15 }, filters: {} }
+    variables: { pagination: { limit: 15 }, filters: {}, sort: undefined }
   },
   result: {
     data: {
