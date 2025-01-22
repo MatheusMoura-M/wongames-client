@@ -28,8 +28,19 @@ export interface QueryGames_games {
   price: number
 }
 
+export interface QueryGames_games_connection_pageInfo {
+  __typename: 'Pagination'
+  total: number
+}
+
+export interface QueryGames_games_connection {
+  __typename: 'GameEntityResponseCollection'
+  pageInfo: QueryGames_games_connection_pageInfo
+}
+
 export interface QueryGames {
   games: (QueryGames_games | null)[]
+  games_connection: QueryGames_games_connection | null
 }
 
 export interface QueryGamesVariables {

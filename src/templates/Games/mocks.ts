@@ -18,7 +18,13 @@ export const gamesMock = {
           },
           __typename: 'Game'
         }
-      ]
+      ],
+      gamesConnection: {
+        pageInfo: {
+          total: 3
+        },
+        __typename: 'GameConnection'
+      }
     }
   }
 }
@@ -45,7 +51,13 @@ export const fetchMoreMock = {
           },
           __typename: 'Game'
         }
-      ]
+      ],
+      gamesConnection: {
+        pageInfo: {
+          total: 1
+        },
+        __typename: 'GameConnection'
+      }
     }
   }
 }
@@ -57,7 +69,13 @@ export const emptyGamesMock = {
   },
   result: {
     data: {
-      games: []
+      games: [],
+      gamesConnection: {
+        pageInfo: {
+          total: 0
+        },
+        __typename: 'GameConnection'
+      }
     }
   }
 }

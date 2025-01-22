@@ -11,6 +11,12 @@ export const QUERY_GAMES = gql`
     games(pagination: $pagination, filters: $filters, sort: $sort) {
       ...GameFragment
     }
+
+    games_connection(filters: $filters) {
+      pageInfo {
+        total
+      }
+    }
   }
 
   ${GameFragment}
