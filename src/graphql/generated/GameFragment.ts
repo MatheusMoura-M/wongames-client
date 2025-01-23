@@ -19,6 +19,7 @@ export interface GameFragment_developers {
 
 export interface GameFragment {
   __typename: 'Game'
+  documentId: string
   name: string
   slug: string | null
   cover: GameFragment_cover | null

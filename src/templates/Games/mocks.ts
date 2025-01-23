@@ -9,6 +9,7 @@ export const gamesMock = {
     data: {
       games: [
         {
+          documentId: '1',
           name: 'Sample Game',
           slug: 'sample-game',
           price: 18.39,
@@ -19,7 +20,7 @@ export const gamesMock = {
           __typename: 'Game'
         }
       ],
-      gamesConnection: {
+      games_connection: {
         pageInfo: {
           total: 3
         },
@@ -42,6 +43,7 @@ export const fetchMoreMock = {
     data: {
       games: [
         {
+          documentId: '2',
           name: 'Fetch More Game',
           slug: 'fetch-more',
           price: 518.39,
@@ -52,9 +54,9 @@ export const fetchMoreMock = {
           __typename: 'Game'
         }
       ],
-      gamesConnection: {
+      games_connection: {
         pageInfo: {
-          total: 1
+          total: 4
         },
         __typename: 'GameConnection'
       }
@@ -70,7 +72,7 @@ export const emptyGamesMock = {
   result: {
     data: {
       games: [],
-      gamesConnection: {
+      games_connection: {
         pageInfo: {
           total: 0
         },
