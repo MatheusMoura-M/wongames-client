@@ -17,15 +17,21 @@ export type GameItemProps = {
   paymentInfo?: PaymentInfoProps
 }
 
-const GameItem = ({ img, title, price, downloadLink, paymentInfo }: GameItemProps) => (
+const GameItem = ({
+  img,
+  title,
+  price,
+  downloadLink,
+  paymentInfo
+}: GameItemProps) => (
   <S.Wrapper>
     <S.GameContent>
       <S.ImageBox>
-        <Image src={img} alt={title} fill sizes="100%" priority/>
+        <Image src={img} alt={title} fill sizes="100%" priority />
       </S.ImageBox>
 
       <S.Content>
-      <S.Title>
+        <S.Title>
           {title}
 
           {!!downloadLink && (
@@ -48,7 +54,12 @@ const GameItem = ({ img, title, price, downloadLink, paymentInfo }: GameItemProp
         <p>{paymentInfo.purchaseDate}</p>
         <S.CardInfo>
           <span>{paymentInfo.number}</span>
-          <img src={paymentInfo.img} alt={paymentInfo.flag} />
+          <Image
+            src={paymentInfo.img}
+            alt={paymentInfo.flag}
+            width={38}
+            height={24}
+          />
         </S.CardInfo>
       </S.PaymentContent>
     )}

@@ -1,6 +1,7 @@
 import { screen } from '@testing-library/react'
 import GameItem from '.'
 import { renderWithTheme } from '@/utils/tests/helpers'
+import { StaticImageImport } from '../CardsList/test'
 
 const props = {
   img: 'https://items.gog.com/not_a_cp/EN/EN-Mercenary-Outlaw.png',
@@ -10,8 +11,10 @@ const props = {
 
 jest.mock('next/image', () => ({
   __esModule: true,
-  default: () => <img src={props.img} alt={props.title} />
-}));
+  default: ({ src, alt, ...props }: StaticImageImport) => (
+    <img src={src} alt={alt} {...props} />
+  )
+}))
 
 describe('<GameItem />', () => {
   it('should render the item', () => {

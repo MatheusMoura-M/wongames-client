@@ -4,6 +4,7 @@ import Heading from '@/components/Heading'
 import Radio from '@/components/Radio'
 import * as S from './styles'
 import { useState } from 'react'
+import Image from 'next/image'
 
 export type PaymentOptionsProps = {
   cards?: PaymentCard[]
@@ -30,7 +31,7 @@ const PaymentOptions = ({ cards, handlePayment }: PaymentOptionsProps) => {
           {cards?.map((card) => (
             <S.CardItem key={card.number}>
               <S.CardInfo>
-                <img src={card.img} alt={card.flag} />
+                <Image src={card.img} alt={card.flag} width={38} height={24} />
                 {card.number}
               </S.CardInfo>
 
@@ -55,11 +56,11 @@ const PaymentOptions = ({ cards, handlePayment }: PaymentOptionsProps) => {
         </Button>
 
         <Button
-            fullWidth
-            icon={<ShoppingCart />}
-            onClick={handlePayment}
-            disabled={!checked}
-          >
+          fullWidth
+          icon={<ShoppingCart />}
+          onClick={handlePayment}
+          disabled={!checked}
+        >
           Buy now
         </Button>
       </S.Footer>

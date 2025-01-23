@@ -1,8 +1,22 @@
-import { screen } from '@testing-library/react'
 import cardsMock from '@/components/PaymentOptions/mock'
 import { renderWithTheme } from '@/utils/tests/helpers'
+import { screen } from '@testing-library/react'
 
 import CardsList from '.'
+
+export type StaticImageImport = {
+  src: string | undefined
+  alt?: string | undefined
+  width?: number | string
+  height?: number | string
+}
+
+jest.mock('next/image', () => ({
+  __esModule: true,
+  default: ({ src, alt, ...props }: StaticImageImport) => (
+    <img src={src} alt={alt} {...props} />
+  )
+}))
 
 describe('<CardsList />', () => {
   it('should render the cards list', () => {

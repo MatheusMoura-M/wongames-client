@@ -43,9 +43,11 @@ export async function getStaticPaths() {
     }
   })
 
-  const paths = data.games.map(({ slug }) => ({
-    params: { slug }
-  }))
+  const paths = data.games
+    .filter((game) => game !== null)
+    .map(({ slug }) => ({
+      params: { slug }
+    }))
 
   return { paths, fallback: true }
 }
