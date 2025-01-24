@@ -4,6 +4,14 @@ import { renderWithTheme } from '@/utils/tests/helpers'
 import mockItems from './mock'
 
 import Gallery from '.'
+import { StaticImageImport } from '../CardsList/test'
+
+jest.mock('next/image', () => ({
+  __esModule: true,
+  default: ({ src, alt, ...props }: StaticImageImport) => (
+    <img role="img" src={src} alt={alt} {...props} />
+  )
+}))
 
 describe('<Gallery />', () => {
   it('should render thumbnails as buttons', () => {

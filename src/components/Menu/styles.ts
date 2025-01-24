@@ -61,6 +61,7 @@ export const MenuLink = styled.button`
     text-align: center;
     border: none;
     background: transparent;
+    cursor: pointer;
 
     &:hover {
       &::after {

@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from 'react'
 import SlickSlider from 'react-slick'
 
 import * as S from './styles'
+import Image from 'next/image'
 
 const commonSettings: SliderSettings = {
   infinite: false,
@@ -78,11 +79,14 @@ const Gallery = ({ items }: GalleryProps) => {
     <S.Wrapper>
       <Slider ref={slider} settings={settings}>
         {items.map((item, index) => (
-          <img
+          <Image
             role="button"
             key={`thumb-${index}`}
             src={item.src}
             alt={`Thumb - ${item.label}`}
+            width={293}
+            height={165.52}
+            layout="responsive"
             onClick={() => {
               setIsOpen(true)
               slider.current!.slickGoTo(index, true)
@@ -103,7 +107,14 @@ const Gallery = ({ items }: GalleryProps) => {
         <S.Content>
           <Slider ref={slider} settings={modalSettings}>
             {items.map((item, index) => (
-              <img key={`gallery-${index}`} src={item.src} alt={item.label} />
+              <Image
+                key={`gallery-${index}`}
+                src={item.src}
+                alt={item.label}
+                width={1200}
+                height={677.92}
+                layout="responsive"
+              />
             ))}
           </Slider>
         </S.Content>

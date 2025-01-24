@@ -1,18 +1,37 @@
-import Wishlist, { WishlistTemplateProps } from '@/templates/Wishlist'
+// import Wishlist, { WishlistTemplateProps } from '@/templates/Wishlist'
 
-import gamesMock from '@/components/GameCardSlider/mock'
-import highlightMock from '@/components/Highlight/mock'
+// import gamesMock from '@/components/GameCardSlider/mock'
+// import { QueryRecommended } from '@/graphql/generated/QueryRecommended'
+// import { QUERY_RECOMMENDED } from '@/graphql/queries/recommended'
+// import { initializeApollo } from '@/utils/apollo'
+// import { gamesMapper, highlightMapper } from '@/utils/mappers'
 
-export default function WishlistPage(props: WishlistTemplateProps) {
-  return <Wishlist {...props} />
+// export default function WishlistPage(props: WishlistTemplateProps) {
+//   return <Wishlist {...props} />
+// }
+
+// export async function getStaticProps() {
+//   const apolloClient = initializeApollo()
+//   const { data } = await apolloClient.query<QueryRecommended>({
+//     query: QUERY_RECOMMENDED
+//   })
+
+//   return {
+//     props: {
+//       games: gamesMock,
+//       recommendedTitle: data.recommended?.section?.title,
+//       recommendedGames: gamesMapper(data.recommended!.section?.games),
+//       recommendedHighlight: highlightMapper(
+//         data.recommended?.section?.highlight
+//       )
+//     }
+//   }
+// }
+
+import React from 'react'
+
+const WishlistPage = () => {
+  return <div>Game Page</div>
 }
 
-export async function getStaticProps() {
-  return {
-    props: {
-      games: gamesMock,
-      recommendedGames: gamesMock.slice(0, 5),
-      recommendedHighlight: highlightMock
-    }
-  }
-}
+export default WishlistPage

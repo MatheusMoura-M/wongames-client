@@ -1,24 +1,31 @@
-import { gql } from '@apollo/client'
+import { gql, QueryHookOptions, useQuery } from '@apollo/client'
+import { GameFragment } from '../fragments/game'
+import { QueryGames, QueryGamesVariables } from '../generated/queryGames'
 
 export const QUERY_GAMES = gql`
-  query QueryGames($pagination: PaginationArg) {
-    games(pagination: $pagination) {
-      name
-      slug
-      cover {
-        url
+  query QueryGames(
+    $pagination: PaginationArg
+    $filters: GameFiltersInput
+    $sort: [String]
+  ) {
+    games(pagination: $pagination, filters: $filters, sort: $sort) {
+      ...GameFragment
+    }
+
+    games_connection(filters: $filters) {
+      pageInfo {
+        total
       }
-      developers {
-        name
-      }
-      price
     }
   }
+
+  ${GameFragment}
 `
 
 export const QUERY_GAME_BY_SLUG = gql`
   query QueryGameBySlug($filters: GameFiltersInput) {
     games(filters: $filters) {
+      documentId
       name
       description
       short_description
@@ -47,3 +54,9 @@ export const QUERY_GAME_BY_SLUG = gql`
     }
   }
 `
+
+export function useQueryGames(
+  options?: QueryHookOptions<QueryGames, QueryGamesVariables>
+) {
+  return useQuery<QueryGames, QueryGamesVariables>(QUERY_GAMES, options)
+}

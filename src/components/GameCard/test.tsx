@@ -85,4 +85,9 @@ describe('<GameCard />', () => {
     expect(ribbon).toHaveStyle({ height: '2.6rem', fontSize: '1.2rem' })
     expect(ribbon).toBeInTheDocument()
   })
+
+  it('should render "Free" when the price is free', () => {
+    renderWithTheme(<GameCard {...props} price={0} />)
+    expect(screen.getByText('Free')).toBeInTheDocument()
+  })
 })

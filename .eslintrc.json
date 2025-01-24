@@ -8,6 +8,15 @@
   "rules": {
     "@typescript-eslint/no-unused-expressions": "off",
     "eslint-plugin-import/no-anonymous-default-export": "off",
-    "import/no-anonymous-default-export": "off"
-  }
+    "import/no-anonymous-default-export": "off",
+    "@next/next/no-img-element": "warn"
+  },
+  "overrides": [
+    {
+      "files": ["**/test.{ts,tsx}"],
+      "rules": {
+        "@next/next/no-img-element": "off"
+      }
+    }
+  ]
 }
