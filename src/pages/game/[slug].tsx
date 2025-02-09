@@ -65,7 +65,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
           eq: `${params?.slug}`
         }
       }
-    }
+    },
+    fetchPolicy: 'no-cache'
   })
 
   if (!data.games.length) {
