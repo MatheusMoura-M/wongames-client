@@ -22,8 +22,7 @@ export async function getStaticProps() {
     data: { banners, newGames, upcomingGames, freeGames, sections }
   } = await apolloClient.query<QueryHome, QueryHomeVariables>({
     query: QUERY_HOME,
-    variables: { date: TODAY },
-    fetchPolicy: 'no-cache'
+    variables: { date: TODAY }
   })
 
   return {
