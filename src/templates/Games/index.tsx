@@ -70,7 +70,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
         {isClient && (
           <S.ContainerCenter>
             {data ? (
-              data.games && data.games.length > 0 ? (
+              data?.games && data.games.length > 0 ? (
                 <>
                   <Grid>
                     {data.games.map((game) => (
@@ -80,7 +80,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
                         slug={game!.slug!}
                         developer={game!.developers[0]!.name}
                         img={
-                          game!.cover
+                          game!.cover?.url
                             ? `http://localhost:1337${game!.cover.url}`
                             : `/img/image_empty.png`
                         }

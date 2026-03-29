@@ -1,6 +1,6 @@
-import 'match-media-mock'
-import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from '@/utils/tests/helpers'
+import { fireEvent, screen } from '@testing-library/react'
+import 'match-media-mock'
 import mockItems from './mock'
 
 import Gallery from '.'
@@ -8,7 +8,8 @@ import { StaticImageImport } from '../CardsList/test'
 
 jest.mock('next/image', () => ({
   __esModule: true,
-  default: ({ src, alt, ...props }: StaticImageImport) => (
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  default: ({ src, alt, fill, priority, ...props }: StaticImageImport) => (
     <img role="img" src={src} alt={alt} {...props} />
   )
 }))

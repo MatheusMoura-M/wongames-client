@@ -11,7 +11,8 @@ const props = {
 
 jest.mock('next/image', () => ({
   __esModule: true,
-  default: ({ src, alt, ...props }: StaticImageImport) => (
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  default: ({ src, alt, fill, priority, ...props }: StaticImageImport) => (
     <img src={src} alt={alt} {...props} />
   )
 }))

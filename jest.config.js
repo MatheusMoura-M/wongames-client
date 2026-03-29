@@ -2,15 +2,22 @@ module.exports = {
   testEnvironment: 'jsdom',
   testPathIgnorePatterns: ['/node_modules/', '/.next/'],
   collectCoverage: true,
+
+  // // Quando quiser testar pastas separadamente
+  // testMatch: ['<rootDir>/src/components/TextContent/test.tsx'],
+
   collectCoverageFrom: [
+    // // Quando quiser testar pastas separadamente
+    // 'src/components/TextContent/*.ts(x)?',
     'src/**/*.ts(x)?',
-    '!src/pages/**',
-    '!src/styles/**',
     '!src/**/stories.tsx',
+    '!src/pages/**',
     '!src/styles/**/*.ts',
     '!src/utils/apollo.ts',
+    '!src/utils/apolloCache.ts',
     '!src/types/**/*.d.ts',
-    '!src/graphql/**/*.ts'
+    '!src/graphql/**/*.ts',
+    '!src/**/mock.ts'
   ],
   setupFilesAfterEnv: ['<rootDir>/.jest/setup.ts'],
   modulePaths: ['<rootDir>/src/', '<rootDir>/.jest'],
@@ -22,5 +29,5 @@ module.exports = {
     'match-media-mock': '<rootDir>/.jest/match-media-mock.js',
     '^styled-components':
       'styled-components/dist/styled-components.browser.cjs.js'
-  },
+  }
 }

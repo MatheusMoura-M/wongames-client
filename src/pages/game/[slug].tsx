@@ -65,7 +65,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
           eq: `${params?.slug}`
         }
       }
-    }
+    },
+    fetchPolicy: 'no-cache'
   })
 
   if (!data.games.length) {
@@ -75,9 +76,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const game = data.games[0]
 
   // Get recommended games
-  const { data: recommended } = await apolloClient.query<QueryRecommended>({
-    query: QUERY_RECOMMENDED
-  })
+  const { data: recommendedSection } =
+    await apolloClient.query<QueryRecommended>({
+      query: QUERY_RECOMMENDED
+    })
 
   const TODAY = new Date().toISOString().slice(0, 10)
   const { data: upcoming } = await apolloClient.query<
@@ -88,7 +90,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     revalidate: 60,
     props: {
-      cover: game?.cover
+      cover: game?.cover?.src
         ? `http://localhost:1337${game.cover.src}`
         : `/img/image_empty.png`,
       gameInfo: {
@@ -97,7 +99,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         description: game?.short_description
       },
       gallery: game?.gallery.map((image) => ({
-        src: image
+        src: image?.src
           ? `http://localhost:1337${image.src}`
           : `/img/image_empty.png`,
         label: image?.label
@@ -111,13 +113,17 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         rating: game?.rating,
         genres: game?.categories.map((category) => category!.name)
       },
+
       upcomingTitle: upcoming.showcase?.upcomingGames?.title,
       upcomingGames: gamesMapper(upcoming.upcomingGames),
       upcomingHighlight: highlightMapper(
         upcoming.showcase?.upcomingGames?.highlight
       ),
-      recommendedTitle: recommended.recommended?.section?.title,
-      recommendedGames: gamesMapper(recommended.recommended!.section?.games)
+
+      recommendedTitle: recommendedSection.recommended?.section?.title,
+      recommendedGames: gamesMapper(
+        recommendedSection.recommended!.section?.games
+      )
     }
   }
 }

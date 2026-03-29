@@ -1,6 +1,6 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const fs = require('fs-extra')
-const graphql = require('graphql')
+import fs from 'fs-extra'
+import * as graphql from 'graphql'
+
 function convertToNonNull(n) {
   if (n.type.kind !== 'NamedType') {
     throw new Error('Only lists of named types should be converted')
