@@ -1,10 +1,16 @@
-import Link from 'next/link'
 import {
   AccountCircle,
+} from '@styled-icons/material-outlined/AccountCircle'
+import {
   CreditCard,
+} from '@styled-icons/material-outlined/CreditCard'
+import {
   ExitToApp,
+} from '@styled-icons/material-outlined/ExitToApp'
+import {
   FormatListBulleted
-} from '@styled-icons/material-outlined'
+} from '@styled-icons/material-outlined/FormatListBulleted'
+import Link from 'next/link'
 
 import * as S from './styles'
 

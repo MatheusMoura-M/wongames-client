@@ -1,8 +1,6 @@
 import formatPrice from '@/utils/format-price'
-import {
-  AddShoppingCart,
-  FavoriteBorder
-} from '@styled-icons/material-outlined'
+import { AddShoppingCart } from '@styled-icons/material-outlined/AddShoppingCart'
+import { FavoriteBorder } from '@styled-icons/material-outlined/FavoriteBorder'
 import Button from '../Button'
 import Heading from '../Heading'
 import Ribbon from '../Ribbon'

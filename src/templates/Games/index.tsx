@@ -1,3 +1,4 @@
+import Empty from '@/components/Empty'
 import ExploreSidebar, { ItemProps } from '@/components/ExploreSidebar'
 import GameCard, { GameCardProps } from '@/components/GameCard'
 import { Grid } from '@/components/Grid'
@@ -10,9 +11,8 @@ import {
 import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined/KeyboardArrowDown'
 import { useRouter } from 'next/router'
 import { ParsedUrlQueryInput } from 'querystring'
-import * as S from './styles'
-import Empty from '@/components/Empty'
 import { useEffect, useState } from 'react'
+import * as S from './styles'
 
 export type GamesTemplateProps = {
   games?: GameCardProps[]
@@ -51,9 +51,11 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
     })
   }
 
+  /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     setIsClient(true)
   }, [])
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   return (
     <Base>
