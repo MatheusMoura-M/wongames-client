@@ -1,9 +1,15 @@
-import { useContext, createContext } from 'react'
+import { useContext, createContext, useState, useEffect } from 'react'
+import { getStorageItem } from '@/utils/localStorage'
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-export type CartContextData = {}
+const CART_KEY = 'cartItems'
 
-export const CartContextDefaultValues = {}
+export type CartContextData = {
+  items: string[]
+}
+
+export const CartContextDefaultValues = {
+  items: []
+}
 
 export const CartContext = createContext<CartContextData>(
   CartContextDefaultValues
@@ -14,7 +20,20 @@ export type CartProviderProps = {
 }
 
 const CartProvider = ({ children }: CartProviderProps) => {
-  return <CartContext.Provider value={{}}>{children}</CartContext.Provider>
+  const [cartItems, setCartItems] = useState<string[]>(() => {
+    const data = getStorageItem(CART_KEY)
+    return data || []
+  })
+
+  return (
+    <CartContext.Provider
+      value={{
+        items: cartItems
+      }}
+    >
+      {children}
+    </CartContext.Provider>
+  )
 }
 
 const useCart = () => useContext(CartContext)
