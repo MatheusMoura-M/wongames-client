@@ -14,7 +14,7 @@
     "schema:convert": "node convertToNonNull.js",
     "types:generate": "npm run schema:download && npm run schema:convert && npm run codegen",
     "test:ci": "jest --runInBand",
-    "generate": "npx plop --plopfile generators/plopfile.js",
+    "generate": "plop --plopfile generators/plopfile.js",
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky",
