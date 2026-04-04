@@ -70,14 +70,16 @@ describe('<Game />', () => {
 
   it('should not render the gallery on mobile', () => {
     renderWithTheme(<Game {...props} />)
+
     expect(screen.getByTestId('Mock Gallery').parentElement).toHaveStyle({
       display: 'none'
     })
+
     expect(screen.getByTestId('Mock Gallery').parentElement).toHaveStyleRule(
       'display',
       'block',
       {
-        media: '(min-width:  768px)'
+        media: '(min-width: 768px)'
       }
     )
   })
@@ -92,14 +94,14 @@ describe('<Game />', () => {
     })
 
     expect(cover).toHaveStyleRule('height', '70rem', {
-      media: '(min-width:  768px)'
+      media: '(min-width: 768px)'
     })
 
     expect(cover).toHaveStyleRule(
       'clip-path',
       'polygon(0 0,100% 0,100% 100%,0 85%)',
       {
-        media: '(min-width:  768px)'
+        media: '(min-width: 768px)'
       }
     )
   })

@@ -11,7 +11,6 @@ import {
 import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined/KeyboardArrowDown'
 import { useRouter } from 'next/router'
 import { ParsedUrlQueryInput } from 'querystring'
-import { useEffect, useState } from 'react'
 import * as S from './styles'
 
 export type GamesTemplateProps = {
@@ -21,7 +20,6 @@ export type GamesTemplateProps = {
 
 const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
   const { push, query } = useRouter()
-  const [isClient, setIsClient] = useState(false)
 
   const { data, loading, fetchMore } = useQueryGames({
     notifyOnNetworkStatusChange: true,
@@ -51,11 +49,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
     })
   }
 
-  /* eslint-disable react-hooks/set-state-in-effect */
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
-  /* eslint-enable react-hooks/set-state-in-effect */
+  const isClient = typeof window !== 'undefined'
 
   return (
     <Base>

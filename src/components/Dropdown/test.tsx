@@ -19,11 +19,15 @@ describe('<Dropdown />', () => {
     expect(screen.getByLabelText(/toogle dropdown/)).toBeInTheDocument()
   })
 
-  it('should handle open/close dropdown', () => {
+  it('should handle open/close dropdown', async () => {
+    const user = userEvent.setup()
     const content = screen.getByText(/content/).parentElement!
+
     expect(content).toHaveStyle({ opacity: 0 })
     expect(content.getAttribute('aria-hidden')).toBe('true')
-    userEvent.click(screen.getByLabelText(/toogle dropdown/))
+
+    await user.click(screen.getByLabelText(/toogle dropdown/))
+
     expect(content).toHaveStyle({ opacity: 1 })
     expect(content.getAttribute('aria-hidden')).toBe('false')
   })

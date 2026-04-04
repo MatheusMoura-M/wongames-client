@@ -39,7 +39,7 @@ describe('<TextContent />', () => {
     })
 
     expect(wrapper).toHaveStyleRule('color', '#030517', {
-      media: '(min-width:  768px)'
+      media: '(min-width: 768px)'
     })
   })
 })

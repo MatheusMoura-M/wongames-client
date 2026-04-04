@@ -10,10 +10,15 @@ describe('<UserDropdown />', () => {
 
     expect(screen.getByText(/willian/i)).toBeInTheDocument()
   })
-  it('should render the menu', () => {
+
+  it('should render the menu', async () => {
+    const user = userEvent.setup()
+
     renderWithTheme(<UserDropdown username="Willian" />)
     // open menu
-    userEvent.click(screen.getByText(/willian/i))
+
+    await user.click(screen.getByText(/willian/i))
+
     expect(
       screen.getByRole('link', { name: /my profile/i })
     ).toBeInTheDocument()

@@ -35,12 +35,14 @@ describe('<Checkbox />', () => {
   })
 
   it('should dispatch onCheck when status changes', async () => {
+    const user = userEvent.setup()
+
     const onCheck = jest.fn()
     renderWithTheme(<Checkbox label="Checkbox" onCheck={onCheck} />)
 
     expect(onCheck).not.toHaveBeenCalled()
 
-    userEvent.click(screen.getByRole('checkbox'))
+    await user.click(screen.getByRole('checkbox'))
     await waitFor(() => {
       expect(onCheck).toHaveBeenCalledTimes(1)
     })
@@ -49,10 +51,12 @@ describe('<Checkbox />', () => {
   })
 
   it('should dispatch onCheck when status changes', async () => {
+    const user = userEvent.setup()
+
     const onCheck = jest.fn()
     renderWithTheme(<Checkbox label="Checkbox" onCheck={onCheck} isChecked />)
 
-    userEvent.click(screen.getByRole('checkbox'))
+    await user.click(screen.getByRole('checkbox'))
     await waitFor(() => {
       expect(onCheck).toHaveBeenCalledTimes(1)
     })
@@ -60,11 +64,15 @@ describe('<Checkbox />', () => {
     expect(onCheck).toHaveBeenCalledWith(false)
   })
 
-  it('should be accessible with tab', () => {
+  it('should be accessible with tab', async () => {
+    const user = userEvent.setup()
+
     renderWithTheme(<Checkbox label="Checkbox" labelFor="Checkbox" />)
 
     expect(document.body).toHaveFocus()
-    userEvent.tab()
+
+    await user.tab()
+
     expect(screen.getByLabelText(/checkbox/i)).toHaveFocus()
   })
 })

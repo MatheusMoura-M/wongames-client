@@ -67,13 +67,15 @@ describe('<ExploreSidebar />', () => {
     })
   })
 
-  it('should filter with checked values', () => {
+  it('should filter with checked values', async () => {
+    const user = userEvent.setup()
+
     const onFilter = jest.fn()
     renderWithTheme(<ExploreSidebar items={items} onFilter={onFilter} />)
 
-    userEvent.click(screen.getByLabelText(/windows/i))
-    userEvent.click(screen.getByLabelText(/linux/i))
-    userEvent.click(screen.getByLabelText(/low to high/i))
+    await user.click(screen.getByLabelText(/windows/i))
+    await user.click(screen.getByLabelText(/linux/i))
+    await user.click(screen.getByLabelText(/low to high/i))
 
     // 1st render (initialValues) + 3 clicks
     expect(onFilter).toHaveBeenCalledTimes(4)
@@ -84,23 +86,28 @@ describe('<ExploreSidebar />', () => {
     })
   })
 
-  it('should altern between radio options', () => {
+  it('should altern between radio options', async () => {
+    const user = userEvent.setup()
+
     const onFilter = jest.fn()
 
     renderWithTheme(<ExploreSidebar items={items} onFilter={onFilter} />)
 
-    userEvent.click(screen.getByLabelText(/low to high/i))
-    userEvent.click(screen.getByLabelText(/high to low/i))
+    await user.click(screen.getByLabelText(/low to high/i))
+    await user.click(screen.getByLabelText(/high to low/i))
 
     expect(onFilter).toHaveBeenCalledWith({ sort_by: 'high-to-low' })
   })
 
-  it('should open/close sidebar when filtering on mobile ', () => {
+  it('should open/close sidebar when filtering on mobile ', async () => {
+    const user = userEvent.setup()
+
     const { container } = renderWithTheme(
       <ExploreSidebar items={items} onFilter={jest.fn} />
     )
+
     const variant = {
-      media: '(max-width:  768px)',
+      media: '(max-width: 768px)',
       modifier: String(css`
         ${Overlay}
       `)
@@ -108,15 +115,15 @@ describe('<ExploreSidebar />', () => {
     const Element = container.firstChild
 
     expect(Element).not.toHaveStyleRule('opacity', '1', variant)
-    userEvent.click(screen.getByLabelText(/open filters/))
+    await user.click(screen.getByLabelText(/open filters/))
 
     expect(Element).toHaveStyleRule('opacity', '1', variant)
-    userEvent.click(screen.getByLabelText(/close filters/))
+    await user.click(screen.getByLabelText(/close filters/))
 
     expect(Element).not.toHaveStyleRule('opacity', '1', variant)
 
-    userEvent.click(screen.getByLabelText(/open filters/))
-    userEvent.click(screen.getByRole('button', { name: /filter/i }))
+    await user.click(screen.getByLabelText(/open filters/))
+    await user.click(screen.getByRole('button', { name: /filter/i }))
 
     expect(Element).not.toHaveStyleRule('opacity', '1', variant)
   })

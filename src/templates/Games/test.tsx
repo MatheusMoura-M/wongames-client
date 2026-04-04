@@ -27,7 +27,7 @@ useRouter.mockImplementation(() => ({
 describe('<Games />', () => {
   it('should render loading when starting the template', () => {
     renderWithTheme(
-      <MockedProvider mocks={[emptyGamesMock]} addTypename={false}>
+      <MockedProvider mocks={[emptyGamesMock]}>
         <Games filterItems={filterItemsMock} />
       </MockedProvider>
     )
@@ -39,7 +39,7 @@ describe('<Games />', () => {
 
   it('should render sections', async () => {
     renderWithTheme(
-      <MockedProvider mocks={[gamesMock]} addTypename={false}>
+      <MockedProvider mocks={[gamesMock]}>
         <Games filterItems={filterItemsMock} />
       </MockedProvider>
     )
@@ -64,7 +64,7 @@ describe('<Games />', () => {
 
   it('should render empty when no games found', async () => {
     renderWithTheme(
-      <MockedProvider mocks={[emptyGamesMock]} addTypename={false}>
+      <MockedProvider mocks={[emptyGamesMock]}>
         <Games filterItems={filterItemsMock} />
       </MockedProvider>
     )
@@ -75,6 +75,8 @@ describe('<Games />', () => {
   })
 
   it('should render more games when show more is clicked', async () => {
+    const user = userEvent.setup()
+
     renderWithTheme(
       <MockedProvider mocks={[gamesMock, fetchMoreMock]} cache={apolloCache}>
         <Games filterItems={filterItemsMock} />
@@ -83,21 +85,23 @@ describe('<Games />', () => {
 
     expect(await screen.findByText(/Sample Game/i)).toBeInTheDocument()
 
-    userEvent.click(await screen.findByRole('button', { name: /show more/i }))
+    await user.click(await screen.findByRole('button', { name: /show more/i }))
 
     expect(await screen.findByText(/Fetch More Game/i)).toBeInTheDocument()
   })
 
   it('should change push router when selecting a filter', async () => {
+    const user = userEvent.setup()
+
     renderWithTheme(
       <MockedProvider mocks={[gamesMock, fetchMoreMock]} cache={apolloCache}>
         <Games filterItems={filterItemsMock} />
       </MockedProvider>
     )
 
-    userEvent.click(await screen.findByRole('checkbox', { name: /windows/i }))
-    userEvent.click(await screen.findByRole('checkbox', { name: /linux/i }))
-    userEvent.click(await screen.findByLabelText(/low to high/i))
+    await user.click(await screen.findByRole('checkbox', { name: /windows/i }))
+    await user.click(await screen.findByRole('checkbox', { name: /linux/i }))
+    await user.click(await screen.findByLabelText(/low to high/i))
 
     expect(push).toHaveBeenCalledWith({
       pathname: '/games',

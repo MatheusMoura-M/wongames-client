@@ -32,6 +32,8 @@ describe('<Radio />', () => {
   })
 
   it('should dispatch onCheck when label status changes', async () => {
+    const user = userEvent.setup()
+
     const onCheck = jest.fn()
     renderWithTheme(
       <Radio
@@ -44,7 +46,7 @@ describe('<Radio />', () => {
 
     expect(onCheck).not.toHaveBeenCalled()
 
-    userEvent.click(screen.getByLabelText('Radio'))
+    await user.click(screen.getByLabelText('Radio'))
     await waitFor(() => {
       expect(onCheck).toHaveBeenCalledTimes(1)
     })
@@ -52,12 +54,14 @@ describe('<Radio />', () => {
     expect(onCheck).toHaveBeenCalledWith('anyValue')
   })
 
-  it('Should be accessible with tab', () => {
+  it('Should be accessible with tab', async () => {
+    const user = userEvent.setup()
+
     renderWithTheme(<Radio label="Radio" labelFor="Radio" />)
     const radio = screen.getByLabelText('Radio')
 
     expect(document.body).toHaveFocus()
-    userEvent.tab()
+    await user.tab()
     expect(radio).toHaveFocus()
   })
 })

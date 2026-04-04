@@ -15,32 +15,38 @@ describe('<PaymentOptions />', () => {
   })
 
   it('should handle select card when clicking on the label', async () => {
+    const user = userEvent.setup()
+
     renderWithTheme(<PaymentOptions cards={cards} handlePayment={jest.fn} />)
-    userEvent.click(screen.getByLabelText(/4325/))
+    await user.click(screen.getByLabelText(/4325/))
 
     await waitFor(() => {
       expect(screen.getByRole('radio', { name: /4325/ })).toBeChecked()
     })
   })
 
-  it('should not call handlePayment when button is disabled', () => {
+  it('should not call handlePayment when button is disabled', async () => {
+    const user = userEvent.setup()
+
     const handlePayment = jest.fn()
     renderWithTheme(
       <PaymentOptions cards={cards} handlePayment={handlePayment} />
     )
 
-    userEvent.click(screen.getByRole('button', { name: /buy now/i }))
+    await user.click(screen.getByRole('button', { name: /buy now/i }))
     expect(handlePayment).not.toHaveBeenCalled()
   })
 
   it('should call handlePayment when credit card is selected', async () => {
+    const user = userEvent.setup()
+
     const handlePayment = jest.fn()
     renderWithTheme(
       <PaymentOptions cards={cards} handlePayment={handlePayment} />
     )
 
-    userEvent.click(screen.getByLabelText(/4325/))
-    userEvent.click(screen.getByRole('button', { name: /buy now/i }))
+    await user.click(screen.getByLabelText(/4325/))
+    await user.click(screen.getByRole('button', { name: /buy now/i }))
     await waitFor(() => {
       expect(handlePayment).toHaveBeenCalled()
     })
