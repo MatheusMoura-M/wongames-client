@@ -3,7 +3,7 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { PaginationArg, GameFiltersInput } from './globalTypes'
+import { GameFiltersInput, PaginationArg } from './globalTypes'
 
 // ====================================================
 // GraphQL query operation: QueryGames
@@ -25,7 +25,7 @@ export interface QueryGames_games {
   name: string
   slug: string | null
   cover: QueryGames_games_cover | null
-  developers: (QueryGames_games_developers | null)[]
+  developers: QueryGames_games_developers[]
   price: number
 }
 
@@ -40,7 +40,7 @@ export interface QueryGames_games_connection {
 }
 
 export interface QueryGames {
-  games: (QueryGames_games | null)[]
+  games: QueryGames_games[]
   games_connection: QueryGames_games_connection | null
 }
 

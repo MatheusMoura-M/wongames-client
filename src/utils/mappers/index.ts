@@ -22,7 +22,7 @@ export const bannerMapper = (banners: QueryHome_banners[]) => {
   }))
 }
 
-export const gamesMapper = (games: (QueryGames_games | null)[]) => {
+export const gamesMapper = (games: QueryGames_games[] | null | undefined) => {
   return games
     ? games.map((game) => ({
         id: game?.documentId,
@@ -57,7 +57,7 @@ export const highlightMapper = (
     : {}
 }
 
-export const cartMapper = (games: (QueryGames_games | null)[]) => {
+export const cartMapper = (games: QueryGames_games[] | undefined) => {
   return games
     ? games.map((game) => ({
         documentId: game?.documentId,

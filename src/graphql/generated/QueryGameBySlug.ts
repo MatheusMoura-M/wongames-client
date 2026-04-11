@@ -49,16 +49,16 @@ export interface QueryGameBySlug_games {
   price: number
   rating: ENUM_GAME_RATING | null
   release_date: any | null
-  gallery: (QueryGameBySlug_games_gallery | null)[]
+  gallery: QueryGameBySlug_games_gallery[]
   cover: QueryGameBySlug_games_cover | null
-  developers: (QueryGameBySlug_games_developers | null)[]
+  developers: QueryGameBySlug_games_developers[]
   publisher: QueryGameBySlug_games_publisher | null
-  categories: (QueryGameBySlug_games_categories | null)[]
-  platforms: (QueryGameBySlug_games_platforms | null)[]
+  categories: QueryGameBySlug_games_categories[]
+  platforms: QueryGameBySlug_games_platforms[]
 }
 
 export interface QueryGameBySlug {
-  games: (QueryGameBySlug_games | null)[]
+  games: QueryGameBySlug_games[]
 }
 
 export interface QueryGameBySlugVariables {
