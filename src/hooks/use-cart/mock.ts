@@ -49,6 +49,43 @@ export const gamesMock = {
   }
 }
 
+export const singleGameMock = {
+  request: {
+    query: QUERY_GAMES,
+    variables: {
+      filters: {
+        documentId: {
+          in: ['ahef7s9utp83c41ezwfggp45']
+        }
+      }
+    }
+  },
+  result: {
+    data: {
+      games: [
+        {
+          documentId: 'ahef7s9utp83c41ezwfggp45',
+          name: 'Sample Game',
+          slug: 'sample-game',
+          short_description: 'sample description',
+          price: 10.5,
+          developers: [{ name: 'sample developer' }],
+          cover: {
+            url: '/sample-game.jpg'
+          },
+          __typename: 'Game'
+        }
+      ],
+      games_connection: {
+        pageInfo: {
+          total: 1
+        },
+        __typename: 'GameConnection'
+      }
+    }
+  }
+}
+
 export const cartItems = [
   {
     documentId: 'ahef7s9utp83c41ezwfggp45',
