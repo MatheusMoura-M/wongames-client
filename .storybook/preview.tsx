@@ -1,6 +1,7 @@
-import React from 'react'
-import GlobalStyles from '../src/styles/global'
+import { CartContext, CartContextDefaultValues } from '@/hooks/use-cart'
+import type { Decorator } from '@storybook/react'
 import { ThemeProvider } from 'styled-components'
+import GlobalStyles from '../src/styles/global'
 import theme from '../src/styles/theme'
 
 export const parameters = {
@@ -19,11 +20,19 @@ export const parameters = {
   }
 }
 
-export const decorators = [
-  (Story) => (
+export const decorators: Decorator[] = [
+  (Story, context) => (
     <ThemeProvider theme={theme}>
-      <GlobalStyles removeBg />
-      <Story />
+      <CartContext.Provider
+        value={{
+          ...CartContextDefaultValues,
+          ...(context?.args?.cartContextValue || {}),
+          ...context.args
+        }}
+      >
+        <GlobalStyles removeBg />
+        <Story />
+      </CartContext.Provider>
     </ThemeProvider>
   )
 ]

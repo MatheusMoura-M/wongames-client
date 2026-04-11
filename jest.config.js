@@ -2,13 +2,7 @@ export default {
   testEnvironment: 'jsdom',
   testPathIgnorePatterns: ['/node_modules/', '/.next/'],
   collectCoverage: true,
-
-  // // Quando quiser testar pastas separadamente
-  // testMatch: ['<rootDir>/src/components/TextContent/test.tsx'],
-
   collectCoverageFrom: [
-    // // Quando quiser testar pastas separadamente
-    // 'src/components/TextContent/*.ts(x)?',
     'src/**/*.ts(x)?',
     '!src/**/stories.tsx',
     '!src/pages/**',
