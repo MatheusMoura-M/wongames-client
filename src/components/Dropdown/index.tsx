@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { ChildrenProps } from '@/utils/tests/helpers'
 
 import * as S from './styles'
 
 export type DropdownProps = {
   title: React.ReactNode
-} & ChildrenProps
+  children: React.ReactNode
+}
 
 const Dropdown = ({ title, children }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false)

@@ -1,11 +1,10 @@
 import filterItemsMock from '@/components/ExploreSidebar/mock'
-import { renderWithTheme } from '@/utils/tests/helpers'
+import apolloCache from '@/utils/apolloCache'
+import { render, screen } from '@/utils/test.utils'
 import { MockedProvider } from '@apollo/client/testing'
-import { screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import Games from '.'
 import { emptyGamesMock, fetchMoreMock, gamesMock } from './mocks'
-import userEvent from '@testing-library/user-event'
-import apolloCache from '@/utils/apolloCache'
 
 jest.mock('@/templates/Base', () => ({
   __esModule: true,
@@ -26,7 +25,7 @@ useRouter.mockImplementation(() => ({
 
 describe('<Games />', () => {
   it('should render loading when starting the template', () => {
-    renderWithTheme(
+    render(
       <MockedProvider mocks={[emptyGamesMock]}>
         <Games filterItems={filterItemsMock} />
       </MockedProvider>
@@ -38,7 +37,7 @@ describe('<Games />', () => {
   })
 
   it('should render sections', async () => {
-    renderWithTheme(
+    render(
       <MockedProvider mocks={[gamesMock]}>
         <Games filterItems={filterItemsMock} />
       </MockedProvider>
@@ -63,7 +62,7 @@ describe('<Games />', () => {
   })
 
   it('should render empty when no games found', async () => {
-    renderWithTheme(
+    render(
       <MockedProvider mocks={[emptyGamesMock]}>
         <Games filterItems={filterItemsMock} />
       </MockedProvider>
@@ -77,7 +76,7 @@ describe('<Games />', () => {
   it('should render more games when show more is clicked', async () => {
     const user = userEvent.setup()
 
-    renderWithTheme(
+    render(
       <MockedProvider mocks={[gamesMock, fetchMoreMock]} cache={apolloCache}>
         <Games filterItems={filterItemsMock} />
       </MockedProvider>
@@ -93,7 +92,7 @@ describe('<Games />', () => {
   it('should change push router when selecting a filter', async () => {
     const user = userEvent.setup()
 
-    renderWithTheme(
+    render(
       <MockedProvider mocks={[gamesMock, fetchMoreMock]} cache={apolloCache}>
         <Games filterItems={filterItemsMock} />
       </MockedProvider>

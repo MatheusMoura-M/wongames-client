@@ -1,5 +1,5 @@
-import { screen, waitFor } from '@testing-library/react'
-import { renderWithTheme } from '@/utils/tests/helpers'
+import { waitFor } from '@testing-library/react'
+import { render, screen } from '@/utils/test.utils'
 import userEvent from '@testing-library/user-event'
 
 import theme from '@/styles/theme'
@@ -7,7 +7,7 @@ import Checkbox from '.'
 
 describe('<Checkbox />', () => {
   it('should render with label', () => {
-    const { container } = renderWithTheme(
+    const { container } = render(
       <Checkbox label="checkbox label" labelFor="check" />
     )
     // input a partir do papel / role
@@ -21,12 +21,12 @@ describe('<Checkbox />', () => {
   })
 
   it('should render without label', () => {
-    renderWithTheme(<Checkbox />)
+    render(<Checkbox />)
     expect(screen.queryByLabelText('Checkbox')).not.toBeInTheDocument()
   })
 
   it('should render with black label', () => {
-    renderWithTheme(
+    render(
       <Checkbox label="checkbox label" labelFor="check" labelColor="black" />
     )
     expect(screen.getByText(/checkbox label/i)).toHaveStyle({
@@ -38,7 +38,7 @@ describe('<Checkbox />', () => {
     const user = userEvent.setup()
 
     const onCheck = jest.fn()
-    renderWithTheme(<Checkbox label="Checkbox" onCheck={onCheck} />)
+    render(<Checkbox label="Checkbox" onCheck={onCheck} />)
 
     expect(onCheck).not.toHaveBeenCalled()
 
@@ -54,7 +54,7 @@ describe('<Checkbox />', () => {
     const user = userEvent.setup()
 
     const onCheck = jest.fn()
-    renderWithTheme(<Checkbox label="Checkbox" onCheck={onCheck} isChecked />)
+    render(<Checkbox label="Checkbox" onCheck={onCheck} isChecked />)
 
     await user.click(screen.getByRole('checkbox'))
     await waitFor(() => {
@@ -67,7 +67,7 @@ describe('<Checkbox />', () => {
   it('should be accessible with tab', async () => {
     const user = userEvent.setup()
 
-    renderWithTheme(<Checkbox label="Checkbox" labelFor="Checkbox" />)
+    render(<Checkbox label="Checkbox" labelFor="Checkbox" />)
 
     expect(document.body).toHaveFocus()
 

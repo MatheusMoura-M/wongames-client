@@ -1,10 +1,9 @@
-import 'match-media-mock'
-import { screen } from '@testing-library/react'
-import { ChildrenProps, renderWithTheme } from '@/utils/tests/helpers'
+import itemsMock from '@/components/CartList/mock'
 import gamesMock from '@/components/GameCardSlider/mock'
 import highlightMock from '@/components/Highlight/mock'
-import itemsMock from '@/components/CartList/mock'
 import cardsMock from '@/components/PaymentOptions/mock'
+import { render, screen } from '@/utils/test.utils'
+import 'match-media-mock'
 
 import Cart from '.'
 
@@ -19,7 +18,7 @@ const props = {
 
 jest.mock('@/templates/Base', () => ({
   __esModule: true,
-  default: function Mock({ children }: ChildrenProps) {
+  default: function Mock({ children }: { children: React.ReactNode }) {
     return <div data-testid="Mock Base">{children}</div>
   }
 }))
@@ -50,7 +49,7 @@ jest.mock('@/components/Empty', () => ({
 
 describe('<Cart />', () => {
   it('should render sections', () => {
-    renderWithTheme(<Cart {...props} />)
+    render(<Cart {...props} />)
 
     expect(
       screen.getByRole('heading', { name: /my cart/i })
@@ -62,7 +61,7 @@ describe('<Cart />', () => {
   })
 
   it('should render empty section if there are no items', () => {
-    renderWithTheme(<Cart {...props} items={[]} />)
+    render(<Cart {...props} items={[]} />)
     expect(screen.getByTestId('Mock Empty')).toBeInTheDocument()
   })
 })

@@ -1,13 +1,12 @@
-import { screen, waitFor } from '@testing-library/react'
-import { renderWithTheme } from '@/utils/tests/helpers'
-
+import { render, screen } from '@/utils/test.utils'
+import { waitFor } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import PaymentOptions from '.'
 import cards from './mock'
-import userEvent from '@testing-library/user-event'
 
 describe('<PaymentOptions />', () => {
   it('should render the saved card options and the add new card button', () => {
-    renderWithTheme(<PaymentOptions cards={cards} handlePayment={jest.fn} />)
+    render(<PaymentOptions cards={cards} handlePayment={jest.fn} />)
 
     expect(screen.getByLabelText(/4325/)).toBeInTheDocument()
     expect(screen.getByLabelText(/4326/)).toBeInTheDocument()
@@ -17,7 +16,7 @@ describe('<PaymentOptions />', () => {
   it('should handle select card when clicking on the label', async () => {
     const user = userEvent.setup()
 
-    renderWithTheme(<PaymentOptions cards={cards} handlePayment={jest.fn} />)
+    render(<PaymentOptions cards={cards} handlePayment={jest.fn} />)
     await user.click(screen.getByLabelText(/4325/))
 
     await waitFor(() => {
@@ -29,9 +28,7 @@ describe('<PaymentOptions />', () => {
     const user = userEvent.setup()
 
     const handlePayment = jest.fn()
-    renderWithTheme(
-      <PaymentOptions cards={cards} handlePayment={handlePayment} />
-    )
+    render(<PaymentOptions cards={cards} handlePayment={handlePayment} />)
 
     await user.click(screen.getByRole('button', { name: /buy now/i }))
     expect(handlePayment).not.toHaveBeenCalled()
@@ -41,9 +38,7 @@ describe('<PaymentOptions />', () => {
     const user = userEvent.setup()
 
     const handlePayment = jest.fn()
-    renderWithTheme(
-      <PaymentOptions cards={cards} handlePayment={handlePayment} />
-    )
+    render(<PaymentOptions cards={cards} handlePayment={handlePayment} />)
 
     await user.click(screen.getByLabelText(/4325/))
     await user.click(screen.getByRole('button', { name: /buy now/i }))

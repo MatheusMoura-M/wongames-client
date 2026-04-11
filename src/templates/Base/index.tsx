@@ -1,11 +1,10 @@
 import { Container } from '@/components/Container'
 import Footer from '@/components/Footer'
 import Menu from '@/components/Menu'
-import { ChildrenProps } from '@/utils/tests/helpers'
 
 import * as S from './styles'
 
-const Base = ({ children }: ChildrenProps) => (
+const Base = ({ children }: { children: React.ReactNode }) => (
   <S.Wrapper>
     <Container>
       <Menu />

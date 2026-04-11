@@ -1,10 +1,9 @@
-import { renderWithTheme } from '@/utils/tests/helpers'
+import { render, screen } from '@/utils/test.utils'
 import { FormLink, FormWrapper } from '.'
-import { screen } from '@testing-library/dom'
 
 describe('<Form />', () => {
   it('should render the heading', () => {
-    renderWithTheme(
+    render(
       <FormWrapper>
         <FormLink>
           My nice <a href="#">link</a>

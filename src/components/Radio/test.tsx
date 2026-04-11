@@ -1,12 +1,12 @@
-import { screen, waitFor } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import { renderWithTheme } from '@/utils/tests/helpers'
 import theme from '@/styles/theme'
+import { render, screen } from '@/utils/test.utils'
+import { waitFor } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import Radio from '.'
 
 describe('<Radio />', () => {
   it('should render with label (white)', () => {
-    const { container } = renderWithTheme(
+    const { container } = render(
       <Radio label="Radio" labelFor="check" value="anyValue" />
     )
     const label = screen.getByText('Radio')
@@ -17,7 +17,7 @@ describe('<Radio />', () => {
   })
 
   it('should render with label (black)', () => {
-    renderWithTheme(<Radio label="Radio" labelColor="black" />)
+    render(<Radio label="Radio" labelColor="black" />)
 
     const label = screen.getByText('Radio')
 
@@ -26,7 +26,7 @@ describe('<Radio />', () => {
   })
 
   it('should render without label', () => {
-    renderWithTheme(<Radio />)
+    render(<Radio />)
 
     expect(screen.queryByLabelText('Radio')).not.toBeInTheDocument()
   })
@@ -35,7 +35,7 @@ describe('<Radio />', () => {
     const user = userEvent.setup()
 
     const onCheck = jest.fn()
-    renderWithTheme(
+    render(
       <Radio
         label="Radio"
         labelFor="Radio"
@@ -57,7 +57,7 @@ describe('<Radio />', () => {
   it('Should be accessible with tab', async () => {
     const user = userEvent.setup()
 
-    renderWithTheme(<Radio label="Radio" labelFor="Radio" />)
+    render(<Radio label="Radio" labelFor="Radio" />)
     const radio = screen.getByLabelText('Radio')
 
     expect(document.body).toHaveFocus()
