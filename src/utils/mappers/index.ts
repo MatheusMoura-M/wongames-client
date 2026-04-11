@@ -1,4 +1,4 @@
-import { QueryGames_games } from '@/graphql/generated/queryGames'
+import { QueryGames_games } from '@/graphql/generated/QueryGames'
 import {
   QueryHome_banners,
   QueryHome_sections_freeGames_highlight
@@ -55,3 +55,5 @@ export const highlightMapper = (
       }
     : {}
 }
+
+export const cartMapper = () => {}

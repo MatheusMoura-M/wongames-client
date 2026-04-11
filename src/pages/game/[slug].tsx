@@ -5,7 +5,7 @@ import {
   QueryGameBySlug,
   QueryGameBySlugVariables
 } from '@/graphql/generated/QueryGameBySlug'
-import { QueryGames, QueryGamesVariables } from '@/graphql/generated/queryGames'
+import { QueryGames, QueryGamesVariables } from '@/graphql/generated/QueryGames'
 import { QUERY_GAME_BY_SLUG, QUERY_GAMES } from '@/graphql/queries/games'
 import { QueryRecommended } from '@/graphql/generated/QueryRecommended'
 import { QUERY_RECOMMENDED } from '@/graphql/queries/recommended'

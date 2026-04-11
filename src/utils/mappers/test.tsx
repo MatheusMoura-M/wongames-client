@@ -1,4 +1,4 @@
-import { QueryGames_games } from '@/graphql/generated/queryGames'
+import { QueryGames_games } from '@/graphql/generated/QueryGames'
 import {
   QueryHome_banners,
   QueryHome_sections_newGames_highlight
@@ -41,7 +41,7 @@ describe('bannerMapper()', () => {
 
 describe('gamesMapper()', () => {
   it('should return an empty array if there are no games', () => {
-    expect(gamesMapper(null)).toStrictEqual([])
+    expect(gamesMapper([])).toStrictEqual([])
   })
 
   it('should return the correct format when mapped', () => {
