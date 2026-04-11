@@ -1,10 +1,9 @@
 import { render, screen } from '@/utils/test.utils'
 import { fireEvent } from '@testing-library/react'
 import 'match-media-mock'
-import mockItems from './mock'
-
 import Gallery from '.'
 import { StaticImageImport } from '../CardsList/test'
+import mockItems from './mock'
 
 jest.mock('next/image', () => ({
   __esModule: true,
