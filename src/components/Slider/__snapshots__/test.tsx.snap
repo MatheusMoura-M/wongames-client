@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<Slider /> should render children as slider item 1`] = `
 .c0 .slick-slider {
@@ -121,7 +121,7 @@ exports[`<Slider /> should render children as slider item 1`] = `
     >
       <div
         class="slick-track"
-        style="opacity: 1; transform: translate3d(0px, 0px, 0px);"
+        style="opacity: 1; -webkit-transform: translate3d(0px, 0px, 0px); transform: translate3d(0px, 0px, 0px);"
       >
         <div
           aria-hidden="false"

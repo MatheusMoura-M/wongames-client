@@ -1,12 +1,12 @@
-import { screen, waitFor } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import { renderWithTheme } from '@/utils/tests/helpers'
 import theme from '@/styles/theme'
+import { render, screen } from '@/utils/test.utils'
+import { waitFor } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import Radio from '.'
 
 describe('<Radio />', () => {
   it('should render with label (white)', () => {
-    const { container } = renderWithTheme(
+    const { container } = render(
       <Radio label="Radio" labelFor="check" value="anyValue" />
     )
     const label = screen.getByText('Radio')
@@ -17,7 +17,7 @@ describe('<Radio />', () => {
   })
 
   it('should render with label (black)', () => {
-    renderWithTheme(<Radio label="Radio" labelColor="black" />)
+    render(<Radio label="Radio" labelColor="black" />)
 
     const label = screen.getByText('Radio')
 
@@ -26,14 +26,16 @@ describe('<Radio />', () => {
   })
 
   it('should render without label', () => {
-    renderWithTheme(<Radio />)
+    render(<Radio />)
 
     expect(screen.queryByLabelText('Radio')).not.toBeInTheDocument()
   })
 
   it('should dispatch onCheck when label status changes', async () => {
+    const user = userEvent.setup()
+
     const onCheck = jest.fn()
-    renderWithTheme(
+    render(
       <Radio
         label="Radio"
         labelFor="Radio"
@@ -44,7 +46,7 @@ describe('<Radio />', () => {
 
     expect(onCheck).not.toHaveBeenCalled()
 
-    userEvent.click(screen.getByLabelText('Radio'))
+    await user.click(screen.getByLabelText('Radio'))
     await waitFor(() => {
       expect(onCheck).toHaveBeenCalledTimes(1)
     })
@@ -52,12 +54,14 @@ describe('<Radio />', () => {
     expect(onCheck).toHaveBeenCalledWith('anyValue')
   })
 
-  it('Should be accessible with tab', () => {
-    renderWithTheme(<Radio label="Radio" labelFor="Radio" />)
+  it('Should be accessible with tab', async () => {
+    const user = userEvent.setup()
+
+    render(<Radio label="Radio" labelFor="Radio" />)
     const radio = screen.getByLabelText('Radio')
 
     expect(document.body).toHaveFocus()
-    userEvent.tab()
+    await user.tab()
     expect(radio).toHaveFocus()
   })
 })

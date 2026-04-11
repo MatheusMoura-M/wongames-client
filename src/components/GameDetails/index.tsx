@@ -1,5 +1,7 @@
+import { Apple, } from '@styled-icons/fa-brands/Apple'
+import { Linux, } from '@styled-icons/fa-brands/Linux'
+import { Windows } from '@styled-icons/fa-brands/Windows'
 
-import { Apple, Linux, Windows } from '@styled-icons/fa-brands'
 import Heading from '../Heading'
 import MediaMatch from '../MediaMatch'
 import * as S from './styles'

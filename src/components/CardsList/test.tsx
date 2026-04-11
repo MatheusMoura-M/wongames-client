@@ -1,6 +1,5 @@
 import cardsMock from '@/components/PaymentOptions/mock'
-import { renderWithTheme } from '@/utils/tests/helpers'
-import { screen } from '@testing-library/react'
+import { render, screen } from '@/utils/test.utils'
 
 import CardsList from '.'
 
@@ -9,18 +8,21 @@ export type StaticImageImport = {
   alt?: string | undefined
   width?: number | string
   height?: number | string
+  fill?: boolean
+  priority?: boolean
 }
 
 jest.mock('next/image', () => ({
   __esModule: true,
-  default: ({ src, alt, ...props }: StaticImageImport) => (
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  default: ({ src, alt, fill, priority, ...props }: StaticImageImport) => (
     <img src={src} alt={alt} {...props} />
   )
 }))
 
 describe('<CardsList />', () => {
   it('should render the cards list', () => {
-    renderWithTheme(<CardsList cards={cardsMock} />)
+    render(<CardsList cards={cardsMock} />)
 
     expect(
       screen.getByRole('heading', { name: /my cards/i })

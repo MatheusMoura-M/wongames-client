@@ -1,13 +1,12 @@
-import { useRouter } from 'next/router'
 import { Container } from '@/components/Container'
 import Heading from '@/components/Heading'
 import ProfileMenu from '@/components/ProfileMenu'
 import Base from '@/templates/Base'
-import { ChildrenProps } from '@/utils/tests/helpers'
+import { useRouter } from 'next/router'
 
 import * as S from './styles'
 
-const Profile = ({ children }: ChildrenProps) => {
+const Profile = ({ children }: { children: React.ReactNode }) => {
   const { asPath } = useRouter()
 
   return (

@@ -1,10 +1,11 @@
-import { Add, ShoppingCart } from '@styled-icons/material-outlined'
 import Button from '@/components/Button'
 import Heading from '@/components/Heading'
 import Radio from '@/components/Radio'
-import * as S from './styles'
-import { useState } from 'react'
+import { Add } from '@styled-icons/material-outlined/Add'
+import { ShoppingCart } from '@styled-icons/material-outlined/ShoppingCart'
 import Image from 'next/image'
+import { useState } from 'react'
+import * as S from './styles'
 
 export type PaymentOptionsProps = {
   cards?: PaymentCard[]

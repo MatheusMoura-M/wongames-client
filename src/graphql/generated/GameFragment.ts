@@ -1,5 +1,5 @@
 /* tslint:disable */
-/* eslint-disable */
+
 // @generated
 // This file was automatically generated and should not be edited.
 
@@ -23,6 +23,6 @@ export interface GameFragment {
   name: string
   slug: string | null
   cover: GameFragment_cover | null
-  developers: (GameFragment_developers | null)[]
+  developers: GameFragment_developers[]
   price: number
 }

@@ -1,13 +1,12 @@
 import Slider, { SliderSettings } from '@/components/Slider'
 import { ArrowBackIos as ArrowLeft } from '@styled-icons/material-outlined/ArrowBackIos'
 import { ArrowForwardIos as ArrowRight } from '@styled-icons/material-outlined/ArrowForwardIos'
-
-import { Close } from '@styled-icons/material-outlined'
+import { Close } from '@styled-icons/material-outlined/Close'
 import { useEffect, useRef, useState } from 'react'
 import SlickSlider from 'react-slick'
 
-import * as S from './styles'
 import Image from 'next/image'
+import * as S from './styles'
 
 const commonSettings: SliderSettings = {
   infinite: false,
@@ -83,7 +82,7 @@ const Gallery = ({ items }: GalleryProps) => {
             role="button"
             key={`thumb-${index}`}
             src={item.src}
-            alt={`Thumb - ${item.label}`}
+            alt={`Thumb - ${item?.label || index}`}
             width={293}
             height={165.52}
             layout="responsive"
@@ -110,7 +109,7 @@ const Gallery = ({ items }: GalleryProps) => {
               <Image
                 key={`gallery-${index}`}
                 src={item.src}
-                alt={item.label}
+                alt={`Imagem do modal - ${item?.label || index}`}
                 width={1200}
                 height={677.92}
                 layout="responsive"

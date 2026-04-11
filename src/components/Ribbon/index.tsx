@@ -1,4 +1,3 @@
-import { ChildrenProps } from '@/utils/tests/helpers'
 import * as S from './styles'
 
 export type RibbonColors = 'primary' | 'secondary'
@@ -7,7 +6,8 @@ export type RibbonSizes = 'normal' | 'small'
 export type RibbonProps = {
   color?: RibbonColors
   size?: RibbonSizes
-} & ChildrenProps
+  children: React.ReactNode
+}
 
 const Ribbon = ({
   children,

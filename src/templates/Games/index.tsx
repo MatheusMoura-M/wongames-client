@@ -1,3 +1,4 @@
+import Empty from '@/components/Empty'
 import ExploreSidebar, { ItemProps } from '@/components/ExploreSidebar'
 import GameCard, { GameCardProps } from '@/components/GameCard'
 import { Grid } from '@/components/Grid'
@@ -11,8 +12,6 @@ import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined/
 import { useRouter } from 'next/router'
 import { ParsedUrlQueryInput } from 'querystring'
 import * as S from './styles'
-import Empty from '@/components/Empty'
-import { useEffect, useState } from 'react'
 
 export type GamesTemplateProps = {
   games?: GameCardProps[]
@@ -21,7 +20,6 @@ export type GamesTemplateProps = {
 
 const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
   const { push, query } = useRouter()
-  const [isClient, setIsClient] = useState(false)
 
   const { data, loading, fetchMore } = useQueryGames({
     notifyOnNetworkStatusChange: true,
@@ -51,9 +49,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
     })
   }
 
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
+  const isClient = typeof window !== 'undefined'
 
   return (
     <Base>
@@ -70,7 +66,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
         {isClient && (
           <S.ContainerCenter>
             {data ? (
-              data.games && data.games.length > 0 ? (
+              data?.games && data.games.length > 0 ? (
                 <>
                   <Grid>
                     {data.games.map((game) => (
@@ -80,7 +76,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
                         slug={game!.slug!}
                         developer={game!.developers[0]!.name}
                         img={
-                          game!.cover
+                          game!.cover?.url
                             ? `http://localhost:1337${game!.cover.url}`
                             : `/img/image_empty.png`
                         }

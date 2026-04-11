@@ -1,8 +1,6 @@
-import {
-  AddShoppingCart,
-  Favorite,
-  FavoriteBorder
-} from '@styled-icons/material-outlined'
+import { AddShoppingCart } from '@styled-icons/material-outlined/AddShoppingCart'
+import { Favorite } from '@styled-icons/material-outlined/Favorite'
+import { FavoriteBorder } from '@styled-icons/material-outlined/FavoriteBorder'
 import Image from 'next/image'
 import Link from 'next/link'
 import Button from '../Button'

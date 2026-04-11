@@ -1,4 +1,4 @@
-import breakpoints from '@/utils/tests/breakpoints'
+import breakpoints from '@/utils/breakpoints'
 import styled, { css } from 'styled-components'
 import { DefaultBreakpoints } from 'styled-media-query'
 

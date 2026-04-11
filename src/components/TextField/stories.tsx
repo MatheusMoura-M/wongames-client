@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
+import { Email } from '@styled-icons/material-outlined/Email'
 import TextField, { TextFieldProps } from '.'
-import { Email } from '@styled-icons/material-outlined'
 
 export default {
   title: 'Form/TextField',

@@ -56,7 +56,7 @@ export interface QueryHome_newGames {
   name: string
   slug: string | null
   cover: QueryHome_newGames_cover | null
-  developers: (QueryHome_newGames_developers | null)[]
+  developers: QueryHome_newGames_developers[]
   price: number
 }
 
@@ -76,7 +76,7 @@ export interface QueryHome_upcomingGames {
   name: string
   slug: string | null
   cover: QueryHome_upcomingGames_cover | null
-  developers: (QueryHome_upcomingGames_developers | null)[]
+  developers: QueryHome_upcomingGames_developers[]
   price: number
 }
 
@@ -96,7 +96,7 @@ export interface QueryHome_freeGames {
   name: string
   slug: string | null
   cover: QueryHome_freeGames_cover | null
-  developers: (QueryHome_freeGames_developers | null)[]
+  developers: QueryHome_freeGames_developers[]
   price: number
 }
 
@@ -114,7 +114,7 @@ export interface QueryHome_sections_newGames_highlight {
   __typename: 'ComponentPageHighlight'
   title: string
   subtitle: string
-  background: QueryHome_sections_newGames_highlight_background
+  background: QueryHome_sections_newGames_highlight_background | null
   floatImage: QueryHome_sections_newGames_highlight_floatImage | null
   buttonLabel: string
   buttonLink: string
@@ -164,7 +164,7 @@ export interface QueryHome_sections_popularGames_games {
   name: string
   slug: string | null
   cover: QueryHome_sections_popularGames_games_cover | null
-  developers: (QueryHome_sections_popularGames_games_developers | null)[]
+  developers: QueryHome_sections_popularGames_games_developers[]
   price: number
 }
 
@@ -172,7 +172,7 @@ export interface QueryHome_sections_popularGames {
   __typename: 'ComponentPagePopularGames'
   title: string
   highlight: QueryHome_sections_popularGames_highlight | null
-  games: (QueryHome_sections_popularGames_games | null)[]
+  games: QueryHome_sections_popularGames_games[]
 }
 
 export interface QueryHome_sections_upcomingGames_highlight_background {
@@ -238,10 +238,10 @@ export interface QueryHome_sections {
 }
 
 export interface QueryHome {
-  banners: (QueryHome_banners | null)[]
-  newGames: (QueryHome_newGames | null)[]
-  upcomingGames: (QueryHome_upcomingGames | null)[]
-  freeGames: (QueryHome_freeGames | null)[]
+  banners: QueryHome_banners[]
+  newGames: QueryHome_newGames[]
+  upcomingGames: QueryHome_upcomingGames[]
+  freeGames: QueryHome_freeGames[]
   sections: QueryHome_sections | null
 }
 

@@ -1,11 +1,15 @@
-import Link from 'next/link'
+import Dropdown from '@/components/Dropdown'
+import { ChevronDown } from '@styled-icons/boxicons-regular/ChevronDown'
 import {
   AccountCircle,
-  FavoriteBorder,
+} from '@styled-icons/material-outlined/AccountCircle'
+import {
   ExitToApp
-} from '@styled-icons/material-outlined'
-import { ChevronDown } from '@styled-icons/boxicons-regular/ChevronDown'
-import Dropdown from '@/components/Dropdown'
+} from '@styled-icons/material-outlined/ExitToApp'
+import {
+  FavoriteBorder,
+} from '@styled-icons/material-outlined/FavoriteBorder'
+import Link from 'next/link'
 
 import * as S from './styles'
 

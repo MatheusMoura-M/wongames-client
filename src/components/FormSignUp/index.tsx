@@ -1,8 +1,10 @@
+import { AccountCircle } from '@styled-icons/material-outlined/AccountCircle'
+import { Email } from '@styled-icons/material-outlined/Email'
+import { Lock } from '@styled-icons/material-outlined/Lock'
 import Link from 'next/link'
-import { AccountCircle, Email, Lock } from '@styled-icons/material-outlined'
 
-import { FormWrapper, FormLink } from '@/components/Form'
 import Button from '@/components/Button'
+import { FormLink, FormWrapper } from '@/components/Form'
 import TextField from '@/components/TextField'
 
 const FormSignUp = () => (
