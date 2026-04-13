@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import Dropdown from '.'
 
 const meta = {
-  title: 'Dropdown',
+  title: 'Main/Dropdown',
   component: Dropdown,
   argTypes: {
     title: {

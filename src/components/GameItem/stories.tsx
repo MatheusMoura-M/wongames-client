@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import GameItem from '.'
 
 const meta = {
-  title: 'GameItem',
+  title: 'Main/GameItem',
   component: GameItem,
   args: {
     img: 'https://items.gog.com/not_a_cp/EN/EN-Mercenary-Outlaw.png',

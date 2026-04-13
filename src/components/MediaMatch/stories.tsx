@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import MediaMatch from '.'
 
 const meta = {
-  title: 'MediaMatch',
+  title: 'Main/MediaMatch',
   component: MediaMatch
 } satisfies Meta<typeof MediaMatch>
 

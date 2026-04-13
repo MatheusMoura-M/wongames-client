@@ -3,7 +3,7 @@ import GameCardSlider from '.'
 import items from './mock'
 
 const meta = {
-  title: 'GameCardSlider',
+  title: 'Main/GameCardSlider',
   component: GameCardSlider,
   args: {
     items: items,

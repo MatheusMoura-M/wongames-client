@@ -9,7 +9,7 @@ const icons = {
 }
 
 const meta = {
-  title: 'Button',
+  title: 'Main/Button',
   component: Button,
   argTypes: {
     children: {

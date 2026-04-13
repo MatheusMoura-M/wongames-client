@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import Heading from '.'
 
 const meta = {
-  title: 'Heading',
+  title: 'Main/Heading',
   component: Heading,
   argTypes: {
     children: {

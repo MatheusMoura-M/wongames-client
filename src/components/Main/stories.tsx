@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import Main from '.'
 
 const meta = {
-  title: 'Main',
+  title: 'Main/Main',
   component: Main,
   parameters: {
     layout: 'fullscreen'

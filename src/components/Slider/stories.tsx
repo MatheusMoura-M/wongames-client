@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Slider from '.'
 
 const meta = {
-  title: 'Slider',
+  title: 'Main/Slider',
   component: Slider
 } satisfies Meta<typeof Slider>
 

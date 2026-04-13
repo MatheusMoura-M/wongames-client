@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import Logo from '.'
 
 const meta = {
-  title: 'Logo',
+  title: 'Main/Logo',
   component: Logo,
   args: {
     color: 'white',

@@ -3,7 +3,7 @@ import Highlight from '.'
 import item from './mock'
 
 const meta = {
-  title: 'Highlight',
+  title: 'Main/Highlight',
   component: Highlight,
   args: { ...item }
 } satisfies Meta<typeof Highlight>

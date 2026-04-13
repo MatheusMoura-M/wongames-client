@@ -3,7 +3,7 @@ import Gallery from '.'
 import items from './mock'
 
 const meta = {
-  title: 'Gallery',
+  title: 'Main/Gallery',
   component: Gallery,
   argTypes: {
     items: { control: 'object' }

@@ -3,7 +3,7 @@ import TextContent from '.'
 import textMock from './mock'
 
 const meta = {
-  title: 'TextContent',
+  title: 'Main/TextContent',
   component: TextContent,
   args: textMock,
   globals: {

@@ -4,7 +4,7 @@ import PaymentOptions from '.'
 import cardsMock from './mock'
 
 const meta = {
-  title: 'PaymentOptions',
+  title: 'Main/PaymentOptions',
   component: PaymentOptions,
   argTypes: {
     handlePayment: {

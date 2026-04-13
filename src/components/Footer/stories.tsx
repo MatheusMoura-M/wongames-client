@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import Footer from '.'
 
 const meta = {
-  title: 'Footer',
+  title: 'Main/Footer',
   component: () => (
     <div style={{ maxWidth: '130rem', margin: '0 auto' }}>
       <Footer />

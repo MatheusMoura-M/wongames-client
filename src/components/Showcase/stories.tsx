@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import Showcase from '.'
 
 const meta = {
-  title: 'Showcase',
+  title: 'Main/Showcase',
   component: Showcase,
   args: {
     title: 'Most Popular'

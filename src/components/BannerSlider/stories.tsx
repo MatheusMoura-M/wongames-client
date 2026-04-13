@@ -3,7 +3,7 @@ import BannerSlider from '.'
 import items from './mock'
 
 const meta = {
-  title: 'BannerSlider',
+  title: 'Main/BannerSlider',
   component: BannerSlider,
   argTypes: {
     items: {

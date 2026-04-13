@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import Menu from '.'
 
 const meta = {
-  title: 'Menu',
+  title: 'Main/Menu',
   component: Menu,
   parameters: {
     layout: 'fullscreen'

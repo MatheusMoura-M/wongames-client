@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import CartDropdown from '.'
 
 const meta = {
-  title: 'CartDropdown',
+  title: 'Main/CartDropdown',
   component: CartDropdown,
   globals: {
     backgrounds: { value: 'dark' }

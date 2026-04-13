@@ -4,7 +4,7 @@ import CartList from '.'
 import mockItems from './mock'
 
 const meta = {
-  title: 'CartList',
+  title: 'Main/CartList',
   component: CartList,
   globals: {
     backgrounds: { value: 'dark' }

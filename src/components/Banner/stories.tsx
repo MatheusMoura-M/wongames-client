@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import Banner from '.'
 
 const meta = {
-  title: 'Banner',
+  title: 'Main/Banner',
   component: (args) => (
     <div style={{ maxWidth: '104rem', margin: '0 auto' }}>
       <Banner {...args} />

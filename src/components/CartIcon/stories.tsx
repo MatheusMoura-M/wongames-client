@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import CartIcon from '.'
 
 const meta = {
-  title: 'CartIcon',
+  title: 'Main/CartIcon',
   component: CartIcon,
   argTypes: {
     quantity: {

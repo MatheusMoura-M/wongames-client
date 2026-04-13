@@ -3,7 +3,7 @@ import { action } from 'storybook/actions'
 import GameCard from '.'
 
 const meta = {
-  title: 'GameCard',
+  title: 'Main/GameCard',
   component: GameCard,
   argTypes: {
     onFav: { action: 'clicked' },

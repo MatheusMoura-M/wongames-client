@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import Empty from '.'
 
 const meta = {
-  title: 'Empty',
+  title: 'Main/Empty',
   component: Empty,
   argTypes: {
     title: {

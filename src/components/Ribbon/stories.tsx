@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import Ribbon from '.'
 
 const meta = {
-  title: 'Ribbon',
+  title: 'Main/Ribbon',
   argTypes: {
     color: {
       type: 'string',

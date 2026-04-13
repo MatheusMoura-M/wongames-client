@@ -4,7 +4,7 @@ import ExploreSidebar from '.'
 import items from './mock'
 
 const meta = {
-  title: 'ExploreSidebar',
+  title: 'Main/ExploreSidebar',
   component: ExploreSidebar,
   argTypes: {
     items: { control: 'object' },
