@@ -1,12 +1,15 @@
-import { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import FormProfile from '.'
 
-export default {
+const meta = {
   title: 'Form/FormProfile',
   component: FormProfile
-} as Meta
+} satisfies Meta<typeof FormProfile>
 
-export const Default: StoryObj = {
+export default meta
+type Story = StoryObj<typeof FormProfile>
+
+export const Default: Story = {
   render: () => (
     <div style={{ maxWidth: 860, margin: 'auto' }}>
       <FormProfile />

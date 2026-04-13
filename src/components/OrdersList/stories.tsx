@@ -1,17 +1,20 @@
-import { Meta, StoryObj } from '@storybook/react'
-import OrdersList, { OrdersListProps } from '.'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import OrdersList from '.'
 
 import itemsMock from './mock'
 
-export default {
+const meta = {
   title: 'Profile/OrdersList',
   component: OrdersList,
   args: {
     items: itemsMock
   }
-} as Meta
+} satisfies Meta<typeof OrdersList>
 
-export const Default: StoryObj<OrdersListProps> = {
+export default meta
+type Story = StoryObj<typeof OrdersList>
+
+export const Default: Story = {
   render: (args) => (
     <div style={{ maxWidth: 850, margin: 'auto' }}>
       <OrdersList {...args} />

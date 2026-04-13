@@ -1,20 +1,23 @@
-import { Meta, StoryObj } from '@storybook/react'
-import BannerSlider, { BannerSliderProps } from '.'
-import items from "./mock"
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import BannerSlider from '.'
+import items from './mock'
 
-export default {
+const meta = {
   title: 'BannerSlider',
   component: BannerSlider,
   args: { items },
   parameters: {
-    layout: 'fullscreen',
-    backgrounds: {
-      default: 'won-dark'
-    }
+    layout: 'fullscreen'
+  },
+  globals: {
+    backgrounds: { value: 'dark' }
   }
-} as Meta
+} satisfies Meta<typeof BannerSlider>
 
-export const Default: StoryObj<BannerSliderProps> = {
+export default meta
+type Story = StoryObj<typeof BannerSlider>
+
+export const Default: Story = {
   render: (args) => (
     <div style={{ maxWidth: '130rem', margin: '0 auto' }}>
       <BannerSlider {...args} />

@@ -1,8 +1,8 @@
-import { Meta, StoryObj } from '@storybook/react'
-import GameCardSlider, { GameCardSliderProps } from '.'
-import items from "./mock"
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import GameCardSlider from '.'
+import items from './mock'
 
-export default {
+const meta = {
   title: 'GameCardSlider',
   component: GameCardSlider,
   args: {
@@ -10,14 +10,17 @@ export default {
     color: 'white'
   },
   parameters: {
-    layout: 'fullscreen',
-    backgrounds: {
-      default: 'won-dark'
-    }
+    layout: 'fullscreen'
+  },
+  globals: {
+    backgrounds: { value: 'dark' }
   }
-} as Meta
+} satisfies Meta<typeof GameCardSlider>
 
-export const Default: StoryObj<GameCardSliderProps> = {
+export default meta
+type Story = StoryObj<typeof GameCardSlider>
+
+export const Default: Story = {
   render: (args) => (
     <div style={{ maxWidth: '130rem', margin: '0 auto' }}>
       <GameCardSlider {...args} />

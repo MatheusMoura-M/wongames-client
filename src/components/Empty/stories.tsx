@@ -1,18 +1,18 @@
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import Empty from '.'
 
-import { Meta, StoryObj } from '@storybook/react'
-import Empty, { EmptyProps } from '.'
-
-export default {
+const meta = {
   title: 'Empty',
   component: Empty,
-  parameters: {
-    backgrounds: {
-      default: 'won-dark'
-    }
+  globals: {
+    backgrounds: { value: 'dark' }
   }
-} as Meta
+} satisfies Meta<typeof Empty>
 
-export const Default: StoryObj<EmptyProps> = {
+export default meta
+type Story = StoryObj<typeof Empty>
+
+export const Default: Story = {
   args: {
     title: 'Your wishlist is empty',
     description: 'Games added to your wishlist will appear here',

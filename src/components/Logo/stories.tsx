@@ -1,14 +1,15 @@
-import { Meta, StoryObj } from '@storybook/react'
-import Logo, { LogoProps } from '.'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import Logo from '.'
 
-export default {
+const meta = {
   title: 'Logo',
   component: Logo,
-  parameters: {
-    backgrounds: {
-      default: 'won-dark'
-    }
+  globals: {
+    backgrounds: { value: 'dark' }
   }
-} as Meta
+} satisfies Meta<typeof Logo>
 
-export const Default: StoryObj<LogoProps> = {}
+export default meta
+type Story = StoryObj<typeof Logo>
+
+export const Default: Story = {}

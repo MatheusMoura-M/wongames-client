@@ -1,17 +1,18 @@
-import { Meta, StoryObj } from '@storybook/react'
-import Dropdown, { DropdownProps } from '.'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import Dropdown from '.'
 
-export default {
+const meta = {
   title: 'Dropdown',
   component: Dropdown,
-  parameters: {
-    backgrounds: {
-      default: 'won-dark'
-    }
+  globals: {
+    backgrounds: { value: 'dark' }
   }
-} as Meta
+} satisfies Meta<typeof Dropdown>
 
-export const Default: StoryObj<DropdownProps> = {
+export default meta
+type Story = StoryObj<typeof Dropdown>
+
+export const Default: Story = {
   render: (args) => <Dropdown {...args} />,
   args: {
     title: 'Click here',

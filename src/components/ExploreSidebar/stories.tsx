@@ -1,9 +1,9 @@
-import { Meta, StoryObj } from '@storybook/react'
-import ExploreSidebar, { ExploreSidebarProps } from '.'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import ExploreSidebar from '.'
 
 import items from './mock'
 
-export default {
+const meta = {
   title: 'ExploreSidebar',
   component: ExploreSidebar,
   args: {
@@ -11,14 +11,17 @@ export default {
     onFilter: () => console.log('filter')
   },
   parameters: {
-    layout: 'fullscreen',
-    backgrounds: {
-      default: 'won-dark'
-    }
+    layout: 'fullscreen'
+  },
+  globals: {
+    backgrounds: { value: 'dark' }
   }
-} as Meta
+} satisfies Meta<typeof ExploreSidebar>
 
-export const Default: StoryObj<ExploreSidebarProps> = {
+export default meta
+type Story = StoryObj<typeof ExploreSidebar>
+
+export const Default: Story = {
   render: (args) => (
     <div style={{ padding: 16, maxWidth: 320 }}>
       <ExploreSidebar {...args} />
@@ -26,7 +29,7 @@ export const Default: StoryObj<ExploreSidebarProps> = {
   )
 }
 
-export const WithInitialValues: StoryObj<ExploreSidebarProps> = {
+export const WithInitialValues: Story = {
   render: (args) => (
     <div style={{ padding: 16, maxWidth: 320 }}>
       <ExploreSidebar
@@ -34,7 +37,7 @@ export const WithInitialValues: StoryObj<ExploreSidebarProps> = {
         initialValues={{
           platforms: ['windows', 'linux'],
           sort_by: 'low-to-high',
-          price: "under-50"
+          price: 'under-50'
         }}
       />
     </div>

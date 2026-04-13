@@ -1,12 +1,15 @@
-import { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import FormSignIn from '.'
 
-export default {
+const meta = {
   title: 'Form/FormSignIn',
   component: FormSignIn
-} as Meta
+} satisfies Meta<typeof FormSignIn>
 
-export const Default: StoryObj = {
+export default meta
+type Story = StoryObj<typeof FormSignIn>
+
+export const Default: Story = {
   render: () => (
     <div style={{ width: 300, margin: 'auto' }}>
       <FormSignIn />

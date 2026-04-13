@@ -1,8 +1,7 @@
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import GameItem from '.'
 
-import { Meta, StoryObj } from '@storybook/react'
-import GameItem, { GameItemProps } from '.'
-
-export default {
+const meta = {
   title: 'GameItem',
   component: GameItem,
   args: {
@@ -10,11 +9,14 @@ export default {
     title: 'Red Dead Redemption 2',
     price: 'R$ 215,00'
   }
-} as Meta
+} satisfies Meta<typeof GameItem>
 
-export const Default: StoryObj<GameItemProps> = {}
+export default meta
+type Story = StoryObj<typeof GameItem>
 
-export const WithPayment: StoryObj<GameItemProps> = {
+export const Default: Story = {}
+
+export const WithPayment: Story = {
   args: {
     downloadLink: 'https://wongames.com/game/download/21312ndasd',
     paymentInfo: {

@@ -1,22 +1,29 @@
-import { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import CartIcon from '.'
 
-export default {
+const meta = {
   title: 'CartIcon',
   component: CartIcon,
-  parameters: {
-    backgrounds: {
-      default: 'won-dark'
+  argTypes: {
+    quantity: {
+      type: 'number',
+      control: 'number'
     }
+  },
+  globals: {
+    backgrounds: { value: 'dark' }
   }
-} as Meta
+} satisfies Meta<typeof CartIcon>
 
-export const Default: StoryObj = {
+export default meta
+type Story = StoryObj<typeof CartIcon>
+
+export const Default: Story = {
   render: () => <CartIcon />
 }
 
-export const withItems: StoryObj = {
-  render: (args) => <CartIcon {...args} />,
+export const withItems: Story = {
+  render: () => <CartIcon />,
   args: {
     quantity: 3
   }

@@ -1,15 +1,19 @@
-import { StoryObj, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import MediaMatch from '.'
-export default {
+
+const meta = {
   title: 'MediaMatch',
   component: MediaMatch
-} as Meta
+} satisfies Meta<typeof MediaMatch>
 
-export const Desktop: StoryObj = {
+export default meta
+type Story = StoryObj<typeof MediaMatch>
+
+export const Desktop: Story = {
   render: () => <MediaMatch greaterThan="medium">Only on Desktop</MediaMatch>
 }
 
-export const Mobile: StoryObj = {
+export const Mobile: Story = {
   render: () => <MediaMatch lessThan="medium">Only on Mobile</MediaMatch>,
   parameters: {
     viewport: {

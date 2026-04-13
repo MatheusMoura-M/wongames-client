@@ -1,14 +1,17 @@
-import { Meta, StoryObj } from '@storybook/react'
-import Highlight, { HighlightProps } from '.'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import Highlight from '.'
 import item from './mock'
 
-export default {
+const meta = {
   title: 'Highlight',
   component: Highlight,
-  args: {...item}
-} as Meta
+  args: { ...item }
+} satisfies Meta<typeof Highlight>
 
-export const Default: StoryObj<HighlightProps> = {
+export default meta
+type Story = StoryObj<typeof Highlight>
+
+export const Default: Story = {
   render: (args) => (
     <div style={{ maxWidth: '104rem' }}>
       <Highlight {...args} />
@@ -16,7 +19,7 @@ export const Default: StoryObj<HighlightProps> = {
   )
 }
 
-export const WithFloatImage: StoryObj<HighlightProps> = {
+export const WithFloatImage: Story = {
   args: {
     floatImage: '/img/red-dead-float.png'
   },

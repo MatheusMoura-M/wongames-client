@@ -1,17 +1,19 @@
-import { Meta, StoryObj } from '@storybook/react'
-import CardsList, { CardsListProps } from '.'
-
 import cardsMock from '@/components/PaymentOptions/mock'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import CardsList from '.'
 
-export default {
+const meta = {
   title: 'Profile/CardsList',
   component: CardsList,
   args: {
     cards: cardsMock
   }
-} as Meta
+} satisfies Meta<typeof CardsList>
 
-export const Default: StoryObj<CardsListProps> = {
+export default meta
+type Story = StoryObj<typeof CardsList>
+
+export const Default: Story = {
   render: (args) => (
     <div style={{ maxWidth: 850, margin: 'auto' }}>
       <CardsList {...args} />

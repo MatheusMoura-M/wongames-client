@@ -1,21 +1,24 @@
-import { Meta, StoryObj } from '@storybook/react'
-import Radio, { RadioProps } from '.'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import Radio from '.'
 
-export default {
+const meta = {
   title: 'Form/Radio',
   component: Radio,
-  parameters: {
-    layout: 'fullscreen',
-    backgrounds: {
-      default: 'won-dark'
-    }
-  },
   argTypes: {
     onCheck: { action: 'checked' }
+  },
+  parameters: {
+    layout: 'fullscreen'
+  },
+  globals: {
+    backgrounds: { value: 'dark' }
   }
-} as Meta
+} satisfies Meta<typeof Radio>
 
-export const Default: StoryObj<RadioProps> = {
+export default meta
+type Story = StoryObj<typeof Radio>
+
+export const Default: Story = {
   render: (args) => (
     <>
       <div style={{ padding: 10 }}>

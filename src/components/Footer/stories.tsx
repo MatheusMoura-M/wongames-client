@@ -1,13 +1,16 @@
-import { StoryObj, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import Footer from '.'
 
-export default {
+const meta = {
   title: 'Footer',
   component: () => (
     <div style={{ maxWidth: '130rem', margin: '0 auto' }}>
       <Footer />
     </div>
   )
-} as Meta
+} satisfies Meta<typeof Footer>
 
-export const Default: StoryObj = {}
+export default meta
+type Story = StoryObj<typeof Footer>
+
+export const Default: Story = {}

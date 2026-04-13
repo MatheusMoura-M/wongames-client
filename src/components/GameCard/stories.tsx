@@ -1,7 +1,7 @@
-import { StoryObj, Meta } from '@storybook/react'
-import GameCard, { GameCardProps } from '.'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import GameCard from '.'
 
-export default {
+const meta = {
   title: 'GameCard',
   component: GameCard,
   args: {
@@ -16,14 +16,15 @@ export default {
     onFav: { action: 'clicked' },
     ribbon: { type: 'string' }
   },
-  parameters: {
-    backgrounds: {
-      default: 'won-dark'
-    }
+  globals: {
+    backgrounds: { value: 'dark' }
   }
-} as Meta
+} satisfies Meta<typeof GameCard>
 
-export const Default: StoryObj<GameCardProps> = {
+export default meta
+type Story = StoryObj<typeof GameCard>
+
+export const Default: Story = {
   render: (args) => (
     <div style={{ width: '30rem' }}>
       <GameCard {...args} />
@@ -31,7 +32,7 @@ export const Default: StoryObj<GameCardProps> = {
   )
 }
 
-export const WithRibbon: StoryObj<GameCardProps> = {
+export const WithRibbon: Story = {
   args: {
     ribbon: '20% OFF',
     ribbonSize: 'small',

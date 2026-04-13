@@ -1,21 +1,24 @@
-import { Meta, StoryObj } from '@storybook/react'
-import Checkbox, { CheckboxProps } from '.'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import Checkbox from '.'
 
-export default {
+const meta = {
   title: 'Form/Checkbox',
   component: Checkbox,
-  parameters: {
-    layout: 'fullscreen',
-    backgrounds: {
-      default: 'won-dark'
-    }
-  },
   argTypes: {
     onCheck: { action: 'checked' }
+  },
+  parameters: {
+    layout: 'fullscreen'
+  },
+  globals: {
+    backgrounds: { value: 'dark' }
   }
-} as Meta
+} satisfies Meta<typeof Checkbox>
 
-export const Default: StoryObj<CheckboxProps> = {
+export default meta
+type Story = StoryObj<typeof Checkbox>
+
+export const Default: Story = {
   render: (args) => (
     <>
       <div style={{ padding: 10 }}>

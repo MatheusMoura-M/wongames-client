@@ -1,18 +1,19 @@
-import { Meta, StoryObj } from '@storybook/react'
-import TextContent, { TextContentProps } from '.'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import TextContent from '.'
 import textMock from './mock'
 
-export default {
+const meta = {
   title: 'TextContent',
   component: TextContent,
   args: textMock,
-  parameters: {
-    backgrounds: {
-      default: 'won-dark'
-    }
+  globals: {
+    backgrounds: { value: 'dark' }
   }
-} as Meta
+} satisfies Meta<typeof TextContent>
 
-export const Default: StoryObj<TextContentProps> = {
+export default meta
+type Story = StoryObj<typeof TextContent>
+
+export const Default: Story = {
   render: (args) => <TextContent {...args} />
 }

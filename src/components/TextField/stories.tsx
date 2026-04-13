@@ -1,8 +1,8 @@
-import { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import { Email } from '@styled-icons/material-outlined/Email'
-import TextField, { TextFieldProps } from '.'
+import TextField from '.'
 
-export default {
+const meta = {
   title: 'Form/TextField',
   component: TextField,
   args: {
@@ -16,9 +16,12 @@ export default {
     onInput: { action: 'changed' },
     icon: { type: 'symbol' }
   }
-} as Meta
+} satisfies Meta<typeof TextField>
 
-export const Default: StoryObj<TextFieldProps> = {
+export default meta
+type Story = StoryObj<typeof TextField>
+
+export const Default: Story = {
   render: (args) => (
     <div style={{ maxWidth: 300, padding: 15 }}>
       <TextField {...args} />
@@ -26,7 +29,7 @@ export const Default: StoryObj<TextFieldProps> = {
   )
 }
 
-export const withError: StoryObj<TextFieldProps> = {
+export const withError: Story = {
   render: (args) => (
     <div style={{ maxWidth: 300, padding: 15 }}>
       <TextField {...args} />

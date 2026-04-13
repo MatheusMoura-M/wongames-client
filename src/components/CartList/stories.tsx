@@ -1,9 +1,9 @@
-import { Meta, StoryObj } from '@storybook/react'
-import CartList, { CartListProps } from '.'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import CartList from '.'
 
 import mockItems from './mock'
 
-export default {
+const meta = {
   title: 'CartList',
   component: CartList,
   args: {
@@ -15,14 +15,15 @@ export default {
       type: 'function'
     }
   },
-  parameters: {
-    backgrounds: {
-      default: 'won-dark'
-    }
+  globals: {
+    backgrounds: { value: 'dark' }
   }
-} as Meta
+} satisfies Meta<typeof CartList>
 
-export const Default: StoryObj<CartListProps> = {
+export default meta
+type Story = StoryObj<typeof CartList>
+
+export const Default: Story = {
   render: (args) => (
     <div style={{ maxWidth: 800 }}>
       <CartList {...args} />
@@ -30,7 +31,7 @@ export const Default: StoryObj<CartListProps> = {
   )
 }
 
-export const WithButton: StoryObj<CartListProps> = {
+export const WithButton: Story = {
   render: (args) => (
     <div style={{ maxWidth: 800 }}>
       <CartList {...args} hasButton />
@@ -38,7 +39,7 @@ export const WithButton: StoryObj<CartListProps> = {
   )
 }
 
-export const Empty: StoryObj<CartListProps> = {
+export const Empty: Story = {
   render: () => (
     <div style={{ maxWidth: 800 }}>
       <CartList />

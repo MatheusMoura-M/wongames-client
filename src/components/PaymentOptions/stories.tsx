@@ -1,10 +1,9 @@
-
-import { Meta, StoryObj } from '@storybook/react'
-import PaymentOptions, { PaymentOptionsProps } from '.'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import PaymentOptions from '.'
 
 import cardsMock from './mock'
 
-export default {
+const meta = {
   title: 'PaymentOptions',
   component: PaymentOptions,
   args: {
@@ -12,20 +11,21 @@ export default {
   },
   argTypes: {
     cards: {
-      type: 'function',
+      type: 'function'
     },
     handlePayment: {
       action: 'clicked'
     }
   },
-  parameters: {
-    backgrounds: {
-      default: 'won-dark'
-    }
+  globals: {
+    backgrounds: { value: 'dark' }
   }
-} as Meta
+} satisfies Meta<typeof PaymentOptions>
 
-export const Default: StoryObj<PaymentOptionsProps> = {
+export default meta
+type Story = StoryObj<typeof PaymentOptions>
+
+export const Default: Story = {
   render: (args) => (
     <div style={{ padding: 16, maxWidth: 400 }}>
       <PaymentOptions {...args} />

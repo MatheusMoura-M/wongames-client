@@ -1,20 +1,20 @@
-import { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import GameInfo from '.'
 import mockGame from './mock'
 
-import GameInfo, { GameInfoProps } from '.'
-
-export default {
+const meta = {
   title: 'Game/GameInfo',
   component: GameInfo,
-  parameters: {
-    backgrounds: {
-      default: 'won-dark'
-    }
-  },
-  args: mockGame
-} as Meta
+  args: mockGame,
+  globals: {
+    backgrounds: { value: 'dark' }
+  }
+} satisfies Meta<typeof GameInfo>
 
-export const Default: StoryObj<GameInfoProps> = {
+export default meta
+type Story = StoryObj<typeof GameInfo>
+
+export const Default: Story = {
   render: (args) => (
     <div style={{ maxWidth: '144rem', margin: 'auto', padding: '1.5rem' }}>
       <GameInfo {...args} />

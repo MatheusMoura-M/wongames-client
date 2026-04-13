@@ -1,23 +1,25 @@
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import Gallery from '.'
+import items from './mock'
 
-import { Meta, StoryObj } from '@storybook/react'
-import Gallery, { GalleryProps } from '.'
-import items from "./mock"
-
-export default {
+const meta = {
   title: 'Gallery',
   component: Gallery,
   args: {
     items
   },
   parameters: {
-    layout: 'fullscreen',
-    backgrounds: {
-      default: 'won-dark'
-    }
+    layout: 'fullscreen'
+  },
+  globals: {
+    backgrounds: { value: 'dark' }
   }
-} as Meta
+} satisfies Meta<typeof Gallery>
 
-export const Default: StoryObj<GalleryProps> = {
+export default meta
+type Story = StoryObj<typeof Gallery>
+
+export const Default: Story = {
   render: (args) => (
     <div style={{ maxWidth: '130rem', margin: '0 auto' }}>
       <Gallery {...args} />
