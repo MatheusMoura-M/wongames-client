@@ -4,23 +4,27 @@ import { RemoveShoppingCart } from '@styled-icons/material-outlined/RemoveShoppi
 import Button from '../Button'
 
 type CartButtonProps = {
-  id: string
+  documentId: string
 }
 
-const CartButton = ({ id }: CartButtonProps) => {
+const CartButton = ({ documentId }: CartButtonProps) => {
   const { isInCart, addToCart, removeFromCart } = useCart()
 
   return (
     <Button
       icon={
-        isInCart(id) ? (
+        isInCart(documentId) ? (
           <RemoveShoppingCart aria-label="Remove from cart" />
         ) : (
           <AddShoppingCart aria-label="Add to cart" />
         )
       }
       size="small"
-      onClick={() => (isInCart(id) ? removeFromCart(id) : addToCart(id))}
+      onClick={() =>
+        isInCart(documentId)
+          ? removeFromCart(documentId)
+          : addToCart(documentId)
+      }
     />
   )
 }
