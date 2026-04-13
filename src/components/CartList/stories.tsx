@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import CartList from '.'
-
 import mockItems from './mock'
 
 const meta = {
@@ -12,16 +11,12 @@ const meta = {
 } satisfies Meta<typeof CartList>
 
 export default meta
-type Story = StoryObj<typeof CartList>
+type Story = StoryObj
 
 export const Default: Story = {
-  argTypes: {
-    items: { control: 'object' },
-    total: { type: 'string', control: 'text' }
-  },
   args: {
-    items: mockItems,
-    total: 'R$ 430,00'
+    total: 'R$ 330,00',
+    cartContextValue: { items: mockItems }
   },
   render: (args) => (
     <div style={{ maxWidth: 800 }}>
@@ -32,13 +27,11 @@ export const Default: Story = {
 
 export const WithButton: Story = {
   argTypes: {
-    items: { control: 'object' },
-    total: { type: 'string', control: 'text' },
     hasButton: { type: 'boolean', control: 'boolean' }
   },
   args: {
-    items: mockItems,
-    total: 'R$ 430,00',
+    total: 'R$ 330,00',
+    cartContextValue: { items: mockItems },
     hasButton: true
   },
   render: (args) => (
@@ -48,7 +41,7 @@ export const WithButton: Story = {
   )
 }
 
-export const Empty: Story = {
+export const Empty: StoryObj<typeof CartList> = {
   render: () => (
     <div style={{ maxWidth: 800 }}>
       <CartList />
