@@ -5,14 +5,14 @@ import {
   QueryGameBySlug,
   QueryGameBySlugVariables
 } from '@/graphql/generated/QueryGameBySlug'
-import { QueryGames, QueryGamesVariables } from '@/graphql/generated/QueryGames'
-import { QUERY_GAME_BY_SLUG, QUERY_GAMES } from '@/graphql/queries/games'
+import { QueryGames, QueryGamesVariables } from '@/graphql/generated/queryGames'
 import { QueryRecommended } from '@/graphql/generated/QueryRecommended'
-import { QUERY_RECOMMENDED } from '@/graphql/queries/recommended'
 import {
   QueryUpcoming,
   QueryUpcomingVariables
 } from '@/graphql/generated/QueryUpcoming'
+import { QUERY_GAME_BY_SLUG, QUERY_GAMES } from '@/graphql/queries/games'
+import { QUERY_RECOMMENDED } from '@/graphql/queries/recommended'
 import { QUERY_UPCOMING } from '@/graphql/queries/upcoming'
 
 import Game, { GameTemplateProps } from '@/templates/Game'

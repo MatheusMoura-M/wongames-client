@@ -7,7 +7,7 @@ exports[`<FormSignUp /> should render the form 1`] = `
   overflow: hidden;
 }
 
-.c7 {
+.c6 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -25,7 +25,7 @@ exports[`<FormSignUp /> should render the form 1`] = `
   width: 100%;
 }
 
-.c7:hover {
+.c6:hover {
   background: linear-gradient(180deg, #e35565 0%, #d958a6 50%);
 }
 
@@ -69,24 +69,20 @@ exports[`<FormSignUp /> should render the form 1`] = `
   margin: 0.8rem 0;
 }
 
-.c0 .c6 {
-  margin: 3.2rem auto 1.6rem;
-}
-
-.c8 {
+.c7 {
   font-size: 1.4rem;
   color: #030517;
   text-align: center;
 }
 
-.c8 a {
+.c7 a {
   color: #3CD3C1;
   text-decoration: none;
   border-bottom: 0.1rem solid #3CD3C1;
   transition: color,border,0.1s ease-in-out;
 }
 
-.c8 a:hover {
+.c7 a:hover {
   color: #29b3a3;
   border-bottom: 0.1rem solid #29b3a3;
 }
@@ -223,14 +219,14 @@ exports[`<FormSignUp /> should render the form 1`] = `
       </div>
     </div>
     <button
-      class="c6 c7"
+      class="c6"
     >
       <span>
         Sign up now
       </span>
     </button>
     <div
-      class="c8"
+      class="c7"
     >
       Already have an account? 
       <a

@@ -1,4 +1,4 @@
-import { QueryGames_games } from '@/graphql/generated/QueryGames'
+import { QueryGames_games } from '@/graphql/generated/queryGames'
 import {
   QueryHome_banners,
   QueryHome_sections_freeGames_highlight

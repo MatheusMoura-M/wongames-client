@@ -216,7 +216,7 @@ export interface QueryHome_sections_freeGames_highlight {
   __typename: 'ComponentPageHighlight'
   title: string
   subtitle: string
-  background: QueryHome_sections_freeGames_highlight_background
+  background: QueryHome_sections_freeGames_highlight_background | null
   floatImage: QueryHome_sections_freeGames_highlight_floatImage | null
   buttonLabel: string
   buttonLink: string

@@ -1,9 +1,10 @@
+import { darken } from 'polished'
 import styled, { css, DefaultTheme } from 'styled-components'
 import { ButtonProps } from '.'
-import { darken } from 'polished'
 
 export type WrapperProps = {
   hasIcon: boolean
+  disabled?: boolean
 } & Pick<ButtonProps, 'size' | 'fullWidth' | 'minimal'>
 
 const wrapperModifiers = {
@@ -49,10 +50,7 @@ const wrapperModifiers = {
   `
 }
 
-export const Wrapper = styled.button.withConfig({
-  shouldForwardProp: (prop) =>
-    !['hasIcon', 'fullWidth', 'minimal'].includes(prop)
-})<WrapperProps>`
+const wrapperStyles = css<WrapperProps>`
   ${({ theme, size, fullWidth, hasIcon, minimal, disabled }) => css`
     display: inline-flex;
     align-items: center;
@@ -78,4 +76,18 @@ export const Wrapper = styled.button.withConfig({
     ${!!minimal && wrapperModifiers.minimal(theme)};
     ${disabled && wrapperModifiers.disabled()};
   `}
+`
+
+export const WrapperButton = styled.button.withConfig({
+  shouldForwardProp: (prop) =>
+    !['hasIcon', 'fullWidth', 'minimal'].includes(prop)
+})<WrapperProps>`
+  ${wrapperStyles}
+`
+
+export const WrapperAnchor = styled.a.withConfig({
+  shouldForwardProp: (prop) =>
+    !['hasIcon', 'fullWidth', 'minimal'].includes(prop)
+})<WrapperProps>`
+  ${wrapperStyles}
 `

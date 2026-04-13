@@ -1,8 +1,8 @@
-import { StoryObj, Meta } from '@storybook/react'
-import Button from '.'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import { AddShoppingCart } from '@styled-icons/material-outlined/AddShoppingCart'
+import Button from '.'
 
-export default {
+const meta = {
   title: 'Button',
   component: Button,
   argTypes: {
@@ -11,17 +11,24 @@ export default {
     },
     icon: {
       type: 'symbol'
+    },
+    size: {
+      control: 'select',
+      options: ['small', 'medium', 'large']
     }
   }
-} as Meta
+} satisfies Meta<typeof Button>
 
-export const Default: StoryObj = {
+export default meta
+type Story = StoryObj<typeof Button>
+
+export const Default: Story = {
   args: {
     children: 'Buy now'
   }
 }
 
-export const withIcon: StoryObj = {
+export const withIcon: Story = {
   args: {
     size: 'small',
     children: 'Buy now',
@@ -29,7 +36,7 @@ export const withIcon: StoryObj = {
   }
 }
 
-export const asLink: StoryObj = {
+export const asLink: Story = {
   args: {
     size: 'large',
     children: 'Buy now',

@@ -8,8 +8,6 @@ export default defineConfig([
   ...nextVitals,
   ...nextTs,
   prettier,
-  ...storybook.configs['flat/recommended'],
-
   {
     rules: {
       '@typescript-eslint/no-unused-expressions': 'off',
@@ -17,14 +15,12 @@ export default defineConfig([
       '@next/next/no-img-element': 'warn'
     }
   },
-
   {
     files: ['**/test.{ts,tsx}'],
     rules: {
       '@next/next/no-img-element': 'off'
     }
   },
-
   globalIgnores([
     '.next/**',
     'out/**',
@@ -33,6 +29,8 @@ export default defineConfig([
     'node_modules/**',
     '!.storybook',
     '!.jest',
-    'generators'
-  ])
+    'generators',
+    'src/stories/**'
+  ]),
+  ...storybook.configs['flat/recommended']
 ])

@@ -1,26 +1,33 @@
 import { CartContext, CartContextDefaultValues } from '@/hooks/use-cart'
-import type { Decorator } from '@storybook/react'
+import GlobalStyles from '@/styles/global'
+import theme from '@/styles/theme'
+import type { Decorator, Parameters, Preview } from '@storybook/nextjs-vite'
 import { ThemeProvider } from 'styled-components'
-import GlobalStyles from '../src/styles/global'
-import theme from '../src/styles/theme'
 
-export const parameters = {
+const parameters: Parameters = {
   backgrounds: {
-    default: 'won-light',
-    values: [
-      {
-        name: 'won-light',
-        value: theme.colors.white
-      },
-      {
-        name: 'won-dark',
-        value: theme.colors.mainBg
-      }
-    ]
+    options: {
+      light: { name: 'won-light', value: theme.colors.white },
+      dark: { name: 'won-dark', value: theme.colors.mainBg }
+    }
+  },
+
+  controls: {
+    matchers: {
+      color: /(background|color)$/i,
+      date: /Date$/i
+    }
+  },
+
+  a11y: {
+    // 'todo' - show a11y violations in the test UI only
+    // 'error' - fail CI on a11y violations
+    // 'off' - skip a11y checks entirely
+    test: 'todo'
   }
 }
 
-export const decorators: Decorator[] = [
+const decorators: Decorator[] = [
   (Story, context) => (
     <ThemeProvider theme={theme}>
       <CartContext.Provider
@@ -36,3 +43,13 @@ export const decorators: Decorator[] = [
     </ThemeProvider>
   )
 ]
+
+const preview: Preview = {
+  parameters: parameters,
+  decorators: decorators,
+  initialGlobals: {
+    backgrounds: { value: 'light' }
+  }
+}
+
+export default preview

@@ -214,6 +214,7 @@ exports[`<GameInfo /> should render game informations 1`] = `
   >
     <button
       class="c6"
+      icon="[object Object]"
     >
       <svg
         aria-hidden="true"
@@ -233,6 +234,7 @@ exports[`<GameInfo /> should render game informations 1`] = `
     </button>
     <button
       class="c8"
+      icon="[object Object]"
     >
       <svg
         aria-hidden="true"
