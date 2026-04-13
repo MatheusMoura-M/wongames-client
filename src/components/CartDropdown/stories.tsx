@@ -5,10 +5,6 @@ import CartDropdown from '.'
 const meta = {
   title: 'CartDropdown',
   component: CartDropdown,
-  args: {
-    items,
-    total: 'R$ 300,00'
-  },
   globals: {
     backgrounds: { value: 'dark' }
   }
@@ -18,6 +14,10 @@ export default meta
 type Story = StoryObj<typeof CartDropdown>
 
 export const Default: Story = {
+  args: {
+    items,
+    total: 'R$ 430,00'
+  },
   render: (args) => (
     <div
       style={{ maxWidth: '98%', display: 'flex', justifyContent: 'flex-end' }}

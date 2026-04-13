@@ -4,6 +4,9 @@ import UserDropdown from '.'
 const meta = {
   title: 'UserDropdown',
   component: UserDropdown,
+  args: {
+    username: 'Willian'
+  },
   globals: {
     backgrounds: { value: 'dark' }
   }
@@ -19,8 +22,5 @@ export const Default: Story = {
     >
       <UserDropdown {...args} />
     </div>
-  ),
-  args: {
-    username: 'Willian'
-  }
+  )
 }

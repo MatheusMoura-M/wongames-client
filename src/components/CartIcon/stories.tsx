@@ -19,12 +19,15 @@ export default meta
 type Story = StoryObj<typeof CartIcon>
 
 export const Default: Story = {
+  args: {
+    quantity: 0
+  },
   render: () => <CartIcon />
 }
 
 export const withItems: Story = {
-  render: () => <CartIcon />,
   args: {
     quantity: 3
-  }
+  },
+  render: () => <CartIcon />
 }

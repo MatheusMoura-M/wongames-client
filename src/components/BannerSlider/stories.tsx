@@ -5,6 +5,11 @@ import items from './mock'
 const meta = {
   title: 'BannerSlider',
   component: BannerSlider,
+  argTypes: {
+    items: {
+      control: 'object'
+    }
+  },
   args: { items },
   parameters: {
     layout: 'fullscreen'

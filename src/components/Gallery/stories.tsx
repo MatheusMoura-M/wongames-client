@@ -5,9 +5,10 @@ import items from './mock'
 const meta = {
   title: 'Gallery',
   component: Gallery,
-  args: {
-    items
+  argTypes: {
+    items: { control: 'object' }
   },
+  args: { items },
   parameters: {
     layout: 'fullscreen'
   },

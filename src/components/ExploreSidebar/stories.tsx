@@ -1,14 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import { action } from 'storybook/actions'
 import ExploreSidebar from '.'
-
 import items from './mock'
 
 const meta = {
   title: 'ExploreSidebar',
   component: ExploreSidebar,
+  argTypes: {
+    items: { control: 'object' },
+    onFilter: { action: 'clicked' }
+  },
   args: {
     items,
-    onFilter: () => console.log('filter')
+    onFilter: action('on-click')
   },
   parameters: {
     layout: 'fullscreen'
@@ -30,16 +34,19 @@ export const Default: Story = {
 }
 
 export const WithInitialValues: Story = {
+  argTypes: {
+    initialValues: { control: 'object' }
+  },
+  args: {
+    initialValues: {
+      platforms: ['windows', 'linux'],
+      sort_by: 'low-to-high',
+      price: 'under-50'
+    }
+  },
   render: (args) => (
     <div style={{ padding: 16, maxWidth: 320 }}>
-      <ExploreSidebar
-        {...args}
-        initialValues={{
-          platforms: ['windows', 'linux'],
-          sort_by: 'low-to-high',
-          price: 'under-50'
-        }}
-      />
+      <ExploreSidebar {...args} />
     </div>
   )
 }

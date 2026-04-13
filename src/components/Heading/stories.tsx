@@ -6,17 +6,17 @@ const meta = {
   component: Heading,
   argTypes: {
     children: {
-      type: 'string'
+      type: 'string',
+      control: 'text'
     }
+  },
+  args: {
+    children: 'Most Populars',
+    color: 'black'
   }
 } satisfies Meta<typeof Heading>
 
 export default meta
 type Story = StoryObj<typeof Heading>
 
-export const Default: Story = {
-  args: {
-    children: 'Most Populars',
-    color: 'black'
-  }
-}
+export const Default: Story = {}

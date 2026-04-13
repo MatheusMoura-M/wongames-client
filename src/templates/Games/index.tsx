@@ -11,8 +11,8 @@ import {
 import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined/KeyboardArrowDown'
 import { useRouter } from 'next/router'
 import { ParsedUrlQueryInput } from 'querystring'
-import * as S from './styles'
 import { useEffect, useState } from 'react'
+import * as S from './styles'
 
 export type GamesTemplateProps = {
   games?: GameCardProps[]

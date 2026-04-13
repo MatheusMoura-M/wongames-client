@@ -10,11 +10,17 @@ export default meta
 type Story = StoryObj<typeof MediaMatch>
 
 export const Desktop: Story = {
-  render: () => <MediaMatch greaterThan="medium">Only on Desktop</MediaMatch>
+  args: {
+    greaterThan: 'medium'
+  },
+  render: (args) => <MediaMatch {...args}>Only on Desktop</MediaMatch>
 }
 
 export const Mobile: Story = {
-  render: () => <MediaMatch lessThan="medium">Only on Mobile</MediaMatch>,
+  args: {
+    lessThan: 'medium'
+  },
+  render: (args) => <MediaMatch {...args}>Only on Mobile</MediaMatch>,
   parameters: {
     viewport: {
       defaultViewport: 'mobile1'

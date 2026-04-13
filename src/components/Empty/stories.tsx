@@ -4,6 +4,25 @@ import Empty from '.'
 const meta = {
   title: 'Empty',
   component: Empty,
+  argTypes: {
+    title: {
+      type: 'string',
+      control: 'text'
+    },
+    description: {
+      type: 'string',
+      control: 'text'
+    },
+    hasLink: {
+      type: 'boolean',
+      control: 'boolean'
+    }
+  },
+  args: {
+    title: 'Your wishlist is empty',
+    description: 'Games added to your wishlist will appear here',
+    hasLink: true
+  },
   globals: {
     backgrounds: { value: 'dark' }
   }
@@ -12,10 +31,4 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof Empty>
 
-export const Default: Story = {
-  args: {
-    title: 'Your wishlist is empty',
-    description: 'Games added to your wishlist will appear here',
-    hasLink: true
-  }
-}
+export const Default: Story = {}

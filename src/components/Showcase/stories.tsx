@@ -6,6 +6,9 @@ import Showcase from '.'
 const meta = {
   title: 'Showcase',
   component: Showcase,
+  args: {
+    title: 'Most Popular'
+  },
   decorators: [
     (Story) => (
       <div style={{ margin: '0 auto' }}>
@@ -25,26 +28,23 @@ export default meta
 type Story = StoryObj<typeof Showcase>
 
 export const Default: Story = {
-  render: (args) => <Showcase {...args} />,
   args: {
-    title: 'Most Popular',
     highlight: highlightMock,
     games: gamesMock
-  }
+  },
+  render: (args) => <Showcase {...args} />
 }
 
 export const WithoutHighlight: Story = {
-  render: (args) => <Showcase {...args} />,
   args: {
-    title: 'Most Popular',
     games: gamesMock
-  }
+  },
+  render: (args) => <Showcase {...args} />
 }
 
 export const WithoutGames: Story = {
-  render: (args) => <Showcase {...args} />,
   args: {
-    title: 'Most Popular',
     highlight: highlightMock
-  }
+  },
+  render: (args) => <Showcase {...args} />
 }

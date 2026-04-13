@@ -1,21 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import { action } from 'storybook/actions'
 import PaymentOptions from '.'
-
 import cardsMock from './mock'
 
 const meta = {
   title: 'PaymentOptions',
   component: PaymentOptions,
-  args: {
-    cards: cardsMock
-  },
   argTypes: {
-    cards: {
-      type: 'function'
-    },
     handlePayment: {
       action: 'clicked'
     }
+  },
+  args: {
+    cards: cardsMock,
+    handlePayment: action('handle-payment')
   },
   globals: {
     backgrounds: { value: 'dark' }

@@ -6,15 +6,6 @@ import mockItems from './mock'
 const meta = {
   title: 'CartList',
   component: CartList,
-  args: {
-    items: mockItems,
-    total: 'R$ 330,00'
-  },
-  argTypes: {
-    items: {
-      type: 'function'
-    }
-  },
   globals: {
     backgrounds: { value: 'dark' }
   }
@@ -24,6 +15,14 @@ export default meta
 type Story = StoryObj<typeof CartList>
 
 export const Default: Story = {
+  argTypes: {
+    items: { control: 'object' },
+    total: { type: 'string', control: 'text' }
+  },
+  args: {
+    items: mockItems,
+    total: 'R$ 430,00'
+  },
   render: (args) => (
     <div style={{ maxWidth: 800 }}>
       <CartList {...args} />
@@ -32,9 +31,19 @@ export const Default: Story = {
 }
 
 export const WithButton: Story = {
+  argTypes: {
+    items: { control: 'object' },
+    total: { type: 'string', control: 'text' },
+    hasButton: { type: 'boolean', control: 'boolean' }
+  },
+  args: {
+    items: mockItems,
+    total: 'R$ 430,00',
+    hasButton: true
+  },
   render: (args) => (
     <div style={{ maxWidth: 800 }}>
-      <CartList {...args} hasButton />
+      <CartList {...args} />
     </div>
   )
 }

@@ -16,6 +16,24 @@ const meta = {
       type: 'string',
       control: 'text'
     },
+    size: {
+      type: 'string',
+      control: 'select',
+      options: ['small', 'medium', 'large']
+    }
+  },
+  args: {
+    children: 'Buy now'
+  }
+} satisfies Meta<typeof Button>
+
+export default meta
+type Story = StoryObj<typeof Button>
+
+export const Default: Story = {}
+
+export const withIcon: Story = {
+  argTypes: {
     icon: {
       type: 'symbol',
       options: Object.keys(icons),
@@ -27,28 +45,10 @@ const meta = {
           Store: 'Store'
         }
       }
-    },
-    size: {
-      type: 'string',
-      control: 'select',
-      options: ['small', 'medium', 'large']
     }
-  }
-} satisfies Meta<typeof Button>
-
-export default meta
-type Story = StoryObj<typeof Button>
-
-export const Default: Story = {
-  args: {
-    children: 'Buy now'
-  }
-}
-
-export const withIcon: Story = {
+  },
   args: {
     size: 'small',
-    children: 'Buy now',
     // Correto é assim mas passei como string porque o argTypes está mapeando
     // icon: <AddShoppingCart />
     icon: 'AddShoppingCart'
@@ -58,7 +58,6 @@ export const withIcon: Story = {
 export const asLink: Story = {
   args: {
     size: 'large',
-    children: 'Buy now',
     as: 'a',
     href: '/link'
   }

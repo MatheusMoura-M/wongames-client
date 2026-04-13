@@ -2,11 +2,9 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import GameDetails from '.'
 import mockGame from './mock'
 
-// ATENÇÃOO
 const meta = {
   title: 'Game/GameDetails',
   component: GameDetails,
-  args: mockGame,
   argTypes: {
     releaseDate: {
       control: 'date'
@@ -18,12 +16,10 @@ const meta = {
       options: ['windows', 'linux', 'mac']
     },
     genres: {
-      control: {
-        type: 'inline-check'
-      },
-      options: ['Role-playing', 'Narrative']
+      control: 'object'
     }
   },
+  args: mockGame,
   globals: {
     backgrounds: { value: 'dark' }
   }

@@ -21,7 +21,8 @@ export const Default: Story = {
 
 export const WithFloatImage: Story = {
   args: {
-    floatImage: '/img/red-dead-float.png'
+    floatImage: '/img/red-dead-float.png',
+    alignment: 'left'
   },
   render: (args) => (
     <div style={{ maxWidth: '104rem' }}>

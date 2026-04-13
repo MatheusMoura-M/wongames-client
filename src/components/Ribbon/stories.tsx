@@ -3,6 +3,23 @@ import Ribbon from '.'
 
 const meta = {
   title: 'Ribbon',
+  argTypes: {
+    color: {
+      type: 'string',
+      control: 'select',
+      options: ['primary', 'secondary']
+    },
+    size: {
+      type: 'string',
+      control: 'select',
+      options: ['normal', 'small']
+    }
+  },
+  args: {
+    children: 'Best Seller',
+    color: 'secondary',
+    size: 'normal'
+  },
   component: (args) => (
     <div
       style={{
@@ -20,15 +37,4 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof Ribbon>
 
-export const Default: Story = {
-  args: {
-    children: 'Best Seller',
-    color: 'secondary',
-    size: 'normal'
-  },
-  argTypes: {
-    children: {
-      type: 'string'
-    }
-  }
-}
+export const Default: Story = {}

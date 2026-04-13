@@ -1,20 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import { action } from 'storybook/actions'
 import GameCard from '.'
 
 const meta = {
   title: 'GameCard',
   component: GameCard,
+  argTypes: {
+    onFav: { action: 'clicked' },
+    ribbon: { type: 'string' }
+  },
   args: {
     slug: 'population-zero',
     title: 'Population Zero',
     developer: 'Rockstar Games',
     img: '/img/red-dead-img.jpg',
     price: 235,
-    promotionalPrice: 215
-  },
-  argTypes: {
-    onFav: { action: 'clicked' },
-    ribbon: { type: 'string' }
+    promotionalPrice: 215,
+    onFav: action('on-click')
   },
   globals: {
     backgrounds: { value: 'dark' }

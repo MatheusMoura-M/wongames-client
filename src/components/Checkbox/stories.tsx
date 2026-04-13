@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import { action } from 'storybook/actions'
 import Checkbox from '.'
 
 const meta = {
@@ -6,6 +7,9 @@ const meta = {
   component: Checkbox,
   argTypes: {
     onCheck: { action: 'checked' }
+  },
+  args: {
+    onCheck: action('on-check')
   },
   parameters: {
     layout: 'fullscreen'

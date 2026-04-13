@@ -4,6 +4,12 @@ import ProfileMenu from '.'
 const meta = {
   title: 'Profile/ProfileMenu',
   component: ProfileMenu,
+  argTypes: {
+    activeLink: {
+      type: 'string',
+      control: 'text'
+    }
+  },
   globals: {
     backgrounds: { value: 'dark' }
   }

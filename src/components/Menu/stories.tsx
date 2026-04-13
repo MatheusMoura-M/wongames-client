@@ -16,12 +16,12 @@ export default meta
 type Story = StoryObj<typeof Menu>
 
 export const Default: Story = {
-  render: (args) => <Menu {...args} />
+  render: () => <Menu />
 }
 
 export const Logged: Story = {
-  render: (args) => <Menu {...args} />,
   args: {
     username: 'John Doe'
-  }
+  },
+  render: (args) => <Menu {...args} />
 }
