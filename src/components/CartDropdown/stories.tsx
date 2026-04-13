@@ -11,12 +11,15 @@ const meta = {
 } satisfies Meta<typeof CartDropdown>
 
 export default meta
-type Story = StoryObj<typeof CartDropdown>
+type Story = StoryObj
 
 export const Default: Story = {
   args: {
-    items,
-    total: 'R$ 430,00'
+    cartContextValue: {
+      items,
+      quantity: items.length,
+      total: 'R$430,00'
+    }
   },
   render: (args) => (
     <div
