@@ -1,6 +1,7 @@
+import { CartContextData } from '@/hooks/use-cart'
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import { action } from 'storybook/actions'
-import GameCard from '.'
+import GameCard, { GameCardProps } from '.'
 
 const meta = {
   title: 'Main/GameCard',
@@ -21,12 +22,23 @@ const meta = {
   globals: {
     backgrounds: { value: 'dark' }
   }
-} satisfies Meta<typeof GameCard>
+} satisfies Meta<GameCardProps & CartContextData>
 
 export default meta
-type Story = StoryObj<typeof GameCard>
+type Story = StoryObj<GameCardProps & CartContextData>
 
 export const Default: Story = {
+  render: (args) => (
+    <div style={{ width: '30rem' }}>
+      <GameCard {...args} />
+    </div>
+  )
+}
+
+export const IsInCart: Story = {
+  args: {
+    isInCart: () => true
+  },
   render: (args) => (
     <div style={{ width: '30rem' }}>
       <GameCard {...args} />

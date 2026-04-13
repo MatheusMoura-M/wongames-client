@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
-import Menu from '.'
+import Menu, { MenuProps } from '.'
 
 const meta = {
   title: 'Main/Menu',
@@ -10,10 +10,10 @@ const meta = {
   globals: {
     backgrounds: { value: 'dark' }
   }
-} satisfies Meta<typeof Menu>
+} satisfies Meta<MenuProps>
 
 export default meta
-type Story = StoryObj<typeof Menu>
+type Story = StoryObj<MenuProps>
 
 export const Default: Story = {
   render: () => <Menu />

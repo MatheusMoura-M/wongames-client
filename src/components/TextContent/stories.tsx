@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
-import TextContent from '.'
+import TextContent, { TextContentProps } from '.'
 import textMock from './mock'
 
 const meta = {
@@ -9,10 +9,10 @@ const meta = {
   globals: {
     backgrounds: { value: 'dark' }
   }
-} satisfies Meta<typeof TextContent>
+} satisfies Meta<TextContentProps>
 
 export default meta
-type Story = StoryObj<typeof TextContent>
+type Story = StoryObj<TextContentProps>
 
 export const Default: Story = {
   render: (args) => <TextContent {...args} />

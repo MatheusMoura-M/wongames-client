@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import { Email } from '@styled-icons/material-outlined/Email'
 import { Password } from '@styled-icons/material-outlined/Password'
 import { action } from 'storybook/actions'
-import TextField from '.'
+import TextField, { TextFieldProps } from '.'
 
 const icons = {
   Email: <Email />,
@@ -35,10 +35,10 @@ const meta = {
     initialValue: '',
     placeholder: 'john.cage@gmail.com'
   }
-} satisfies Meta<typeof TextField>
+} satisfies Meta<TextFieldProps>
 
 export default meta
-type Story = StoryObj<typeof TextField>
+type Story = StoryObj<TextFieldProps>
 
 export const Default: Story = {
   render: (args) => (

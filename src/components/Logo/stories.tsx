@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
-import Logo from '.'
+import Logo, { LogoProps } from '.'
 
 const meta = {
   title: 'Main/Logo',
@@ -11,9 +11,9 @@ const meta = {
   globals: {
     backgrounds: { value: 'dark' }
   }
-} satisfies Meta<typeof Logo>
+} satisfies Meta<LogoProps>
 
 export default meta
-type Story = StoryObj<typeof Logo>
+type Story = StoryObj<LogoProps>
 
 export const Default: Story = {}

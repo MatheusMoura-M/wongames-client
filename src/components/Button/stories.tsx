@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import { AddShoppingCart } from '@styled-icons/material-outlined/AddShoppingCart'
 import { Store } from '@styled-icons/material-outlined/Store'
-import Button from '.'
+import Button, { ButtonProps } from '.'
 
 const icons = {
   AddShoppingCart: <AddShoppingCart />,
@@ -25,10 +25,10 @@ const meta = {
   args: {
     children: 'Buy now'
   }
-} satisfies Meta<typeof Button>
+} satisfies Meta<ButtonProps>
 
 export default meta
-type Story = StoryObj<typeof Button>
+type Story = StoryObj<ButtonProps>
 
 export const Default: Story = {}
 

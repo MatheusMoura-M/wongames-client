@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
-import OrdersList from '.'
+import OrdersList, { OrdersListProps } from '.'
 
 import itemsMock from './mock'
 
@@ -9,10 +9,10 @@ const meta = {
   args: {
     items: itemsMock
   }
-} satisfies Meta<typeof OrdersList>
+} satisfies Meta<OrdersListProps>
 
 export default meta
-type Story = StoryObj<typeof OrdersList>
+type Story = StoryObj<OrdersListProps>
 
 export const Default: Story = {
   render: (args) => (

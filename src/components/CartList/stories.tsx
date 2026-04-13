@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
-import CartList from '.'
+import CartList, { CartListProps } from '.'
 import mockItems from './mock'
 
 const meta = {
@@ -8,7 +8,7 @@ const meta = {
   globals: {
     backgrounds: { value: 'dark' }
   }
-} satisfies Meta<typeof CartList>
+} satisfies Meta<CartListProps>
 
 export default meta
 type Story = StoryObj

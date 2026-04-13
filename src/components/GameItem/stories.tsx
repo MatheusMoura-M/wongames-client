@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
-import GameItem from '.'
+import GameItem, { GameItemProps } from '.'
 
 const meta = {
   title: 'Main/GameItem',
@@ -9,10 +9,10 @@ const meta = {
     title: 'Red Dead Redemption 2',
     price: 'R$ 215,00'
   }
-} satisfies Meta<typeof GameItem>
+} satisfies Meta<GameItemProps>
 
 export default meta
-type Story = StoryObj<typeof GameItem>
+type Story = StoryObj<GameItemProps>
 
 export const Default: Story = {}
 

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import { action } from 'storybook/actions'
-import ExploreSidebar from '.'
+import ExploreSidebar, { ExploreSidebarProps } from '.'
 import items from './mock'
 
 const meta = {
@@ -20,10 +20,10 @@ const meta = {
   globals: {
     backgrounds: { value: 'dark' }
   }
-} satisfies Meta<typeof ExploreSidebar>
+} satisfies Meta<ExploreSidebarProps>
 
 export default meta
-type Story = StoryObj<typeof ExploreSidebar>
+type Story = StoryObj<ExploreSidebarProps>
 
 export const Default: Story = {
   render: (args) => (

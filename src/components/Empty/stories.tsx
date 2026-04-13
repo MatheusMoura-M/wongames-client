@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
-import Empty from '.'
+import Empty, { EmptyProps } from '.'
 
 const meta = {
   title: 'Main/Empty',
@@ -26,9 +26,9 @@ const meta = {
   globals: {
     backgrounds: { value: 'dark' }
   }
-} satisfies Meta<typeof Empty>
+} satisfies Meta<EmptyProps>
 
 export default meta
-type Story = StoryObj<typeof Empty>
+type Story = StoryObj<EmptyProps>
 
 export const Default: Story = {}

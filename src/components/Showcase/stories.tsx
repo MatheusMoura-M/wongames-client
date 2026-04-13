@@ -1,7 +1,7 @@
 import gamesMock from '@/components/GameCardSlider/mock'
 import highlightMock from '@/components/Highlight/mock'
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
-import Showcase from '.'
+import Showcase, { ShowcaseProps } from '.'
 
 const meta = {
   title: 'Main/Showcase',
@@ -22,10 +22,10 @@ const meta = {
   globals: {
     backgrounds: { value: 'dark' }
   }
-} satisfies Meta<typeof Showcase>
+} satisfies Meta<ShowcaseProps>
 
 export default meta
-type Story = StoryObj<typeof Showcase>
+type Story = StoryObj<ShowcaseProps>
 
 export const Default: Story = {
   args: {

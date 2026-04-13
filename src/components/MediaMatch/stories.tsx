@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
-import MediaMatch from '.'
+import MediaMatch, { MediaMatchProps } from '.'
 
 const meta = {
   title: 'Main/MediaMatch',
   component: MediaMatch
-} satisfies Meta<typeof MediaMatch>
+} satisfies Meta<MediaMatchProps>
 
 export default meta
-type Story = StoryObj<typeof MediaMatch>
+type Story = StoryObj<MediaMatchProps>
 
 export const Desktop: Story = {
   args: {

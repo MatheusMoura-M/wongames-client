@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
-import Dropdown from '.'
+import Dropdown, { DropdownProps } from '.'
 
 const meta = {
   title: 'Main/Dropdown',
@@ -21,10 +21,10 @@ const meta = {
   globals: {
     backgrounds: { value: 'dark' }
   }
-} satisfies Meta<typeof Dropdown>
+} satisfies Meta<DropdownProps>
 
 export default meta
-type Story = StoryObj<typeof Dropdown>
+type Story = StoryObj<DropdownProps>
 
 export const Default: Story = {
   render: (args) => <Dropdown {...args} />

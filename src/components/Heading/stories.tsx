@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
-import Heading from '.'
+import Heading, { HeadingProps } from '.'
 
 const meta = {
   title: 'Main/Heading',
@@ -14,9 +14,9 @@ const meta = {
     children: 'Most Populars',
     color: 'black'
   }
-} satisfies Meta<typeof Heading>
+} satisfies Meta<HeadingProps>
 
 export default meta
-type Story = StoryObj<typeof Heading>
+type Story = StoryObj<HeadingProps>
 
 export const Default: Story = {}

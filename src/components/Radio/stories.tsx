@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import { action } from 'storybook/actions'
-import Radio from '.'
+import Radio, { RadioProps } from '.'
 
 const meta = {
   title: 'Form/Radio',
@@ -17,10 +17,10 @@ const meta = {
   globals: {
     backgrounds: { value: 'dark' }
   }
-} satisfies Meta<typeof Radio>
+} satisfies Meta<RadioProps>
 
 export default meta
-type Story = StoryObj<typeof Radio>
+type Story = StoryObj<RadioProps>
 
 export const Default: Story = {
   render: (args) => (

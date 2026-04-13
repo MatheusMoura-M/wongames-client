@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
-import Highlight from '.'
+import Highlight, { HighlightProps } from '.'
 import item from './mock'
 
 const meta = {
   title: 'Main/Highlight',
   component: Highlight,
   args: { ...item }
-} satisfies Meta<typeof Highlight>
+} satisfies Meta<HighlightProps>
 
 export default meta
-type Story = StoryObj<typeof Highlight>
+type Story = StoryObj<HighlightProps>
 
 export const Default: Story = {
   render: (args) => (

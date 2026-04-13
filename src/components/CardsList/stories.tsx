@@ -1,6 +1,6 @@
 import cardsMock from '@/components/PaymentOptions/mock'
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
-import CardsList from '.'
+import CardsList, { CardsListProps } from '.'
 
 const meta = {
   title: 'Profile/CardsList',
@@ -8,10 +8,10 @@ const meta = {
   args: {
     cards: cardsMock
   }
-} satisfies Meta<typeof CardsList>
+} satisfies Meta<CardsListProps>
 
 export default meta
-type Story = StoryObj<typeof CardsList>
+type Story = StoryObj<CardsListProps>
 
 export const Default: Story = {
   render: (args) => (

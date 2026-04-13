@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
-import ProfileMenu from '.'
+import ProfileMenu, { ProfileMenuProps } from '.'
 
 const meta = {
   title: 'Profile/ProfileMenu',
@@ -13,10 +13,10 @@ const meta = {
   globals: {
     backgrounds: { value: 'dark' }
   }
-} satisfies Meta<typeof ProfileMenu>
+} satisfies Meta<ProfileMenuProps>
 
 export default meta
-type Story = StoryObj<typeof ProfileMenu>
+type Story = StoryObj<ProfileMenuProps>
 
 export const Default: Story = {
   render: (args) => <ProfileMenu {...args} />

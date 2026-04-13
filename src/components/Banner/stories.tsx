@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
-import Banner from '.'
+import Banner, { BannerProps } from '.'
 
 const meta = {
   title: 'Main/Banner',
@@ -11,10 +11,10 @@ const meta = {
   parameters: {
     layout: 'fullscreen'
   }
-} satisfies Meta<typeof Banner>
+} satisfies Meta<BannerProps>
 
 export default meta
-type Story = StoryObj<typeof Banner>
+type Story = StoryObj<BannerProps>
 
 export const Default: Story = {
   args: {

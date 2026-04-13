@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
-import Gallery from '.'
+import Gallery, { GalleryProps } from '.'
 import items from './mock'
 
 const meta = {
@@ -15,10 +15,10 @@ const meta = {
   globals: {
     backgrounds: { value: 'dark' }
   }
-} satisfies Meta<typeof Gallery>
+} satisfies Meta<GalleryProps>
 
 export default meta
-type Story = StoryObj<typeof Gallery>
+type Story = StoryObj<GalleryProps>
 
 export const Default: Story = {
   render: (args) => (

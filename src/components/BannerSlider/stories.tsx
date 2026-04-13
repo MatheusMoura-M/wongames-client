@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
-import BannerSlider from '.'
+import BannerSlider, { BannerSliderProps } from '.'
 import items from './mock'
 
 const meta = {
@@ -17,10 +17,10 @@ const meta = {
   globals: {
     backgrounds: { value: 'dark' }
   }
-} satisfies Meta<typeof BannerSlider>
+} satisfies Meta<BannerSliderProps>
 
 export default meta
-type Story = StoryObj<typeof BannerSlider>
+type Story = StoryObj<BannerSliderProps>
 
 export const Default: Story = {
   render: (args) => (

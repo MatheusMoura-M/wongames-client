@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
-import Ribbon from '.'
+import Ribbon, { RibbonProps } from '.'
 
 const meta = {
   title: 'Main/Ribbon',
@@ -32,9 +32,9 @@ const meta = {
       <Ribbon {...args} />
     </div>
   )
-} satisfies Meta<typeof Ribbon>
+} satisfies Meta<RibbonProps>
 
 export default meta
-type Story = StoryObj<typeof Ribbon>
+type Story = StoryObj<RibbonProps>
 
 export const Default: Story = {}
