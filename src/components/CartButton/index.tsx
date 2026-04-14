@@ -1,14 +1,21 @@
 import { useCart } from '@/hooks/use-cart'
 import { AddShoppingCart } from '@styled-icons/material-outlined/AddShoppingCart'
 import { RemoveShoppingCart } from '@styled-icons/material-outlined/RemoveShoppingCart'
-import Button from '../Button'
+import Button, { ButtonProps } from '../Button'
 
 type CartButtonProps = {
   documentId: string
-}
+  hasText?: boolean
+} & Pick<ButtonProps, 'size'>
 
-const CartButton = ({ documentId }: CartButtonProps) => {
+const CartButton = ({
+  documentId,
+  size = 'small',
+  hasText = false
+}: CartButtonProps) => {
   const { isInCart, addToCart, removeFromCart } = useCart()
+
+  const buttonText = isInCart(documentId) ? 'Remove from cart' : 'Add to cart'
 
   return (
     <Button
@@ -19,13 +26,15 @@ const CartButton = ({ documentId }: CartButtonProps) => {
           <AddShoppingCart aria-label="Add to cart" />
         )
       }
-      size="small"
+      size={size}
       onClick={() =>
         isInCart(documentId)
           ? removeFromCart(documentId)
           : addToCart(documentId)
       }
-    />
+    >
+      {hasText && buttonText}
+    </Button>
   )
 }
 
