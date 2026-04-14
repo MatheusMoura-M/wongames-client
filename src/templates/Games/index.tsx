@@ -77,13 +77,14 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
                   <Grid>
                     {data.games.map((game) => (
                       <GameCard
-                        key={game!.slug}
-                        title={game!.name}
-                        slug={game!.slug!}
-                        developer={game!.developers[0]!.name}
+                        documentId={game.documentId}
+                        key={game.slug}
+                        title={game.name}
+                        slug={game.slug}
+                        developer={game.developers[0].name}
                         img={
-                          game!.cover?.url
-                            ? `http://localhost:1337${game!.cover.url}`
+                          game.cover?.url
+                            ? `http://localhost:1337${game.cover.url}`
                             : `/img/image_empty.png`
                         }
                         price={game!.price}

@@ -23,7 +23,7 @@ export interface QueryGames_games {
   __typename: 'Game'
   documentId: string
   name: string
-  slug: string | null
+  slug: string
   cover: QueryGames_games_cover | null
   developers: QueryGames_games_developers[]
   price: number
