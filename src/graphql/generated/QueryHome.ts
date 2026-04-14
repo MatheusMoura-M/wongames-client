@@ -54,7 +54,7 @@ export interface QueryHome_newGames {
   __typename: 'Game'
   documentId: string
   name: string
-  slug: string | null
+  slug: string
   cover: QueryHome_newGames_cover | null
   developers: QueryHome_newGames_developers[]
   price: number
@@ -74,7 +74,7 @@ export interface QueryHome_upcomingGames {
   __typename: 'Game'
   documentId: string
   name: string
-  slug: string | null
+  slug: string
   cover: QueryHome_upcomingGames_cover | null
   developers: QueryHome_upcomingGames_developers[]
   price: number
@@ -94,7 +94,7 @@ export interface QueryHome_freeGames {
   __typename: 'Game'
   documentId: string
   name: string
-  slug: string | null
+  slug: string
   cover: QueryHome_freeGames_cover | null
   developers: QueryHome_freeGames_developers[]
   price: number
@@ -162,7 +162,7 @@ export interface QueryHome_sections_popularGames_games {
   __typename: 'Game'
   documentId: string
   name: string
-  slug: string | null
+  slug: string
   cover: QueryHome_sections_popularGames_games_cover | null
   developers: QueryHome_sections_popularGames_games_developers[]
   price: number

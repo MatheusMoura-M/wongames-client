@@ -44,7 +44,7 @@ export interface QueryRecommended_recommended_section_games {
   __typename: 'Game'
   documentId: string
   name: string
-  slug: string | null
+  slug: string
   cover: QueryRecommended_recommended_section_games_cover | null
   developers: QueryRecommended_recommended_section_games_developers[]
   price: number

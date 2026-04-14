@@ -25,7 +25,7 @@ export const bannerMapper = (banners: QueryHome_banners[]) => {
 export const gamesMapper = (games: QueryGames_games[] | null | undefined) => {
   return games
     ? games.map((game) => ({
-        id: game?.documentId,
+        documentId: game?.documentId,
         title: game?.name,
         slug: game?.slug,
         developer: game?.developers[0]?.name,

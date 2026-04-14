@@ -21,7 +21,7 @@ export interface GameFragment {
   __typename: 'Game'
   documentId: string
   name: string
-  slug: string | null
+  slug: string
   cover: GameFragment_cover | null
   developers: GameFragment_developers[]
   price: number
