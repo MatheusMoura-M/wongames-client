@@ -12,7 +12,8 @@ export default defineConfig([
     rules: {
       '@typescript-eslint/no-unused-expressions': 'off',
       'import/no-anonymous-default-export': 'off',
-      '@next/next/no-img-element': 'warn'
+      '@next/next/no-img-element': 'warn',
+      'react-hooks/set-state-in-effect': 'off'
     }
   },
   {

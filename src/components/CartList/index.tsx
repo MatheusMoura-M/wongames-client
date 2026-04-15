@@ -5,6 +5,7 @@ import { useCart } from '@/hooks/use-cart'
 import Link from 'next/link'
 import Loader from '../Loader'
 import * as S from './styles'
+import { useEffect, useState } from 'react'
 
 export type CartListProps = {
   hasButton?: boolean
@@ -12,6 +13,13 @@ export type CartListProps = {
 
 const CartList = ({ hasButton = false }: CartListProps) => {
   const { items, total, loading } = useCart()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) return null
 
   if (loading) {
     return (
