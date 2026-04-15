@@ -90,28 +90,29 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     revalidate: 60,
     props: {
-      cover: game?.cover?.src
+      cover: game.cover?.src
         ? `http://localhost:1337${game.cover.src}`
         : `/img/image_empty.png`,
       gameInfo: {
-        title: game?.name,
-        price: game?.price,
-        description: game?.short_description
+        documentId: game.documentId,
+        title: game.name,
+        price: game.price,
+        description: game.short_description
       },
-      gallery: game?.gallery.map((image) => ({
+      gallery: game.gallery.map((image) => ({
         src: image?.src
           ? `http://localhost:1337${image.src}`
           : `/img/image_empty.png`,
-        label: image?.label
+        label: image.label
       })),
-      description: game?.description,
+      description: game.description,
       details: {
-        developer: game?.developers[0]?.name,
-        releaseDate: game?.release_date,
-        platforms: game?.platforms.map((platform) => platform?.name),
-        publisher: game?.publisher?.name,
-        rating: game?.rating,
-        genres: game?.categories.map((category) => category!.name)
+        developer: game.developers[0].name,
+        releaseDate: game.release_date,
+        platforms: game.platforms.map((platform) => platform.name),
+        publisher: game.publisher?.name,
+        rating: game.rating,
+        genres: game.categories.map((category) => category.name)
       },
 
       upcomingTitle: upcoming.showcase?.upcomingGames?.title,
@@ -122,7 +123,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
       recommendedTitle: recommendedSection.recommended?.section?.title,
       recommendedGames: gamesMapper(
-        recommendedSection.recommended!.section?.games
+        recommendedSection.recommended?.section?.games
       )
     }
   }
