@@ -893,7 +893,7 @@ input GameInput {
 type Game {
   documentId: ID!
   name: String!
-  slug: String
+  slug: String!
   short_description: String
   description: String
   description_two: String
