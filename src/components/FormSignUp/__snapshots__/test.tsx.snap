@@ -54,6 +54,11 @@ exports[`<FormSignUp /> should render the form 1`] = `
   width: 100%;
 }
 
+.c5:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 2.4rem #EAEAEA inset;
+  filter: none;
+}
+
 .c3 {
   display: flex;
   width: 2.2rem;
