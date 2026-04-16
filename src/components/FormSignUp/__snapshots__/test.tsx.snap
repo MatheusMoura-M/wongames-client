@@ -1,12 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<FormSignUp /> should render the form 1`] = `
-.c4 {
-  display: inline-block;
-  vertical-align: middle;
-  overflow: hidden;
-}
-
 .c6 {
   display: inline-flex;
   align-items: center;
@@ -92,6 +86,12 @@ exports[`<FormSignUp /> should render the form 1`] = `
   border-bottom: 0.1rem solid #29b3a3;
 }
 
+.c4 {
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
 <div
   class="c0"
 >
@@ -123,9 +123,9 @@ exports[`<FormSignUp /> should render the form 1`] = `
         </div>
         <input
           class="c5"
-          name="name"
-          placeholder="Name"
-          type="name"
+          name="username"
+          placeholder="Username"
+          type="text"
           value=""
         />
       </div>
@@ -225,6 +225,7 @@ exports[`<FormSignUp /> should render the form 1`] = `
     </div>
     <button
       class="c6"
+      type="submit"
     >
       <span>
         Sign up now
