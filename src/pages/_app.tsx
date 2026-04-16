@@ -1,4 +1,5 @@
 import { CartProvider } from '@/hooks/use-cart'
+import NextNProgress from 'nextjs-progressbar'
 import GlobalStyles from '@/styles/global'
 import theme from '@/styles/theme'
 import { useApollo } from '@/utils/apollo'
@@ -26,6 +27,9 @@ function App({ Component, pageProps }: AppProps) {
           </Head>
 
           <GlobalStyles />
+
+          <NextNProgress color="#F231A5" />
+
           <Component {...pageProps} />
         </CartProvider>
       </ThemeProvider>
