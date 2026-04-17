@@ -1,5 +1,5 @@
 import Button from '@/components/Button'
-import { FormLink, FormWrapper } from '@/components/Form'
+import { FormLink, FormLoading, FormWrapper } from '@/components/Form'
 import TextField from '@/components/TextField'
 import { UsersPermissionsRegisterInput } from '@/graphql/generated/globalTypes'
 import { MUTATION_REGISTER } from '@/graphql/mutations/register'
@@ -17,7 +17,7 @@ const FormSignUp = () => {
     password: ''
   })
 
-  const [createUser] = useMutation(MUTATION_REGISTER)
+  const [createUser, { loading }] = useMutation(MUTATION_REGISTER)
 
   const handleInput = (field: string, value: string) => {
     setValues((s) => ({ ...s, [field]: value }))
@@ -26,15 +26,19 @@ const FormSignUp = () => {
   const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    createUser({
-      variables: {
-        input: {
-          username: values.username,
-          email: values.email,
-          password: values.password
+    try {
+      createUser({
+        variables: {
+          input: {
+            username: values.username,
+            email: values.email,
+            password: values.password
+          }
         }
-      }
-    })
+      })
+    } catch (error) {
+      console.error('Error [handleSubmit - FormSignUp]', error)
+    }
   }
 
   return (
@@ -69,8 +73,8 @@ const FormSignUp = () => {
           icon={<Lock />}
         />
 
-        <Button type="submit" size="large" fullWidth>
-          Sign up now
+        <Button type="submit" size="large" fullWidth disabled={loading}>
+          {loading ? <FormLoading /> : 'Sign up now'}
         </Button>
 
         <FormLink>

@@ -36,8 +36,10 @@ const FormSignIn = () => {
       if (result?.url) {
         return push(result?.url)
       }
+
+      console.error('email ou senha inválida')
     } catch (error) {
-      console.error('email ou senha inválida', error)
+      console.error('Error [handleSubmit - FormSignIn]', error)
     } finally {
       setIsLoading(false)
     }
