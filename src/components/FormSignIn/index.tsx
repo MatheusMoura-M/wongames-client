@@ -1,5 +1,5 @@
 import Button from '@/components/Button'
-import { FormLink, FormWrapper } from '@/components/Form'
+import { FormLink, FormLoading, FormWrapper } from '@/components/Form'
 import TextField from '@/components/TextField'
 import { Email } from '@styled-icons/material-outlined/Email'
 import { Lock } from '@styled-icons/material-outlined/Lock'
@@ -14,6 +14,7 @@ const FormSignIn = () => {
     email: '',
     password: ''
   })
+  const [isLoading, setIsLoading] = useState(false)
 
   const { push } = useRouter()
 
@@ -23,18 +24,23 @@ const FormSignIn = () => {
 
   const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault()
+    setIsLoading(true)
 
-    const result = await signIn('credentials', {
-      ...values,
-      redirect: false,
-      callbackUrl: '/'
-    })
+    try {
+      const result = await signIn('credentials', {
+        ...values,
+        redirect: false,
+        callbackUrl: '/'
+      })
 
-    if (result?.url) {
-      return push(result?.url)
+      if (result?.url) {
+        return push(result?.url)
+      }
+    } catch (error) {
+      console.error('email ou senha inválida', error)
+    } finally {
+      setIsLoading(false)
     }
-
-    console.error('email ou senha inválida')
   }
 
   return (
@@ -57,8 +63,8 @@ const FormSignIn = () => {
 
         <S.ForgotPassword href="#">Forgot your password?</S.ForgotPassword>
 
-        <Button type="submit" size="large" fullWidth>
-          Sign in now
+        <Button type="submit" size="large" fullWidth disabled={isLoading}>
+          {isLoading ? <FormLoading /> : 'Sign in now'}
         </Button>
 
         <FormLink>
