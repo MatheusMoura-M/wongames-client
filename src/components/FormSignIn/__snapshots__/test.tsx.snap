@@ -180,6 +180,7 @@ exports[`<FormSignIn /> should render the form 1`] = `
         </a>
         <button
           class="c7"
+          type="submit"
         >
           <span>
             Sign in now

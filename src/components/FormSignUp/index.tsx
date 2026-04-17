@@ -23,7 +23,7 @@ const FormSignUp = () => {
     setValues((s) => ({ ...s, [field]: value }))
   }
 
-  const handleSubmit = async (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault()
 
     createUser({
@@ -44,28 +44,28 @@ const FormSignUp = () => {
           name="username"
           placeholder="Username"
           type="text"
-          onInputChange={(v) => handleInput('username', v)}
+          onInputChange={(value) => handleInput('username', value)}
           icon={<AccountCircle />}
         />
         <TextField
           name="email"
           placeholder="Email"
           type="email"
-          onInputChange={(v) => handleInput('email', v)}
+          onInputChange={(value) => handleInput('email', value)}
           icon={<Email />}
         />
         <TextField
           name="password"
           placeholder="Password"
           type="password"
-          onInputChange={(v) => handleInput('password', v)}
+          onInputChange={(value) => handleInput('password', value)}
           icon={<Lock />}
         />
         <TextField
           name="confirm-password"
           placeholder="Confirm password"
           type="password"
-          onInputChange={(v) => handleInput('confirm-password', v)}
+          onInputChange={(value) => handleInput('confirm-password', value)}
           icon={<Lock />}
         />
 

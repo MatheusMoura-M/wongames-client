@@ -19,7 +19,7 @@ const authOptions = {
         const { email, password } = credentials
 
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/auth/local`,
+          `${process.env.NEXT_PUBLIC_API_URL}/api/auth/local`,
           {
             method: 'POST',
             body: new URLSearchParams({ identifier: email, password })
@@ -37,14 +37,14 @@ const authOptions = {
     })
   ],
   callbacks: {
-    async session({ session, user }: { session: Session; user: User }) {
-      session.jwt = user.jwt
-      session.id = user.id
+    async session({ session, token }: { session: Session; token: JWT }) {
+      session.jwt = token.jwt
+      session.id = token.id
 
       return session
     },
 
-    async jwt({ token, user }: { token: JWT; user: User }) {
+    async jwt({ token, user }: { token: JWT; user?: User }) {
       if (user) {
         token.id = user.id
         token.email = user.email
