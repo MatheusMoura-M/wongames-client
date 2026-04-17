@@ -7,6 +7,7 @@ import theme from '@/styles/theme'
 import { render, RenderOptions } from '@testing-library/react'
 import { ReactElement } from 'react'
 import { ThemeProvider } from 'styled-components'
+import { SessionProvider } from 'next-auth/react'
 
 type CustomRenderProps = {
   cartProviderProps?: CartContextData
@@ -20,11 +21,13 @@ const customRender = (
   }: CustomRenderProps = {}
 ) =>
   render(
-    <ThemeProvider theme={theme}>
-      <CartContext.Provider value={cartProviderProps}>
-        {ui}
-      </CartContext.Provider>
-    </ThemeProvider>,
+    <SessionProvider session={null}>
+      <ThemeProvider theme={theme}>
+        <CartContext.Provider value={cartProviderProps}>
+          {ui}
+        </CartContext.Provider>
+      </ThemeProvider>
+    </SessionProvider>,
     renderOptions
   )
 
