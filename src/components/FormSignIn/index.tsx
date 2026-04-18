@@ -6,15 +6,15 @@ import {
   FormWrapper
 } from '@/components/Form'
 import TextField from '@/components/TextField'
+import { FieldErrors, signInValidate } from '@/utils/validations'
 import { Email } from '@styled-icons/material-outlined/Email'
-import { Lock } from '@styled-icons/material-outlined/Lock'
 import { ErrorOutline } from '@styled-icons/material-outlined/ErrorOutline'
+import { Lock } from '@styled-icons/material-outlined/Lock'
 import { signIn } from 'next-auth/react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import * as S from './styles'
-import { FieldErrors, signInValidate } from '@/utils/validations'
 
 const FormSignIn = () => {
   const [formError, setFormError] = useState('')
@@ -23,7 +23,7 @@ const FormSignIn = () => {
 
   const [isLoading, setIsLoading] = useState(false)
 
-  const { push } = useRouter()
+  const { push, query } = useRouter()
 
   const handleInput = (field: string, value: string) => {
     setValues((s) => ({ ...s, [field]: value }))
@@ -47,7 +47,7 @@ const FormSignIn = () => {
       const result = await signIn('credentials', {
         ...values,
         redirect: false,
-        callbackUrl: '/'
+        callbackUrl: `${window.location.origin}${query?.callbackUrl || ''}`
       })
 
       if (result?.url) {
