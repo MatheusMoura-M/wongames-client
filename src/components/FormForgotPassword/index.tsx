@@ -32,30 +32,26 @@ const FormForgotPassword = () => {
 
     setFieldError({})
 
-    try {
-      // enviar um post para /forgot-password pedindo um email
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/auth/forgot-password`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(values)
-        }
-      )
-
-      const data = await response.json()
-
-      setLoading(false)
-
-      if (data.error) {
-        setFormError(data.message[0].messages[0].message)
-      } else {
-        setSuccess(true)
+    // enviar um post para /forgot-password pedindo um email
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/auth/forgot-password`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(values)
       }
-    } catch (error) {
-      console.error('Error [handleSubmit - FormForgotPassword] =>', error)
+    )
+
+    const data = await response.json()
+
+    setLoading(false)
+
+    if (data.error) {
+      setFormError(data.error.message)
+    } else {
+      setSuccess(true)
     }
   }
 
