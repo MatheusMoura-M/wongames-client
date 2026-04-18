@@ -1,4 +1,4 @@
-import { useState, InputHTMLAttributes } from 'react'
+import { useState, InputHTMLAttributes, useEffect } from 'react'
 import * as S from './styles'
 
 export type TextFieldProps = {
@@ -24,6 +24,10 @@ const TextField = ({
 }: TextFieldProps) => {
   const [value, setValue] = useState(initialValue)
 
+  useEffect(() => {
+    if (!value) setValue(initialValue || '')
+  }, [initialValue, value])
+
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.currentTarget.value
     setValue(newValue)
@@ -37,6 +41,7 @@ const TextField = ({
 
       <S.InputWrapper>
         {!!icon && <S.Icon iconPosition={iconPosition}>{icon}</S.Icon>}
+
         <S.Input
           type="text"
           onChange={onChange}
