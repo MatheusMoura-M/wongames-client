@@ -88,7 +88,11 @@ const FormSignIn = () => {
           icon={<Lock />}
         />
 
-        <S.ForgotPassword href="#">Forgot your password?</S.ForgotPassword>
+        <S.ForgotPassword>
+          <Link href="/forgot-password" passHref>
+            Forgot your password?
+          </Link>
+        </S.ForgotPassword>
 
         <Button type="submit" size="large" fullWidth disabled={isLoading}>
           {isLoading ? <FormLoading /> : 'Sign in now'}
