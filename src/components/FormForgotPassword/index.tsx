@@ -1,4 +1,4 @@
-import { FieldErrors } from '@/utils/validations'
+import { FieldErrors, forgotValidate } from '@/utils/validations'
 import { Email, ErrorOutline } from '@styled-icons/material-outlined'
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/router'
@@ -23,7 +23,7 @@ const FormForgotPassword = () => {
     event.preventDefault()
     setLoading(true)
 
-    const errors = {} // validate after
+    const errors = forgotValidate(values)
 
     if (Object.keys(errors).length) {
       setFieldError(errors)
