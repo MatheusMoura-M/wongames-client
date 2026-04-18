@@ -1,5 +1,6 @@
 import { FieldErrors, resetValidate } from '@/utils/validations'
-import { ErrorOutline, Lock } from '@styled-icons/material-outlined'
+import { ErrorOutline } from '@styled-icons/material-outlined/ErrorOutline'
+import { Lock } from '@styled-icons/material-outlined/Lock'
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
@@ -19,7 +20,7 @@ const FormResetPassword = () => {
     setValues((s) => ({ ...s, [field]: value }))
   }
 
-  const handleSubmit = async (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault()
     setLoading(true)
 

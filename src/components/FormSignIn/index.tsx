@@ -74,7 +74,7 @@ const FormSignIn = () => {
         <TextField
           name="email"
           placeholder="Email"
-          type="email"
+          type="text"
           error={fieldError?.email}
           onInputChange={(value) => handleInput('email', value)}
           icon={<Email />}
