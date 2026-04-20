@@ -6,7 +6,7 @@ type LoginReqBody = {
 
 export const handlers = [
   http.post<LoginReqBody>(
-    `${process.env.NEXT_PUBLIC_API_URL}/auth/forgot-password`,
+    `${process.env.NEXT_PUBLIC_API_URL}/api/auth/forgot-password`,
     async ({ request }) => {
       const body = (await request.json()) as LoginReqBody
       const { email } = body
