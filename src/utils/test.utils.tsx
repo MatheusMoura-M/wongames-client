@@ -5,9 +5,9 @@ import {
 } from '@/hooks/use-cart'
 import theme from '@/styles/theme'
 import { render, RenderOptions } from '@testing-library/react'
+import { SessionProvider } from 'next-auth/react'
 import { ReactElement } from 'react'
 import { ThemeProvider } from 'styled-components'
-import { SessionProvider } from 'next-auth/react'
 
 type CustomRenderProps = {
   cartProviderProps?: CartContextData
