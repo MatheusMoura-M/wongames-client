@@ -1,9 +1,7 @@
 import Button from '@/components/Button'
 import Heading from '@/components/Heading'
 import TextField from '@/components/TextField'
-
 import * as S from './styles'
-import Link from 'next/link'
 
 export type FormProfileProps = {
   username?: string
