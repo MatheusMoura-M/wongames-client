@@ -2,6 +2,7 @@
   "name": "boilerplate-apps-router",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -18,7 +19,11 @@
     "lint": "next lint",
     "prepare": "husky",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "format": "prettier --write \"**/*.{tsx,ts}\"",
+    "lint:verify": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format:lint": "prettier --write \"**/*.{tsx,ts}\" && eslint . --fix"
   },
   "dependencies": {
     "@apollo/client": "^3.12.4",
