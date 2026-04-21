@@ -46,7 +46,7 @@ export interface QueryRecommended_recommended_section_games {
   name: string
   slug: string
   cover: QueryRecommended_recommended_section_games_cover | null
-  developers: QueryRecommended_recommended_section_games_developers[]
+  developers: (QueryRecommended_recommended_section_games_developers | null)[]
   price: number
 }
 
@@ -54,7 +54,7 @@ export interface QueryRecommended_recommended_section {
   __typename: 'ComponentPagePopularGames'
   title: string
   highlight: QueryRecommended_recommended_section_highlight | null
-  games: QueryRecommended_recommended_section_games[]
+  games: (QueryRecommended_recommended_section_games | null)[]
 }
 
 export interface QueryRecommended_recommended {

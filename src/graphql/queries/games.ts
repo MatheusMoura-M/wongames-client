@@ -1,5 +1,8 @@
 import { GameFragment } from '@/graphql/fragments/game'
-import { QueryGames, QueryGamesVariables } from '@/graphql/generated/QueryGames'
+import {
+  QueryGames,
+  QueryGamesVariables
+} from '@/graphql/generated/queryGamess'
 import { gql, QueryHookOptions, useQuery } from '@apollo/client'
 
 export const QUERY_GAMES = gql`

@@ -23,6 +23,6 @@ export interface GameFragment {
   name: string
   slug: string
   cover: GameFragment_cover | null
-  developers: GameFragment_developers[]
+  developers: (GameFragment_developers | null)[]
   price: number
 }

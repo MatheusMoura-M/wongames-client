@@ -1,11 +1,11 @@
-import { QueryGames_games } from '@/graphql/generated/QueryGames'
+import { QueryGames_games } from '@/graphql/generated/queryGamess'
 import {
   QueryHome_banners,
   QueryHome_sections_freeGames_highlight
 } from '@/graphql/generated/QueryHome'
 import formatPrice from '../format-price'
 
-export const bannerMapper = (banners: QueryHome_banners[]) => {
+export const bannerMapper = (banners: (QueryHome_banners | null)[]) => {
   return banners.map((banner) => ({
     img: banner?.image?.url
       ? `http://localhost:1337${banner.image.url}`
@@ -22,7 +22,7 @@ export const bannerMapper = (banners: QueryHome_banners[]) => {
   }))
 }
 
-export const gamesMapper = (games: QueryGames_games[] | null | undefined) => {
+export const gamesMapper = (games: (QueryGames_games | null)[] | undefined) => {
   return games
     ? games.map((game) => ({
         documentId: game?.documentId,
@@ -57,15 +57,28 @@ export const highlightMapper = (
     : {}
 }
 
-export const cartMapper = (games: QueryGames_games[] | undefined) => {
-  return games
-    ? games.map((game) => ({
-        documentId: game?.documentId,
-        img: game?.cover?.url
-          ? `http://localhost:1337${game.cover.url}`
-          : `/img/image_empty.png`,
-        title: game?.name,
-        price: game?.price ? formatPrice(game.price) : 'Free'
-      }))
-    : []
+export const cartMapper = (games: (QueryGames_games | null)[] | undefined) => {
+  return (games ?? [])
+    .filter((game): game is QueryGames_games => Boolean(game))
+    .map((game) => ({
+      documentId: game.documentId,
+      img: game.cover?.url
+        ? `http://localhost:1337${game.cover.url}`
+        : `/img/image_empty.png`,
+      title: game.name,
+      price: game.price ? formatPrice(game.price) : 'Free'
+    }))
 }
+
+// export const cartMapper = (games: (QueryGames_games | null)[] | undefined) => {
+//   return games
+//     ? games.map((game) => ({
+//         documentId: game?.documentId,
+//         img: game?.cover?.url
+//           ? `http://localhost:1337${game.cover.url}`
+//           : `/img/image_empty.png`,
+//         title: game?.name,
+//         price: game?.price ? formatPrice(game.price) : 'Free'
+//       }))
+//     : []
+// }

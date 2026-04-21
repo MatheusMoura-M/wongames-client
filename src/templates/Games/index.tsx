@@ -2,6 +2,7 @@ import Empty from '@/components/Empty'
 import ExploreSidebar, { ItemProps } from '@/components/ExploreSidebar'
 import GameCard, { GameCardProps } from '@/components/GameCard'
 import { Grid } from '@/components/Grid'
+import { QueryGames_games } from '@/graphql/generated/queryGamess'
 import { useQueryGames } from '@/graphql/queries/games'
 import Base from '@/templates/Base'
 import {
@@ -74,21 +75,23 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
               data?.games && data.games.length > 0 ? (
                 <>
                   <Grid>
-                    {data.games.map((game) => (
-                      <GameCard
-                        documentId={game.documentId}
-                        key={game.slug}
-                        title={game.name}
-                        slug={game.slug}
-                        developer={game.developers[0].name}
-                        img={
-                          game.cover?.url
-                            ? `http://localhost:1337${game.cover.url}`
-                            : `/img/image_empty.png`
-                        }
-                        price={game!.price}
-                      />
-                    ))}
+                    {data.games
+                      .filter((game): game is QueryGames_games => Boolean(game))
+                      .map((game) => (
+                        <GameCard
+                          documentId={game.documentId}
+                          key={game.slug}
+                          title={game.name}
+                          slug={game.slug}
+                          developer={game.developers?.[0]?.name ?? 'Unknown'}
+                          img={
+                            game.cover?.url
+                              ? `http://localhost:1337${game.cover.url}`
+                              : `/img/image_empty.png`
+                          }
+                          price={game!.price}
+                        />
+                      ))}
                   </Grid>
 
                   {hasMoreGames && (

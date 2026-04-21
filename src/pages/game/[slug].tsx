@@ -3,9 +3,15 @@ import { useRouter } from 'next/router'
 
 import {
   QueryGameBySlug,
+  QueryGameBySlug_games,
+  QueryGameBySlug_games_categories,
+  QueryGameBySlug_games_platforms,
   QueryGameBySlugVariables
 } from '@/graphql/generated/QueryGameBySlug'
-import { QueryGames, QueryGamesVariables } from '@/graphql/generated/QueryGames'
+import {
+  QueryGames,
+  QueryGamesVariables
+} from '@/graphql/generated/queryGamess'
 import { QueryRecommended } from '@/graphql/generated/QueryRecommended'
 import {
   QueryUpcoming,
@@ -69,11 +75,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     fetchPolicy: 'no-cache'
   })
 
-  if (!data.games.length) {
+  const games = data.games.filter((game): game is QueryGameBySlug_games =>
+    Boolean(game)
+  )
+
+  if (!games.length) {
     return { notFound: true }
   }
 
-  const game = data.games[0]
+  const game = games[0]
 
   // Get recommended games
   const { data: recommendedSection } =
@@ -103,16 +113,24 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         src: image?.src
           ? `http://localhost:1337${image.src}`
           : `/img/image_empty.png`,
-        label: image.label
+        label: image?.label ?? ''
       })),
       description: game.description,
       details: {
-        developer: game.developers[0].name,
+        developer: game.developers?.[0]?.name ?? 'Unknown',
         releaseDate: game.release_date,
-        platforms: game.platforms.map((platform) => platform.name),
+        platforms: game.platforms
+          .filter((platform): platform is QueryGameBySlug_games_platforms =>
+            Boolean(platform)
+          )
+          .map((platform) => platform.name),
         publisher: game.publisher?.name,
         rating: game.rating,
-        genres: game.categories.map((category) => category.name)
+        genres: game.categories
+          .filter((category): category is QueryGameBySlug_games_categories =>
+            Boolean(category)
+          )
+          .map((category) => category.name)
       },
 
       upcomingTitle: upcoming.showcase?.upcomingGames?.title,

@@ -1,4 +1,4 @@
-import { QueryGames_games } from '@/graphql/generated/QueryGames'
+import { QueryGames_games } from '@/graphql/generated/queryGamess'
 import {
   QueryHome_banners,
   QueryHome_sections_newGames_highlight
@@ -22,7 +22,7 @@ describe('bannerMapper()', () => {
         color: 'primary',
         size: 'small'
       }
-    } as QueryHome_banners
+    } as QueryHome_banners | null
 
     expect(bannerMapper([banner])).toStrictEqual([
       {

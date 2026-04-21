@@ -1,3 +1,4 @@
+import { QueryGames_games } from '@/graphql/generated/queryGamess'
 import { useQueryGames } from '@/graphql/queries/games'
 import formatPrice from '@/utils/format-price'
 import { getStorageItem, setStorageItem } from '@/utils/localStorage'
@@ -14,7 +15,7 @@ type CartItem = {
 }
 
 export type CartContextData = {
-  items: CartItem[]
+  items: CartItem[] | []
   quantity: number
   total: string
   isInCart: (id: string) => boolean
@@ -58,9 +59,11 @@ const CartProvider = ({ children }: CartProviderProps) => {
     }
   })
 
-  const total = data?.games.reduce((acc, game) => {
-    return acc + game.price
-  }, 0)
+  const total = (data?.games ?? [])
+    .filter((game): game is QueryGames_games => Boolean(game))
+    .reduce((acc, game) => {
+      return acc + game.price
+    }, 0)
 
   const isInCart = (id: string) => (id ? cartItems.includes(id) : false)
 

@@ -25,7 +25,7 @@ export interface QueryUpcoming_upcomingGames {
   name: string
   slug: string
   cover: QueryUpcoming_upcomingGames_cover | null
-  developers: QueryUpcoming_upcomingGames_developers[]
+  developers: (QueryUpcoming_upcomingGames_developers | null)[]
   price: number
 }
 
@@ -62,7 +62,7 @@ export interface QueryUpcoming_showcase {
 }
 
 export interface QueryUpcoming {
-  upcomingGames: QueryUpcoming_upcomingGames[]
+  upcomingGames: (QueryUpcoming_upcomingGames | null)[]
   showcase: QueryUpcoming_showcase | null
 }
 
