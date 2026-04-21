@@ -1,7 +1,4 @@
-import {
-  QueryGames,
-  QueryGamesVariables
-} from '@/graphql/generated/queryGamess'
+import { QueryGames, QueryGamesVariables } from '@/graphql/generated/QueryGames'
 import { QUERY_GAMES } from '@/graphql/queries/games'
 import GamesTemplate, { GamesTemplateProps } from '@/templates/Games'
 import { initializeApollo } from '@/utils/apollo'

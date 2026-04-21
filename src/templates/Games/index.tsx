@@ -2,7 +2,7 @@ import Empty from '@/components/Empty'
 import ExploreSidebar, { ItemProps } from '@/components/ExploreSidebar'
 import GameCard, { GameCardProps } from '@/components/GameCard'
 import { Grid } from '@/components/Grid'
-import { QueryGames_games } from '@/graphql/generated/queryGamess'
+import { QueryGames_games } from '@/graphql/generated/QueryGames'
 import { useQueryGames } from '@/graphql/queries/games'
 import Base from '@/templates/Base'
 import {

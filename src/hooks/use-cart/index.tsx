@@ -1,4 +1,4 @@
-import { QueryGames_games } from '@/graphql/generated/queryGamess'
+import { QueryGames_games } from '@/graphql/generated/queryGames'
 import { useQueryGames } from '@/graphql/queries/games'
 import formatPrice from '@/utils/format-price'
 import { getStorageItem, setStorageItem } from '@/utils/localStorage'
