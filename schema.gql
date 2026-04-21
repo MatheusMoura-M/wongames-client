@@ -1040,7 +1040,43 @@ type Recommended {
   publishedAt: DateTime
 }
 
-union GenericMorph = ComponentSharedSlider | ComponentSharedSeo | ComponentSharedRichText | ComponentSharedQuote | ComponentSharedMedia | ComponentPageSection | ComponentPageRibon | ComponentPageRibbon | ComponentPagePopularGames | ComponentPageHighlight | ComponentPageButton | UploadFile | I18NLocale | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Banner | Category | Developer | Game | Home | Platform | Publisher | Recommended
+input WishlistFiltersInput {
+  documentId: IDFilterInput
+  user: UsersPermissionsUserFiltersInput
+  games: GameFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  locale: StringFilterInput
+  localizations: WishlistFiltersInput
+  and: [WishlistFiltersInput]
+  or: [WishlistFiltersInput]
+  not: WishlistFiltersInput
+}
+
+input WishlistInput {
+  user: ID
+  games: [ID]
+  publishedAt: DateTime
+  locale: String
+}
+
+type Wishlist {
+  documentId: ID!
+  user: UsersPermissionsUser
+  games_connection(filters: GameFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): GameRelationResponseCollection
+  games(filters: GameFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Game]!
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type WishlistEntityResponseCollection {
+  nodes: [Wishlist!]!
+  pageInfo: Pagination!
+}
+
+union GenericMorph = ComponentSharedSlider | ComponentSharedSeo | ComponentSharedRichText | ComponentSharedQuote | ComponentSharedMedia | ComponentPageSection | ComponentPageRibon | ComponentPageRibbon | ComponentPagePopularGames | ComponentPageHighlight | ComponentPageButton | UploadFile | I18NLocale | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Banner | Category | Developer | Game | Home | Platform | Publisher | Recommended | Wishlist
 
 input FileInfoInput {
   name: String
@@ -1143,6 +1179,9 @@ type Query {
   publishers_connection(filters: PublisherFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): PublisherEntityResponseCollection
   publishers(filters: PublisherFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [Publisher]!
   recommended(status: PublicationStatus = PUBLISHED): Recommended
+  wishlist(documentId: ID!, status: PublicationStatus = PUBLISHED): Wishlist
+  wishlists_connection(filters: WishlistFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): WishlistEntityResponseCollection
+  wishlists(filters: WishlistFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [Wishlist]!
   me: UsersPermissionsMe
 }
 
@@ -1175,6 +1214,9 @@ type Mutation {
   deletePublisher(documentId: ID!): DeleteMutationResponse
   updateRecommended(status: PublicationStatus = PUBLISHED, data: RecommendedInput!): Recommended
   deleteRecommended: DeleteMutationResponse
+  createWishlist(status: PublicationStatus = PUBLISHED, data: WishlistInput!): Wishlist
+  updateWishlist(documentId: ID!, status: PublicationStatus = PUBLISHED, data: WishlistInput!): Wishlist
+  deleteWishlist(documentId: ID!): DeleteMutationResponse
   updateUploadFile(id: ID!, info: FileInfoInput): UploadFile!
   deleteUploadFile(id: ID!): UploadFile
   """Create a new role"""
