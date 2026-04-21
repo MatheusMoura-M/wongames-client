@@ -85,7 +85,6 @@ const Gallery = ({ items }: GalleryProps) => {
             alt={`Thumb - ${item?.label || index}`}
             width={293}
             height={165.52}
-            layout="responsive"
             onClick={() => {
               setIsOpen(true)
               slider.current!.slickGoTo(index, true)
@@ -112,7 +111,6 @@ const Gallery = ({ items }: GalleryProps) => {
                 alt={`Imagem do modal - ${item?.label || index}`}
                 width={1200}
                 height={677.92}
-                layout="responsive"
               />
             ))}
           </Slider>
