@@ -13,7 +13,7 @@
     "schema:download": "apollo client:download-schema --endpoint=http://localhost:1337/graphql schema-temp.gql",
     "schema:convert": "node convertToNonNull.js",
     "types:generate": "npm run schema:download && npm run schema:convert && npm run codegen && npm run format:graphql:generated",
-    "new:codegen": "graphql-codegen --config codegen.ts",
+    "new:codegen": "graphql-codegen --config codegen.ts && npm run format:graphql:generated-test",
     "test:ci": "jest --runInBand",
     "generate": "plop --plopfile generators/plopfile.js",
     "start": "next start",
@@ -23,6 +23,7 @@
     "build-storybook": "storybook build",
     "format": "prettier --write \"**/*.{tsx,ts}\"",
     "format:graphql:generated": "prettier --write \"src/graphql/generated/*.{tsx,ts}\"",
+    "format:graphql:generated-test": "prettier --write \"src/graphql/**/__generated__/*.{ts,tsx}\" \"src/graphql/generated-test/*.{ts,tsx}\"",
     "lint:verify": "eslint .",
     "lint:fix": "eslint . --fix",
     "format:lint": "prettier --write \"**/*.{tsx,ts}\" && eslint . --fix"

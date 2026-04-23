@@ -12,9 +12,21 @@ const config: CodegenConfig = {
       field: true,
       inputValue: false
     },
+
     nonOptionalTypename: true,
-    defaultScalarType: 'unknown',
-    extractAllFieldsToTypes: true
+    defaultScalarType: 'any',
+
+    extractAllFieldsToTypes: true,
+
+    printFieldsOnNewLines: true,
+
+    fragmentSuffix: '',
+    inlineFragmentTypes: 'combine',
+
+    maybeValue: 'T | null',
+    inputMaybeValue: 'T | null | undefined',
+
+    useTypeImports: true
   },
 
   generates: {

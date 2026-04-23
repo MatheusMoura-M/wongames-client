@@ -35,6 +35,8 @@ export default defineConfig([
     '!.jest',
     'generators',
     'src/graphql/generated/**',
+    'src/graphql/generated-test/**',
+    'src/graphql/**/__generated__/**',
     'src/stories/**'
   ]),
   ...storybook.configs['flat/recommended']
