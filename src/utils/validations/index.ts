@@ -1,4 +1,4 @@
-import { UsersPermissionsRegisterInput } from '@/graphql/generated/globalTypes'
+import { UsersPermissionsRegisterInput } from '@/graphql/generated-test/types'
 import Joi from 'joi'
 
 const fieldsValidations = {

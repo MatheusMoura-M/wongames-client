@@ -36,7 +36,7 @@ const config: CodegenConfig = {
 
   generates: {
     // BASE TYPES (central)
-    './src/graphql/generated-test/types.generated.ts': {
+    './src/graphql/generated-test/types.ts': {
       plugins: ['typescript']
     },
 
@@ -45,8 +45,8 @@ const config: CodegenConfig = {
       preset: 'near-operation-file',
       documents: ['src/graphql/fragments/*.{ts,tsx}'],
       presetConfig: {
-        baseTypesPath: '../types.generated.ts',
-        extension: '.generated.ts',
+        baseTypesPath: '../types.ts',
+        extension: '.ts',
         folder: '__generated__',
         filePerOperation: true
       },
@@ -61,8 +61,8 @@ const config: CodegenConfig = {
         'src/graphql/fragments/*.{ts,tsx}'
       ],
       presetConfig: {
-        baseTypesPath: '../types.generated.ts',
-        extension: '.generated.ts',
+        baseTypesPath: '../types.ts',
+        extension: '.ts',
         folder: '__generated__',
         filePerOperation: true
       },
@@ -77,8 +77,8 @@ const config: CodegenConfig = {
         'src/graphql/fragments/*.{ts,tsx}'
       ],
       presetConfig: {
-        baseTypesPath: '../types.generated.ts',
-        extension: '.generated.ts',
+        baseTypesPath: '../types.ts',
+        extension: '.ts',
         folder: '__generated__',
         filePerOperation: true
       },

@@ -1,9 +1,10 @@
 import { GameFragment } from '@/graphql/fragments/game'
 import { gql, QueryHookOptions, useQuery } from '@apollo/client'
 import {
-  QueryWishlist,
-  QueryWishlistVariables
-} from '../generated/QueryWishlist'
+  QueryWishlistDocument,
+  QueryWishlistQuery,
+  QueryWishlistQueryVariables
+} from './__generated__/QueryWishlist'
 
 export const QUERY_WISHLIST = gql`
   query QueryWishlist($identifier: String!) {
@@ -18,10 +19,7 @@ export const QUERY_WISHLIST = gql`
 `
 
 export function useQueryWishlist(
-  options?: QueryHookOptions<QueryWishlist, QueryWishlistVariables>
+  options?: QueryHookOptions<QueryWishlistQuery, QueryWishlistQueryVariables>
 ) {
-  return useQuery<QueryWishlist, QueryWishlistVariables>(
-    QUERY_WISHLIST,
-    options
-  )
+  return useQuery(QueryWishlistDocument, options)
 }

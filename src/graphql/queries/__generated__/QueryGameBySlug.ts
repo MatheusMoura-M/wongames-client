@@ -1,4 +1,4 @@
-import type * as Types from '../../generated-test/types.generated'
+import type * as Types from '../../generated-test/types'
 
 import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core'
 export type QueryGameBySlugQuery_games_Game_gallery_UploadFile = {

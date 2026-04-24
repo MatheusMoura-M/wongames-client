@@ -1,5 +1,5 @@
-import { QueryGames_games } from '@/graphql/generated/QueryGames'
 import { useQueryGames } from '@/graphql/queries/games'
+import { isGame } from '@/utils/filterByTypes'
 import formatPrice from '@/utils/format-price'
 import { getStorageItem, setStorageItem } from '@/utils/localStorage'
 import { cartMapper } from '@/utils/mappers'
@@ -59,11 +59,9 @@ const CartProvider = ({ children }: CartProviderProps) => {
     }
   })
 
-  const total = (data?.games ?? [])
-    .filter((game): game is QueryGames_games => Boolean(game))
-    .reduce((acc, game) => {
-      return acc + game.price
-    }, 0)
+  const total = (data?.games ?? []).filter(isGame).reduce((acc, game) => {
+    return acc + game.price
+  }, 0)
 
   const isInCart = (id: string) => (id ? cartItems.includes(id) : false)
 

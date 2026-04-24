@@ -1,59 +1,45 @@
-import type * as Types from '../../generated-test/types.generated'
+import type * as Types from '../../generated-test/types'
 
-import type { GameFragmentFragment } from '../../fragments/__generated__/GameFragment.generated'
+import type { GameFragmentFragment } from '../../fragments/__generated__/GameFragment'
 import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core'
-export type MutationUpdateWishlistMutation_updateWishlist_Wishlist_games_Game =
-  {
-    __typename: 'Game'
-  } & GameFragmentFragment
+export type QueryWishlistQuery_wishlists_Wishlist_games_Game = {
+  __typename: 'Game'
+} & GameFragmentFragment
 
-export type MutationUpdateWishlistMutation_updateWishlist_Wishlist = {
+export type QueryWishlistQuery_wishlists_Wishlist = {
   __typename: 'Wishlist'
   documentId: string
-  games: Array<MutationUpdateWishlistMutation_updateWishlist_Wishlist_games_Game | null>
+  games: Array<QueryWishlistQuery_wishlists_Wishlist_games_Game | null>
 }
 
-export type MutationUpdateWishlistMutation_Mutation = {
-  __typename: 'Mutation'
-  updateWishlist: MutationUpdateWishlistMutation_updateWishlist_Wishlist | null
+export type QueryWishlistQuery_Query = {
+  __typename: 'Query'
+  wishlists: Array<QueryWishlistQuery_wishlists_Wishlist | null>
 }
 
-export type MutationUpdateWishlistMutationVariables = Types.Exact<{
-  documentId: Types.Scalars['ID']['input']
-  data: Types.WishlistInput
+export type QueryWishlistQueryVariables = Types.Exact<{
+  identifier: Types.Scalars['String']['input']
 }>
 
-export type MutationUpdateWishlistMutation =
-  MutationUpdateWishlistMutation_Mutation
+export type QueryWishlistQuery = QueryWishlistQuery_Query
 
-export const MutationUpdateWishlistDocument = {
+export const QueryWishlistDocument = {
   kind: 'Document',
   definitions: [
     {
       kind: 'OperationDefinition',
-      operation: 'mutation',
-      name: { kind: 'Name', value: 'MutationUpdateWishlist' },
+      operation: 'query',
+      name: { kind: 'Name', value: 'QueryWishlist' },
       variableDefinitions: [
         {
           kind: 'VariableDefinition',
           variable: {
             kind: 'Variable',
-            name: { kind: 'Name', value: 'documentId' }
+            name: { kind: 'Name', value: 'identifier' }
           },
           type: {
             kind: 'NonNullType',
-            type: { kind: 'NamedType', name: { kind: 'Name', value: 'ID' } }
-          }
-        },
-        {
-          kind: 'VariableDefinition',
-          variable: { kind: 'Variable', name: { kind: 'Name', value: 'data' } },
-          type: {
-            kind: 'NonNullType',
-            type: {
-              kind: 'NamedType',
-              name: { kind: 'Name', value: 'WishlistInput' }
-            }
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } }
           }
         }
       ],
@@ -62,22 +48,41 @@ export const MutationUpdateWishlistDocument = {
         selections: [
           {
             kind: 'Field',
-            name: { kind: 'Name', value: 'updateWishlist' },
+            name: { kind: 'Name', value: 'wishlists' },
             arguments: [
               {
                 kind: 'Argument',
-                name: { kind: 'Name', value: 'documentId' },
+                name: { kind: 'Name', value: 'filters' },
                 value: {
-                  kind: 'Variable',
-                  name: { kind: 'Name', value: 'documentId' }
-                }
-              },
-              {
-                kind: 'Argument',
-                name: { kind: 'Name', value: 'data' },
-                value: {
-                  kind: 'Variable',
-                  name: { kind: 'Name', value: 'data' }
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'user' },
+                      value: {
+                        kind: 'ObjectValue',
+                        fields: [
+                          {
+                            kind: 'ObjectField',
+                            name: { kind: 'Name', value: 'email' },
+                            value: {
+                              kind: 'ObjectValue',
+                              fields: [
+                                {
+                                  kind: 'ObjectField',
+                                  name: { kind: 'Name', value: 'eq' },
+                                  value: {
+                                    kind: 'Variable',
+                                    name: { kind: 'Name', value: 'identifier' }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
                 }
               }
             ],
@@ -142,7 +147,4 @@ export const MutationUpdateWishlistDocument = {
       }
     }
   ]
-} as unknown as DocumentNode<
-  MutationUpdateWishlistMutation,
-  MutationUpdateWishlistMutationVariables
->
+} as unknown as DocumentNode<QueryWishlistQuery, QueryWishlistQueryVariables>

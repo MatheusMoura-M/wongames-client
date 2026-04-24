@@ -6,7 +6,7 @@ import {
   FormWrapper
 } from '@/components/Form'
 import TextField from '@/components/TextField'
-import { UsersPermissionsRegisterInput } from '@/graphql/generated/globalTypes'
+import { UsersPermissionsRegisterInput } from '@/graphql/generated-test/types'
 import { MUTATION_REGISTER } from '@/graphql/mutations/register'
 import { FieldErrors, signUpValidate } from '@/utils/validations'
 import { useMutation } from '@apollo/client'

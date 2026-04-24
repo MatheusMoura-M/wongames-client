@@ -2,13 +2,13 @@ import Empty from '@/components/Empty'
 import ExploreSidebar, { ItemProps } from '@/components/ExploreSidebar'
 import GameCard, { GameCardProps } from '@/components/GameCard'
 import { Grid } from '@/components/Grid'
-import { QueryGames_games } from '@/graphql/generated/QueryGames'
 import { useQueryGames } from '@/graphql/queries/games'
 import Base from '@/templates/Base'
 import {
   parseQueryStringToFilter,
   parseQueryStringToWhere
 } from '@/utils/filter'
+import { isGame, isNotNull } from '@/utils/filterByTypes'
 import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined/KeyboardArrowDown'
 import { useRouter } from 'next/router'
 import { ParsedUrlQueryInput } from 'querystring'
@@ -75,23 +75,23 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
               data?.games && data.games.length > 0 ? (
                 <>
                   <Grid>
-                    {data.games
-                      .filter((game): game is QueryGames_games => Boolean(game))
-                      .map((game) => (
-                        <GameCard
-                          documentId={game.documentId}
-                          key={game.slug}
-                          title={game.name}
-                          slug={game.slug}
-                          developer={game.developers?.[0]?.name ?? 'Unknown'}
-                          img={
-                            game.cover?.url
-                              ? `http://localhost:1337${game.cover.url}`
-                              : `/img/image_empty.png`
-                          }
-                          price={game!.price}
-                        />
-                      ))}
+                    {data.games.filter(isGame).map((game) => (
+                      <GameCard
+                        documentId={game.documentId}
+                        key={game.slug}
+                        title={game.name}
+                        slug={game.slug}
+                        developer={
+                          game.developers?.find(isNotNull)?.name ?? 'Unknown'
+                        }
+                        img={
+                          game.cover?.url
+                            ? `http://localhost:1337${game.cover.url}`
+                            : `/img/image_empty.png`
+                        }
+                        price={game!.price}
+                      />
+                    ))}
                   </Grid>
 
                   {hasMoreGames && (

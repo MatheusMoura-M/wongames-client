@@ -1,26 +1,13 @@
-import { GetStaticProps } from 'next'
-import { useRouter } from 'next/router'
-
-import {
-  QueryGameBySlug,
-  QueryGameBySlug_games,
-  QueryGameBySlug_games_categories,
-  QueryGameBySlug_games_platforms,
-  QueryGameBySlugVariables
-} from '@/graphql/generated/QueryGameBySlug'
-import { QueryGames, QueryGamesVariables } from '@/graphql/generated/QueryGames'
-import { QueryRecommended } from '@/graphql/generated/QueryRecommended'
-import {
-  QueryUpcoming,
-  QueryUpcomingVariables
-} from '@/graphql/generated/QueryUpcoming'
-import { QUERY_GAME_BY_SLUG, QUERY_GAMES } from '@/graphql/queries/games'
-import { QUERY_RECOMMENDED } from '@/graphql/queries/recommended'
-import { QUERY_UPCOMING } from '@/graphql/queries/upcoming'
-
+import { QueryGameBySlugDocument } from '@/graphql/queries/__generated__/QueryGameBySlug'
+import { QueryGamesDocument } from '@/graphql/queries/__generated__/QueryGames'
+import { QueryRecommendedDocument } from '@/graphql/queries/__generated__/QueryRecommended'
+import { QueryUpcomingDocument } from '@/graphql/queries/__generated__/QueryUpcoming'
 import Game, { GameTemplateProps } from '@/templates/Game'
 import { initializeApollo } from '@/utils/apollo'
+import { isNotNull, isSlugGame } from '@/utils/filterByTypes'
 import { gamesMapper, highlightMapper } from '@/utils/mappers'
+import { GetStaticProps } from 'next'
+import { useRouter } from 'next/router'
 
 const apolloClient = initializeApollo()
 
@@ -37,8 +24,8 @@ export default function Index(props: GameTemplateProps) {
 
 // gerar em build time (/game/bla, /bame/foo ...)
 export async function getStaticPaths() {
-  const { data } = await apolloClient.query<QueryGames, QueryGamesVariables>({
-    query: QUERY_GAMES,
+  const { data } = await apolloClient.query({
+    query: QueryGamesDocument,
     variables: {
       pagination: {
         limit: 9
@@ -57,11 +44,8 @@ export async function getStaticPaths() {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   // Get game data
-  const { data } = await apolloClient.query<
-    QueryGameBySlug,
-    QueryGameBySlugVariables
-  >({
-    query: QUERY_GAME_BY_SLUG,
+  const { data } = await apolloClient.query({
+    query: QueryGameBySlugDocument,
     variables: {
       filters: {
         slug: {
@@ -72,9 +56,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     fetchPolicy: 'no-cache'
   })
 
-  const games = data.games.filter((game): game is QueryGameBySlug_games =>
-    Boolean(game)
-  )
+  const games = data.games.filter(isSlugGame)
 
   if (!games.length) {
     return { notFound: true }
@@ -83,16 +65,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const game = games[0]
 
   // Get recommended games
-  const { data: recommendedSection } =
-    await apolloClient.query<QueryRecommended>({
-      query: QUERY_RECOMMENDED
-    })
+  const { data: recommendedSection } = await apolloClient.query({
+    query: QueryRecommendedDocument
+  })
 
   const TODAY = new Date().toISOString().slice(0, 10)
-  const { data: upcoming } = await apolloClient.query<
-    QueryUpcoming,
-    QueryUpcomingVariables
-  >({ query: QUERY_UPCOMING, variables: { date: TODAY } })
+  const { data: upcoming } = await apolloClient.query({
+    query: QueryUpcomingDocument,
+    variables: { date: TODAY }
+  })
 
   return {
     revalidate: 60,
@@ -114,19 +95,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       })),
       description: game.description,
       details: {
-        developer: game.developers?.[0]?.name ?? 'Unknown',
+        developer: game.developers?.find(isNotNull)?.name ?? 'Unknown',
         releaseDate: game.release_date,
         platforms: game.platforms
-          .filter((platform): platform is QueryGameBySlug_games_platforms =>
-            Boolean(platform)
-          )
+          .filter(isNotNull)
           .map((platform) => platform.name),
         publisher: game.publisher?.name,
         rating: game.rating,
         genres: game.categories
-          .filter((category): category is QueryGameBySlug_games_categories =>
-            Boolean(category)
-          )
+          .filter(isNotNull)
           .map((category) => category.name)
       },
 
