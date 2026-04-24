@@ -1,8 +1,8 @@
 import type * as Types from '../../generated-test/types.generated'
 
-import type { BannerFragmentFragment } from '../../fragments/__generated__/banner.generated'
-import type { GameFragmentFragment } from '../../fragments/__generated__/game.generated'
-import type { HighlightFragmentFragment } from '../../fragments/__generated__/highlight.generated'
+import type { BannerFragmentFragment } from '../../fragments/__generated__/BannerFragment.generated'
+import type { GameFragmentFragment } from '../../fragments/__generated__/GameFragment.generated'
+import type { HighlightFragmentFragment } from '../../fragments/__generated__/HighlightFragment.generated'
 import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core'
 export type QueryHomeQuery_banners_Banner = {
   __typename: 'Banner'

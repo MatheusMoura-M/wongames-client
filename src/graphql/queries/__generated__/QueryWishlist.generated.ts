@@ -1,6 +1,6 @@
 import type * as Types from '../../generated-test/types.generated'
 
-import type { GameFragmentFragment } from '../../fragments/__generated__/game.generated'
+import type { GameFragmentFragment } from '../../fragments/__generated__/GameFragment.generated'
 import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core'
 export type QueryWishlistQuery_wishlists_Wishlist_games_Game = {
   __typename: 'Game'

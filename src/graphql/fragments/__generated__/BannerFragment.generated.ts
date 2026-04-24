@@ -15,8 +15,8 @@ export type BannerFragmentFragment_Banner_button_ComponentPageButton = {
 export type BannerFragmentFragment_Banner_ribbon_ComponentPageRibbon = {
   __typename: 'ComponentPageRibbon'
   text: string | null
-  color: Types.Enum_Componentpageribbon_Color | null
-  size: Types.Enum_Componentpageribbon_Size | null
+  color: Types.ENUM_COMPONENTPAGERIBBON_COLOR | null
+  size: Types.ENUM_COMPONENTPAGERIBBON_SIZE | null
 }
 
 export type BannerFragmentFragment = {

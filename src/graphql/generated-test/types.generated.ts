@@ -53,7 +53,7 @@ export type BannerFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<BannerFiltersInput>>>
   button?: InputMaybe<ComponentPageButtonFiltersInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
-  documentId?: InputMaybe<IdFilterInput>
+  documentId?: InputMaybe<IDFilterInput>
   locale?: InputMaybe<StringFilterInput>
   localizations?: InputMaybe<BannerFiltersInput>
   not?: InputMaybe<BannerFiltersInput>
@@ -112,13 +112,13 @@ export type Category = {
   updatedAt: Maybe<Scalars['DateTime']['output']>
 }
 
-export type CategoryGamesArgs = {
+export type CategorygamesArgs = {
   filters?: InputMaybe<GameFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type CategoryGames_ConnectionArgs = {
+export type Categorygames_connectionArgs = {
   filters?: InputMaybe<GameFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
@@ -133,7 +133,7 @@ export type CategoryEntityResponseCollection = {
 export type CategoryFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<CategoryFiltersInput>>>
   createdAt?: InputMaybe<DateTimeFilterInput>
-  documentId?: InputMaybe<IdFilterInput>
+  documentId?: InputMaybe<IDFilterInput>
   games?: InputMaybe<GameFiltersInput>
   locale?: InputMaybe<StringFilterInput>
   localizations?: InputMaybe<CategoryFiltersInput>
@@ -181,7 +181,7 @@ export type ComponentPageButtonInput = {
 
 export type ComponentPageHighlight = {
   __typename: 'ComponentPageHighlight'
-  alignment: Maybe<Enum_Componentpagehighlight_Alignment>
+  alignment: Maybe<ENUM_COMPONENTPAGEHIGHLIGHT_ALIGNMENT>
   background: UploadFile
   buttonLabel: Scalars['String']['output']
   buttonLink: Scalars['String']['output']
@@ -192,7 +192,7 @@ export type ComponentPageHighlight = {
 }
 
 export type ComponentPageHighlightInput = {
-  alignment?: InputMaybe<Enum_Componentpagehighlight_Alignment>
+  alignment?: InputMaybe<ENUM_COMPONENTPAGEHIGHLIGHT_ALIGNMENT>
   background?: InputMaybe<Scalars['ID']['input']>
   buttonLabel?: InputMaybe<Scalars['String']['input']>
   buttonLink?: InputMaybe<Scalars['String']['input']>
@@ -211,13 +211,13 @@ export type ComponentPagePopularGames = {
   title: Scalars['String']['output']
 }
 
-export type ComponentPagePopularGamesGamesArgs = {
+export type ComponentPagePopularGamesgamesArgs = {
   filters?: InputMaybe<GameFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type ComponentPagePopularGamesGames_ConnectionArgs = {
+export type ComponentPagePopularGamesgames_connectionArgs = {
   filters?: InputMaybe<GameFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
@@ -232,9 +232,9 @@ export type ComponentPagePopularGamesInput = {
 
 export type ComponentPageRibbon = {
   __typename: 'ComponentPageRibbon'
-  color: Maybe<Enum_Componentpageribbon_Color>
+  color: Maybe<ENUM_COMPONENTPAGERIBBON_COLOR>
   id: Scalars['ID']['output']
-  size: Maybe<Enum_Componentpageribbon_Size>
+  size: Maybe<ENUM_COMPONENTPAGERIBBON_SIZE>
   text: Maybe<Scalars['String']['output']>
 }
 
@@ -248,17 +248,17 @@ export type ComponentPageRibbonFiltersInput = {
 }
 
 export type ComponentPageRibbonInput = {
-  color?: InputMaybe<Enum_Componentpageribbon_Color>
+  color?: InputMaybe<ENUM_COMPONENTPAGERIBBON_COLOR>
   id?: InputMaybe<Scalars['ID']['input']>
-  size?: InputMaybe<Enum_Componentpageribbon_Size>
+  size?: InputMaybe<ENUM_COMPONENTPAGERIBBON_SIZE>
   text?: InputMaybe<Scalars['String']['input']>
 }
 
 export type ComponentPageRibon = {
   __typename: 'ComponentPageRibon'
-  color: Maybe<Enum_Componentpageribon_Color>
+  color: Maybe<ENUM_COMPONENTPAGERIBON_COLOR>
   id: Scalars['ID']['output']
-  size: Maybe<Enum_Componentpageribon_Size>
+  size: Maybe<ENUM_COMPONENTPAGERIBON_SIZE>
   text: Maybe<Scalars['String']['output']>
 }
 
@@ -309,13 +309,13 @@ export type ComponentSharedSlider = {
   id: Scalars['ID']['output']
 }
 
-export type ComponentSharedSliderFilesArgs = {
+export type ComponentSharedSliderfilesArgs = {
   filters?: InputMaybe<UploadFileFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type ComponentSharedSliderFiles_ConnectionArgs = {
+export type ComponentSharedSliderfiles_connectionArgs = {
   filters?: InputMaybe<UploadFileFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
@@ -388,13 +388,13 @@ export type Developer = {
   updatedAt: Maybe<Scalars['DateTime']['output']>
 }
 
-export type DeveloperGamesArgs = {
+export type DevelopergamesArgs = {
   filters?: InputMaybe<GameFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type DeveloperGames_ConnectionArgs = {
+export type Developergames_connectionArgs = {
   filters?: InputMaybe<GameFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
@@ -409,7 +409,7 @@ export type DeveloperEntityResponseCollection = {
 export type DeveloperFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<DeveloperFiltersInput>>>
   createdAt?: InputMaybe<DateTimeFilterInput>
-  documentId?: InputMaybe<IdFilterInput>
+  documentId?: InputMaybe<IDFilterInput>
   games?: InputMaybe<GameFiltersInput>
   locale?: InputMaybe<StringFilterInput>
   localizations?: InputMaybe<DeveloperFiltersInput>
@@ -434,38 +434,38 @@ export type DeveloperRelationResponseCollection = {
   nodes: Array<Developer>
 }
 
-export enum Enum_Componentpagehighlight_Alignment {
-  Left = 'left',
-  Right = 'right'
+export enum ENUM_COMPONENTPAGEHIGHLIGHT_ALIGNMENT {
+  left = 'left',
+  right = 'right'
 }
 
-export enum Enum_Componentpageribbon_Color {
-  Primary = 'primary',
-  Secondary = 'secondary'
+export enum ENUM_COMPONENTPAGERIBBON_COLOR {
+  primary = 'primary',
+  secondary = 'secondary'
 }
 
-export enum Enum_Componentpageribbon_Size {
-  Normal = 'normal',
-  Small = 'small'
+export enum ENUM_COMPONENTPAGERIBBON_SIZE {
+  normal = 'normal',
+  small = 'small'
 }
 
-export enum Enum_Componentpageribon_Color {
-  Primary = 'primary',
-  Secondary = 'secondary'
+export enum ENUM_COMPONENTPAGERIBON_COLOR {
+  primary = 'primary',
+  secondary = 'secondary'
 }
 
-export enum Enum_Componentpageribon_Size {
-  Normal = 'normal',
-  Small = 'small'
+export enum ENUM_COMPONENTPAGERIBON_SIZE {
+  normal = 'normal',
+  small = 'small'
 }
 
-export enum Enum_Game_Rating {
-  Br0 = 'BR0',
-  Br10 = 'BR10',
-  Br12 = 'BR12',
-  Br14 = 'BR14',
-  Br16 = 'BR16',
-  Br18 = 'BR18'
+export enum ENUM_GAME_RATING {
+  BR0 = 'BR0',
+  BR10 = 'BR10',
+  BR12 = 'BR12',
+  BR14 = 'BR14',
+  BR16 = 'BR16',
+  BR18 = 'BR18'
 }
 
 export type FileInfoInput = {
@@ -518,56 +518,56 @@ export type Game = {
   price: Scalars['Float']['output']
   publishedAt: Maybe<Scalars['DateTime']['output']>
   publisher: Maybe<Publisher>
-  rating: Maybe<Enum_Game_Rating>
+  rating: Maybe<ENUM_GAME_RATING>
   release_date: Maybe<Scalars['Date']['output']>
   short_description: Maybe<Scalars['String']['output']>
   slug: Scalars['String']['output']
   updatedAt: Maybe<Scalars['DateTime']['output']>
 }
 
-export type GameCategoriesArgs = {
+export type GamecategoriesArgs = {
   filters?: InputMaybe<CategoryFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type GameCategories_ConnectionArgs = {
+export type Gamecategories_connectionArgs = {
   filters?: InputMaybe<CategoryFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type GameDevelopersArgs = {
+export type GamedevelopersArgs = {
   filters?: InputMaybe<DeveloperFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type GameDevelopers_ConnectionArgs = {
+export type Gamedevelopers_connectionArgs = {
   filters?: InputMaybe<DeveloperFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type GameGalleryArgs = {
+export type GamegalleryArgs = {
   filters?: InputMaybe<UploadFileFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type GameGallery_ConnectionArgs = {
+export type Gamegallery_connectionArgs = {
   filters?: InputMaybe<UploadFileFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type GamePlatformsArgs = {
+export type GameplatformsArgs = {
   filters?: InputMaybe<PlatformFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type GamePlatforms_ConnectionArgs = {
+export type Gameplatforms_connectionArgs = {
   filters?: InputMaybe<PlatformFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
@@ -586,7 +586,7 @@ export type GameFiltersInput = {
   description?: InputMaybe<StringFilterInput>
   description_two?: InputMaybe<StringFilterInput>
   developers?: InputMaybe<DeveloperFiltersInput>
-  documentId?: InputMaybe<IdFilterInput>
+  documentId?: InputMaybe<IDFilterInput>
   locale?: InputMaybe<StringFilterInput>
   localizations?: InputMaybe<GameFiltersInput>
   name?: InputMaybe<StringFilterInput>
@@ -616,7 +616,7 @@ export type GameInput = {
   price?: InputMaybe<Scalars['Float']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   publisher?: InputMaybe<Scalars['ID']['input']>
-  rating?: InputMaybe<Enum_Game_Rating>
+  rating?: InputMaybe<ENUM_GAME_RATING>
   release_date?: InputMaybe<Scalars['Date']['input']>
   short_description?: InputMaybe<Scalars['String']['input']>
   slug?: InputMaybe<Scalars['String']['input']>
@@ -697,7 +697,7 @@ export type I18NLocaleFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<I18NLocaleFiltersInput>>>
   code?: InputMaybe<StringFilterInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
-  documentId?: InputMaybe<IdFilterInput>
+  documentId?: InputMaybe<IDFilterInput>
   locale?: InputMaybe<StringFilterInput>
   localizations?: InputMaybe<I18NLocaleFiltersInput>
   name?: InputMaybe<StringFilterInput>
@@ -707,7 +707,7 @@ export type I18NLocaleFiltersInput = {
   updatedAt?: InputMaybe<DateTimeFilterInput>
 }
 
-export type IdFilterInput = {
+export type IDFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   between?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   contains?: InputMaybe<Scalars['ID']['input']>
@@ -722,7 +722,7 @@ export type IdFilterInput = {
   lte?: InputMaybe<Scalars['ID']['input']>
   ne?: InputMaybe<Scalars['ID']['input']>
   nei?: InputMaybe<Scalars['ID']['input']>
-  not?: InputMaybe<IdFilterInput>
+  not?: InputMaybe<IDFilterInput>
   notContains?: InputMaybe<Scalars['ID']['input']>
   notContainsi?: InputMaybe<Scalars['ID']['input']>
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
@@ -757,7 +757,7 @@ export type IntFilterInput = {
   startsWith?: InputMaybe<Scalars['Int']['input']>
 }
 
-export type JsonFilterInput = {
+export type JSONFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['JSON']['input']>>>
   between?: InputMaybe<Array<InputMaybe<Scalars['JSON']['input']>>>
   contains?: InputMaybe<Scalars['JSON']['input']>
@@ -772,7 +772,7 @@ export type JsonFilterInput = {
   lte?: InputMaybe<Scalars['JSON']['input']>
   ne?: InputMaybe<Scalars['JSON']['input']>
   nei?: InputMaybe<Scalars['JSON']['input']>
-  not?: InputMaybe<JsonFilterInput>
+  not?: InputMaybe<JSONFilterInput>
   notContains?: InputMaybe<Scalars['JSON']['input']>
   notContainsi?: InputMaybe<Scalars['JSON']['input']>
   notIn?: InputMaybe<Array<InputMaybe<Scalars['JSON']['input']>>>
@@ -842,209 +842,209 @@ export type Mutation = {
   updateWishlist: Maybe<Wishlist>
 }
 
-export type MutationChangePasswordArgs = {
+export type MutationchangePasswordArgs = {
   currentPassword: Scalars['String']['input']
   password: Scalars['String']['input']
   passwordConfirmation: Scalars['String']['input']
 }
 
-export type MutationCreateBannerArgs = {
+export type MutationcreateBannerArgs = {
   data: BannerInput
   status?: InputMaybe<PublicationStatus>
 }
 
-export type MutationCreateCategoryArgs = {
+export type MutationcreateCategoryArgs = {
   data: CategoryInput
   status?: InputMaybe<PublicationStatus>
 }
 
-export type MutationCreateDeveloperArgs = {
+export type MutationcreateDeveloperArgs = {
   data: DeveloperInput
   status?: InputMaybe<PublicationStatus>
 }
 
-export type MutationCreateGameArgs = {
+export type MutationcreateGameArgs = {
   data: GameInput
   status?: InputMaybe<PublicationStatus>
 }
 
-export type MutationCreatePlatformArgs = {
+export type MutationcreatePlatformArgs = {
   data: PlatformInput
   status?: InputMaybe<PublicationStatus>
 }
 
-export type MutationCreatePublisherArgs = {
+export type MutationcreatePublisherArgs = {
   data: PublisherInput
   status?: InputMaybe<PublicationStatus>
 }
 
-export type MutationCreateReviewWorkflowsWorkflowArgs = {
+export type MutationcreateReviewWorkflowsWorkflowArgs = {
   data: ReviewWorkflowsWorkflowInput
   status?: InputMaybe<PublicationStatus>
 }
 
-export type MutationCreateReviewWorkflowsWorkflowStageArgs = {
+export type MutationcreateReviewWorkflowsWorkflowStageArgs = {
   data: ReviewWorkflowsWorkflowStageInput
   status?: InputMaybe<PublicationStatus>
 }
 
-export type MutationCreateUsersPermissionsRoleArgs = {
+export type MutationcreateUsersPermissionsRoleArgs = {
   data: UsersPermissionsRoleInput
 }
 
-export type MutationCreateUsersPermissionsUserArgs = {
+export type MutationcreateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput
 }
 
-export type MutationCreateWishlistArgs = {
+export type MutationcreateWishlistArgs = {
   data: WishlistInput
   status?: InputMaybe<PublicationStatus>
 }
 
-export type MutationDeleteBannerArgs = {
+export type MutationdeleteBannerArgs = {
   documentId: Scalars['ID']['input']
 }
 
-export type MutationDeleteCategoryArgs = {
+export type MutationdeleteCategoryArgs = {
   documentId: Scalars['ID']['input']
 }
 
-export type MutationDeleteDeveloperArgs = {
+export type MutationdeleteDeveloperArgs = {
   documentId: Scalars['ID']['input']
 }
 
-export type MutationDeleteGameArgs = {
+export type MutationdeleteGameArgs = {
   documentId: Scalars['ID']['input']
 }
 
-export type MutationDeletePlatformArgs = {
+export type MutationdeletePlatformArgs = {
   documentId: Scalars['ID']['input']
 }
 
-export type MutationDeletePublisherArgs = {
+export type MutationdeletePublisherArgs = {
   documentId: Scalars['ID']['input']
 }
 
-export type MutationDeleteReviewWorkflowsWorkflowArgs = {
+export type MutationdeleteReviewWorkflowsWorkflowArgs = {
   documentId: Scalars['ID']['input']
 }
 
-export type MutationDeleteReviewWorkflowsWorkflowStageArgs = {
+export type MutationdeleteReviewWorkflowsWorkflowStageArgs = {
   documentId: Scalars['ID']['input']
 }
 
-export type MutationDeleteUploadFileArgs = {
+export type MutationdeleteUploadFileArgs = {
   id: Scalars['ID']['input']
 }
 
-export type MutationDeleteUsersPermissionsRoleArgs = {
+export type MutationdeleteUsersPermissionsRoleArgs = {
   id: Scalars['ID']['input']
 }
 
-export type MutationDeleteUsersPermissionsUserArgs = {
+export type MutationdeleteUsersPermissionsUserArgs = {
   id: Scalars['ID']['input']
 }
 
-export type MutationDeleteWishlistArgs = {
+export type MutationdeleteWishlistArgs = {
   documentId: Scalars['ID']['input']
 }
 
-export type MutationEmailConfirmationArgs = {
+export type MutationemailConfirmationArgs = {
   confirmation: Scalars['String']['input']
 }
 
-export type MutationForgotPasswordArgs = {
+export type MutationforgotPasswordArgs = {
   email: Scalars['String']['input']
 }
 
-export type MutationLoginArgs = {
+export type MutationloginArgs = {
   input: UsersPermissionsLoginInput
 }
 
-export type MutationRegisterArgs = {
+export type MutationregisterArgs = {
   input: UsersPermissionsRegisterInput
 }
 
-export type MutationResetPasswordArgs = {
+export type MutationresetPasswordArgs = {
   code: Scalars['String']['input']
   password: Scalars['String']['input']
   passwordConfirmation: Scalars['String']['input']
 }
 
-export type MutationUpdateBannerArgs = {
+export type MutationupdateBannerArgs = {
   data: BannerInput
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
 }
 
-export type MutationUpdateCategoryArgs = {
+export type MutationupdateCategoryArgs = {
   data: CategoryInput
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
 }
 
-export type MutationUpdateDeveloperArgs = {
+export type MutationupdateDeveloperArgs = {
   data: DeveloperInput
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
 }
 
-export type MutationUpdateGameArgs = {
+export type MutationupdateGameArgs = {
   data: GameInput
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
 }
 
-export type MutationUpdateHomeArgs = {
+export type MutationupdateHomeArgs = {
   data: HomeInput
   status?: InputMaybe<PublicationStatus>
 }
 
-export type MutationUpdatePlatformArgs = {
+export type MutationupdatePlatformArgs = {
   data: PlatformInput
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
 }
 
-export type MutationUpdatePublisherArgs = {
+export type MutationupdatePublisherArgs = {
   data: PublisherInput
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
 }
 
-export type MutationUpdateRecommendedArgs = {
+export type MutationupdateRecommendedArgs = {
   data: RecommendedInput
   status?: InputMaybe<PublicationStatus>
 }
 
-export type MutationUpdateReviewWorkflowsWorkflowArgs = {
+export type MutationupdateReviewWorkflowsWorkflowArgs = {
   data: ReviewWorkflowsWorkflowInput
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
 }
 
-export type MutationUpdateReviewWorkflowsWorkflowStageArgs = {
+export type MutationupdateReviewWorkflowsWorkflowStageArgs = {
   data: ReviewWorkflowsWorkflowStageInput
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
 }
 
-export type MutationUpdateUploadFileArgs = {
+export type MutationupdateUploadFileArgs = {
   id: Scalars['ID']['input']
   info?: InputMaybe<FileInfoInput>
 }
 
-export type MutationUpdateUsersPermissionsRoleArgs = {
+export type MutationupdateUsersPermissionsRoleArgs = {
   data: UsersPermissionsRoleInput
   id: Scalars['ID']['input']
 }
 
-export type MutationUpdateUsersPermissionsUserArgs = {
+export type MutationupdateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput
   id: Scalars['ID']['input']
 }
 
-export type MutationUpdateWishlistArgs = {
+export type MutationupdateWishlistArgs = {
   data: WishlistInput
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
@@ -1077,13 +1077,13 @@ export type Platform = {
   updatedAt: Maybe<Scalars['DateTime']['output']>
 }
 
-export type PlatformGamesArgs = {
+export type PlatformgamesArgs = {
   filters?: InputMaybe<GameFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type PlatformGames_ConnectionArgs = {
+export type Platformgames_connectionArgs = {
   filters?: InputMaybe<GameFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
@@ -1098,7 +1098,7 @@ export type PlatformEntityResponseCollection = {
 export type PlatformFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<PlatformFiltersInput>>>
   createdAt?: InputMaybe<DateTimeFilterInput>
-  documentId?: InputMaybe<IdFilterInput>
+  documentId?: InputMaybe<IDFilterInput>
   games?: InputMaybe<GameFiltersInput>
   locale?: InputMaybe<StringFilterInput>
   localizations?: InputMaybe<PlatformFiltersInput>
@@ -1124,8 +1124,8 @@ export type PlatformRelationResponseCollection = {
 }
 
 export enum PublicationStatus {
-  Draft = 'DRAFT',
-  Published = 'PUBLISHED'
+  DRAFT = 'DRAFT',
+  PUBLISHED = 'PUBLISHED'
 }
 
 export type Publisher = {
@@ -1140,13 +1140,13 @@ export type Publisher = {
   updatedAt: Maybe<Scalars['DateTime']['output']>
 }
 
-export type PublisherGamesArgs = {
+export type PublishergamesArgs = {
   filters?: InputMaybe<GameFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type PublisherGames_ConnectionArgs = {
+export type Publishergames_connectionArgs = {
   filters?: InputMaybe<GameFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
@@ -1161,7 +1161,7 @@ export type PublisherEntityResponseCollection = {
 export type PublisherFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<PublisherFiltersInput>>>
   createdAt?: InputMaybe<DateTimeFilterInput>
-  documentId?: InputMaybe<IdFilterInput>
+  documentId?: InputMaybe<IDFilterInput>
   games?: InputMaybe<GameFiltersInput>
   locale?: InputMaybe<StringFilterInput>
   localizations?: InputMaybe<PublisherFiltersInput>
@@ -1227,255 +1227,255 @@ export type Query = {
   wishlists_connection: Maybe<WishlistEntityResponseCollection>
 }
 
-export type QueryBannerArgs = {
+export type QuerybannerArgs = {
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryBannersArgs = {
+export type QuerybannersArgs = {
   filters?: InputMaybe<BannerFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryBanners_ConnectionArgs = {
+export type Querybanners_connectionArgs = {
   filters?: InputMaybe<BannerFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryCategoriesArgs = {
+export type QuerycategoriesArgs = {
   filters?: InputMaybe<CategoryFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryCategories_ConnectionArgs = {
+export type Querycategories_connectionArgs = {
   filters?: InputMaybe<CategoryFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryCategoryArgs = {
+export type QuerycategoryArgs = {
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryDeveloperArgs = {
+export type QuerydeveloperArgs = {
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryDevelopersArgs = {
+export type QuerydevelopersArgs = {
   filters?: InputMaybe<DeveloperFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryDevelopers_ConnectionArgs = {
+export type Querydevelopers_connectionArgs = {
   filters?: InputMaybe<DeveloperFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryGameArgs = {
+export type QuerygameArgs = {
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryGamesArgs = {
+export type QuerygamesArgs = {
   filters?: InputMaybe<GameFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryGames_ConnectionArgs = {
+export type Querygames_connectionArgs = {
   filters?: InputMaybe<GameFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryHomeArgs = {
+export type QueryhomeArgs = {
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryI18NLocaleArgs = {
+export type Queryi18NLocaleArgs = {
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryI18NLocalesArgs = {
+export type Queryi18NLocalesArgs = {
   filters?: InputMaybe<I18NLocaleFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryI18NLocales_ConnectionArgs = {
+export type Queryi18NLocales_connectionArgs = {
   filters?: InputMaybe<I18NLocaleFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryPlatformArgs = {
+export type QueryplatformArgs = {
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryPlatformsArgs = {
+export type QueryplatformsArgs = {
   filters?: InputMaybe<PlatformFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryPlatforms_ConnectionArgs = {
+export type Queryplatforms_connectionArgs = {
   filters?: InputMaybe<PlatformFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryPublisherArgs = {
+export type QuerypublisherArgs = {
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryPublishersArgs = {
+export type QuerypublishersArgs = {
   filters?: InputMaybe<PublisherFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryPublishers_ConnectionArgs = {
+export type Querypublishers_connectionArgs = {
   filters?: InputMaybe<PublisherFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryRecommendedArgs = {
+export type QueryrecommendedArgs = {
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryReviewWorkflowsWorkflowArgs = {
+export type QueryreviewWorkflowsWorkflowArgs = {
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryReviewWorkflowsWorkflowStageArgs = {
+export type QueryreviewWorkflowsWorkflowStageArgs = {
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryReviewWorkflowsWorkflowStagesArgs = {
+export type QueryreviewWorkflowsWorkflowStagesArgs = {
   filters?: InputMaybe<ReviewWorkflowsWorkflowStageFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryReviewWorkflowsWorkflowStages_ConnectionArgs = {
+export type QueryreviewWorkflowsWorkflowStages_connectionArgs = {
   filters?: InputMaybe<ReviewWorkflowsWorkflowStageFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryReviewWorkflowsWorkflowsArgs = {
+export type QueryreviewWorkflowsWorkflowsArgs = {
   filters?: InputMaybe<ReviewWorkflowsWorkflowFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryReviewWorkflowsWorkflows_ConnectionArgs = {
+export type QueryreviewWorkflowsWorkflows_connectionArgs = {
   filters?: InputMaybe<ReviewWorkflowsWorkflowFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryUploadFileArgs = {
+export type QueryuploadFileArgs = {
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryUploadFilesArgs = {
+export type QueryuploadFilesArgs = {
   filters?: InputMaybe<UploadFileFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryUploadFiles_ConnectionArgs = {
+export type QueryuploadFiles_connectionArgs = {
   filters?: InputMaybe<UploadFileFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryUsersPermissionsRoleArgs = {
+export type QueryusersPermissionsRoleArgs = {
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryUsersPermissionsRolesArgs = {
+export type QueryusersPermissionsRolesArgs = {
   filters?: InputMaybe<UsersPermissionsRoleFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryUsersPermissionsRoles_ConnectionArgs = {
+export type QueryusersPermissionsRoles_connectionArgs = {
   filters?: InputMaybe<UsersPermissionsRoleFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryUsersPermissionsUserArgs = {
+export type QueryusersPermissionsUserArgs = {
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryUsersPermissionsUsersArgs = {
+export type QueryusersPermissionsUsersArgs = {
   filters?: InputMaybe<UsersPermissionsUserFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryUsersPermissionsUsers_ConnectionArgs = {
+export type QueryusersPermissionsUsers_connectionArgs = {
   filters?: InputMaybe<UsersPermissionsUserFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryWishlistArgs = {
+export type QuerywishlistArgs = {
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryWishlistsArgs = {
+export type QuerywishlistsArgs = {
   filters?: InputMaybe<WishlistFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryWishlists_ConnectionArgs = {
+export type Querywishlists_connectionArgs = {
   filters?: InputMaybe<WishlistFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
@@ -1509,13 +1509,13 @@ export type ReviewWorkflowsWorkflow = {
   updatedAt: Maybe<Scalars['DateTime']['output']>
 }
 
-export type ReviewWorkflowsWorkflowStagesArgs = {
+export type ReviewWorkflowsWorkflowstagesArgs = {
   filters?: InputMaybe<ReviewWorkflowsWorkflowStageFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type ReviewWorkflowsWorkflowStages_ConnectionArgs = {
+export type ReviewWorkflowsWorkflowstages_connectionArgs = {
   filters?: InputMaybe<ReviewWorkflowsWorkflowStageFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
@@ -1529,9 +1529,9 @@ export type ReviewWorkflowsWorkflowEntityResponseCollection = {
 
 export type ReviewWorkflowsWorkflowFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ReviewWorkflowsWorkflowFiltersInput>>>
-  contentTypes?: InputMaybe<JsonFilterInput>
+  contentTypes?: InputMaybe<JSONFilterInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
-  documentId?: InputMaybe<IdFilterInput>
+  documentId?: InputMaybe<IDFilterInput>
   locale?: InputMaybe<StringFilterInput>
   localizations?: InputMaybe<ReviewWorkflowsWorkflowFiltersInput>
   name?: InputMaybe<StringFilterInput>
@@ -1571,7 +1571,7 @@ export type ReviewWorkflowsWorkflowStageFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ReviewWorkflowsWorkflowStageFiltersInput>>>
   color?: InputMaybe<StringFilterInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
-  documentId?: InputMaybe<IdFilterInput>
+  documentId?: InputMaybe<IDFilterInput>
   locale?: InputMaybe<StringFilterInput>
   localizations?: InputMaybe<ReviewWorkflowsWorkflowStageFiltersInput>
   name?: InputMaybe<StringFilterInput>
@@ -1654,10 +1654,10 @@ export type UploadFileFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<UploadFileFiltersInput>>>
   caption?: InputMaybe<StringFilterInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
-  documentId?: InputMaybe<IdFilterInput>
+  documentId?: InputMaybe<IDFilterInput>
   ext?: InputMaybe<StringFilterInput>
   folderPath?: InputMaybe<StringFilterInput>
-  formats?: InputMaybe<JsonFilterInput>
+  formats?: InputMaybe<JSONFilterInput>
   hash?: InputMaybe<StringFilterInput>
   height?: InputMaybe<IntFilterInput>
   locale?: InputMaybe<StringFilterInput>
@@ -1668,7 +1668,7 @@ export type UploadFileFiltersInput = {
   or?: InputMaybe<Array<InputMaybe<UploadFileFiltersInput>>>
   previewUrl?: InputMaybe<StringFilterInput>
   provider?: InputMaybe<StringFilterInput>
-  provider_metadata?: InputMaybe<JsonFilterInput>
+  provider_metadata?: InputMaybe<JSONFilterInput>
   publishedAt?: InputMaybe<DateTimeFilterInput>
   size?: InputMaybe<FloatFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
@@ -1740,7 +1740,7 @@ export type UsersPermissionsPermissionFiltersInput = {
   action?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<UsersPermissionsPermissionFiltersInput>>>
   createdAt?: InputMaybe<DateTimeFilterInput>
-  documentId?: InputMaybe<IdFilterInput>
+  documentId?: InputMaybe<IDFilterInput>
   locale?: InputMaybe<StringFilterInput>
   localizations?: InputMaybe<UsersPermissionsPermissionFiltersInput>
   not?: InputMaybe<UsersPermissionsPermissionFiltersInput>
@@ -1776,25 +1776,25 @@ export type UsersPermissionsRole = {
   users_connection: Maybe<UsersPermissionsUserRelationResponseCollection>
 }
 
-export type UsersPermissionsRolePermissionsArgs = {
+export type UsersPermissionsRolepermissionsArgs = {
   filters?: InputMaybe<UsersPermissionsPermissionFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type UsersPermissionsRolePermissions_ConnectionArgs = {
+export type UsersPermissionsRolepermissions_connectionArgs = {
   filters?: InputMaybe<UsersPermissionsPermissionFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type UsersPermissionsRoleUsersArgs = {
+export type UsersPermissionsRoleusersArgs = {
   filters?: InputMaybe<UsersPermissionsUserFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type UsersPermissionsRoleUsers_ConnectionArgs = {
+export type UsersPermissionsRoleusers_connectionArgs = {
   filters?: InputMaybe<UsersPermissionsUserFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
@@ -1810,7 +1810,7 @@ export type UsersPermissionsRoleFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<UsersPermissionsRoleFiltersInput>>>
   createdAt?: InputMaybe<DateTimeFilterInput>
   description?: InputMaybe<StringFilterInput>
-  documentId?: InputMaybe<IdFilterInput>
+  documentId?: InputMaybe<IDFilterInput>
   locale?: InputMaybe<StringFilterInput>
   localizations?: InputMaybe<UsersPermissionsRoleFiltersInput>
   name?: InputMaybe<StringFilterInput>
@@ -1869,7 +1869,7 @@ export type UsersPermissionsUserFiltersInput = {
   confirmationToken?: InputMaybe<StringFilterInput>
   confirmed?: InputMaybe<BooleanFilterInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
-  documentId?: InputMaybe<IdFilterInput>
+  documentId?: InputMaybe<IDFilterInput>
   email?: InputMaybe<StringFilterInput>
   locale?: InputMaybe<StringFilterInput>
   localizations?: InputMaybe<UsersPermissionsUserFiltersInput>
@@ -1914,13 +1914,13 @@ export type Wishlist = {
   user: Maybe<UsersPermissionsUser>
 }
 
-export type WishlistGamesArgs = {
+export type WishlistgamesArgs = {
   filters?: InputMaybe<GameFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type WishlistGames_ConnectionArgs = {
+export type Wishlistgames_connectionArgs = {
   filters?: InputMaybe<GameFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
@@ -1935,7 +1935,7 @@ export type WishlistEntityResponseCollection = {
 export type WishlistFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<WishlistFiltersInput>>>
   createdAt?: InputMaybe<DateTimeFilterInput>
-  documentId?: InputMaybe<IdFilterInput>
+  documentId?: InputMaybe<IDFilterInput>
   games?: InputMaybe<GameFiltersInput>
   locale?: InputMaybe<StringFilterInput>
   localizations?: InputMaybe<WishlistFiltersInput>

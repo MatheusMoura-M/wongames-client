@@ -19,7 +19,7 @@ export type HighlightFragmentFragment = {
   subtitle: string
   buttonLabel: string
   buttonLink: string
-  alignment: Types.Enum_Componentpagehighlight_Alignment | null
+  alignment: Types.ENUM_COMPONENTPAGEHIGHLIGHT_ALIGNMENT | null
   background: HighlightFragmentFragment_ComponentPageHighlight_background_UploadFile
   floatImage: HighlightFragmentFragment_ComponentPageHighlight_floatImage_UploadFile | null
 }

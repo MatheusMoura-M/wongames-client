@@ -13,6 +13,11 @@ const config: CodegenConfig = {
       inputValue: false
     },
 
+    namingConvention: {
+      enumValues: 'keep',
+      typeNames: 'keep'
+    },
+
     nonOptionalTypename: true,
     defaultScalarType: 'any',
 
@@ -42,7 +47,8 @@ const config: CodegenConfig = {
       presetConfig: {
         baseTypesPath: '../types.generated.ts',
         extension: '.generated.ts',
-        folder: '__generated__'
+        folder: '__generated__',
+        filePerOperation: true
       },
       plugins: ['typescript-operations', 'typed-document-node']
     },
@@ -57,7 +63,8 @@ const config: CodegenConfig = {
       presetConfig: {
         baseTypesPath: '../types.generated.ts',
         extension: '.generated.ts',
-        folder: '__generated__'
+        folder: '__generated__',
+        filePerOperation: true
       },
       plugins: ['typescript-operations', 'typed-document-node']
     },
@@ -72,7 +79,8 @@ const config: CodegenConfig = {
       presetConfig: {
         baseTypesPath: '../types.generated.ts',
         extension: '.generated.ts',
-        folder: '__generated__'
+        folder: '__generated__',
+        filePerOperation: true
       },
       plugins: ['typescript-operations', 'typed-document-node']
     }
