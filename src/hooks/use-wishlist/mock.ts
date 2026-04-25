@@ -101,6 +101,27 @@ export const updateWishlistMock = {
   }
 }
 
+export const removeWishlistMock = {
+  request: {
+    query: MutationUpdateWishlistDocument,
+    context: { session: { jwt: '123' } },
+    variables: {
+      documentId: 'onvc3g44nhn63bp9xji52742',
+      data: {
+        games: ['gk60wzt9lvucsx56a73e7cnl']
+      }
+    }
+  },
+  result: {
+    data: {
+      updateWishlist: {
+        documentId: 'onvc3g44nhn63bp9xji52742',
+        games: [gameMock('gk60wzt9lvucsx56a73e7cnl')]
+      }
+    }
+  }
+}
+
 export const wishlistItems = [
   {
     documentId: 'ahef7s9utp83c41ezwfggp45',
