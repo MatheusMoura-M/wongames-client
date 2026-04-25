@@ -7,7 +7,7 @@ const gameMock = (documentId: string) => ({
   price: 10.5,
   developers: [{ name: 'sample developer' }],
   cover: {
-    src: '/sample-game.jpg'
+    url: '/sample-game.jpg'
   },
   __typename: 'Game'
 })
@@ -37,25 +37,25 @@ export const wishlistMock = {
 
 export const wishlistItems = [
   {
-    id: 'onvc3g44nhn63bp9xji52741',
-    title: 'Sample Game 1',
-    slug: 'sample-game-1',
+    documentId: 'ahef7s9utp83c41ezwfggp45',
+    title: 'Sample Game ahef7s9utp83c41ezwfggp45',
+    slug: 'sample-game-ahef7s9utp83c41ezwfggp45',
     developer: 'sample developer',
     img: 'http://localhost:1337/sample-game.jpg',
     price: 10.5
   },
   {
-    id: 'onvc3g44nhn63bp9xji52742',
-    title: 'Sample Game 2',
-    slug: 'sample-game-2',
+    documentId: 'gk60wzt9lvucsx56a73e7cnl',
+    title: 'Sample Game gk60wzt9lvucsx56a73e7cnl',
+    slug: 'sample-game-gk60wzt9lvucsx56a73e7cnl',
     developer: 'sample developer',
     img: 'http://localhost:1337/sample-game.jpg',
     price: 10.5
   },
   {
-    id: 'onvc3g44nhn63bp9xji52743',
-    title: 'Sample Game 3',
-    slug: 'sample-game-3',
+    documentId: 'onvc3g44nhn63bp9xji52743',
+    title: 'Sample Game onvc3g44nhn63bp9xji52743',
+    slug: 'sample-game-onvc3g44nhn63bp9xji52743',
     developer: 'sample developer',
     img: 'http://localhost:1337/sample-game.jpg',
     price: 10.5
