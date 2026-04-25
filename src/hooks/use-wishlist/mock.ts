@@ -1,3 +1,5 @@
+import { MutationCreateWishlistDocument } from '@/graphql/mutations/__generated__/MutationCreateWishlist'
+import { MutationUpdateWishlistDocument } from '@/graphql/mutations/__generated__/MutationUpdateWishlist'
 import { QueryWishlistDocument } from '@/graphql/queries/__generated__/QueryWishlist'
 
 const gameMock = (documentId: string) => ({
@@ -11,6 +13,21 @@ const gameMock = (documentId: string) => ({
   },
   __typename: 'Game'
 })
+
+export const emptyWishlistMock = {
+  request: {
+    query: QueryWishlistDocument,
+    context: { session: { jwt: '123' } },
+    variables: {
+      identifier: 'lorem@ipsum.com'
+    }
+  },
+  result: {
+    data: {
+      wishlists: []
+    }
+  }
+}
 
 export const wishlistMock = {
   request: {
@@ -31,6 +48,55 @@ export const wishlistMock = {
           ]
         }
       ]
+    }
+  }
+}
+
+export const createWishlistMock = {
+  request: {
+    query: MutationCreateWishlistDocument,
+    context: { session: { jwt: '123' } },
+    variables: {
+      data: {
+        games: ['onvc3g44nhn63bp9xji52743']
+      }
+    }
+  },
+  result: {
+    data: {
+      createWishlist: {
+        documentId: 'onvc3g44nhn63bp9xji52742',
+        games: [gameMock('onvc3g44nhn63bp9xji52743')]
+      }
+    }
+  }
+}
+
+export const updateWishlistMock = {
+  request: {
+    query: MutationUpdateWishlistDocument,
+    context: { session: { jwt: '123' } },
+    variables: {
+      documentId: 'onvc3g44nhn63bp9xji52742',
+      data: {
+        games: [
+          'ahef7s9utp83c41ezwfggp45',
+          'gk60wzt9lvucsx56a73e7cnl',
+          'onvc3g44nhn63bp9xji52743'
+        ]
+      }
+    }
+  },
+  result: {
+    data: {
+      updateWishlist: {
+        documentId: 'onvc3g44nhn63bp9xji52742',
+        games: [
+          gameMock('ahef7s9utp83c41ezwfggp45'),
+          gameMock('gk60wzt9lvucsx56a73e7cnl'),
+          gameMock('onvc3g44nhn63bp9xji52743')
+        ]
+      }
     }
   }
 }
