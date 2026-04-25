@@ -1,5 +1,5 @@
 import { fireEvent } from '@testing-library/react'
-import { render, screen } from '@/utils/test.utils'
+import { render, screen } from '@/utils/test-utils'
 import GameCard from '.'
 import theme from '@/styles/theme'
 

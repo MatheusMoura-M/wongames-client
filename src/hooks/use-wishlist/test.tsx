@@ -1,4 +1,4 @@
-import { act, renderHook, waitFor } from '@/utils/test.utils'
+import { act, renderHook, waitFor } from '@/utils/test-utils'
 import { MockedProvider } from '@apollo/client/testing'
 import { useWishlist, WishlistProvider } from '.'
 import {

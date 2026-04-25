@@ -1,4 +1,4 @@
-import { render, screen } from '@/utils/test.utils'
+import { render, screen } from '@/utils/test-utils'
 import 'match-media-mock'
 
 import Profile from '.'

@@ -1,7 +1,7 @@
 import bannerMock from '@/components/BannerSlider/mock'
 import gamesMock from '@/components/GameCardSlider/mock'
 import highlightMock from '@/components/Highlight/mock'
-import { render, screen } from '@/utils/test.utils'
+import { render, screen } from '@/utils/test-utils'
 import 'match-media-mock'
 
 import Home from '.'
