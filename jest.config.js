@@ -1,5 +1,5 @@
 export default {
-  testEnvironment: 'jsdom',
+  testEnvironment: 'jest-fixed-jsdom',
   testPathIgnorePatterns: ['/node_modules/', '/.next/'],
   collectCoverage: true,
   collectCoverageFrom: [
@@ -16,12 +16,14 @@ export default {
   setupFilesAfterEnv: ['<rootDir>/.jest/setup.ts'],
   modulePaths: ['<rootDir>/src/', '<rootDir>/.jest'],
   transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }]
+    '^.+\\.(js|jsx|ts|tsx|mjs)$': ['babel-jest', { presets: ['next/babel'] }]
   },
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
-    'match-media-mock': '<rootDir>/.jest/match-media-mock.js',
     '^styled-components':
       'styled-components/dist/styled-components.browser.cjs.js'
-  }
+  },
+  transformIgnorePatterns: [
+    '/node_modules/(?!(msw|@mswjs|until-async|rettime|@open-draft)/)'
+  ]
 }

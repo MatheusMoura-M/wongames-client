@@ -26,6 +26,7 @@ const Showcase = ({
     )}
 
     {!!highlight && <Highlight {...highlight} />}
+
     {!!games && <GameCardSlider items={games} color={color} />}
   </S.Wrapper>
 )

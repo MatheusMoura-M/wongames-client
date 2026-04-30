@@ -1,17 +1,20 @@
-import { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import Main from '.'
 
-export default {
-  title: 'Main',
+const meta = {
+  title: 'Main/Main',
   component: Main,
   parameters: {
     layout: 'fullscreen'
   }
-} as Meta
+} satisfies Meta<typeof Main>
 
-export const Default: StoryObj = {}
+export default meta
+type Story = StoryObj<typeof Main>
 
-export const Basic: StoryObj = {
+export const Default: Story = {}
+
+export const Basic: Story = {
   args: {
     title: 'title basic',
     description: 'description basic'

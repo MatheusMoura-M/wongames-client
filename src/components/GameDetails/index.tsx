@@ -1,5 +1,5 @@
-import { Apple, } from '@styled-icons/fa-brands/Apple'
-import { Linux, } from '@styled-icons/fa-brands/Linux'
+import { Apple } from '@styled-icons/fa-brands/Apple'
+import { Linux } from '@styled-icons/fa-brands/Linux'
 import { Windows } from '@styled-icons/fa-brands/Windows'
 
 import Heading from '../Heading'

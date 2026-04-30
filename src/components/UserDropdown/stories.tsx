@@ -1,26 +1,26 @@
-import { Meta, StoryObj } from '@storybook/react'
-
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import UserDropdown, { UserDropdownProps } from '.'
 
-export default {
-  title: 'UserDropdown',
+const meta = {
+  title: 'Main/UserDropdown',
   component: UserDropdown,
-  parameters: {
-    backgrounds: {
-      default: 'won-dark'
-    }
+  args: {
+    username: 'Willian'
+  },
+  globals: {
+    backgrounds: { value: 'dark' }
   }
-} as Meta
+} satisfies Meta<UserDropdownProps>
 
-export const Default: StoryObj<UserDropdownProps> = {
+export default meta
+type Story = StoryObj<UserDropdownProps>
+
+export const Default: Story = {
   render: (args) => (
     <div
       style={{ maxWidth: '98%', display: 'flex', justifyContent: 'flex-end' }}
     >
       <UserDropdown {...args} />
     </div>
-  ),
-  args: {
-    username: 'Willian'
-  }
+  )
 }

@@ -1,4 +1,4 @@
-import { render } from '@/utils/test.utils'
+import { render } from '@/utils/test-utils'
 import { Divider } from '.'
 
 describe('<Divider />', () => {

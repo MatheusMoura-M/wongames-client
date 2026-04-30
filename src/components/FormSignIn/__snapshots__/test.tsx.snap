@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<FormSignIn /> should render the form 1`] = `
-.c8 {
+.c7 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -19,7 +19,11 @@ exports[`<FormSignIn /> should render the form 1`] = `
   width: 100%;
 }
 
-.c8:hover {
+.c7:focus {
+  outline: 1px dashed;
+}
+
+.c7:hover {
   background: linear-gradient(180deg, #e35565 0%, #d958a6 50%);
 }
 
@@ -48,6 +52,11 @@ exports[`<FormSignIn /> should render the form 1`] = `
   width: 100%;
 }
 
+.c5:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 2.4rem #EAEAEA inset;
+  filter: none;
+}
+
 .c3 {
   display: flex;
   width: 2.2rem;
@@ -63,24 +72,20 @@ exports[`<FormSignIn /> should render the form 1`] = `
   margin: 0.8rem 0;
 }
 
-.c0 .c7 {
-  margin: 3.2rem auto 1.6rem;
-}
-
-.c9 {
+.c8 {
   font-size: 1.4rem;
   color: #030517;
   text-align: center;
 }
 
-.c9 a {
+.c8 a {
   color: #3CD3C1;
   text-decoration: none;
   border-bottom: 0.1rem solid #3CD3C1;
   transition: color,border,0.1s ease-in-out;
 }
 
-.c9 a:hover {
+.c8 a:hover {
   color: #29b3a3;
   border-bottom: 0.1rem solid #29b3a3;
 }
@@ -92,14 +97,19 @@ exports[`<FormSignIn /> should render the form 1`] = `
 }
 
 .c6 {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.c6>a {
   display: block;
   font-size: 1.4rem;
   color: #030517;
   text-decoration: none;
-  text-align: right;
+  width: fit-content;
 }
 
-.c6:hover {
+.c6>a:hover {
   color: #0f1971;
 }
 
@@ -135,7 +145,7 @@ exports[`<FormSignIn /> should render the form 1`] = `
               class="c5"
               name="email"
               placeholder="Email"
-              type="email"
+              type="text"
               value=""
             />
           </div>
@@ -171,21 +181,25 @@ exports[`<FormSignIn /> should render the form 1`] = `
             />
           </div>
         </div>
-        <a
+        <div
           class="c6"
-          href="#"
         >
-          Forgot your password?
-        </a>
+          <a
+            href="/forgot-password"
+          >
+            Forgot your password?
+          </a>
+        </div>
         <button
-          class="c7 c8"
+          class="c7"
+          type="submit"
         >
           <span>
             Sign in now
           </span>
         </button>
         <div
-          class="c9"
+          class="c8"
         >
           Don’t have an account? 
           <a

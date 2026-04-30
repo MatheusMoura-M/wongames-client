@@ -1,8 +1,11 @@
+import { CartContextDefaultValues } from '@/hooks/use-cart'
+import { render, screen, waitFor } from '@/utils/test-utils'
+import userEvent from '@testing-library/user-event'
 import GameItem from '.'
-import { render, screen } from '@/utils/test.utils'
 import { StaticImageImport } from '../CardsList/test'
 
 const props = {
+  documentId: 'ahef7s9utp83c41ezwfggp45',
   img: 'https://items.gog.com/not_a_cp/EN/EN-Mercenary-Outlaw.png',
   title: 'Red Dead Redemption 2',
   price: 'R$ 215,00'
@@ -28,6 +31,25 @@ describe('<GameItem />', () => {
       props.img
     )
     expect(screen.getByText('R$ 215,00')).toBeInTheDocument()
+  })
+
+  it('should render remove if the item is inside the cart and call remove', () => {
+    const cartProviderProps = {
+      ...CartContextDefaultValues,
+      isInCart: () => true,
+      removeFromCart: jest.fn()
+    }
+    render(<GameItem {...props} />, { cartProviderProps })
+
+    const removeLink = screen.getByText(/remove/i)
+    expect(removeLink).toBeInTheDocument()
+
+    waitFor(() => {
+      userEvent.click(removeLink)
+      expect(cartProviderProps.removeFromCart).toHaveBeenCalledWith(
+        'ahef7s9utp83c41ezwfggp45'
+      )
+    })
   })
 
   it('should render the item with download link', () => {

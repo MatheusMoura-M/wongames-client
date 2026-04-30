@@ -1,11 +1,12 @@
-import { QueryGames_games } from '@/graphql/generated/QueryGames'
+import { QueryGamesQuery } from '@/graphql/queries/__generated__/QueryGames'
 import {
-  QueryHome_banners,
-  QueryHome_sections_freeGames_highlight
-} from '@/graphql/generated/QueryHome'
+  QueryHomeQuery,
+  QueryHomeQuery_sections_Home_freeGames_ComponentPageSection
+} from '@/graphql/queries/__generated__/QueryHome'
+import { isGame, isNotNull } from '../filterByTypes'
 import formatPrice from '../format-price'
 
-export const bannerMapper = (banners: QueryHome_banners[]) => {
+export const bannerMapper = (banners: QueryHomeQuery['banners']) => {
   return banners.map((banner) => ({
     img: banner?.image?.url
       ? `http://localhost:1337${banner.image.url}`
@@ -22,23 +23,24 @@ export const bannerMapper = (banners: QueryHome_banners[]) => {
   }))
 }
 
-export const gamesMapper = (games: QueryGames_games[] | null | undefined) => {
-  return games
-    ? games.map((game) => ({
-        id: game?.documentId,
-        title: game?.name,
-        slug: game?.slug,
-        developer: game?.developers[0]?.name,
-        img: game?.cover?.url
-          ? `http://localhost:1337${game.cover.url}`
-          : `/img/image_empty.png`,
-        price: game?.price
-      }))
-    : []
+export const gamesMapper = (games?: QueryGamesQuery['games']) => {
+  return (games ?? []).filter(isGame).map((game) => ({
+    documentId: game.documentId,
+    title: game.name,
+    slug: game.slug,
+    developer: game.developers?.find(isNotNull)?.name ?? 'Unknown',
+    img: game.cover?.url
+      ? `http://localhost:1337${game.cover.url}`
+      : `/img/image_empty.png`,
+    price: game.price
+  }))
 }
 
 export const highlightMapper = (
-  highlight: QueryHome_sections_freeGames_highlight | null | undefined
+  highlight:
+    | QueryHomeQuery_sections_Home_freeGames_ComponentPageSection['highlight']
+    | null
+    | undefined
 ) => {
   return highlight
     ? {
@@ -57,15 +59,26 @@ export const highlightMapper = (
     : {}
 }
 
-export const cartMapper = (games: QueryGames_games[] | undefined) => {
-  return games
-    ? games.map((game) => ({
-        documentId: game?.documentId,
-        img: game?.cover?.url
-          ? `http://localhost:1337${game.cover.url}`
-          : `/img/image_empty.png`,
-        title: game?.name,
-        price: game?.price ? formatPrice(game.price) : 'Free'
-      }))
-    : []
+export const cartMapper = (games: QueryGamesQuery['games'] | undefined) => {
+  return (games ?? []).filter(isGame).map((game) => ({
+    documentId: game.documentId,
+    img: game.cover?.url
+      ? `http://localhost:1337${game.cover.url}`
+      : `/img/image_empty.png`,
+    title: game.name,
+    price: game.price ? formatPrice(game.price) : 'Free'
+  }))
 }
+
+// export const cartMapper = (games: QueryGamesQuery["games"] | undefined) => {
+//   return games
+//     ? games.map((game) => ({
+//         documentId: game?.documentId,
+//         img: game?.cover?.url
+//           ? `http://localhost:1337${game.cover.url}`
+//           : `/img/image_empty.png`,
+//         title: game?.name,
+//         price: game?.price ? formatPrice(game.price) : 'Free'
+//       }))
+//     : []
+// }

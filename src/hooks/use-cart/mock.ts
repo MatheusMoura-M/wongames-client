@@ -1,8 +1,8 @@
-import { QUERY_GAMES } from '@/graphql/queries/games'
+import { QueryGamesDocument } from '@/graphql/queries/__generated__/QueryGames'
 
 export const gamesMock = {
   request: {
-    query: QUERY_GAMES,
+    query: QueryGamesDocument,
     variables: {
       filters: {
         documentId: {
@@ -51,7 +51,7 @@ export const gamesMock = {
 
 export const singleGameMock = {
   request: {
-    query: QUERY_GAMES,
+    query: QueryGamesDocument,
     variables: {
       filters: {
         documentId: {

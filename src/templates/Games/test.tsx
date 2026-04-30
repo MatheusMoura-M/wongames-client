@@ -1,6 +1,6 @@
 import filterItemsMock from '@/components/ExploreSidebar/mock'
 import apolloCache from '@/utils/apolloCache'
-import { render, screen } from '@/utils/test.utils'
+import { render, screen } from '@/utils/test-utils'
 import { MockedProvider } from '@apollo/client/testing'
 import userEvent from '@testing-library/user-event'
 import Games from '.'

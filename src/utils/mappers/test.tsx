@@ -1,8 +1,8 @@
-import { QueryGames_games } from '@/graphql/generated/QueryGames'
+import { QueryGamesQuery } from '@/graphql/queries/__generated__/QueryGames'
 import {
-  QueryHome_banners,
-  QueryHome_sections_newGames_highlight
-} from '@/graphql/generated/QueryHome'
+  QueryHomeQuery_Query,
+  QueryHomeQuery_sections_Home_freeGames_ComponentPageSection
+} from '@/graphql/queries/__generated__/QueryHome'
 import { bannerMapper, cartMapper, gamesMapper, highlightMapper } from '.'
 
 describe('bannerMapper()', () => {
@@ -22,7 +22,7 @@ describe('bannerMapper()', () => {
         color: 'primary',
         size: 'small'
       }
-    } as QueryHome_banners
+    } as NonNullable<QueryHomeQuery_Query['banners'][number]>
 
     expect(bannerMapper([banner])).toStrictEqual([
       {
@@ -58,11 +58,11 @@ describe('gamesMapper()', () => {
         url: '/image.jpg'
       },
       price: 10
-    } as QueryGames_games
+    } as NonNullable<QueryGamesQuery['games'][number]>
 
     expect(gamesMapper([game])).toStrictEqual([
       {
-        id: '1',
+        documentId: '1',
         title: 'game',
         slug: 'game',
         developer: 'developer',
@@ -91,7 +91,9 @@ describe('highlightMapper()', () => {
       floatImage: {
         url: '/image.jpg'
       }
-    } as QueryHome_sections_newGames_highlight
+    } as NonNullable<
+      QueryHomeQuery_sections_Home_freeGames_ComponentPageSection['highlight']
+    >
 
     expect(highlightMapper(highlight)).toStrictEqual({
       title: 'title',
@@ -118,7 +120,7 @@ describe('cartMapper()', () => {
       },
       name: 'game',
       price: 10
-    } as QueryGames_games
+    } as NonNullable<QueryGamesQuery['games'][number]>
 
     expect(cartMapper([game])).toStrictEqual([
       {

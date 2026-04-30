@@ -1,24 +1,27 @@
-import { StoryObj, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import Menu, { MenuProps } from '.'
 
-export default {
-  title: 'Menu',
+const meta = {
+  title: 'Main/Menu',
   component: Menu,
   parameters: {
-    layout: 'fullscreen',
-    backgrounds: {
-      default: 'won-dark'
-    }
+    layout: 'fullscreen'
+  },
+  globals: {
+    backgrounds: { value: 'dark' }
   }
-} as Meta
+} satisfies Meta<MenuProps>
 
-export const Default: StoryObj<MenuProps> = {
-  render: (args) => <Menu {...args} />
+export default meta
+type Story = StoryObj<MenuProps>
+
+export const Default: Story = {
+  render: () => <Menu />
 }
 
-export const Logged: StoryObj<MenuProps> = {
-  render: (args) => <Menu {...args} />,
+export const Logged: Story = {
   args: {
     username: 'John Doe'
-  }
+  },
+  render: (args) => <Menu {...args} />
 }

@@ -1,52 +1,50 @@
-
-import { Meta, StoryObj } from '@storybook/react'
-import Showcase, { ShowcaseProps } from '.'
-import highlightMock from '@/components/Highlight/mock'
 import gamesMock from '@/components/GameCardSlider/mock'
+import highlightMock from '@/components/Highlight/mock'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import Showcase, { ShowcaseProps } from '.'
 
-export default {
-  title: 'Showcase',
+const meta = {
+  title: 'Main/Showcase',
   component: Showcase,
+  args: {
+    title: 'Most Popular'
+  },
   decorators: [
     (Story) => (
       <div style={{ margin: '0 auto' }}>
-        <Story/>
+        <Story />
       </div>
     )
   ],
   parameters: {
-    layout: 'fullscreen',
-    backgrounds: {
-      default: 'won-dark'
-    }
+    layout: 'fullscreen'
+  },
+  globals: {
+    backgrounds: { value: 'dark' }
   }
-} as Meta
+} satisfies Meta<ShowcaseProps>
 
-export const Default: StoryObj<ShowcaseProps> = {
-  render: (args) => <Showcase {...args} />,
-  args:  {
-    title: 'Most Popular',
+export default meta
+type Story = StoryObj<ShowcaseProps>
+
+export const Default: Story = {
+  args: {
     highlight: highlightMock,
     games: gamesMock
-  }
+  },
+  render: (args) => <Showcase {...args} />
 }
 
-export const WithoutHighlight: StoryObj<ShowcaseProps> = {
-  render: (args) => (
-    <Showcase {...args} />
-  ),
-  args:  {
-    title: 'Most Popular',
-    games: gamesMock
-  }
-}
-
-export const WithoutGames: StoryObj<ShowcaseProps> = {
-  render: (args) => (
-    <Showcase {...args} />
-  ),
+export const WithoutHighlight: Story = {
   args: {
-    title: 'Most Popular',
+    games: gamesMock
+  },
+  render: (args) => <Showcase {...args} />
+}
+
+export const WithoutGames: Story = {
+  args: {
     highlight: highlightMock
-  }
+  },
+  render: (args) => <Showcase {...args} />
 }

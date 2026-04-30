@@ -1,13 +1,7 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<FormSignUp /> should render the form 1`] = `
-.c4 {
-  display: inline-block;
-  vertical-align: middle;
-  overflow: hidden;
-}
-
-.c7 {
+.c6 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -25,7 +19,11 @@ exports[`<FormSignUp /> should render the form 1`] = `
   width: 100%;
 }
 
-.c7:hover {
+.c6:focus {
+  outline: 1px dashed;
+}
+
+.c6:hover {
   background: linear-gradient(180deg, #e35565 0%, #d958a6 50%);
 }
 
@@ -54,6 +52,11 @@ exports[`<FormSignUp /> should render the form 1`] = `
   width: 100%;
 }
 
+.c5:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 2.4rem #EAEAEA inset;
+  filter: none;
+}
+
 .c3 {
   display: flex;
   width: 2.2rem;
@@ -69,26 +72,28 @@ exports[`<FormSignUp /> should render the form 1`] = `
   margin: 0.8rem 0;
 }
 
-.c0 .c6 {
-  margin: 3.2rem auto 1.6rem;
-}
-
-.c8 {
+.c7 {
   font-size: 1.4rem;
   color: #030517;
   text-align: center;
 }
 
-.c8 a {
+.c7 a {
   color: #3CD3C1;
   text-decoration: none;
   border-bottom: 0.1rem solid #3CD3C1;
   transition: color,border,0.1s ease-in-out;
 }
 
-.c8 a:hover {
+.c7 a:hover {
   color: #29b3a3;
   border-bottom: 0.1rem solid #29b3a3;
+}
+
+.c4 {
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
 }
 
 <div
@@ -122,9 +127,9 @@ exports[`<FormSignUp /> should render the form 1`] = `
         </div>
         <input
           class="c5"
-          name="name"
-          placeholder="Name"
-          type="name"
+          name="username"
+          placeholder="Username"
+          type="text"
           value=""
         />
       </div>
@@ -155,7 +160,7 @@ exports[`<FormSignUp /> should render the form 1`] = `
           class="c5"
           name="email"
           placeholder="Email"
-          type="email"
+          type="text"
           value=""
         />
       </div>
@@ -215,7 +220,7 @@ exports[`<FormSignUp /> should render the form 1`] = `
         </div>
         <input
           class="c5"
-          name="confirm-password"
+          name="confirm_password"
           placeholder="Confirm password"
           type="password"
           value=""
@@ -223,14 +228,15 @@ exports[`<FormSignUp /> should render the form 1`] = `
       </div>
     </div>
     <button
-      class="c6 c7"
+      class="c6"
+      type="submit"
     >
       <span>
         Sign up now
       </span>
     </button>
     <div
-      class="c8"
+      class="c7"
     >
       Already have an account? 
       <a

@@ -1,9 +1,9 @@
 /* tslint:disable */
-
+/* eslint-disable */
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { GameFiltersInput, PaginationArg } from './globalTypes'
+import { PaginationArg, GameFiltersInput } from './globalTypes'
 
 // ====================================================
 // GraphQL query operation: QueryGames
@@ -23,9 +23,9 @@ export interface QueryGames_games {
   __typename: 'Game'
   documentId: string
   name: string
-  slug: string | null
+  slug: string
   cover: QueryGames_games_cover | null
-  developers: QueryGames_games_developers[]
+  developers: (QueryGames_games_developers | null)[]
   price: number
 }
 
@@ -40,7 +40,7 @@ export interface QueryGames_games_connection {
 }
 
 export interface QueryGames {
-  games: QueryGames_games[]
+  games: (QueryGames_games | null)[]
   games_connection: QueryGames_games_connection | null
 }
 

@@ -247,6 +247,19 @@ export interface StringFilterInput {
   between?: (string | null)[] | null
 }
 
+export interface UsersPermissionsRegisterInput {
+  username: string
+  email: string
+  password: string
+}
+
+export interface WishlistInput {
+  user?: string | null
+  games?: (string | null)[] | null
+  publishedAt?: any | null
+  locale?: string | null
+}
+
 //==============================================================
 // END Enums and Input Objects
 //==============================================================

@@ -1,17 +1,10 @@
-import {
-  AccountCircle,
-} from '@styled-icons/material-outlined/AccountCircle'
-import {
-  CreditCard,
-} from '@styled-icons/material-outlined/CreditCard'
-import {
-  ExitToApp,
-} from '@styled-icons/material-outlined/ExitToApp'
-import {
-  FormatListBulleted
-} from '@styled-icons/material-outlined/FormatListBulleted'
+import { AccountCircle } from '@styled-icons/material-outlined/AccountCircle'
+import { CreditCard } from '@styled-icons/material-outlined/CreditCard'
+import { ExitToApp } from '@styled-icons/material-outlined/ExitToApp'
+import { FormatListBulleted } from '@styled-icons/material-outlined/FormatListBulleted'
 import Link from 'next/link'
 
+import { signOut } from 'next-auth/react'
 import * as S from './styles'
 
 export type ProfileMenuProps = {
@@ -42,7 +35,7 @@ const ProfileMenu = ({ activeLink }: ProfileMenuProps) => (
     </Link>
 
     <Link href="/logout" passHref>
-      <S.Link>
+      <S.Link role="button" onClick={() => signOut()} title="Sign out">
         <ExitToApp size={24} />
         <span>Sign out</span>
       </S.Link>

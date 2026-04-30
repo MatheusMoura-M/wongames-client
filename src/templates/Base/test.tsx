@@ -1,4 +1,4 @@
-import { render, screen } from '@/utils/test.utils'
+import { render, screen } from '@/utils/test-utils'
 import Base from '.'
 
 jest.mock('@/components/Menu', () => {

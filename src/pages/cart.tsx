@@ -1,7 +1,6 @@
 import itemsMock from '@/components/CartList/mock'
 import cardsMock from '@/components/PaymentOptions/mock'
-import { QueryRecommended } from '@/graphql/generated/QueryRecommended'
-import { QUERY_RECOMMENDED } from '@/graphql/queries/recommended'
+import { QueryRecommendedDocument } from '@/graphql/queries/__generated__/QueryRecommended'
 import Cart, { CartProps } from '@/templates/Cart'
 import { initializeApollo } from '@/utils/apollo'
 import { gamesMapper, highlightMapper } from '@/utils/mappers'
@@ -13,8 +12,8 @@ export default function CartPage(props: CartProps) {
 export async function getServerSideProps() {
   const apolloClient = initializeApollo()
 
-  const { data } = await apolloClient.query<QueryRecommended>({
-    query: QUERY_RECOMMENDED
+  const { data } = await apolloClient.query({
+    query: QueryRecommendedDocument
   })
 
   return {

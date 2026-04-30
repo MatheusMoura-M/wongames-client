@@ -4,7 +4,7 @@ import { GameDetailsProps } from '@/components/GameDetails'
 import gameDetailsMock from '@/components/GameDetails/mock'
 import gameInfoMock from '@/components/GameInfo/mock'
 import highlightMock from '@/components/Highlight/mock'
-import { render, screen } from '@/utils/test.utils'
+import { render, screen } from '@/utils/test-utils'
 import Game, { GameTemplateProps } from '.'
 
 const props: GameTemplateProps = {

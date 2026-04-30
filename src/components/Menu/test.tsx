@@ -1,4 +1,4 @@
-import { render, screen } from '@/utils/test.utils'
+import { render, screen } from '@/utils/test-utils'
 import { fireEvent } from '@testing-library/react'
 import Menu from '.'
 
@@ -43,5 +43,12 @@ describe('<Menu />', () => {
     expect(screen.getAllByText(/wishlist/i)).toHaveLength(2)
     expect(screen.queryByText(/sign in/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/sign up/i)).not.toBeInTheDocument()
+  })
+
+  it('should not show sign ir or dropdownUser if loading', () => {
+    render(<Menu username="will" status="loading" />)
+
+    expect(screen.queryByText(/my profile/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/sign in/i)).not.toBeInTheDocument()
   })
 })

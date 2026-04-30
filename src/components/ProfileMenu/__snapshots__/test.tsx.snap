@@ -149,6 +149,8 @@ exports[`<ProfileMenu /> should render the menu 1`] = `
   >
     <div
       class="c1"
+      role="button"
+      title="Sign out"
     >
       <svg
         aria-hidden="true"

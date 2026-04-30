@@ -1,24 +1,31 @@
-import { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import { action } from 'storybook/actions'
 import ExploreSidebar, { ExploreSidebarProps } from '.'
-
 import items from './mock'
 
-export default {
-  title: 'ExploreSidebar',
+const meta = {
+  title: 'Main/ExploreSidebar',
   component: ExploreSidebar,
+  argTypes: {
+    items: { control: 'object' },
+    onFilter: { action: 'clicked' }
+  },
   args: {
     items,
-    onFilter: () => console.log('filter')
+    onFilter: action('on-click')
   },
   parameters: {
-    layout: 'fullscreen',
-    backgrounds: {
-      default: 'won-dark'
-    }
+    layout: 'fullscreen'
+  },
+  globals: {
+    backgrounds: { value: 'dark' }
   }
-} as Meta
+} satisfies Meta<ExploreSidebarProps>
 
-export const Default: StoryObj<ExploreSidebarProps> = {
+export default meta
+type Story = StoryObj<ExploreSidebarProps>
+
+export const Default: Story = {
   render: (args) => (
     <div style={{ padding: 16, maxWidth: 320 }}>
       <ExploreSidebar {...args} />
@@ -26,17 +33,20 @@ export const Default: StoryObj<ExploreSidebarProps> = {
   )
 }
 
-export const WithInitialValues: StoryObj<ExploreSidebarProps> = {
+export const WithInitialValues: Story = {
+  argTypes: {
+    initialValues: { control: 'object' }
+  },
+  args: {
+    initialValues: {
+      platforms: ['windows', 'linux'],
+      sort_by: 'low-to-high',
+      price: 'under-50'
+    }
+  },
   render: (args) => (
     <div style={{ padding: 16, maxWidth: 320 }}>
-      <ExploreSidebar
-        {...args}
-        initialValues={{
-          platforms: ['windows', 'linux'],
-          sort_by: 'low-to-high',
-          price: "under-50"
-        }}
-      />
+      <ExploreSidebar {...args} />
     </div>
   )
 }

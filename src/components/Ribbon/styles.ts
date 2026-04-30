@@ -1,6 +1,6 @@
-import styled, { css, DefaultTheme } from 'styled-components'
-import { RibbonProps, RibbonColors } from '.'
 import { darken } from 'polished'
+import styled, { css, DefaultTheme } from 'styled-components'
+import { RibbonColors, RibbonProps } from '.'
 
 const wrapperModifiers = {
   color: (theme: DefaultTheme, color: RibbonColors) => css`
@@ -11,6 +11,7 @@ const wrapperModifiers = {
       border-top-color: ${darken(0.2, theme.colors[color])};
     }
   `,
+
   normal: (theme: DefaultTheme) => css`
     font-size: ${theme.font.sizes.small};
     padding: 0 ${theme.spacings.small};
@@ -23,6 +24,7 @@ const wrapperModifiers = {
       border-right-width: 2rem;
     }
   `,
+
   small: (theme: DefaultTheme) => css`
     font-size: ${theme.font.sizes.xsmall};
     padding: 0 ${theme.spacings.xsmall};
@@ -45,6 +47,7 @@ export const Wrapper = styled.div<RibbonProps>`
     align-items: center;
     font-weight: ${theme.font.bold};
     color: ${theme.colors.white};
+    z-index: ${theme.layers.base};
 
     &::before {
       content: '';

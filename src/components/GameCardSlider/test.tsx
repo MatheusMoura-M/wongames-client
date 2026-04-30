@@ -1,6 +1,6 @@
 import 'match-media-mock'
 import GameCardSlider from '.'
-import { render, screen } from '@/utils/test.utils'
+import { render, screen } from '@/utils/test-utils'
 import items from './mock'
 
 describe('<GameSlider />', () => {

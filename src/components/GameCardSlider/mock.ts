@@ -1,5 +1,6 @@
 export default [
   {
+    documentId: 'ahef7s9utp83c41ezwfggp45',
     title: 'Population Zero 1',
     slug: 'population-zero',
     developer: 'Rockstar Games',
@@ -8,6 +9,7 @@ export default [
     promotionalPrice: 215
   },
   {
+    documentId: 'gk60wzt9lvucsx56a73e7cnl',
     title: 'Population Zero 2',
     slug: 'population-zero',
     developer: 'Rockstar Games',
@@ -16,6 +18,7 @@ export default [
     promotionalPrice: 215
   },
   {
+    documentId: 'gk60wzt9lvucsa73e7cnl',
     title: 'Population Zero 3',
     slug: 'population-zero',
     developer: 'Rockstar Games',
@@ -24,6 +27,7 @@ export default [
     promotionalPrice: 215
   },
   {
+    documentId: 'gk6azt9lvucsx56a73e7cnl',
     title: 'Population Zero 4',
     slug: 'population-zero',
     developer: 'Rockstar Games',
@@ -32,6 +36,7 @@ export default [
     promotionalPrice: 215
   },
   {
+    documentId: '12k60wzt9lvucsx56a73e7cnl',
     title: 'Population Zero 5',
     slug: 'population-zero',
     developer: 'Rockstar Games',
@@ -40,6 +45,7 @@ export default [
     promotionalPrice: 215
   },
   {
+    documentId: '2123zt9lvucsx56a73e7cnl',
     title: 'Population Zero 6',
     slug: 'population-zero',
     developer: 'Rockstar Games',

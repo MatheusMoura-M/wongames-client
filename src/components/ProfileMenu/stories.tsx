@@ -1,16 +1,23 @@
-import { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import ProfileMenu, { ProfileMenuProps } from '.'
 
-export default {
+const meta = {
   title: 'Profile/ProfileMenu',
   component: ProfileMenu,
-  parameters: {
-    backgrounds: {
-      default: 'won-dark'
+  argTypes: {
+    activeLink: {
+      type: 'string',
+      control: 'text'
     }
+  },
+  globals: {
+    backgrounds: { value: 'dark' }
   }
-} as Meta
+} satisfies Meta<ProfileMenuProps>
 
-export const Default: StoryObj<ProfileMenuProps> = {
+export default meta
+type Story = StoryObj<ProfileMenuProps>
+
+export const Default: Story = {
   render: (args) => <ProfileMenu {...args} />
 }

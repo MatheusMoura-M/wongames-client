@@ -1,16 +1,12 @@
+import * as ButtonStyles from '@/components/Button/styles'
 import { tint } from 'polished'
 import styled, { css, DefaultTheme } from 'styled-components'
 
-import * as ButtonStyles from '@/components/Button/styles'
-
-export const Wrapper = styled.main`
-  ${({ theme }) => css`
-    background: ${theme.colors.white};
-  `}
-`
+export const Wrapper = styled.main``
 
 export const Body = styled.div`
   ${({ theme }) => css`
+    background: ${theme.colors.white};
     padding: ${theme.spacings.small};
   `}
 `
@@ -24,7 +20,8 @@ export const Footer = styled.div`
     display: flex;
     align-items: center;
 
-    ${ButtonStyles.Wrapper} {
+    ${ButtonStyles.WrapperAnchor},
+    ${ButtonStyles.WrapperButton} {
       padding-left: ${theme.spacings.xxsmall};
       padding-right: ${theme.spacings.xxsmall};
       outline: 0;

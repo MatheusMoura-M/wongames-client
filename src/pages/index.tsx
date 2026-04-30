@@ -1,5 +1,4 @@
-import { QueryHome, QueryHomeVariables } from '@/graphql/generated/QueryHome'
-import { QUERY_HOME } from '@/graphql/queries/home'
+import { QueryHomeDocument } from '@/graphql/queries/__generated__/QueryHome'
 import Home, { HomeTemplateProps } from '@/templates/Home'
 import { initializeApollo } from '@/utils/apollo'
 import { bannerMapper, gamesMapper, highlightMapper } from '@/utils/mappers'
@@ -20,8 +19,8 @@ export async function getStaticProps() {
 
   const {
     data: { banners, newGames, upcomingGames, freeGames, sections }
-  } = await apolloClient.query<QueryHome, QueryHomeVariables>({
-    query: QUERY_HOME,
+  } = await apolloClient.query({
+    query: QueryHomeDocument,
     variables: { date: TODAY },
     fetchPolicy: 'no-cache'
   })
@@ -35,7 +34,7 @@ export async function getStaticProps() {
 
       mostPopularGamesTitle: sections?.popularGames?.title,
       mostPopularHighlight: highlightMapper(sections?.popularGames?.highlight),
-      mostPopularGames: gamesMapper(sections!.popularGames!.games),
+      mostPopularGames: gamesMapper(sections?.popularGames?.games),
 
       upcomingGamesTitle: sections?.upcomingGames?.title,
       upcomingGames: gamesMapper(upcomingGames),

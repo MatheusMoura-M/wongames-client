@@ -8,9 +8,11 @@ import {
   parseQueryStringToFilter,
   parseQueryStringToWhere
 } from '@/utils/filter'
+import { isGame, isNotNull } from '@/utils/filterByTypes'
 import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined/KeyboardArrowDown'
 import { useRouter } from 'next/router'
 import { ParsedUrlQueryInput } from 'querystring'
+import { useEffect, useState } from 'react'
 import * as S from './styles'
 
 export type GamesTemplateProps = {
@@ -20,6 +22,8 @@ export type GamesTemplateProps = {
 
 const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
   const { push, query } = useRouter()
+
+  const [isClient, setIsClient] = useState(false)
 
   const { data, loading, fetchMore } = useQueryGames({
     notifyOnNetworkStatusChange: true,
@@ -49,7 +53,9 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
     })
   }
 
-  const isClient = typeof window !== 'undefined'
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   return (
     <Base>
@@ -69,15 +75,18 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
               data?.games && data.games.length > 0 ? (
                 <>
                   <Grid>
-                    {data.games.map((game) => (
+                    {data.games.filter(isGame).map((game) => (
                       <GameCard
-                        key={game!.slug}
-                        title={game!.name}
-                        slug={game!.slug!}
-                        developer={game!.developers[0]!.name}
+                        documentId={game.documentId}
+                        key={game.slug}
+                        title={game.name}
+                        slug={game.slug}
+                        developer={
+                          game.developers?.find(isNotNull)?.name ?? 'Unknown'
+                        }
                         img={
-                          game!.cover?.url
-                            ? `http://localhost:1337${game!.cover.url}`
+                          game.cover?.url
+                            ? `http://localhost:1337${game.cover.url}`
                             : `/img/image_empty.png`
                         }
                         price={game!.price}

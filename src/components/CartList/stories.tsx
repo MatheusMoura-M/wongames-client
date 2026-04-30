@@ -1,28 +1,23 @@
-import { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import CartList, { CartListProps } from '.'
-
 import mockItems from './mock'
 
-export default {
-  title: 'CartList',
+const meta = {
+  title: 'Main/CartList',
   component: CartList,
-  args: {
-    items: mockItems,
-    total: 'R$ 330,00'
-  },
-  argTypes: {
-    items: {
-      type: 'function'
-    }
-  },
-  parameters: {
-    backgrounds: {
-      default: 'won-dark'
-    }
+  globals: {
+    backgrounds: { value: 'dark' }
   }
-} as Meta
+} satisfies Meta<CartListProps>
 
-export const Default: StoryObj<CartListProps> = {
+export default meta
+type Story = StoryObj
+
+export const Default: Story = {
+  args: {
+    total: 'R$ 330,00',
+    cartContextValue: { items: mockItems }
+  },
   render: (args) => (
     <div style={{ maxWidth: 800 }}>
       <CartList {...args} />
@@ -30,15 +25,23 @@ export const Default: StoryObj<CartListProps> = {
   )
 }
 
-export const WithButton: StoryObj<CartListProps> = {
+export const WithButton: Story = {
+  argTypes: {
+    hasButton: { type: 'boolean', control: 'boolean' }
+  },
+  args: {
+    total: 'R$ 330,00',
+    cartContextValue: { items: mockItems },
+    hasButton: true
+  },
   render: (args) => (
     <div style={{ maxWidth: 800 }}>
-      <CartList {...args} hasButton />
+      <CartList {...args} />
     </div>
   )
 }
 
-export const Empty: StoryObj<CartListProps> = {
+export const Empty: StoryObj<typeof CartList> = {
   render: () => (
     <div style={{ maxWidth: 800 }}>
       <CartList />

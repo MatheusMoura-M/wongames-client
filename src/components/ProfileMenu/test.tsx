@@ -1,5 +1,5 @@
 import theme from '@/styles/theme'
-import { render, screen } from '@/utils/test.utils'
+import { render, screen } from '@/utils/test-utils'
 import ProfileMenu from '.'
 
 describe('<ProfileMenu />', () => {
@@ -11,7 +11,9 @@ describe('<ProfileMenu />', () => {
     ).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /my cards/i })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /my orders/i })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /sign out/i })).toBeInTheDocument()
+    expect(
+      screen.getByRole('button', { name: /sign out/i })
+    ).toBeInTheDocument()
     expect(container.firstChild).toMatchSnapshot()
   })
 

@@ -54,9 +54,9 @@ export interface QueryHome_newGames {
   __typename: 'Game'
   documentId: string
   name: string
-  slug: string | null
+  slug: string
   cover: QueryHome_newGames_cover | null
-  developers: QueryHome_newGames_developers[]
+  developers: (QueryHome_newGames_developers | null)[]
   price: number
 }
 
@@ -74,9 +74,9 @@ export interface QueryHome_upcomingGames {
   __typename: 'Game'
   documentId: string
   name: string
-  slug: string | null
+  slug: string
   cover: QueryHome_upcomingGames_cover | null
-  developers: QueryHome_upcomingGames_developers[]
+  developers: (QueryHome_upcomingGames_developers | null)[]
   price: number
 }
 
@@ -94,9 +94,9 @@ export interface QueryHome_freeGames {
   __typename: 'Game'
   documentId: string
   name: string
-  slug: string | null
+  slug: string
   cover: QueryHome_freeGames_cover | null
-  developers: QueryHome_freeGames_developers[]
+  developers: (QueryHome_freeGames_developers | null)[]
   price: number
 }
 
@@ -114,7 +114,7 @@ export interface QueryHome_sections_newGames_highlight {
   __typename: 'ComponentPageHighlight'
   title: string
   subtitle: string
-  background: QueryHome_sections_newGames_highlight_background | null
+  background: QueryHome_sections_newGames_highlight_background
   floatImage: QueryHome_sections_newGames_highlight_floatImage | null
   buttonLabel: string
   buttonLink: string
@@ -162,9 +162,9 @@ export interface QueryHome_sections_popularGames_games {
   __typename: 'Game'
   documentId: string
   name: string
-  slug: string | null
+  slug: string
   cover: QueryHome_sections_popularGames_games_cover | null
-  developers: QueryHome_sections_popularGames_games_developers[]
+  developers: (QueryHome_sections_popularGames_games_developers | null)[]
   price: number
 }
 
@@ -172,7 +172,7 @@ export interface QueryHome_sections_popularGames {
   __typename: 'ComponentPagePopularGames'
   title: string
   highlight: QueryHome_sections_popularGames_highlight | null
-  games: QueryHome_sections_popularGames_games[]
+  games: (QueryHome_sections_popularGames_games | null)[]
 }
 
 export interface QueryHome_sections_upcomingGames_highlight_background {
@@ -238,10 +238,10 @@ export interface QueryHome_sections {
 }
 
 export interface QueryHome {
-  banners: QueryHome_banners[]
-  newGames: QueryHome_newGames[]
-  upcomingGames: QueryHome_upcomingGames[]
-  freeGames: QueryHome_freeGames[]
+  banners: (QueryHome_banners | null)[]
+  newGames: (QueryHome_newGames | null)[]
+  upcomingGames: (QueryHome_upcomingGames | null)[]
+  freeGames: (QueryHome_freeGames | null)[]
   sections: QueryHome_sections | null
 }
 

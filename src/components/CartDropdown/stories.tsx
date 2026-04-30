@@ -1,23 +1,26 @@
-import { Meta, StoryObj } from '@storybook/react'
-import CartDropdown, { CartDropdownProps } from '.'
-
 import items from '@/components/CartList/mock'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import CartDropdown from '.'
 
-export default {
-  title: 'CartDropdown',
+const meta = {
+  title: 'Main/CartDropdown',
   component: CartDropdown,
-  args: {
-    items,
-    total: 'R$ 300,00'
-  },
-  parameters: {
-    backgrounds: {
-      default: 'won-dark'
-    }
+  globals: {
+    backgrounds: { value: 'dark' }
   }
-} as Meta
+} satisfies Meta<typeof CartDropdown>
 
-export const Default: StoryObj<CartDropdownProps> = {
+export default meta
+type Story = StoryObj
+
+export const Default: Story = {
+  args: {
+    cartContextValue: {
+      items,
+      quantity: items.length,
+      total: 'R$430,00'
+    }
+  },
   render: (args) => (
     <div
       style={{ maxWidth: '98%', display: 'flex', justifyContent: 'flex-end' }}
@@ -27,7 +30,7 @@ export const Default: StoryObj<CartDropdownProps> = {
   )
 }
 
-export const Empty: StoryObj<CartDropdownProps> = {
+export const Empty: Story = {
   render: () => (
     <div
       style={{ maxWidth: '98%', display: 'flex', justifyContent: 'flex-end' }}

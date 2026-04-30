@@ -1,12 +1,15 @@
-import { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import { Settings } from 'react-slick'
 import styled from 'styled-components'
 import Slider from '.'
 
-export default {
-  title: 'Slider',
+const meta = {
+  title: 'Main/Slider',
   component: Slider
-} as Meta
+} satisfies Meta<typeof Slider>
+
+export default meta
+type Story = StoryObj<typeof Slider>
 
 const settings: Settings = {
   dots: true,
@@ -25,7 +28,7 @@ const Slide = styled.div`
   text-align: center;
 `
 
-export const Horizontal: StoryObj = {
+export const Horizontal: Story = {
   render: () => (
     <Slider settings={settings}>
       <Slide>1</Slide>
@@ -46,7 +49,7 @@ const verticalSettings: Settings = {
   slidesToShow: 1
 }
 
-export const Vertical: StoryObj = {
+export const Vertical: Story = {
   render: () => (
     <Slider settings={verticalSettings}>
       <Slide>1</Slide>
