@@ -1,27 +1,41 @@
 import { GameCardProps } from '@/components/GameCard'
-import { MutationCreateWishlistDocument } from '@/graphql/mutations/__generated__/MutationCreateWishlist'
-import { MutationUpdateWishlistDocument } from '@/graphql/mutations/__generated__/MutationUpdateWishlist'
+import {
+  MutationCreateWishlistDocument,
+  MutationCreateWishlistMutation_Mutation
+} from '@/graphql/mutations/__generated__/MutationCreateWishlist'
+import {
+  MutationUpdateWishlistDocument,
+  MutationUpdateWishlistMutation_Mutation
+} from '@/graphql/mutations/__generated__/MutationUpdateWishlist'
 import { QueryWishlistQuery_wishlists_Wishlist } from '@/graphql/queries/__generated__/QueryWishlist'
 import { useQueryWishlist } from '@/graphql/queries/wishlist'
 import { isGame } from '@/utils/filterByTypes'
 import { gamesMapper } from '@/utils/mappers'
-import { useMutation } from '@apollo/client'
+import { FetchResult, useMutation } from '@apollo/client'
 import { useSession } from 'next-auth/react'
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 
 export type WishlistContextData = {
   items: GameCardProps[]
   isInWishlist: (id: string) => boolean
-  addToWishlist: (id: string) => void
-  removeFromWishlist: (id: string) => void
+  addToWishlist: (
+    id: string
+  ) =>
+    | Promise<FetchResult<MutationUpdateWishlistMutation_Mutation>>
+    | Promise<FetchResult<MutationCreateWishlistMutation_Mutation>>
+  removeFromWishlist: (
+    id: string
+  ) => Promise<FetchResult<MutationUpdateWishlistMutation_Mutation>> | undefined
   loading: boolean
 }
 
 export const WishlistContextDefaultValues = {
   items: [],
   isInWishlist: () => false,
-  addToWishlist: () => null,
-  removeFromWishlist: () => null,
+  addToWishlist: async () => {
+    return {} as FetchResult<MutationUpdateWishlistMutation_Mutation>
+  },
+  removeFromWishlist: () => undefined,
   loading: false
 }
 
@@ -103,7 +117,7 @@ const WishlistProvider = ({ children }: WishlistProviderProps) => {
   const removeFromWishlist = (documentId: string) => {
     if (!wishlistId) return
 
-    updateList({
+    return updateList({
       variables: {
         documentId: wishlistId,
         data: {
