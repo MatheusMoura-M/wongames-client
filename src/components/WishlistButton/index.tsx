@@ -16,6 +16,12 @@ const WishlistButton = ({
   const { data: session } = useSession()
   const { isInWishlist, addToWishlist, removeFromWishlist } = useWishlist()
 
+  const handleClick = () => {
+    isInWishlist(documentId)
+      ? removeFromWishlist(documentId)
+      : addToWishlist(documentId)
+  }
+
   const ButtonText = isInWishlist(documentId)
     ? 'Remove from Wishlist'
     : 'Add to Wishlist'
@@ -33,6 +39,7 @@ const WishlistButton = ({
       }
       minimal
       size={size}
+      onClick={handleClick}
     >
       {hasText && ButtonText}
     </Button>
