@@ -1,5 +1,5 @@
 import theme from '@/styles/theme'
-import { render, screen } from '@/utils/test.utils'
+import { render, screen } from '@/utils/test-utils'
 import { waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import Radio from '.'

@@ -1,7 +1,7 @@
 import gamesMock from '@/components/GameCardSlider/mock'
 import highlightMock from '@/components/Highlight/mock'
 import cardsMock from '@/components/PaymentOptions/mock'
-import { render, screen } from '@/utils/test.utils'
+import { render, screen } from '@/utils/test-utils'
 import 'match-media-mock'
 
 import Cart from '.'

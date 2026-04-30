@@ -58,9 +58,7 @@ describe('useCart', () => {
       </MockedProvider>
     )
 
-    const { result } = renderHook(() => useCart(), {
-      wrapper
-    })
+    const { result } = renderHook(() => useCart(), { wrapper })
 
     act(() => {
       result.current.addToCart('ahef7s9utp83c41ezwfggp45')
@@ -81,9 +79,7 @@ describe('useCart', () => {
 
     setStorageItem('cartItems', ['ahef7s9utp83c41ezwfggp45'])
 
-    const { result } = renderHook(() => useCart(), {
-      wrapper
-    })
+    const { result } = renderHook(() => useCart(), { wrapper })
 
     act(() => {
       result.current.removeFromCart('ahef7s9utp83c41ezwfggp45')

@@ -1,5 +1,5 @@
 import { CartContextDefaultValues } from '@/hooks/use-cart'
-import { render, screen, waitFor } from '@/utils/test.utils'
+import { render, screen, waitFor } from '@/utils/test-utils'
 import userEvent from '@testing-library/user-event'
 import GameItem from '.'
 import { StaticImageImport } from '../CardsList/test'

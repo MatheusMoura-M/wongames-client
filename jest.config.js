@@ -20,8 +20,6 @@ export default {
   },
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
-    'match-media-mock': '<rootDir>/.jest/match-media-mock.js',
-    'server.mock': '<rootDir>/.jest/server.mock.ts',
     '^styled-components':
       'styled-components/dist/styled-components.browser.cjs.js'
   },

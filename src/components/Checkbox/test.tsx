@@ -1,5 +1,5 @@
 import { waitFor } from '@testing-library/react'
-import { render, screen } from '@/utils/test.utils'
+import { render, screen } from '@/utils/test-utils'
 import userEvent from '@testing-library/user-event'
 
 import theme from '@/styles/theme'

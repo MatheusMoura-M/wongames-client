@@ -1,4 +1,4 @@
-import { render } from '@/utils/test.utils'
+import { render } from '@/utils/test-utils'
 import { screen } from '@testing-library/dom'
 import Auth from '.'
 describe('<Auth />', () => {

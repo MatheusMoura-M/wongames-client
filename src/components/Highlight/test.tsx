@@ -1,6 +1,6 @@
 import Highlight from '.'
 import * as S from './styles'
-import { render, screen } from '@/utils/test.utils'
+import { render, screen } from '@/utils/test-utils'
 
 const props = {
   title: 'Heading 1',

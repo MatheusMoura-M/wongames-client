@@ -1,8 +1,8 @@
-import { QUERY_GAMES } from '@/graphql/queries/games'
+import { QueryGamesDocument } from '@/graphql/queries/__generated__/QueryGames'
 
 export const gamesMock = {
   request: {
-    query: QUERY_GAMES,
+    query: QueryGamesDocument,
     variables: { pagination: { limit: 15 }, filters: {}, sort: undefined }
   },
   result: {
@@ -32,7 +32,7 @@ export const gamesMock = {
 
 export const fetchMoreMock = {
   request: {
-    query: QUERY_GAMES,
+    query: QueryGamesDocument,
     variables: {
       pagination: { limit: 15, start: 1 },
       filters: {},
@@ -66,7 +66,7 @@ export const fetchMoreMock = {
 
 export const emptyGamesMock = {
   request: {
-    query: QUERY_GAMES,
+    query: QueryGamesDocument,
     variables: { pagination: { limit: 15 }, filters: {}, sort: undefined }
   },
   result: {

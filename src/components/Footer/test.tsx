@@ -1,5 +1,5 @@
 import Footer from '.'
-import { render, screen } from '@/utils/test.utils'
+import { render, screen } from '@/utils/test-utils'
 
 describe('<Footer />', () => {
   it('should render 4 column topics', () => {

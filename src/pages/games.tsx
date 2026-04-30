@@ -1,5 +1,4 @@
-import { QueryGames, QueryGamesVariables } from '@/graphql/generated/QueryGames'
-import { QUERY_GAMES } from '@/graphql/queries/games'
+import { QueryGamesDocument } from '@/graphql/queries/__generated__/QueryGames'
 import GamesTemplate, { GamesTemplateProps } from '@/templates/Games'
 import { initializeApollo } from '@/utils/apollo'
 import { parseQueryStringToWhere } from '@/utils/filter'
@@ -70,8 +69,8 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
     filterCategories
   ]
 
-  await apolloClient.query<QueryGames, QueryGamesVariables>({
-    query: QUERY_GAMES,
+  await apolloClient.query({
+    query: QueryGamesDocument,
     variables: {
       pagination: {
         limit: 15
