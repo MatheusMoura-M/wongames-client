@@ -39,7 +39,7 @@ const authOptions = {
   callbacks: {
     async session({ session, token }: { session: Session; token: JWT }) {
       session.jwt = token.jwt
-      session.id = token.id
+      session.id = token.documentId
 
       return session
     },
@@ -47,6 +47,7 @@ const authOptions = {
     async jwt({ token, user }: { token: JWT; user?: User }) {
       if (user) {
         token.id = user.id
+        token.documentId = user.documentId
         token.email = user.email
         token.name = user.username
         token.jwt = user.jwt
