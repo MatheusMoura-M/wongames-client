@@ -2,8 +2,8 @@ import FormProfile, { FormProfileProps } from '@/components/FormProfile'
 import { QueryProfileMeDocument } from '@/graphql/queries/__generated__/QueryProfileMe'
 import Profile from '@/templates/Profile'
 import { initializeApollo } from '@/utils/apollo'
-import protectedRoutes from '@/utils/protected-routes'
 import { GetServerSidePropsContext } from 'next'
+import { getSession } from 'next-auth/react'
 
 export default function Me(props: FormProfileProps) {
   return (
@@ -14,10 +14,19 @@ export default function Me(props: FormProfileProps) {
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const session = await protectedRoutes(context)
-  const apolloClient = initializeApollo(null, session)
+  const session = await getSession(context)
 
-  if (!session || !session?.id) return {}
+  if (!session || !session?.id) {
+    return {
+      redirect: {
+        destination: `/sign-in?callbackUrl=${context.resolvedUrl}`,
+        permanent: false
+      },
+      props: {}
+    }
+  }
+
+  const apolloClient = initializeApollo(null, session)
 
   const { data } = await apolloClient.query({
     query: QueryProfileMeDocument,

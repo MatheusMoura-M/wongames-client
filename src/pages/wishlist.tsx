@@ -4,19 +4,27 @@ import { QueryWishlistDocument } from '@/graphql/queries/__generated__/QueryWish
 import Wishlist, { WishlistTemplateProps } from '@/templates/Wishlist'
 import { initializeApollo } from '@/utils/apollo'
 import { gamesMapper, highlightMapper } from '@/utils/mappers'
-import protectedRoutes from '@/utils/protected-routes'
 import { GetServerSidePropsContext } from 'next'
+import { getSession } from 'next-auth/react'
 
 export default function WishlistPage(props: WishlistTemplateProps) {
   return <Wishlist {...props} />
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const session = await protectedRoutes(context)
+  const session = await getSession(context)
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: `/sign-in?callbackUrl=${context.resolvedUrl}`,
+        permanent: false
+      },
+      props: {}
+    }
+  }
 
   const apolloClient = initializeApollo(null, session)
-
-  if (!session) return {}
 
   await apolloClient.query({
     query: QueryWishlistDocument,
