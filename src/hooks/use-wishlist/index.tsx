@@ -23,6 +23,7 @@ export type WishlistContextData = {
   ) =>
     | Promise<FetchResult<MutationUpdateWishlistMutation_Mutation>>
     | Promise<FetchResult<MutationCreateWishlistMutation_Mutation>>
+    | undefined
   removeFromWishlist: (
     id: string
   ) => Promise<FetchResult<MutationUpdateWishlistMutation_Mutation>> | undefined
@@ -50,6 +51,7 @@ export type WishlistProviderProps = {
 const WishlistProvider = ({ children }: WishlistProviderProps) => {
   const { data: session } = useSession()
 
+  const [wishlistIdsState, setWishlistIdsState] = useState<string[]>([])
   const [wishlistId, setWishlistId] = useState<string | null>()
   const [wishlistItems, setWishlistItems] = useState<
     NonNullable<QueryWishlistQuery_wishlists_Wishlist['games'][number]>[]
@@ -85,44 +87,60 @@ const WishlistProvider = ({ children }: WishlistProviderProps) => {
   })
 
   useEffect(() => {
-    setWishlistItems((data?.wishlists[0]?.games || []).filter(isGame))
-    setWishlistId(data?.wishlists[0]?.documentId)
-  }, [data])
+    const items = (data?.wishlists[0]?.games || []).filter(isGame)
 
-  const wishlistIds = useMemo(
-    () => wishlistItems.map((game) => game.documentId),
-    [wishlistItems]
-  )
+    setWishlistItems(items)
+    setWishlistId(data?.wishlists[0]?.documentId)
+    setWishlistIdsState(items?.map((g) => g.documentId))
+  }, [data])
 
   const isInWishlist = (documentId: string) =>
     !!wishlistItems.find((game) => game.documentId === documentId)
 
   const addToWishlist = (documentId: string) => {
+    const current = wishlistIdsState
+
+    if (current.includes(documentId)) return
+
+    const updatedIds = [...current, documentId]
+
+    setWishlistIdsState(updatedIds)
+
+    return triggerUpdate(updatedIds)
+  }
+
+  const triggerUpdate = (ids: string[]) => {
     // se não existir wishlist - cria
     if (!wishlistId) {
       return createList({
-        variables: { data: { games: [...wishlistIds, documentId] } }
+        variables: { data: { games: ids } }
+      })
+    } else {
+      // senão atualiza a wishlist existente
+      return updateList({
+        variables: {
+          documentId: wishlistId,
+          data: { games: ids }
+        }
       })
     }
-
-    // // senão atualiza a wishlist existente
-    return updateList({
-      variables: {
-        documentId: wishlistId,
-        data: { games: [...wishlistIds, documentId] }
-      }
-    })
   }
 
   const removeFromWishlist = (documentId: string) => {
     if (!wishlistId) return
 
+    const current = wishlistIdsState
+
+    if (!current.includes(documentId)) return
+
+    const updatedIds = current.filter((gameId: string) => gameId !== documentId)
+
+    setWishlistIdsState(updatedIds)
+
     return updateList({
       variables: {
         documentId: wishlistId,
-        data: {
-          games: wishlistIds.filter((gameId: string) => gameId !== documentId)
-        }
+        data: { games: updatedIds }
       }
     })
   }
