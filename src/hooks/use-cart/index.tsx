@@ -7,7 +7,7 @@ import { createContext, useContext, useState } from 'react'
 
 const CART_KEY = 'cartItems'
 
-type CartItem = {
+export type CartItem = {
   documentId: string
   img: string
   title: string
