@@ -14,6 +14,7 @@ import Heading from '@/components/Heading'
 import { FormLoading } from '../Form'
 
 import * as S from './styles'
+import { useRouter } from 'next/router'
 
 type PaymentFormProps = {
   session: Session
@@ -21,6 +22,8 @@ type PaymentFormProps = {
 
 const PaymentForm = ({ session }: PaymentFormProps) => {
   const { items } = useCart()
+  const { push } = useRouter()
+
   const stripe = useStripe()
   const elements = useElements()
 
@@ -84,6 +87,13 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
     try {
       setLoading(true)
 
+      if (freeGames) {
+        // salva no banco
+        // redireciona para success
+        push('/success')
+        return
+      }
+
       const payload = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
           card: elements.getElement(CardElement)!
@@ -98,6 +108,7 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
 
         // salvar a compra no banco do Strapi
         // redirectionar para a página de Sucesso
+        push('/success')
       }
     } catch (err) {
       console.error('Erro ao finalizar compra:', err)

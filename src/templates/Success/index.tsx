@@ -24,6 +24,12 @@ const Success = ({
   recommendedGames,
   recommendedHighlight
 }: SuccessTemplateProps) => {
+  const { clearCart } = useCart()
+
+  useEffect(() => {
+    clearCart()
+  }, [clearCart])
+
   return (
     <Base>
       <Container>

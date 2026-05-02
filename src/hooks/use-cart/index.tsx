@@ -1,9 +1,11 @@
+import { createContext, useCallback, useContext, useState } from 'react'
+
 import { useQueryGames } from '@/graphql/queries/games'
+
 import { isGame } from '@/utils/filterByTypes'
 import formatPrice from '@/utils/format-price'
 import { getStorageItem, setStorageItem } from '@/utils/localStorage'
 import { cartMapper } from '@/utils/mappers'
-import { createContext, useContext, useState } from 'react'
 
 const CART_KEY = 'cartItems'
 
@@ -65,10 +67,10 @@ const CartProvider = ({ children }: CartProviderProps) => {
 
   const isInCart = (id: string) => (id ? cartItems.includes(id) : false)
 
-  const saveCart = (newCartItems: string[]) => {
+  const saveCart = useCallback((newCartItems: string[]) => {
     setCartItems(newCartItems)
     setStorageItem(CART_KEY, newCartItems)
-  }
+  }, [])
 
   const addToCart = (id: string) => {
     if (isInCart(id)) return
@@ -84,7 +86,9 @@ const CartProvider = ({ children }: CartProviderProps) => {
     saveCart(newCartItems)
   }
 
-  const clearCart = () => saveCart([])
+  const clearCart = useCallback(() => {
+    saveCart([])
+  }, [saveCart])
 
   return (
     <CartContext.Provider
