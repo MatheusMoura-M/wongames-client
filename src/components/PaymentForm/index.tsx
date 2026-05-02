@@ -3,7 +3,7 @@ import { Session } from 'next-auth'
 import React, { useEffect, useState } from 'react'
 
 import { createPaymentIntent } from '@/utils/stripe/methods'
-import { CardElement } from '@stripe/react-stripe-js'
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import { StripeCardElementChangeEvent } from '@stripe/stripe-js'
 
 import { ErrorOutline } from '@styled-icons/material-outlined/ErrorOutline'
@@ -21,6 +21,8 @@ type PaymentFormProps = {
 
 const PaymentForm = ({ session }: PaymentFormProps) => {
   const { items } = useCart()
+  const stripe = useStripe()
+  const elements = useElements()
 
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
@@ -73,7 +75,36 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
 
   const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault()
-    setLoading(true)
+
+    if (!stripe || !elements) return
+
+    // se for freeGames
+    // salva no banco
+    // redireciona para success
+    try {
+      setLoading(true)
+
+      const payload = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: elements.getElement(CardElement)!
+        }
+      })
+
+      if (payload.error) {
+        setError(`Payment failed ${payload.error.message}`)
+      } else {
+        setError(null)
+        console.log('Compra realizada com sucesso')
+
+        // salvar a compra no banco do Strapi
+        // redirectionar para a página de Sucesso
+      }
+    } catch (err) {
+      console.error('Erro ao finalizar compra:', err)
+      setError('Erro inesperado ao processar pagamento')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
