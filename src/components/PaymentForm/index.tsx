@@ -1,5 +1,8 @@
+import { useCart } from '@/hooks/use-cart'
+import { Session } from 'next-auth'
 import { useEffect, useState } from 'react'
 
+import { createPaymentIntent } from '@/utils/stripe/methods'
 import { CardElement } from '@stripe/react-stripe-js'
 import { StripeCardElementChangeEvent } from '@stripe/stripe-js'
 
@@ -10,9 +13,12 @@ import Button from '@/components/Button'
 import Heading from '@/components/Heading'
 
 import * as S from './styles'
-import { useCart } from '@/hooks/use-cart'
 
-const PaymentForm = () => {
+type PaymentFormProps = {
+  session: Session
+}
+
+const PaymentForm = ({ session }: PaymentFormProps) => {
   const { items } = useCart()
 
   const [error, setError] = useState<string | null>(null)
@@ -21,17 +27,41 @@ const PaymentForm = () => {
   const [freeGames, setFreeGames] = useState(false)
 
   useEffect(() => {
-    if (items.length) {
-      // bater na API /api/orders/create-payment-intent
-      // enviar os items do carrinho
-      // se eu receber freeGames: true => setFreeGames
-      // faço o fluxo de jogo gratuito
-      // se eu receber um erro
-      // setError
-      // senão o paymentIntent foi válido
-      // setClientSecret
+    async function setPaymentMode() {
+      if (!items.length || !session?.jwt) return
+
+      try {
+        // bater na API /orders/create-payment-intent
+        const data = await createPaymentIntent({
+          items,
+          token: session.jwt
+        })
+
+        // se eu receber freeGames: true => setFreeGames
+        // faço o fluxo de jogo gratuito
+        if (data.freeGames) {
+          setFreeGames(true)
+          return
+        }
+
+        if (data.error) {
+          // se eu receber um erro
+          // setError
+          setError(data.error?.message ? data.error.message : '')
+          return
+        }
+        // senão o paymentIntent foi válido
+        // setClientSecret
+
+        setClientSecret(data.client_secret)
+      } catch (err) {
+        console.error('Erro ao criar payment intent:', err)
+        setError('Erro inesperado ao processar pagamento')
+      }
     }
-  }, [items])
+
+    setPaymentMode()
+  }, [items, session])
 
   const handleChange = async (event: StripeCardElementChangeEvent) => {
     setDisabled(event.empty)
