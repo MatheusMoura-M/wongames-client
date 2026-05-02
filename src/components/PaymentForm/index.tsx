@@ -2,9 +2,9 @@ import { useCart } from '@/hooks/use-cart'
 import { Session } from 'next-auth'
 import React, { useEffect, useState } from 'react'
 
-import { createPaymentIntent } from '@/utils/stripe/methods'
+import { createPayment, createPaymentIntent } from '@/utils/stripe/methods'
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
-import { StripeCardElementChangeEvent } from '@stripe/stripe-js'
+import { PaymentIntent, StripeCardElementChangeEvent } from '@stripe/stripe-js'
 
 import { ErrorOutline } from '@styled-icons/material-outlined/ErrorOutline'
 import { ShoppingCart } from '@styled-icons/material-outlined/ShoppingCart'
@@ -13,8 +13,8 @@ import Button from '@/components/Button'
 import Heading from '@/components/Heading'
 import { FormLoading } from '../Form'
 
-import * as S from './styles'
 import { useRouter } from 'next/router'
+import * as S from './styles'
 
 type PaymentFormProps = {
   session: Session
@@ -35,7 +35,7 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
 
   useEffect(() => {
     async function setPaymentMode() {
-      if (!items.length || !session?.jwt) return
+      if (!items.length) return
 
       try {
         // bater na API /orders/create-payment-intent
@@ -76,6 +76,16 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
     setError(event.error ? event.error.message : '')
   }
 
+  const saveOrder = async (paymentIntent?: PaymentIntent) => {
+    const data = await createPayment({
+      items,
+      paymentIntent,
+      token: session.jwt
+    })
+
+    return data
+  }
+
   const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault()
 
@@ -90,6 +100,7 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
       if (freeGames) {
         // salva no banco
         // bater na API /orders
+        saveOrder()
 
         // redireciona para success
         push('/success')
@@ -110,6 +121,7 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
 
         // salvar a compra no banco do Strapi
         // bater na API /orders
+        saveOrder(payload.paymentIntent)
 
         // redirectionar para a página de Sucesso
         push('/success')

@@ -6,8 +6,8 @@ export {}
 
 declare module 'next-auth' {
   interface Session {
-    jwt?: string
-    id?: string
+    jwt: string
+    id: string
   }
 
   interface User {
