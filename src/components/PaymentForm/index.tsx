@@ -89,6 +89,8 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
 
       if (freeGames) {
         // salva no banco
+        // bater na API /orders
+
         // redireciona para success
         push('/success')
         return
@@ -107,6 +109,8 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
         console.log('Compra realizada com sucesso')
 
         // salvar a compra no banco do Strapi
+        // bater na API /orders
+
         // redirectionar para a página de Sucesso
         push('/success')
       }
