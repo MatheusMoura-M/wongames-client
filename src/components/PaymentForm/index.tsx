@@ -49,11 +49,12 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
           // setError
           setError(data.error?.message ? data.error.message : '')
           return
+        } else {
+          // senão o paymentIntent foi válido
+          // setClientSecret
+          setFreeGames(false)
+          setClientSecret(data.client_secret)
         }
-        // senão o paymentIntent foi válido
-        // setClientSecret
-
-        setClientSecret(data.client_secret)
       } catch (err) {
         console.error('Erro ao criar payment intent:', err)
         setError('Erro inesperado ao processar pagamento')
