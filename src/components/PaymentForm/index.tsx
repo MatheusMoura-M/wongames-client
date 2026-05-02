@@ -1,6 +1,10 @@
+import { useState } from 'react'
+
 import { CardElement } from '@stripe/react-stripe-js'
-import { ShoppingCart } from '@styled-icons/material-outlined/ShoppingCart'
+import { StripeCardElementChangeEvent } from '@stripe/stripe-js'
+
 import { ErrorOutline } from '@styled-icons/material-outlined/ErrorOutline'
+import { ShoppingCart } from '@styled-icons/material-outlined/ShoppingCart'
 
 import Button from '@/components/Button'
 import Heading from '@/components/Heading'
@@ -28,7 +32,7 @@ const PaymentForm = () => {
 
         {error && (
           <S.Error>
-            <ErrorOutline size={20} />
+            <ErrorOutline size={20} style={{ marginRight: '4px' }} />
             {error}
           </S.Error>
         )}
