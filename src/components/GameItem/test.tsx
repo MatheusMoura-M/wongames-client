@@ -2,7 +2,15 @@ import { CartContextDefaultValues } from '@/hooks/use-cart'
 import { render, screen, waitFor } from '@/utils/test-utils'
 import userEvent from '@testing-library/user-event'
 import GameItem from '.'
-import { StaticImageImport } from '../CardsList/test'
+
+export type StaticImageImport = {
+  src: string | undefined
+  alt?: string | undefined
+  width?: number | string
+  height?: number | string
+  fill?: boolean
+  priority?: boolean
+}
 
 const props = {
   documentId: 'ahef7s9utp83c41ezwfggp45',
@@ -76,5 +84,18 @@ describe('<GameItem />', () => {
     )
     expect(screen.getByText(paymentInfo.number)).toBeInTheDocument()
     expect(screen.getByText(paymentInfo.purchaseDate)).toBeInTheDocument()
+  })
+
+  it('should render free game when theres no paymentInfo', () => {
+    const paymentInfo = {
+      flag: null,
+      img: null,
+      number: 'Free Game',
+      purchaseDate: 'Purchase made on 07/20/2020 at 20:32'
+    }
+
+    render(<GameItem {...props} paymentInfo={paymentInfo} />)
+
+    expect(screen.getByText(/free game/i)).toBeInTheDocument()
   })
 })
