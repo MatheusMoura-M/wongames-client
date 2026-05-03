@@ -39,6 +39,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     }
   })
 
+  console.log('Order formatted =>', ordersMapper(data.orders)?.[0])
+
   return {
     props: {
       session,

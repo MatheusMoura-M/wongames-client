@@ -23,6 +23,10 @@ describe('<OrdersList />', () => {
       screen.getByRole('heading', { name: /my orders/i })
     ).toBeInTheDocument()
     expect(screen.getAllByTestId('Mock GameItem')).toHaveLength(2)
+
+    expect(
+      screen.getByText(mock[0].paymentInfo.purchaseDate)
+    ).toBeInTheDocument()
   })
 
   it('should render empty state', () => {

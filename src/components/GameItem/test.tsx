@@ -83,7 +83,6 @@ describe('<GameItem />', () => {
       paymentInfo.img
     )
     expect(screen.getByText(paymentInfo.number)).toBeInTheDocument()
-    expect(screen.getByText(paymentInfo.purchaseDate)).toBeInTheDocument()
   })
 
   it('should render free game when theres no paymentInfo', () => {
