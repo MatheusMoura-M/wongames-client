@@ -3,7 +3,8 @@ import {
   QueryHomeQuery,
   QueryHomeQuery_sections_Home_freeGames_ComponentPageSection
 } from '@/graphql/queries/__generated__/QueryHome'
-import { isGame, isNotNull } from '../filterByTypes'
+import { QueryOrdersQuery } from '@/graphql/queries/__generated__/QueryOrders'
+import { isGame, isNotNull, isOrder } from '../filterByTypes'
 import formatPrice from '../format-price'
 
 export const bannerMapper = (banners: QueryHomeQuery['banners']) => {
@@ -70,15 +71,30 @@ export const cartMapper = (games: QueryGamesQuery['games'] | undefined) => {
   }))
 }
 
-// export const cartMapper = (games: QueryGamesQuery["games"] | undefined) => {
-//   return games
-//     ? games.map((game) => ({
-//         documentId: game?.documentId,
-//         img: game?.cover?.url
-//           ? `http://localhost:1337${game.cover.url}`
-//           : `/img/image_empty.png`,
-//         title: game?.name,
-//         price: game?.price ? formatPrice(game.price) : 'Free'
-//       }))
-//     : []
-// }
+export const ordersMapper = (orders: QueryOrdersQuery['orders']) => {
+  return (orders ?? []).filter(isOrder).map((order) => {
+    return {
+      documentId: order.documentId,
+      paymentInfo: {
+        flag: order.card_brand,
+        img: order.card_brand ? `/img/cards/${order.card_brand}.png` : null,
+        number: order.card_last4
+          ? `**** **** **** ${order.card_last4}`
+          : 'Free Game',
+        purchaseDate: `Purchase made on ${new Intl.DateTimeFormat('en-US', {
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric'
+        }).format(new Date(order.createdAt))}`
+      },
+      games: (order.games ?? []).filter(isGame).map((game) => ({
+        documentId: game.documentId,
+        title: game.name,
+        downloadLink:
+          'https://wongames.com/game/download/yuYT56Tgh431LkjhNBgdf',
+        img: `http://localhost:1337${game.cover?.url}`,
+        price: formatPrice(game.price)
+      }))
+    }
+  })
+}

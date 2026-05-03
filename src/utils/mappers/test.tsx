@@ -3,7 +3,14 @@ import {
   QueryHomeQuery_Query,
   QueryHomeQuery_sections_Home_freeGames_ComponentPageSection
 } from '@/graphql/queries/__generated__/QueryHome'
-import { bannerMapper, cartMapper, gamesMapper, highlightMapper } from '.'
+import {
+  bannerMapper,
+  cartMapper,
+  gamesMapper,
+  highlightMapper,
+  ordersMapper
+} from '.'
+import { QueryOrdersQuery } from '@/graphql/queries/__generated__/QueryOrders'
 
 describe('bannerMapper()', () => {
   it('should return the right format when mapped', () => {
@@ -128,6 +135,112 @@ describe('cartMapper()', () => {
         img: 'http://localhost:1337/image.jpg',
         title: 'game',
         price: '$10.00'
+      }
+    ])
+  })
+})
+
+describe('ordersMapper()', () => {
+  it('should return empty array if no orders', () => {
+    expect(cartMapper(undefined)).toStrictEqual([])
+  })
+
+  it('should return mapped items', () => {
+    const orders = [
+      {
+        __typename: 'Order',
+        documentId: '1',
+        card_brand: 'visa',
+        card_last4: '4242',
+        createdAt: '2021-04-14T18:41:48.358Z',
+        games: [
+          {
+            documentId: '1',
+            name: 'game',
+            developers: [
+              {
+                name: 'developer'
+              }
+            ],
+            slug: 'game',
+            cover: {
+              url: '/image.jpg'
+            },
+            price: 10
+          }
+        ]
+      }
+    ] as NonNullable<QueryOrdersQuery['orders']>
+
+    expect(ordersMapper(orders)).toStrictEqual([
+      {
+        documentId: '1',
+        paymentInfo: {
+          flag: 'visa',
+          img: '/img/cards/visa.png',
+          number: '**** **** **** 4242',
+          purchaseDate: 'Purchase made on Apr 14, 2021'
+        },
+        games: [
+          {
+            documentId: '1',
+            title: 'game',
+            downloadLink:
+              'https://wongames.com/game/download/yuYT56Tgh431LkjhNBgdf',
+            img: 'http://localhost:1337/image.jpg',
+            price: '$10.00'
+          }
+        ]
+      }
+    ])
+  })
+
+  it('should return free game when its free', () => {
+    const orders = [
+      {
+        __typename: 'Order',
+        documentId: '1',
+        card_brand: null,
+        card_last4: null,
+        createdAt: '2021-04-14T18:41:48.358Z',
+        games: [
+          {
+            documentId: '1',
+            name: 'game',
+            developers: [
+              {
+                name: 'developer'
+              }
+            ],
+            slug: 'game',
+            cover: {
+              url: '/image.jpg'
+            },
+            price: 0
+          }
+        ]
+      }
+    ] as NonNullable<QueryOrdersQuery['orders']>
+
+    expect(ordersMapper(orders)).toStrictEqual([
+      {
+        documentId: '1',
+        paymentInfo: {
+          flag: null,
+          img: null,
+          number: 'Free Game',
+          purchaseDate: 'Purchase made on Apr 14, 2021'
+        },
+        games: [
+          {
+            documentId: '1',
+            title: 'game',
+            downloadLink:
+              'https://wongames.com/game/download/yuYT56Tgh431LkjhNBgdf',
+            img: 'http://localhost:1337/image.jpg',
+            price: '$0.00'
+          }
+        ]
       }
     ])
   })
