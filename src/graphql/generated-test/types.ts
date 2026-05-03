@@ -28,6 +28,7 @@ export type Scalars = {
   Date: { input: any; output: any }
   DateTime: { input: any; output: any }
   JSON: { input: any; output: any }
+  Long: { input: any; output: any }
 }
 
 export type Banner = {
@@ -468,6 +469,153 @@ export enum ENUM_GAME_RATING {
   BR18 = 'BR18'
 }
 
+export type EmailDesigner5EmailDesignerTemplate = {
+  __typename: 'EmailDesigner5EmailDesignerTemplate'
+  bodyHtml: Maybe<Scalars['String']['output']>
+  bodyText: Maybe<Scalars['String']['output']>
+  createdAt: Maybe<Scalars['DateTime']['output']>
+  design: Maybe<Scalars['JSON']['output']>
+  documentId: Scalars['ID']['output']
+  name: Maybe<Scalars['String']['output']>
+  publishedAt: Maybe<Scalars['DateTime']['output']>
+  subject: Maybe<Scalars['String']['output']>
+  tags: Maybe<Scalars['JSON']['output']>
+  templateReferenceId: Maybe<Scalars['Int']['output']>
+  updatedAt: Maybe<Scalars['DateTime']['output']>
+  versions: Array<Maybe<EmailDesigner5EmailDesignerTemplateVersion>>
+  versions_connection: Maybe<EmailDesigner5EmailDesignerTemplateVersionRelationResponseCollection>
+}
+
+export type EmailDesigner5EmailDesignerTemplateversionsArgs = {
+  filters?: InputMaybe<EmailDesigner5EmailDesignerTemplateVersionFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type EmailDesigner5EmailDesignerTemplateversions_connectionArgs = {
+  filters?: InputMaybe<EmailDesigner5EmailDesignerTemplateVersionFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type EmailDesigner5EmailDesignerTemplateEntityResponseCollection = {
+  __typename: 'EmailDesigner5EmailDesignerTemplateEntityResponseCollection'
+  nodes: Array<EmailDesigner5EmailDesignerTemplate>
+  pageInfo: Pagination
+}
+
+export type EmailDesigner5EmailDesignerTemplateFiltersInput = {
+  and?: InputMaybe<
+    Array<InputMaybe<EmailDesigner5EmailDesignerTemplateFiltersInput>>
+  >
+  bodyHtml?: InputMaybe<StringFilterInput>
+  bodyText?: InputMaybe<StringFilterInput>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  design?: InputMaybe<JSONFilterInput>
+  documentId?: InputMaybe<IDFilterInput>
+  locale?: InputMaybe<StringFilterInput>
+  localizations?: InputMaybe<EmailDesigner5EmailDesignerTemplateFiltersInput>
+  name?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<EmailDesigner5EmailDesignerTemplateFiltersInput>
+  or?: InputMaybe<
+    Array<InputMaybe<EmailDesigner5EmailDesignerTemplateFiltersInput>>
+  >
+  publishedAt?: InputMaybe<DateTimeFilterInput>
+  subject?: InputMaybe<StringFilterInput>
+  tags?: InputMaybe<JSONFilterInput>
+  templateReferenceId?: InputMaybe<IntFilterInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+  versions?: InputMaybe<EmailDesigner5EmailDesignerTemplateVersionFiltersInput>
+}
+
+export type EmailDesigner5EmailDesignerTemplateInput = {
+  bodyHtml?: InputMaybe<Scalars['String']['input']>
+  bodyText?: InputMaybe<Scalars['String']['input']>
+  design?: InputMaybe<Scalars['JSON']['input']>
+  locale?: InputMaybe<Scalars['String']['input']>
+  name?: InputMaybe<Scalars['String']['input']>
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
+  subject?: InputMaybe<Scalars['String']['input']>
+  tags?: InputMaybe<Scalars['JSON']['input']>
+  templateReferenceId?: InputMaybe<Scalars['Int']['input']>
+  versions?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+}
+
+export type EmailDesigner5EmailDesignerTemplateVersion = {
+  __typename: 'EmailDesigner5EmailDesignerTemplateVersion'
+  bodyHtml: Maybe<Scalars['String']['output']>
+  bodyText: Maybe<Scalars['String']['output']>
+  changeReason: Maybe<Scalars['String']['output']>
+  changedBy: Maybe<Scalars['String']['output']>
+  changesSummary: Maybe<Scalars['JSON']['output']>
+  createdAt: Maybe<Scalars['DateTime']['output']>
+  design: Maybe<Scalars['JSON']['output']>
+  documentId: Scalars['ID']['output']
+  name: Maybe<Scalars['String']['output']>
+  publishedAt: Maybe<Scalars['DateTime']['output']>
+  subject: Maybe<Scalars['String']['output']>
+  tags: Maybe<Scalars['JSON']['output']>
+  templateId: Maybe<EmailDesigner5EmailDesignerTemplate>
+  updatedAt: Maybe<Scalars['DateTime']['output']>
+  versionNumber: Maybe<Scalars['Int']['output']>
+}
+
+export type EmailDesigner5EmailDesignerTemplateVersionEntityResponseCollection =
+  {
+    __typename: 'EmailDesigner5EmailDesignerTemplateVersionEntityResponseCollection'
+    nodes: Array<EmailDesigner5EmailDesignerTemplateVersion>
+    pageInfo: Pagination
+  }
+
+export type EmailDesigner5EmailDesignerTemplateVersionFiltersInput = {
+  and?: InputMaybe<
+    Array<InputMaybe<EmailDesigner5EmailDesignerTemplateVersionFiltersInput>>
+  >
+  bodyHtml?: InputMaybe<StringFilterInput>
+  bodyText?: InputMaybe<StringFilterInput>
+  changeReason?: InputMaybe<StringFilterInput>
+  changedBy?: InputMaybe<StringFilterInput>
+  changesSummary?: InputMaybe<JSONFilterInput>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  design?: InputMaybe<JSONFilterInput>
+  documentId?: InputMaybe<IDFilterInput>
+  locale?: InputMaybe<StringFilterInput>
+  localizations?: InputMaybe<EmailDesigner5EmailDesignerTemplateVersionFiltersInput>
+  name?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<EmailDesigner5EmailDesignerTemplateVersionFiltersInput>
+  or?: InputMaybe<
+    Array<InputMaybe<EmailDesigner5EmailDesignerTemplateVersionFiltersInput>>
+  >
+  publishedAt?: InputMaybe<DateTimeFilterInput>
+  subject?: InputMaybe<StringFilterInput>
+  tags?: InputMaybe<JSONFilterInput>
+  templateId?: InputMaybe<EmailDesigner5EmailDesignerTemplateFiltersInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+  versionNumber?: InputMaybe<IntFilterInput>
+}
+
+export type EmailDesigner5EmailDesignerTemplateVersionInput = {
+  bodyHtml?: InputMaybe<Scalars['String']['input']>
+  bodyText?: InputMaybe<Scalars['String']['input']>
+  changeReason?: InputMaybe<Scalars['String']['input']>
+  changedBy?: InputMaybe<Scalars['String']['input']>
+  changesSummary?: InputMaybe<Scalars['JSON']['input']>
+  design?: InputMaybe<Scalars['JSON']['input']>
+  locale?: InputMaybe<Scalars['String']['input']>
+  name?: InputMaybe<Scalars['String']['input']>
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
+  subject?: InputMaybe<Scalars['String']['input']>
+  tags?: InputMaybe<Scalars['JSON']['input']>
+  templateId?: InputMaybe<Scalars['ID']['input']>
+  versionNumber?: InputMaybe<Scalars['Int']['input']>
+}
+
+export type EmailDesigner5EmailDesignerTemplateVersionRelationResponseCollection =
+  {
+    __typename: 'EmailDesigner5EmailDesignerTemplateVersionRelationResponseCollection'
+    nodes: Array<EmailDesigner5EmailDesignerTemplateVersion>
+  }
+
 export type FileInfoInput = {
   alternativeText?: InputMaybe<Scalars['String']['input']>
   caption?: InputMaybe<Scalars['String']['input']>
@@ -642,9 +790,12 @@ export type GenericMorph =
   | ComponentSharedSeo
   | ComponentSharedSlider
   | Developer
+  | EmailDesigner5EmailDesignerTemplate
+  | EmailDesigner5EmailDesignerTemplateVersion
   | Game
   | Home
   | I18NLocale
+  | Order
   | Platform
   | Publisher
   | Recommended
@@ -782,6 +933,31 @@ export type JSONFilterInput = {
   startsWith?: InputMaybe<Scalars['JSON']['input']>
 }
 
+export type LongFilterInput = {
+  and?: InputMaybe<Array<InputMaybe<Scalars['Long']['input']>>>
+  between?: InputMaybe<Array<InputMaybe<Scalars['Long']['input']>>>
+  contains?: InputMaybe<Scalars['Long']['input']>
+  containsi?: InputMaybe<Scalars['Long']['input']>
+  endsWith?: InputMaybe<Scalars['Long']['input']>
+  eq?: InputMaybe<Scalars['Long']['input']>
+  eqi?: InputMaybe<Scalars['Long']['input']>
+  gt?: InputMaybe<Scalars['Long']['input']>
+  gte?: InputMaybe<Scalars['Long']['input']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['Long']['input']>>>
+  lt?: InputMaybe<Scalars['Long']['input']>
+  lte?: InputMaybe<Scalars['Long']['input']>
+  ne?: InputMaybe<Scalars['Long']['input']>
+  nei?: InputMaybe<Scalars['Long']['input']>
+  not?: InputMaybe<LongFilterInput>
+  notContains?: InputMaybe<Scalars['Long']['input']>
+  notContainsi?: InputMaybe<Scalars['Long']['input']>
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['Long']['input']>>>
+  notNull?: InputMaybe<Scalars['Boolean']['input']>
+  null?: InputMaybe<Scalars['Boolean']['input']>
+  or?: InputMaybe<Array<InputMaybe<Scalars['Long']['input']>>>
+  startsWith?: InputMaybe<Scalars['Long']['input']>
+}
+
 export type Mutation = {
   __typename: 'Mutation'
   /** Change user password. Confirm with the current password. */
@@ -789,7 +965,10 @@ export type Mutation = {
   createBanner: Maybe<Banner>
   createCategory: Maybe<Category>
   createDeveloper: Maybe<Developer>
+  createEmailDesigner5EmailDesignerTemplate: Maybe<EmailDesigner5EmailDesignerTemplate>
+  createEmailDesigner5EmailDesignerTemplateVersion: Maybe<EmailDesigner5EmailDesignerTemplateVersion>
   createGame: Maybe<Game>
+  createOrder: Maybe<Order>
   createPlatform: Maybe<Platform>
   createPublisher: Maybe<Publisher>
   createReviewWorkflowsWorkflow: Maybe<ReviewWorkflowsWorkflow>
@@ -802,8 +981,11 @@ export type Mutation = {
   deleteBanner: Maybe<DeleteMutationResponse>
   deleteCategory: Maybe<DeleteMutationResponse>
   deleteDeveloper: Maybe<DeleteMutationResponse>
+  deleteEmailDesigner5EmailDesignerTemplate: Maybe<DeleteMutationResponse>
+  deleteEmailDesigner5EmailDesignerTemplateVersion: Maybe<DeleteMutationResponse>
   deleteGame: Maybe<DeleteMutationResponse>
   deleteHome: Maybe<DeleteMutationResponse>
+  deleteOrder: Maybe<DeleteMutationResponse>
   deletePlatform: Maybe<DeleteMutationResponse>
   deletePublisher: Maybe<DeleteMutationResponse>
   deleteRecommended: Maybe<DeleteMutationResponse>
@@ -827,8 +1009,11 @@ export type Mutation = {
   updateBanner: Maybe<Banner>
   updateCategory: Maybe<Category>
   updateDeveloper: Maybe<Developer>
+  updateEmailDesigner5EmailDesignerTemplate: Maybe<EmailDesigner5EmailDesignerTemplate>
+  updateEmailDesigner5EmailDesignerTemplateVersion: Maybe<EmailDesigner5EmailDesignerTemplateVersion>
   updateGame: Maybe<Game>
   updateHome: Maybe<Home>
+  updateOrder: Maybe<Order>
   updatePlatform: Maybe<Platform>
   updatePublisher: Maybe<Publisher>
   updateRecommended: Maybe<Recommended>
@@ -863,8 +1048,23 @@ export type MutationcreateDeveloperArgs = {
   status?: InputMaybe<PublicationStatus>
 }
 
+export type MutationcreateEmailDesigner5EmailDesignerTemplateArgs = {
+  data: EmailDesigner5EmailDesignerTemplateInput
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type MutationcreateEmailDesigner5EmailDesignerTemplateVersionArgs = {
+  data: EmailDesigner5EmailDesignerTemplateVersionInput
+  status?: InputMaybe<PublicationStatus>
+}
+
 export type MutationcreateGameArgs = {
   data: GameInput
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type MutationcreateOrderArgs = {
+  data: OrderInput
   status?: InputMaybe<PublicationStatus>
 }
 
@@ -913,7 +1113,19 @@ export type MutationdeleteDeveloperArgs = {
   documentId: Scalars['ID']['input']
 }
 
+export type MutationdeleteEmailDesigner5EmailDesignerTemplateArgs = {
+  documentId: Scalars['ID']['input']
+}
+
+export type MutationdeleteEmailDesigner5EmailDesignerTemplateVersionArgs = {
+  documentId: Scalars['ID']['input']
+}
+
 export type MutationdeleteGameArgs = {
+  documentId: Scalars['ID']['input']
+}
+
+export type MutationdeleteOrderArgs = {
   documentId: Scalars['ID']['input']
 }
 
@@ -989,6 +1201,18 @@ export type MutationupdateDeveloperArgs = {
   status?: InputMaybe<PublicationStatus>
 }
 
+export type MutationupdateEmailDesigner5EmailDesignerTemplateArgs = {
+  data: EmailDesigner5EmailDesignerTemplateInput
+  documentId: Scalars['ID']['input']
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type MutationupdateEmailDesigner5EmailDesignerTemplateVersionArgs = {
+  data: EmailDesigner5EmailDesignerTemplateVersionInput
+  documentId: Scalars['ID']['input']
+  status?: InputMaybe<PublicationStatus>
+}
+
 export type MutationupdateGameArgs = {
   data: GameInput
   documentId: Scalars['ID']['input']
@@ -997,6 +1221,12 @@ export type MutationupdateGameArgs = {
 
 export type MutationupdateHomeArgs = {
   data: HomeInput
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type MutationupdateOrderArgs = {
+  data: OrderInput
+  documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
 }
 
@@ -1048,6 +1278,68 @@ export type MutationupdateWishlistArgs = {
   data: WishlistInput
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
+}
+
+export type Order = {
+  __typename: 'Order'
+  card_brand: Maybe<Scalars['String']['output']>
+  card_last4: Maybe<Scalars['String']['output']>
+  createdAt: Maybe<Scalars['DateTime']['output']>
+  documentId: Scalars['ID']['output']
+  games: Array<Maybe<Game>>
+  games_connection: Maybe<GameRelationResponseCollection>
+  payment_intent_id: Maybe<Scalars['String']['output']>
+  publishedAt: Maybe<Scalars['DateTime']['output']>
+  total_in_cents: Scalars['Long']['output']
+  updatedAt: Maybe<Scalars['DateTime']['output']>
+  user: Maybe<UsersPermissionsUser>
+}
+
+export type OrdergamesArgs = {
+  filters?: InputMaybe<GameFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type Ordergames_connectionArgs = {
+  filters?: InputMaybe<GameFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type OrderEntityResponseCollection = {
+  __typename: 'OrderEntityResponseCollection'
+  nodes: Array<Order>
+  pageInfo: Pagination
+}
+
+export type OrderFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<OrderFiltersInput>>>
+  card_brand?: InputMaybe<StringFilterInput>
+  card_last4?: InputMaybe<StringFilterInput>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  documentId?: InputMaybe<IDFilterInput>
+  games?: InputMaybe<GameFiltersInput>
+  locale?: InputMaybe<StringFilterInput>
+  localizations?: InputMaybe<OrderFiltersInput>
+  not?: InputMaybe<OrderFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<OrderFiltersInput>>>
+  payment_intent_id?: InputMaybe<StringFilterInput>
+  publishedAt?: InputMaybe<DateTimeFilterInput>
+  total_in_cents?: InputMaybe<LongFilterInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+  user?: InputMaybe<UsersPermissionsUserFiltersInput>
+}
+
+export type OrderInput = {
+  card_brand?: InputMaybe<Scalars['String']['input']>
+  card_last4?: InputMaybe<Scalars['String']['input']>
+  games?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  locale?: InputMaybe<Scalars['String']['input']>
+  payment_intent_id?: InputMaybe<Scalars['String']['input']>
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
+  total_in_cents?: InputMaybe<Scalars['Long']['input']>
+  user?: InputMaybe<Scalars['ID']['input']>
 }
 
 export type Pagination = {
@@ -1192,6 +1484,16 @@ export type Query = {
   developer: Maybe<Developer>
   developers: Array<Maybe<Developer>>
   developers_connection: Maybe<DeveloperEntityResponseCollection>
+  emailDesigner5EmailDesignerTemplate: Maybe<EmailDesigner5EmailDesignerTemplate>
+  emailDesigner5EmailDesignerTemplateVersion: Maybe<EmailDesigner5EmailDesignerTemplateVersion>
+  emailDesigner5EmailDesignerTemplateVersions: Array<
+    Maybe<EmailDesigner5EmailDesignerTemplateVersion>
+  >
+  emailDesigner5EmailDesignerTemplateVersions_connection: Maybe<EmailDesigner5EmailDesignerTemplateVersionEntityResponseCollection>
+  emailDesigner5EmailDesignerTemplates: Array<
+    Maybe<EmailDesigner5EmailDesignerTemplate>
+  >
+  emailDesigner5EmailDesignerTemplates_connection: Maybe<EmailDesigner5EmailDesignerTemplateEntityResponseCollection>
   game: Maybe<Game>
   games: Array<Maybe<Game>>
   games_connection: Maybe<GameEntityResponseCollection>
@@ -1200,6 +1502,9 @@ export type Query = {
   i18NLocales: Array<Maybe<I18NLocale>>
   i18NLocales_connection: Maybe<I18NLocaleEntityResponseCollection>
   me: Maybe<UsersPermissionsMe>
+  order: Maybe<Order>
+  orders: Array<Maybe<Order>>
+  orders_connection: Maybe<OrderEntityResponseCollection>
   platform: Maybe<Platform>
   platforms: Array<Maybe<Platform>>
   platforms_connection: Maybe<PlatformEntityResponseCollection>
@@ -1284,6 +1589,44 @@ export type Querydevelopers_connectionArgs = {
   status?: InputMaybe<PublicationStatus>
 }
 
+export type QueryemailDesigner5EmailDesignerTemplateArgs = {
+  documentId: Scalars['ID']['input']
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryemailDesigner5EmailDesignerTemplateVersionArgs = {
+  documentId: Scalars['ID']['input']
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryemailDesigner5EmailDesignerTemplateVersionsArgs = {
+  filters?: InputMaybe<EmailDesigner5EmailDesignerTemplateVersionFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryemailDesigner5EmailDesignerTemplateVersions_connectionArgs = {
+  filters?: InputMaybe<EmailDesigner5EmailDesignerTemplateVersionFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryemailDesigner5EmailDesignerTemplatesArgs = {
+  filters?: InputMaybe<EmailDesigner5EmailDesignerTemplateFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryemailDesigner5EmailDesignerTemplates_connectionArgs = {
+  filters?: InputMaybe<EmailDesigner5EmailDesignerTemplateFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  status?: InputMaybe<PublicationStatus>
+}
+
 export type QuerygameArgs = {
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
@@ -1321,6 +1664,25 @@ export type Queryi18NLocalesArgs = {
 
 export type Queryi18NLocales_connectionArgs = {
   filters?: InputMaybe<I18NLocaleFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryorderArgs = {
+  documentId: Scalars['ID']['input']
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryordersArgs = {
+  filters?: InputMaybe<OrderFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type Queryorders_connectionArgs = {
+  filters?: InputMaybe<OrderFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>

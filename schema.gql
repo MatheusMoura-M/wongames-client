@@ -39,6 +39,9 @@ scalar DateTime
 """A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar."""
 scalar Date
 
+"""The `BigInt` scalar type represents non-fractional signed whole numeric values."""
+scalar Long
+
 type Pagination {
   total: Int!
   page: Int!
@@ -153,6 +156,31 @@ input IntFilterInput {
   in: [Int]
   notIn: [Int]
   between: [Int]
+}
+
+input LongFilterInput {
+  and: [Long]
+  or: [Long]
+  not: LongFilterInput
+  eq: Long
+  eqi: Long
+  ne: Long
+  nei: Long
+  startsWith: Long
+  endsWith: Long
+  contains: Long
+  notContains: Long
+  containsi: Long
+  notContainsi: Long
+  gt: Long
+  gte: Long
+  lt: Long
+  lte: Long
+  null: Boolean
+  notNull: Boolean
+  in: [Long]
+  notIn: [Long]
+  between: [Long]
 }
 
 input FloatFilterInput {
@@ -709,6 +737,126 @@ type UsersPermissionsUserRelationResponseCollection {
   nodes: [UsersPermissionsUser!]!
 }
 
+input EmailDesigner5EmailDesignerTemplateVersionFiltersInput {
+  documentId: IDFilterInput
+  templateId: EmailDesigner5EmailDesignerTemplateFiltersInput
+  versionNumber: IntFilterInput
+  design: JSONFilterInput
+  name: StringFilterInput
+  subject: StringFilterInput
+  bodyHtml: StringFilterInput
+  bodyText: StringFilterInput
+  tags: JSONFilterInput
+  changedBy: StringFilterInput
+  changeReason: StringFilterInput
+  changesSummary: JSONFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  locale: StringFilterInput
+  localizations: EmailDesigner5EmailDesignerTemplateVersionFiltersInput
+  and: [EmailDesigner5EmailDesignerTemplateVersionFiltersInput]
+  or: [EmailDesigner5EmailDesignerTemplateVersionFiltersInput]
+  not: EmailDesigner5EmailDesignerTemplateVersionFiltersInput
+}
+
+input EmailDesigner5EmailDesignerTemplateVersionInput {
+  templateId: ID
+  versionNumber: Int
+  design: JSON
+  name: String
+  subject: String
+  bodyHtml: String
+  bodyText: String
+  tags: JSON
+  changedBy: String
+  changeReason: String
+  changesSummary: JSON
+  publishedAt: DateTime
+  locale: String
+}
+
+type EmailDesigner5EmailDesignerTemplateVersion {
+  documentId: ID!
+  templateId: EmailDesigner5EmailDesignerTemplate
+  versionNumber: Int
+  design: JSON
+  name: String
+  subject: String
+  bodyHtml: String
+  bodyText: String
+  tags: JSON
+  changedBy: String
+  changeReason: String
+  changesSummary: JSON
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type EmailDesigner5EmailDesignerTemplateVersionEntityResponseCollection {
+  nodes: [EmailDesigner5EmailDesignerTemplateVersion!]!
+  pageInfo: Pagination!
+}
+
+type EmailDesigner5EmailDesignerTemplateVersionRelationResponseCollection {
+  nodes: [EmailDesigner5EmailDesignerTemplateVersion!]!
+}
+
+input EmailDesigner5EmailDesignerTemplateFiltersInput {
+  documentId: IDFilterInput
+  templateReferenceId: IntFilterInput
+  design: JSONFilterInput
+  name: StringFilterInput
+  subject: StringFilterInput
+  bodyHtml: StringFilterInput
+  bodyText: StringFilterInput
+  tags: JSONFilterInput
+  versions: EmailDesigner5EmailDesignerTemplateVersionFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  locale: StringFilterInput
+  localizations: EmailDesigner5EmailDesignerTemplateFiltersInput
+  and: [EmailDesigner5EmailDesignerTemplateFiltersInput]
+  or: [EmailDesigner5EmailDesignerTemplateFiltersInput]
+  not: EmailDesigner5EmailDesignerTemplateFiltersInput
+}
+
+input EmailDesigner5EmailDesignerTemplateInput {
+  templateReferenceId: Int
+  design: JSON
+  name: String
+  subject: String
+  bodyHtml: String
+  bodyText: String
+  tags: JSON
+  versions: [ID]
+  publishedAt: DateTime
+  locale: String
+}
+
+type EmailDesigner5EmailDesignerTemplate {
+  documentId: ID!
+  templateReferenceId: Int
+  design: JSON
+  name: String
+  subject: String
+  bodyHtml: String
+  bodyText: String
+  tags: JSON
+  versions_connection(filters: EmailDesigner5EmailDesignerTemplateVersionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): EmailDesigner5EmailDesignerTemplateVersionRelationResponseCollection
+  versions(filters: EmailDesigner5EmailDesignerTemplateVersionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [EmailDesigner5EmailDesignerTemplateVersion]!
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type EmailDesigner5EmailDesignerTemplateEntityResponseCollection {
+  nodes: [EmailDesigner5EmailDesignerTemplate!]!
+  pageInfo: Pagination!
+}
+
 input BannerFiltersInput {
   documentId: IDFilterInput
   title: StringFilterInput
@@ -944,6 +1092,54 @@ type Home {
   publishedAt: DateTime
 }
 
+input OrderFiltersInput {
+  documentId: IDFilterInput
+  user: UsersPermissionsUserFiltersInput
+  games: GameFiltersInput
+  total_in_cents: LongFilterInput
+  payment_intent_id: StringFilterInput
+  card_brand: StringFilterInput
+  card_last4: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  locale: StringFilterInput
+  localizations: OrderFiltersInput
+  and: [OrderFiltersInput]
+  or: [OrderFiltersInput]
+  not: OrderFiltersInput
+}
+
+input OrderInput {
+  user: ID
+  games: [ID]
+  total_in_cents: Long
+  payment_intent_id: String
+  card_brand: String
+  card_last4: String
+  publishedAt: DateTime
+  locale: String
+}
+
+type Order {
+  documentId: ID!
+  user: UsersPermissionsUser
+  games_connection(filters: GameFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): GameRelationResponseCollection
+  games(filters: GameFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Game]!
+  total_in_cents: Long!
+  payment_intent_id: String
+  card_brand: String
+  card_last4: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type OrderEntityResponseCollection {
+  nodes: [Order!]!
+  pageInfo: Pagination!
+}
+
 input PlatformFiltersInput {
   documentId: IDFilterInput
   name: StringFilterInput
@@ -1076,7 +1272,7 @@ type WishlistEntityResponseCollection {
   pageInfo: Pagination!
 }
 
-union GenericMorph = ComponentSharedSlider | ComponentSharedSeo | ComponentSharedRichText | ComponentSharedQuote | ComponentSharedMedia | ComponentPageSection | ComponentPageRibon | ComponentPageRibbon | ComponentPagePopularGames | ComponentPageHighlight | ComponentPageButton | UploadFile | I18NLocale | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Banner | Category | Developer | Game | Home | Platform | Publisher | Recommended | Wishlist
+union GenericMorph = ComponentSharedSlider | ComponentSharedSeo | ComponentSharedRichText | ComponentSharedQuote | ComponentSharedMedia | ComponentPageSection | ComponentPageRibon | ComponentPageRibbon | ComponentPagePopularGames | ComponentPageHighlight | ComponentPageButton | UploadFile | I18NLocale | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | EmailDesigner5EmailDesignerTemplateVersion | EmailDesigner5EmailDesignerTemplate | Banner | Category | Developer | Game | Home | Order | Platform | Publisher | Recommended | Wishlist
 
 input FileInfoInput {
   name: String
@@ -1159,6 +1355,12 @@ type Query {
   usersPermissionsUser(documentId: ID!, status: PublicationStatus = PUBLISHED): UsersPermissionsUser
   usersPermissionsUsers_connection(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): UsersPermissionsUserEntityResponseCollection
   usersPermissionsUsers(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [UsersPermissionsUser]!
+  emailDesigner5EmailDesignerTemplateVersion(documentId: ID!, status: PublicationStatus = PUBLISHED): EmailDesigner5EmailDesignerTemplateVersion
+  emailDesigner5EmailDesignerTemplateVersions_connection(filters: EmailDesigner5EmailDesignerTemplateVersionFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): EmailDesigner5EmailDesignerTemplateVersionEntityResponseCollection
+  emailDesigner5EmailDesignerTemplateVersions(filters: EmailDesigner5EmailDesignerTemplateVersionFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [EmailDesigner5EmailDesignerTemplateVersion]!
+  emailDesigner5EmailDesignerTemplate(documentId: ID!, status: PublicationStatus = PUBLISHED): EmailDesigner5EmailDesignerTemplate
+  emailDesigner5EmailDesignerTemplates_connection(filters: EmailDesigner5EmailDesignerTemplateFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): EmailDesigner5EmailDesignerTemplateEntityResponseCollection
+  emailDesigner5EmailDesignerTemplates(filters: EmailDesigner5EmailDesignerTemplateFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [EmailDesigner5EmailDesignerTemplate]!
   banner(documentId: ID!, status: PublicationStatus = PUBLISHED): Banner
   banners_connection(filters: BannerFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): BannerEntityResponseCollection
   banners(filters: BannerFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [Banner]!
@@ -1172,6 +1374,9 @@ type Query {
   games_connection(filters: GameFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): GameEntityResponseCollection
   games(filters: GameFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [Game]!
   home(status: PublicationStatus = PUBLISHED): Home
+  order(documentId: ID!, status: PublicationStatus = PUBLISHED): Order
+  orders_connection(filters: OrderFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): OrderEntityResponseCollection
+  orders(filters: OrderFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [Order]!
   platform(documentId: ID!, status: PublicationStatus = PUBLISHED): Platform
   platforms_connection(filters: PlatformFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): PlatformEntityResponseCollection
   platforms(filters: PlatformFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [Platform]!
@@ -1192,6 +1397,12 @@ type Mutation {
   createReviewWorkflowsWorkflowStage(status: PublicationStatus = PUBLISHED, data: ReviewWorkflowsWorkflowStageInput!): ReviewWorkflowsWorkflowStage
   updateReviewWorkflowsWorkflowStage(documentId: ID!, status: PublicationStatus = PUBLISHED, data: ReviewWorkflowsWorkflowStageInput!): ReviewWorkflowsWorkflowStage
   deleteReviewWorkflowsWorkflowStage(documentId: ID!): DeleteMutationResponse
+  createEmailDesigner5EmailDesignerTemplateVersion(status: PublicationStatus = PUBLISHED, data: EmailDesigner5EmailDesignerTemplateVersionInput!): EmailDesigner5EmailDesignerTemplateVersion
+  updateEmailDesigner5EmailDesignerTemplateVersion(documentId: ID!, status: PublicationStatus = PUBLISHED, data: EmailDesigner5EmailDesignerTemplateVersionInput!): EmailDesigner5EmailDesignerTemplateVersion
+  deleteEmailDesigner5EmailDesignerTemplateVersion(documentId: ID!): DeleteMutationResponse
+  createEmailDesigner5EmailDesignerTemplate(status: PublicationStatus = PUBLISHED, data: EmailDesigner5EmailDesignerTemplateInput!): EmailDesigner5EmailDesignerTemplate
+  updateEmailDesigner5EmailDesignerTemplate(documentId: ID!, status: PublicationStatus = PUBLISHED, data: EmailDesigner5EmailDesignerTemplateInput!): EmailDesigner5EmailDesignerTemplate
+  deleteEmailDesigner5EmailDesignerTemplate(documentId: ID!): DeleteMutationResponse
   createBanner(status: PublicationStatus = PUBLISHED, data: BannerInput!): Banner
   updateBanner(documentId: ID!, status: PublicationStatus = PUBLISHED, data: BannerInput!): Banner
   deleteBanner(documentId: ID!): DeleteMutationResponse
@@ -1206,6 +1417,9 @@ type Mutation {
   deleteGame(documentId: ID!): DeleteMutationResponse
   updateHome(status: PublicationStatus = PUBLISHED, data: HomeInput!): Home
   deleteHome: DeleteMutationResponse
+  createOrder(status: PublicationStatus = PUBLISHED, data: OrderInput!): Order
+  updateOrder(documentId: ID!, status: PublicationStatus = PUBLISHED, data: OrderInput!): Order
+  deleteOrder(documentId: ID!): DeleteMutationResponse
   createPlatform(status: PublicationStatus = PUBLISHED, data: PlatformInput!): Platform
   updatePlatform(documentId: ID!, status: PublicationStatus = PUBLISHED, data: PlatformInput!): Platform
   deletePlatform(documentId: ID!): DeleteMutationResponse
