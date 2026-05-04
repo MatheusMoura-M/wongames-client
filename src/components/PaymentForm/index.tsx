@@ -167,7 +167,7 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
         </S.Body>
 
         <S.Footer>
-          <Button as="a" fullWidth minimal>
+          <Button as="a" href="/" fullWidth minimal>
             Continue shopping
           </Button>
 
