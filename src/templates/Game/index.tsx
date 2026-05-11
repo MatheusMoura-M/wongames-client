@@ -8,6 +8,7 @@ import Showcase from '@/components/Showcase'
 import TextContent from '@/components/TextContent'
 import Base from '@/templates/Base'
 import * as S from './styles'
+import Image from 'next/image'
 
 export type GameTemplateProps = {
   cover: string
@@ -35,7 +36,15 @@ const Game = ({
   recommendedGames
 }: GameTemplateProps) => (
   <Base>
-    <S.Cover src={cover} role="image" aria-label="cover" />
+    <S.Cover>
+      <Image
+        src={cover}
+        alt={gameInfo.title}
+        fill
+        style={{ objectFit: 'cover', objectPosition: 'top center' }}
+      />
+    </S.Cover>
+
     <S.Main>
       <S.SectionGameInfo>
         <GameInfo {...gameInfo} />
@@ -59,6 +68,7 @@ const Game = ({
         games={upcomingGames}
         highlight={upcomingHighlight}
       />
+
       <Showcase title={recommendedTitle} games={recommendedGames} />
     </S.Main>
   </Base>

@@ -1,6 +1,7 @@
 import { render } from '@/utils/test-utils'
 import { screen } from '@testing-library/dom'
 import Auth from '.'
+
 describe('<Auth />', () => {
   it('should render all components and children', () => {
     render(
@@ -10,7 +11,7 @@ describe('<Auth />', () => {
     )
 
     // verifiquem se tem 2 logos
-    expect(screen.getAllByRole('img', { name: /won games/i })).toHaveLength(2)
+    expect(screen.getAllByRole('img', { name: /Won Games/i })).toHaveLength(3)
 
     // verifica se tem o heading principal do banner
     expect(

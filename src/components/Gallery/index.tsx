@@ -79,12 +79,12 @@ const Gallery = ({ items }: GalleryProps) => {
       <Slider ref={slider} settings={settings}>
         {items.map((item, index) => (
           <Image
-            role="button"
             key={`thumb-${index}`}
+            role="button"
             src={item.src}
             alt={`Thumb - ${item?.label || index}`}
-            width={293}
-            height={165.52}
+            width={295}
+            height={165}
             onClick={() => {
               setIsOpen(true)
               slider.current!.slickGoTo(index, true)
@@ -110,7 +110,7 @@ const Gallery = ({ items }: GalleryProps) => {
                 src={item.src}
                 alt={`Imagem do modal - ${item?.label || index}`}
                 width={1200}
-                height={677.92}
+                height={675}
               />
             ))}
           </Slider>
