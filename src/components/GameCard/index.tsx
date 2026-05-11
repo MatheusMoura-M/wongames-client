@@ -40,7 +40,13 @@ const GameCard = ({
 
     <Link href={`game/${slug}`} passHref>
       <S.ImageBox>
-        <Image src={img} alt={title} fill sizes="100%" priority />
+        <Image
+          src={img}
+          alt={title}
+          fill
+          sizes="100%"
+          style={{ objectFit: 'cover' }}
+        />
       </S.ImageBox>
     </Link>
 

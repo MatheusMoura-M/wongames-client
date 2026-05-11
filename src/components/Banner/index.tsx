@@ -32,7 +32,13 @@ const Banner = ({
     )}
 
     <S.ImageWrapper>
-      <Image src={img} alt={title} fill style={{ objectFit: 'cover' }} />
+      <Image
+        src={img}
+        alt={title}
+        fill
+        style={{ objectFit: 'cover' }}
+        priority
+      />
     </S.ImageWrapper>
 
     <S.Caption>
