@@ -36,10 +36,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     query: QueryOrdersDocument,
     variables: {
       identifier: session?.id
-    }
+    },
+    fetchPolicy: 'no-cache'
   })
-
-  console.log('Order formatted =>', ordersMapper(data.orders)?.[0])
 
   return {
     props: {
