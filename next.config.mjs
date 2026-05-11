@@ -11,6 +11,10 @@ const nextConfig = {
         hostname: 's2-g1.glbimg.com'
       },
       {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com'
+      },
+      {
         protocol: 'http',
         hostname: 'localhost'
       }
