@@ -14,6 +14,7 @@ import { useRouter } from 'next/router'
 import { ParsedUrlQueryInput } from 'querystring'
 import { useEffect, useState } from 'react'
 import * as S from './styles'
+import { getImageUrl } from '@/utils/getImageUrl'
 
 export type GamesTemplateProps = {
   games?: GameCardProps[]
@@ -86,7 +87,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
                         }
                         img={
                           game.cover?.url
-                            ? `http://localhost:1337${game.cover.url}`
+                            ? `${getImageUrl(game.cover.url)}`
                             : `/img/image_empty.png`
                         }
                         price={game!.price}

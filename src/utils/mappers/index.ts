@@ -6,11 +6,12 @@ import {
 import { QueryOrdersQuery } from '@/graphql/queries/__generated__/QueryOrders'
 import { isGame, isNotNull, isOrder } from '../filterByTypes'
 import formatPrice from '../format-price'
+import { getImageUrl } from '../getImageUrl'
 
 export const bannerMapper = (banners: QueryHomeQuery['banners']) => {
   return banners.map((banner) => ({
     img: banner?.image?.url
-      ? `http://localhost:1337${banner.image.url}`
+      ? `${getImageUrl(banner.image.url)}`
       : `/img/image_empty.png`,
     title: banner?.title,
     subtitle: banner?.subtitle,
@@ -31,7 +32,7 @@ export const gamesMapper = (games?: QueryGamesQuery['games']) => {
     slug: game.slug,
     developer: game.developers?.find(isNotNull)?.name ?? 'Unknown',
     img: game.cover?.url
-      ? `http://localhost:1337${game.cover.url}`
+      ? `${getImageUrl(game.cover.url)}`
       : `/img/image_empty.png`,
     price: game.price
   }))
@@ -48,10 +49,10 @@ export const highlightMapper = (
         title: highlight.title,
         subtitle: highlight.subtitle,
         backgroundImage: highlight?.background?.url
-          ? `http://localhost:1337${highlight.background.url}`
+          ? `${getImageUrl(highlight.background.url)}`
           : `/img/image_empty.png`,
         floatImage: highlight?.floatImage?.url
-          ? `http://localhost:1337${highlight.floatImage.url}`
+          ? `${getImageUrl(highlight.floatImage.url)}`
           : `/img/image_empty.png`,
         buttonLabel: highlight.buttonLabel,
         buttonLink: highlight.buttonLink,
@@ -64,7 +65,7 @@ export const cartMapper = (games: QueryGamesQuery['games'] | undefined) => {
   return (games ?? []).filter(isGame).map((game) => ({
     documentId: game.documentId,
     img: game.cover?.url
-      ? `http://localhost:1337${game.cover.url}`
+      ? `${getImageUrl(game.cover.url)}`
       : `/img/image_empty.png`,
     title: game.name,
     price: game.price ? formatPrice(game.price) : 'Free'
@@ -92,7 +93,7 @@ export const ordersMapper = (orders: QueryOrdersQuery['orders']) => {
         title: game.name,
         downloadLink:
           'https://wongames.com/game/download/yuYT56Tgh431LkjhNBgdf',
-        img: `http://localhost:1337${game.cover?.url}`,
+        img: `${getImageUrl(game.cover?.url)}`,
         price: formatPrice(game.price)
       }))
     }
