@@ -28,9 +28,6 @@ exports[`<Highlight /> should render headings and button 1`] = `
 
 .c0 {
   position: relative;
-  background-image: url(/img/red-dead-img.jpg);
-  background-position: center center;
-  background-size: cover;
   height: 23rem;
   display: grid;
   grid-template-areas: 'floatimage content';
@@ -100,6 +97,12 @@ exports[`<Highlight /> should render headings and button 1`] = `
   alignment="right"
   class="c0"
 >
+  <img
+    alt="Heading 1 background"
+    role="img"
+    src="/img/red-dead-img.jpg"
+    style="object-fit: cover;"
+  />
   <div
     class="c1 c2"
   >

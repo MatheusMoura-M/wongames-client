@@ -13,11 +13,6 @@ const props = {
   price: 235
 }
 
-jest.mock('next/image', () => ({
-  __esModule: true,
-  default: () => <img src={props.img} alt={props.title} />
-}))
-
 describe('<GameCard />', () => {
   it('should render correctly', () => {
     render(<GameCard {...props} />)

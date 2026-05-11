@@ -19,14 +19,6 @@ const props = {
   price: 'R$ 215,00'
 }
 
-jest.mock('next/image', () => ({
-  __esModule: true,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  default: ({ src, alt, fill, priority, ...props }: StaticImageImport) => (
-    <img src={src} alt={alt} {...props} />
-  )
-}))
-
 describe('<GameItem />', () => {
   it('should render the item', () => {
     render(<GameItem {...props} />)
