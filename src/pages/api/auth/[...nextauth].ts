@@ -38,8 +38,8 @@ const authOptions = {
   ],
   callbacks: {
     async session({ session, token }: { session: Session; token: JWT }) {
-      session.jwt = token.jwt
-      session.id = token.documentId
+      session.jwt = token.jwt!
+      session.id = token.documentId!
 
       return session
     },
