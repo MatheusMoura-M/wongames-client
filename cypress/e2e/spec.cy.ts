@@ -1,5 +1,5 @@
 describe('Cypress TS', () => {
-  it.skip('should go to go Google', () => {
+  it('should go to go Google', () => {
     cy.google()
   })
 
