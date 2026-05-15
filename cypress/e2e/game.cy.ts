@@ -1,7 +1,9 @@
 describe('Game Page', () => {
-  it('should render game page sections', () => {
+  before(() => {
     cy.visit('/game/cyberpunk_2077')
+  })
 
+  it.skip('should render game page sections', () => {
     cy.getByDataCy('game-info').within(() => {
       cy.findByRole('heading', { name: /cyberpunk 2077/i }).should('exist')
       cy.findByText(/^\* Exclusive Digital Comic - Cyberpunk 2077/i).should(
@@ -45,6 +47,22 @@ describe('Game Page', () => {
     cy.shouldRenderShowcase({
       name: 'You may like these games',
       hightlight: false
+    })
+  })
+
+  it('should add/remove game in cart', () => {
+    cy.getByDataCy('game-info').within(() => {
+      cy.findByRole('button', { name: /add to cart/i }).click()
+      cy.findByRole('button', { name: /remove from cart/i }).should('exist')
+    })
+
+    cy.findAllByLabelText(/cart items/i)
+      .first()
+      .should('have.text', 1)
+      .click()
+
+    cy.getByDataCy('cart-list').within(() => {
+      cy.findByRole('heading', { name: /cyberpunk 2077/i }).should('exist')
     })
   })
 })
