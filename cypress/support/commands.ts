@@ -4,6 +4,10 @@ import '@testing-library/cypress/add-commands'
 
 Cypress.Commands.add('google', () => cy.visit('https://google.com'))
 
+Cypress.Commands.add('getByDataCy', (selector, ...args) => {
+  return cy.get(`[data-cy="${selector}"]`, ...args)
+})
+
 Cypress.Commands.add('shouldRenderBanner', () => {
   cy.get('.slick-slider')
     .first()
@@ -24,17 +28,17 @@ Cypress.Commands.add('shouldRenderBanner', () => {
 })
 
 Cypress.Commands.add('shouldRenderShowcase', ({ name, hightlight = false }) => {
-  cy.get(`[data-cy="${name}"]`).within(() => {
+  cy.getByDataCy(name).within(() => {
     cy.findByRole('heading', { name }).should('exist')
 
-    cy.get(`[data-cy="highlight"]`).should(hightlight ? 'exist' : 'not.exist')
+    cy.getByDataCy('highlight').should(hightlight ? 'exist' : 'not.exist')
 
     if (hightlight) {
-      cy.get(`[data-cy="highlight"]`).within(() => {
+      cy.getByDataCy('highlight').within(() => {
         cy.findByRole('link').should('have.attr', 'href')
       })
     }
 
-    cy.get(`[data-cy="game-card"]`).should('have.length.gt', 0)
+    cy.getByDataCy('game-card').should('have.length.gt', 0)
   })
 })
