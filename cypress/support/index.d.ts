@@ -3,6 +3,11 @@ type ShowcaseAttributes = {
   hightlight?: boolean
 }
 
+type FieldsAttributes = {
+  label: string
+  name: string | number
+}
+
 declare namespace Cypress {
   interface Chainable {
     /**
@@ -28,5 +33,11 @@ declare namespace Cypress {
      * @example cy.shouldRenderShowcase()
      */
     shouldRenderShowcase(attrs: ShowcaseAttributes): Chainable<Element>
+
+    /**
+     * Custom command to get fields by label
+     * @example cy.getFields([{ label: 'foo', name: 'foo' }])
+     */
+    getFields(fields: FieldsAttributes[]): Chainable<Element>
   }
 }
