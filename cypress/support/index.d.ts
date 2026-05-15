@@ -23,6 +23,12 @@ declare namespace Cypress {
     getByDataCy(selector: string): Chainable<JQuery<HTMLElement>>
 
     /**
+     * Custom command to get fields by label
+     * @example cy.getFields([{ label: 'foo', name: 'foo' }])
+     */
+    getFields(fields: FieldsAttributes[]): Chainable<Element>
+
+    /**
      * Custom command to check banner in page
      * @example cy.shouldRenderBanner()
      */
@@ -33,11 +39,5 @@ declare namespace Cypress {
      * @example cy.shouldRenderShowcase()
      */
     shouldRenderShowcase(attrs: ShowcaseAttributes): Chainable<Element>
-
-    /**
-     * Custom command to get fields by label
-     * @example cy.getFields([{ label: 'foo', name: 'foo' }])
-     */
-    getFields(fields: FieldsAttributes[]): Chainable<Element>
   }
 }
