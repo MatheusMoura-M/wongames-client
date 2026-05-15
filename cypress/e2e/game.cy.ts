@@ -1,7 +1,5 @@
 describe('Game Page', () => {
-  beforeEach(() => {
-    cy.visit('/game/cyberpunk_2077')
-  })
+  beforeEach(() => cy.visit('/game/cyberpunk_2077'))
 
   it('should render game page sections', () => {
     cy.getByDataCy('game-info').within(() => {

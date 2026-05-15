@@ -6,9 +6,7 @@ import {
 } from '@/utils/filter/fields'
 
 describe('Explore Page', () => {
-  beforeEach(() => {
-    cy.visit('/games')
-  })
+  beforeEach(() => cy.visit('/games'))
 
   it('should render filters columns', () => {
     cy.findByRole('heading', { name: /sort by price/i }).should('exist')
@@ -26,5 +24,25 @@ describe('Explore Page', () => {
     cy.getByDataCy('game-card').should('have.length', 15)
     cy.findByRole('button', { name: /show more/i }).click()
     cy.getByDataCy('game-card').should('have.length', 30)
+  })
+
+  it('should order by price', () => {
+    cy.findByText(/lowest to highest/i).click()
+    cy.location('href').should('contain', 'sort=price%3Aasc')
+
+    cy.getByDataCy('game-card')
+      .first()
+      .within(() => {
+        cy.findByText('Free').should('exist')
+      })
+
+    cy.findByText(/highest to lowest/i).click()
+    cy.location('href').should('contain', 'sort=price%3Adesc')
+
+    cy.getByDataCy('game-card')
+      .first()
+      .within(() => {
+        cy.findByText('Free').should('not.exist')
+      })
   })
 })
