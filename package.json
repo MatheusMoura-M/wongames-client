@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.12.4",
+    "@faker-js/faker": "^10.4.0",
     "@stripe/react-stripe-js": "^6.3.0",
     "@stripe/stripe-js": "^9.4.0",
     "@styled-icons/boxicons-regular": "^10.47.0",
@@ -64,6 +65,7 @@
     "@graphql-codegen/typed-document-node": "^6.1.8",
     "@graphql-codegen/typescript": "^5.0.10",
     "@graphql-codegen/typescript-operations": "^5.1.0",
+    "@jackfranklin/test-data-bot": "^2.1.0",
     "@storybook/addon-a11y": "^10.3.5",
     "@storybook/addon-docs": "^10.3.5",
     "@storybook/addon-onboarding": "^10.3.5",
