@@ -1,6 +1,6 @@
 import filterItemsMock from '@/components/ExploreSidebar/mock'
 import apolloCache from '@/utils/apolloCache'
-import { render, screen } from '@/utils/test-utils'
+import { render, screen, waitFor } from '@/utils/test-utils'
 import { MockedProvider } from '@apollo/client/testing'
 import userEvent from '@testing-library/user-event'
 import Games from '.'
@@ -100,11 +100,13 @@ describe('<Games />', () => {
 
     await user.click(await screen.findByRole('checkbox', { name: /windows/i }))
     await user.click(await screen.findByRole('checkbox', { name: /linux/i }))
-    await user.click(await screen.findByLabelText(/low to high/i))
+    await user.click(await screen.findByLabelText(/Lowest to highest/i))
 
-    expect(push).toHaveBeenCalledWith({
-      pathname: '/games',
-      query: { platforms: ['windows', 'linux'], sort_by: 'low-to-high' }
-    })
+    await waitFor(() =>
+      expect(push).toHaveBeenCalledWith({
+        pathname: '/games',
+        query: { platforms: ['windows', 'linux'], sort_by: 'price:asc' }
+      })
+    )
   })
 })

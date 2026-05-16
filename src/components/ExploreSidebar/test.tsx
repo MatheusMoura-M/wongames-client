@@ -1,4 +1,4 @@
-import { render, screen } from '@/utils/test-utils'
+import { render, screen, waitFor } from '@/utils/test-utils'
 import userEvent from '@testing-library/user-event'
 import { css } from 'styled-components'
 import { Overlay } from './styles'
@@ -28,7 +28,7 @@ describe('<ExploreSidebar />', () => {
     ).toBeInTheDocument()
 
     expect(
-      screen.getByRole('radio', { name: /low to high/i })
+      screen.getByRole('radio', { name: /Lowest to highest/i })
     ).toBeInTheDocument()
   })
 
@@ -42,12 +42,14 @@ describe('<ExploreSidebar />', () => {
       <ExploreSidebar
         items={items}
         onFilter={jest.fn}
-        initialValues={{ platforms: ['windows'], sort_by: 'low-to-high' }}
+        initialValues={{ platforms: ['windows'], sort_by: 'price:asc' }}
       />
     )
 
     expect(screen.getByRole('checkbox', { name: /windows/i })).toBeChecked()
-    expect(screen.getByRole('radio', { name: /low to high/i })).toBeChecked()
+    expect(
+      screen.getByRole('radio', { name: /Lowest to highest/i })
+    ).toBeChecked()
   })
 
   it('should filter with initial values', () => {
@@ -74,14 +76,15 @@ describe('<ExploreSidebar />', () => {
 
     await user.click(screen.getByLabelText(/windows/i))
     await user.click(screen.getByLabelText(/linux/i))
-    await user.click(screen.getByLabelText(/low to high/i))
+    await user.click(screen.getByLabelText(/Lowest to highest/i))
 
-    // 1st render (initialValues) + 3 clicks
-    expect(onFilter).toHaveBeenCalledTimes(4)
+    await waitFor(() => {
+      expect(onFilter).toHaveBeenCalledTimes(1)
 
-    expect(onFilter).toHaveBeenCalledWith({
-      platforms: ['windows', 'linux'],
-      sort_by: 'low-to-high'
+      expect(onFilter).toHaveBeenCalledWith({
+        platforms: ['windows', 'linux'],
+        sort_by: 'price:asc'
+      })
     })
   })
 
@@ -92,10 +95,12 @@ describe('<ExploreSidebar />', () => {
 
     render(<ExploreSidebar items={items} onFilter={onFilter} />)
 
-    await user.click(screen.getByLabelText(/low to high/i))
-    await user.click(screen.getByLabelText(/high to low/i))
+    await user.click(screen.getByLabelText(/Lowest to highest/i))
+    await user.click(screen.getByLabelText(/Highest to lowest/i))
 
-    expect(onFilter).toHaveBeenCalledWith({ sort_by: 'high-to-low' })
+    await waitFor(() =>
+      expect(onFilter).toHaveBeenCalledWith({ sort_by: 'price:desc' })
+    )
   })
 
   it('should open/close sidebar when filtering on mobile ', async () => {

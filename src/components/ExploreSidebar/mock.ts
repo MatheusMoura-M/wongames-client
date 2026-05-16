@@ -36,12 +36,12 @@ export default [
     type: 'radio',
     fields: [
       {
-        label: 'High to low',
-        name: 'high-to-low'
+        label: 'Highest to lowest',
+        name: 'price:desc'
       },
       {
-        label: 'Low to high',
-        name: 'low-to-high'
+        label: 'Lowest to highest',
+        name: 'price:asc'
       }
     ]
   },
@@ -60,7 +60,7 @@ export default [
       },
       {
         label: 'MacOS',
-        name: 'macos'
+        name: 'osx'
       }
     ]
   },

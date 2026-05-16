@@ -5,10 +5,10 @@ import Radio from '@/components/Radio'
 import { Close } from '@styled-icons/material-outlined/Close'
 import { FilterList } from '@styled-icons/material-outlined/FilterList'
 import { ParsedUrlQueryInput } from 'querystring'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-import * as S from './styles'
 import xor from 'lodash.xor'
+import * as S from './styles'
 
 export type ItemProps = {
   title: string
@@ -38,20 +38,39 @@ const ExploreSidebar = ({
   const [values, setValues] = useState(initialValues)
   const [isOpen, setIsOpen] = useState(false)
 
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+
   useEffect(() => {
-    onFilter(values)
-    // this method comes from another template
-    // that we don't have access
+    if (Object.keys(initialValues).length > 0) {
+      onFilter(initialValues)
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [values])
+  }, [])
+
+  const debounceFilter = (newValues: Values) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+    }
+
+    timeoutRef.current = setTimeout(() => {
+      onFilter(newValues)
+    }, 800)
+  }
 
   const handleRadio = (name: string, value: string | boolean) => {
-    setValues((s) => ({ ...s, [name]: value }))
+    const newValues = { ...values, [name]: value }
+
+    setValues(newValues)
+    debounceFilter(newValues)
   }
 
   const handleCheckbox = (name: string, value: string) => {
     const currentList = (values[name] as []) || []
-    setValues((s) => ({ ...s, [name]: xor(currentList, [value]) }))
+    const newValues = { ...values, [name]: xor(currentList, [value]) }
+
+    setValues(newValues)
+    debounceFilter(newValues)
   }
 
   const handleFilterMenu = () => {
