@@ -1,13 +1,11 @@
 import { CartContextData } from '@/hooks/use-cart'
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
-import { action } from 'storybook/actions'
 import GameCard, { GameCardProps } from '.'
 
 const meta = {
   title: 'Main/GameCard',
   component: GameCard,
   argTypes: {
-    onFav: { action: 'clicked' },
     ribbon: { type: 'string' }
   },
   args: {
@@ -16,8 +14,7 @@ const meta = {
     developer: 'Rockstar Games',
     img: '/img/red-dead-img.jpg',
     price: 235,
-    promotionalPrice: 215,
-    onFav: action('on-click')
+    promotionalPrice: 215
   },
   globals: {
     backgrounds: { value: 'dark' }

@@ -6,6 +6,11 @@ import 'match-media-mock'
 import Cart from '.'
 
 const props = {
+  session: {
+    jwt: 'asdamqoij2u3h1u2eia',
+    id: 'askdo1ji2einsai',
+    expires: '1sasdaij2u3hasda1u2eia'
+  },
   recommendedTitle: 'You may like these games',
   recommendedHighlight: highlightMock,
   recommendedGames: gamesMock
