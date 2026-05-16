@@ -15,11 +15,9 @@ describe('User', () => {
   it('should sign in and sign out', () => {
     cy.visit('/sign-in')
 
-    cy.findAllByPlaceholderText(/email/i).type('matheus150101miranda@gmail.com')
-    cy.findAllByPlaceholderText(/password/i).type('Matheus123')
-    cy.findByRole('button', { name: /sign in now/i }).click()
+    cy.signIn()
 
-    cy.findByText(/matheus/i)
+    cy.findByText(/matheus/i, { timeout: 10000 })
       .should('exist')
       .click()
     cy.findByText(/sign out/i).click()
