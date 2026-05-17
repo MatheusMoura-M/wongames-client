@@ -16,11 +16,11 @@ describe('Checkout', () => {
       cy.signUp(user)
 
       // conferir se redirecionou para home
-      cy.url({ timeout: 10000 }).should('eq', `${Cypress.config().baseUrl}/`)
+      cy.url().should('eq', `${Cypress.config().baseUrl}/`)
 
       // ir para explore page
       cy.findByRole('link', { name: /explore/i }).click()
-      cy.url({ timeout: 25000 }).should(
+      cy.url({ timeout: 30000 }).should(
         'eq',
         `${Cypress.config().baseUrl}/games`
       )
@@ -39,7 +39,6 @@ describe('Checkout', () => {
         .click()
 
       // clicar para fazer a compra
-
       cy.getByDataCy('cart-list').within(() => {
         cy.findByText(/buy it now/i).click()
       })
@@ -58,6 +57,94 @@ describe('Checkout', () => {
 
       // conferir se redirecionou para success
       cy.url({ timeout: 25000 }).should(
+        'eq',
+        `${Cypress.config().baseUrl}/success`
+      )
+
+      // buscar pelo texto de sucesso
+      cy.findByRole('heading', {
+        name: /Your purchase was successful!/i
+      }).should('exist')
+    })
+
+    it('should show games in order page', () => {
+      cy.visit('/profile/orders')
+      cy.location('href').should(
+        'eq',
+        `${Cypress.config().baseUrl}/sign-in?callbackUrl=/profile/orders`
+      )
+
+      cy.signIn(user.email, user.password)
+      cy.location('href').should(
+        'eq',
+        `${Cypress.config().baseUrl}/profile/orders`
+      )
+
+      cy.getByDataCy('game-item').should('have.length', 1)
+    })
+  })
+
+  describe('Paid Games', () => {
+    let user: User
+    before(() => {
+      user = createUser()
+    })
+
+    it('should buy paid games', () => {
+      // criar um usuário
+      cy.visit('/sign-up')
+      cy.signUp(user)
+
+      // conferir se redirecionou para home
+      cy.url().should('eq', `${Cypress.config().baseUrl}/`)
+
+      // ir para explore page
+      cy.findByRole('link', { name: /explore/i }).click()
+      cy.url({ timeout: 20000 }).should(
+        'eq',
+        `${Cypress.config().baseUrl}/games`
+      )
+
+      // filtrar por jogos do mais caro ao mais barato
+      cy.findByText(/highest to lowest/i).click()
+      cy.location('href').should('contain', 'sort=price%3Adesc')
+
+      // adicionar um jogo ao carrinho
+      cy.addToCartByIndex(0)
+
+      // verificar se o carrinho tem 1 jogo e abrir dropdown
+      cy.findAllByLabelText(/cart items/i)
+        .first()
+        .should('have.text', 1)
+        .click()
+
+      // clicar para fazer a compra
+      cy.getByDataCy('cart-list').within(() => {
+        cy.findByText(/buy it now/i).click()
+      })
+
+      // conferir se redirecionou para cart
+      cy.url({ timeout: 25000 }).should(
+        'eq',
+        `${Cypress.config().baseUrl}/cart`
+      )
+
+      // verificar se o botão está desabilitado
+      cy.findByRole('button', { name: /buy now/i }).should(
+        'have.attr',
+        'disabled'
+      )
+
+      // preencher com o cartão de credito
+      cy.fillElementsInput('cardNumber', '4242424242424242')
+      cy.fillElementsInput('cardExpiry', '1040')
+      cy.fillElementsInput('cardCvc', '103')
+
+      // clicar para comprar
+      cy.findByRole('button', { name: /buy now/i }).click()
+
+      // conferir se redirecionou para success
+      cy.url({ timeout: 30000 }).should(
         'eq',
         `${Cypress.config().baseUrl}/success`
       )

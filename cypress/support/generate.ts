@@ -1,4 +1,4 @@
-import { build } from '@jackfranklin/test-data-bot'
+import { build, perBuild } from '@jackfranklin/test-data-bot'
 import { faker } from '@faker-js/faker'
 
 export type User = {
@@ -9,8 +9,8 @@ export type User = {
 
 export const createUser = build<User>('User', {
   fields: {
-    username: faker.internet.username(),
-    password: faker.internet.password(),
+    username: perBuild(() => faker.internet.username()),
+    password: perBuild(() => faker.internet.password()),
     email: ''
   },
   postBuild: (user) => ({
