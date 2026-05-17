@@ -40,7 +40,12 @@ declare namespace Cypress {
      */
     getByDataCy(
       selector: string,
-      args?: unknown
+      options?: Partial<
+        Cypress.Loggable &
+          Cypress.Timeoutable &
+          Cypress.Withinable &
+          Cypress.Shadow
+      >
     ): Chainable<JQuery<HTMLElement>>
 
     /**

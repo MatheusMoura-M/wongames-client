@@ -92,6 +92,7 @@
     "babel-plugin-styled-components": "^2.1.4",
     "boilerplate-apps-router": "file:",
     "cypress": "^15.15.0",
+    "cypress-plugin-stripe-elements": "^1.0.2",
     "eslint": "^9.39.4",
     "eslint-config-next": "^16.2.1",
     "eslint-config-prettier": "^10.1.8",

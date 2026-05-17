@@ -11,7 +11,12 @@
       "@/fixtures/*": ["cypress/fixtures/*"],
       "@/e2e/*": ["cypress/e2e/*"]
     },
-    "types": ["cypress", "node", "@testing-library/cypress"]
+    "types": [
+      "cypress",
+      "node",
+      "@testing-library/cypress",
+      "cypress-plugin-stripe-elements"
+    ]
   },
   "include": ["**/*.ts", "../src"],
   "exclude": []

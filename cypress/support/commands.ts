@@ -1,11 +1,11 @@
 /// <reference types="cypress" />
-
 import '@testing-library/cypress/add-commands'
+import 'cypress-plugin-stripe-elements'
 
 Cypress.Commands.add('google', () => cy.visit('https://google.com'))
 
-Cypress.Commands.add('getByDataCy', (selector, ...args) => {
-  return cy.get(`[data-cy="${selector}"]`, ...args)
+Cypress.Commands.add('getByDataCy', (selector, options = {}) => {
+  return cy.get(`[data-cy="${selector}"]`, options)
 })
 
 Cypress.Commands.add('signUp', (user: User) => {
