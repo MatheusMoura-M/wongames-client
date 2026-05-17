@@ -2,11 +2,12 @@ import { createUser, User } from '@/support/generate'
 
 describe('Checkout', () => {
   let user: User
-  before(() => {
-    user = createUser()
-  })
 
   describe('Free Games', () => {
+    before(() => {
+      user = createUser()
+    })
+
     it('should buy free game', () => {
       // visitar sign-up
       cy.visit('/sign-up')
@@ -17,7 +18,7 @@ describe('Checkout', () => {
       // conferir se redirecionou para home
       cy.url({ timeout: 10000 }).should('eq', `${Cypress.config().baseUrl}/`)
 
-      // abrir a página de explore
+      // ir para explore page
       cy.findByRole('link', { name: /explore/i }).click()
       cy.url({ timeout: 25000 }).should(
         'eq',
@@ -26,15 +27,19 @@ describe('Checkout', () => {
 
       // filtrar por jogos free
       cy.findByText(/free/i).click()
-      cy.url().should('contain', `price_lte=0`)
+      cy.url().should('contain', 'price_lte=0')
 
       // adicionar um jogo ao carrinho
       cy.addToCartByIndex(0)
 
-      // vou para página de checkout
-      cy.findAllByLabelText(/shopping cart/i)
+      // verificar se o carrinho tem 1 jogo e abrir dropdown
+      cy.findAllByLabelText(/cart items/i)
         .first()
+        .should('have.text', 1)
         .click()
+
+      // clicar para fazer a compra
+
       cy.getByDataCy('cart-list').within(() => {
         cy.findByText(/buy it now/i).click()
       })
@@ -45,10 +50,10 @@ describe('Checkout', () => {
         `${Cypress.config().baseUrl}/cart`
       )
 
-      // verificar se tá escrito que é só jogo gratuito
-      cy.findByText(/only free games, click buy and enjoy!/i).should('exist')
+      // encontrar um texto de só jogos free
+      cy.findByText(/Only free games, click buy and enjoy!/i).should('exist')
 
-      // buy game
+      // clicar para comprar
       cy.findByRole('button', { name: /buy now/i }).click()
 
       // conferir se redirecionou para success
@@ -59,14 +64,24 @@ describe('Checkout', () => {
 
       // buscar pelo texto de sucesso
       cy.findByRole('heading', {
-        name: /your purchase was successful!/i
+        name: /Your purchase was successful!/i
       }).should('exist')
+    })
 
-      // clicar no link de orders
-      cy.findByRole('link', { name: /^orders list/i }).click()
+    it('should show games in order page', () => {
+      cy.visit('/profile/orders')
+      cy.location('href').should(
+        'eq',
+        `${Cypress.config().baseUrl}/sign-in?callbackUrl=/profile/orders`
+      )
 
-      // verificar se tem um jogo comprado
-      cy.getByDataCy('game-item', { timeout: 25000 }).should('have.length', 1)
+      cy.signIn(user.email, user.password)
+      cy.location('href').should(
+        'eq',
+        `${Cypress.config().baseUrl}/profile/orders`
+      )
+
+      cy.getByDataCy('game-item').should('have.length', 1)
     })
   })
 })
