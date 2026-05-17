@@ -1,7 +1,7 @@
 import 'session.mock'
 
 import { WishlistContextDefaultValues } from '@/hooks/use-wishlist'
-import { act, render, screen, waitFor } from '@/utils/test-utils'
+import { render, screen, waitFor } from '@/utils/test-utils'
 import userEvent from '@testing-library/user-event'
 import WishlistButton from '.'
 

@@ -38,7 +38,10 @@ declare namespace Cypress {
      * Custom command to get element by data-cy
      * @example cy.getByDataCy('selector')
      */
-    getByDataCy(selector: string): Chainable<JQuery<HTMLElement>>
+    getByDataCy(
+      selector: string,
+      args?: unknown
+    ): Chainable<JQuery<HTMLElement>>
 
     /**
      * Custom command to get fields by label

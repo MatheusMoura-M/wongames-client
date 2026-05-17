@@ -13,7 +13,7 @@ import { isGame } from '@/utils/filterByTypes'
 import { gamesMapper } from '@/utils/mappers'
 import { FetchResult, useMutation } from '@apollo/client'
 import { useSession } from 'next-auth/react'
-import { createContext, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 
 export type WishlistContextData = {
   items: GameCardProps[]

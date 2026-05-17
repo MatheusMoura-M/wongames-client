@@ -7,9 +7,9 @@
     "baseUrl": "..",
     "paths": {
       "@/*": ["src/*"],
-      "@support/*": ["cypress/support/*"],
-      "@fixtures/*": ["cypress/fixtures/*"],
-      "@e2e/*": ["cypress/e2e/*"]
+      "@/support/*": ["cypress/support/*"],
+      "@/fixtures/*": ["cypress/fixtures/*"],
+      "@/e2e/*": ["cypress/e2e/*"]
     },
     "types": ["cypress", "node", "@testing-library/cypress"]
   },

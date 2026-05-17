@@ -1,4 +1,4 @@
-import { createUser } from '@support/generate'
+import { createUser } from '@/support/generate'
 
 describe('User', () => {
   it.skip('should sign up', () => {
